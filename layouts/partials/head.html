@@ -1,0 +1,9 @@
+    <header>
+        <h1>{{ .Site.Title }}</h1>
+        {{ range .Data.Pages }}
+            {{ if eq .Type "page"}}
+            <a href="{{ .Permalink }}">{{ .Title }}</a>&nbsp;
+            {{ end }}
+        {{ end }}
+        <a href="/logs/">logs</a>&nbsp;
+    </header>

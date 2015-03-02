@@ -1,0 +1,19 @@
+baseurl: "http://log.deprode.jp/"
+langageCode: "ja"
+
+title: "log"
+copyright: "deprode"
+
+contentdir: "content"
+layoutdir: "layouts"
+publishdir: "public"
+builddrafts: false
+footnotereturnlinkcontents: "↩"
+
+permalinks:
+  post: "/:year/:month/:day/:filename/"
+  page: "/:title/"
+params:
+  author: "deprode"
+  github: "deprode"
+  twitter: "@deprodejp"

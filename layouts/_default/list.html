@@ -1,0 +1,15 @@
+
+{{ $baseurl := .Site.BaseUrl }}
+{{ partial "header.html" . }}
+
+<h1>{{ .Site.Title }}</h1>
+<article>
+    <h4>{{ .Title }}</h4>
+    <ul>
+        {{ range .Data.Pages }}
+            {{ .Render "li"}}
+        {{ end }}
+    </ul>
+</article>
+
+{{ partial "footer.html" . }}
