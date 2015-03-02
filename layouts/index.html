@@ -7,18 +7,17 @@
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="log">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700">
-    <link rel="stylesheet" href="/css/skeleton.css">
+    <link rel="stylesheet" href="/log/css/skeleton.css">
     <link rel="canonical" href="{{ .Permalink }}">
-    {{ if .RSSlink }}<link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
+    {{ if .RSSlink }}<link href="/log/index.xml" rel="alternate" type="application/rss+xml" title="{{ .Title }}" />{{ end }}
 </head>
 <body>
     <div class="container">
 
 {{ partial "head.html" . }}
 
-
-{{ range first 10 (where .Data.Pages "Type" "logs") }}
-    {{ .Render "li" }}
+{{ range first 10 .Data.Pages }}
+    {{ .Render "li"}}
 {{ end }}
 
 {{ partial "footer.html" . }}

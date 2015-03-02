@@ -1,5 +1,5 @@
 # Log
 
-[![wercker status](https://app.wercker.com/status/2bbe18698534641cc31e5790ff5f3a2e/s/master "wercker status")](https://app.wercker.com/project/bykey/2bbe18698534641cc31e5790ff5f3a2e)
+[![wercker status](https://app.wercker.com/status/8aa356d4c409016bf7d46e6ceb26e10a/s/master "wercker status")](https://app.wercker.com/project/bykey/8aa356d4c409016bf7d46e6ceb26e10a)
 
 (¦3[___]

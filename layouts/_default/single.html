@@ -13,7 +13,7 @@
         {{ if .Params.tags }}
         <p>Tags:
             {{ range .Params.tags }}
-                <a href="/tags/{{ . | urlize }}">{{ . }}</a>,
+                <a href="/log/tags/{{ . | urlize }}">{{ . }}</a>,
             {{ end }}
         </p>
         {{ end }}
