@@ -15,9 +15,9 @@
     <div class="container">
 
 {{ partial "head.html" . }}
-
+    <ul>
 {{ range first 10 .Data.Pages }}
     {{ .Render "li"}}
 {{ end }}
-
+    </ul>
 {{ partial "footer.html" . }}
