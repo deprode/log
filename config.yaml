@@ -1,4 +1,4 @@
-baseurl: "http://deprode.jp/log/"
+baseurl: "http://deprode.net/log/"
 langageCode: "ja"
 
 title: "log"
@@ -16,4 +16,4 @@ permalinks:
 params:
   author: "deprode"
   github: "deprode"
-  twitter: "@deprodejp"
+  twitter: "@deproden"
