@@ -14,11 +14,12 @@
 </head>
 <body>
     <div class="container">
-
+        <div class="ten offset-by-one columns">
 {{ partial "head.html" . }}
     <ul>
 {{ range first 10 .Data.Pages }}
     {{ .Render "li"}}
 {{ end }}
     </ul>
+        </div>
 {{ partial "footer.html" . }}

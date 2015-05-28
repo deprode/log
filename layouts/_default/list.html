@@ -1,16 +1,18 @@
 
 {{ $baseurl := .Site.BaseUrl }}
 {{ partial "header.html" . }}
-<header>
-    <h1>{{ .Site.Title }}</h1>
-</header>
-<article>
-    <h4>{{ .Title }}</h4>
-    <ul>
-        {{ range .Data.Pages }}
-            {{ .Render "li"}}
-        {{ end }}
-    </ul>
-</article>
+<div class="ten offset-by-one columns">
+    <header>
+        <h1>{{ .Site.Title }}</h1>
+    </header>
+    <article>
+        <h4>{{ .Title }}</h4>
+        <ul>
+            {{ range .Data.Pages }}
+                {{ .Render "li"}}
+            {{ end }}
+        </ul>
+    </article>
+</div>
 
 {{ partial "footer.html" . }}
