@@ -45,3 +45,8 @@ a {
     padding: 0 0 4px 0;
     border-bottom: 1px solid #222;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
