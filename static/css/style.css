@@ -7,6 +7,12 @@ body {
     font-size: 1.7rem;
 }
 
+@media only screen and (max-device-width : 1024px) {
+    body {
+        font-family: sans-serif;
+    }
+}
+
 @media (min-width: 550px) {
   h1 { font-size: 4.0rem; }
   h2 { font-size: 3.6rem; }
