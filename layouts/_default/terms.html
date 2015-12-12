@@ -6,10 +6,10 @@
     </header>
     <article>
         <h4>{{ .Title }}</h4>
-        <ul>
-            {{ range .Data.Pages }}
-                {{ .Render "li"}}
-            {{ end }}
+        <ul id="all-tags">
+          {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+            <li><a href="/log/tags/{{ $name | urlize }}">{{ $name }}</a></li>
+          {{ end }}
         </ul>
     </article>
 </div>

@@ -12,6 +12,14 @@
             {{ end }}
         </ul>
     </article>
+    <article>
+        <h4>Tags</h4>
+        <ul id="all-tags">
+          {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+            <li><a href="/log/tags/{{ $name | urlize }}">{{ $name }}</a></li>
+          {{ end }}
+        </ul>
+    </article>
 </div>
 
 {{ partial "footer.html" . }}
