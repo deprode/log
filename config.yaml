@@ -9,6 +9,7 @@ layoutdir: "layouts"
 publishdir: "public"
 builddrafts: false
 footnotereturnlinkcontents: "↩"
+HasCJKLanguage: true
 
 permalinks:
   post: "/:year/:month/:day/:filename/"
