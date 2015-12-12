@@ -55,3 +55,10 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+.page_tags {
+  display: inline-block;
+}
+.page_tags:not(:last-child):after {
+  content: ',';
+}

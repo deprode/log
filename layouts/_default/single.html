@@ -11,11 +11,12 @@
     <aside id="meta">
         <p><time datetime="{{.Date.Format "2006-01-02T15:04:05-07:00"}}">{{.Date.Format "2006-01-02 15:04:05"}}</time></p>
         {{ if .Params.tags }}
-        <p>Tags:
+        <h6>Tags:</h6>
+        <ul>
             {{ range .Params.tags }}
-                <a href="/log/tags/{{ . | urlize }}">{{ . }}</a>,
+                <li class="page_tags"><a href="/log/tags/{{ . | urlize }}">{{ . }}</a></li>
             {{ end }}
-        </p>
+        </ul>
         {{ end }}
     </aside>
 </article>
