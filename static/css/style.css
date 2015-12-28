@@ -22,6 +22,10 @@ body {
   h6 { font-size: 1.5rem; }
 }
 
+section p {
+  line-height: 1.7;
+}
+
 ul {
     margin-left: 1.7rem;
     list-style: circle outside;
