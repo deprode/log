@@ -1,0 +1,35 @@
+general:
+  branches:
+    ignore:
+      - gh-pages
+
+machine:
+  timezone:
+    Asia/Tokyo
+
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init --recursive
+
+dependencies:
+  pre:
+    - go get -v github.com/spf13/hugo
+    - git config --global user.name "CircleCI"
+    - git config --global user.email "circleci@example.com"
+
+test:
+  override:
+   - echo
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - git clone git@github.com:deprode/log.git d_log
+      - cd d_log && hugo
+      - cd d_log && rm -rf .git
+      - cd d_log/public && git init
+      - cd d_log/public && git add .
+      - cd d_log/public && git commit -m "deploy from deprode"
+      - cd d_log/public && git push -f git@github.com:deprode/log.git master:gh-pages
