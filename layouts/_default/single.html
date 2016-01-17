@@ -14,7 +14,7 @@
         <h6>Tags:</h6>
         <ul>
             {{ range .Params.tags }}
-                <li class="page_tags"><a href="/log/tags/{{ . | urlize }}">{{ . }}</a></li>
+                <li class="page_tags"><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
             {{ end }}
         </ul>
         {{ end }}

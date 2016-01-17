@@ -8,7 +8,7 @@
         <h4>{{ .Title }}</h4>
         <ul id="all-tags">
           {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-            <li><a href="/log/tags/{{ $name | urlize }}">{{ $name }}</a></li>
+            <li><a href="/tags/{{ $name | urlize }}">{{ $name }}</a></li>
           {{ end }}
         </ul>
     </article>
