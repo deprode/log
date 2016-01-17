@@ -31,5 +31,5 @@ deployment:
       - cd d_log && rm -rf .git
       - cd d_log/public && git init
       - cd d_log/public && git add .
-      - cd d_log/public && git commit -m "deploy from deprode"
+      - cd d_log/public && git commit -m "deploy from deprode [ci skip]"
       - cd d_log/public && git push -f git@github.com:deprode/log.git master:gh-pages
