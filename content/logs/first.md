@@ -1,6 +1,5 @@
 +++
 date = "2015-02-28T18:29:55+09:00"
-draft = true
 title = "Hugoで試行錯誤する"
 tags = ["hugo", "css"]
 +++
