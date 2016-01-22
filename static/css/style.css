@@ -60,6 +60,10 @@ img {
   height: auto;
 }
 
+pre {
+  word-wrap: break-word;
+}
+
 .page_tags {
   display: inline-block;
 }
