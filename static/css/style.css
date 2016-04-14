@@ -1,16 +1,14 @@
 header {
-    margin: 30px 0;
+  margin: 30px 0;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
-    font-family: 'Noto Sans Japanese', sans-serif;
-    font-size: 1.7rem;
-}
-
-@media only screen and (max-device-width : 1024px) {
-    body {
-        font-family: sans-serif;
-    }
+  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+  font-size: 1.7rem;
 }
 
 @media (min-width: 550px) {
@@ -23,36 +21,35 @@ body {
 }
 
 section p {
+  margin-bottom: 2em;
   line-height: 1.7;
 }
 
 ul {
-    margin-left: 1.7rem;
-    list-style: circle outside;
+  list-style: circle inside;
 }
 ol {
-    margin-left: 1.7rem;
-    list-style: decimal outside;
+  list-style: decimal inside;
 }
 ul ul,
 ol ul {
-  list-style: circle outside;
+  list-style: circle inside;
 }
 ul ol,
 ol ol {
-  list-style: decimal outside;
+  list-style: decimal inside;
 }
 ul ul,
 ul ol,
 ol ol,
 ol ul {
-    font-size: 95%;
+  font-size: 95%;
 }
 
 a {
-    color: #222;
-    text-decoration: none;
-    border-bottom: 1px solid #222;
+  color: #222;
+  text-decoration: none;
+  border-bottom: 1px solid #222;
 }
 
 img {
@@ -62,6 +59,17 @@ img {
 
 pre {
   word-wrap: break-word;
+}
+code {
+  font-family: monospace;
+}
+blockquote {
+  margin-left: 3px;
+  border-left: solid 5px #ccc;
+  color: #444;
+}
+blockquote p {
+  padding: 5px 0 5px 15px;
 }
 
 .page_tags {
