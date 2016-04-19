@@ -72,11 +72,23 @@ blockquote p {
   padding: 5px 0 5px 15px;
 }
 
+@media (max-width: 550px) {
+  time {
+    display: block;
+  }
+  .list {
+    list-style: circle outside;
+  }
+}
+
 .page_tags {
   display: inline-block;
 }
 .page_tags:not(:last-child):after {
   content: ',';
+}
+.container {
+  max-width: 760px;
 }
 .single_header {
   font-size: 2rem;
