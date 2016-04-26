@@ -71,6 +71,9 @@ blockquote {
 blockquote p {
   padding: 5px 0 5px 15px;
 }
+.footnotes {
+  font-size: 1.5rem;
+}
 
 @media (max-width: 550px) {
   time {
