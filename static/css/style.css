@@ -60,8 +60,9 @@ img {
 pre {
   word-wrap: break-word;
 }
-code {
+pre > code {
   font-family: monospace;
+  white-space: pre-wrap;
 }
 blockquote {
   margin-left: 3px;
