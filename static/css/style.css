@@ -25,19 +25,28 @@ section p {
   line-height: 1.7;
 }
 
+ul,
+ol,
+ul ul,
+ol ol,
+ol ul,
+ul ol {
+  margin: 0 0 1em 1.5em;
+}
+
 ul {
-  list-style: circle inside;
+  list-style: circle;
 }
 ol {
-  list-style: decimal inside;
+  list-style: decimal;
 }
 ul ul,
 ol ul {
-  list-style: circle inside;
+  list-style: circle;
 }
 ul ol,
 ol ol {
-  list-style: decimal inside;
+  list-style: decimal;
 }
 ul ul,
 ul ol,
