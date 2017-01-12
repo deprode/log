@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>301 on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/301/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Wed, 29 Apr 2015 22:08:51 JST</updated>
+    
+    <item>
+      <title>2015 04 29</title>
+      <link>http://log.deprode.net/logs/2015-04-29/</link>
+      <pubDate>Wed, 29 Apr 2015 22:08:51 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-29/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;ネパール地震募金 &lt;a href=&#34;http://corp.rakuten.co.jp/csr/contribution/&#34;&gt;http://corp.rakuten.co.jp/csr/contribution/&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;余ってる楽天ポイント全部寄付した。
+
+&lt;ul&gt;
+&lt;li&gt;全部って言っても1kくらいだけど。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ドルツ迷った末に買った
+
+&lt;ul&gt;
+&lt;li&gt;倹約家というかアレなので、8000円程度の出費でも3時間くらい考える。自分のテリトリーにない商品だとなおさら。
+
+&lt;ul&gt;
+&lt;li&gt;というか、ドルツ自体は半年前から欲しいと思ってて、歯を磨く時間が10分以上かかるのを節約したいと思って買うことにした。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;我ながら決断力のなさがひどいと思う。ドルツ→歯間ブラシ→デンタルフロス→電動歯ブラシ→電動ひげそり→綿棒→耳かき、みたいな遷移で、しかもドルツしか買ってない。
+
+&lt;ul&gt;
+&lt;li&gt;倹約家なのかすら怪しくなった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;祝日に前の仕事のメール書いてる。
+
+&lt;ul&gt;
+&lt;li&gt;納期と予算を書いてないメールで、しかも一行の要望だったりするので、もう少し勉強してから送って欲しいけど、いろいろあるので書いてる。&lt;/li&gt;
+&lt;li&gt;つらいけど、書いて送信した。今日祝日だし、明日でもよかったと思う。&lt;/li&gt;
+&lt;li&gt;一ヶ月当たりの自分の人月というか単金というか、そういう感じのお金ってみんなどうやって計算してるんだろう。月刊積算資料だとプログラマ60万くらいだったかな。
+
+&lt;ul&gt;
+&lt;li&gt;「if文が怪しい」レベルで時間単価3000円らしい。21*8=168hなので、50万が下限っぽい。ニアショア下限とも近い。&lt;/li&gt;
+&lt;li&gt;別のサイトで「フリーランスで稼ぐ金額に上限も下限もない」って文言見つけた……。
+
+&lt;ul&gt;
+&lt;li&gt;フリーのプログラマ単独だと下限は0円だったはず。訴訟されなければ。上限は知らんけど手取りで1000万くらいなんじゃないの？知らんけど。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;働いてない人間も、働けるなら人並みに働きたいんじゃ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Todoistいろいろ試してるけど、やっぱり今日やることは細かい繰り返すこと以外は小分けにして紙に書いた方がやる気が出る。
+
+&lt;ul&gt;
+&lt;li&gt;ので、タスクを忘れないように書いておくWebサービスという使い方でやってる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ドメイン変えたけど、Github Pagesで301リダイレクトってどうやるの……
+
+&lt;ul&gt;
+&lt;li&gt;わからないけど、とりあえずcanonicalタグつけて対処した。casperjsの作者もやってるし大丈夫でしょ、たぶん。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/9276817/301-redirect-for-site-hosted-at-github&#34;&gt;http://stackoverflow.com/questions/9276817/301-redirect-for-site-hosted-at-github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;javascriptでlocation書き換えによる移動も書かないとダメだった。
+
+&lt;ul&gt;
+&lt;li&gt;自分のことになると割とどうでもよくなる症候群。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;最近コード書いてないので、もうコード書けない気がしてきた。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

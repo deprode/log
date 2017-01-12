@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Web on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/web/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 07 24</title>
+      <link>http://log.deprode.net/logs/2015-07-24/</link>
+      <pubDate>Fri, 24 Jul 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-07-24/</guid>
+      <description>
+
+&lt;h2 id=&#34;deprode-netちょっと変えた&#34;&gt;deprode.netちょっと変えた&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://deprode.net&#34;&gt;deprode.net&lt;/a&gt;のアイコン変更した。&lt;/p&gt;
+
+&lt;p&gt;もともと、アイコンの幅が違っていたので微妙にずらすなどしていたのだが、そのせいでリストのすべての文字がずれているように見えてしまい、失敗していた。というか、アイコンを中央揃えにしたら文字が左揃えだったのに気づかなかった。&lt;/p&gt;
+
+&lt;p&gt;ただ、絶対グリッド感がないので、本当にずれているのかわからなかった。そこで、Chromeに&lt;a href=&#34;http://blarg.co.uk/tools/page-ruler&#34;&gt;Page Ruler&lt;/a&gt;というウェブページのサイズを測れる拡張を入れて測定した。結果、文字は&amp;rdquo;ずれていた&amp;rdquo;。アイコンを調整したときのpaddingでずれていた。また、リストのうち一つだけ頭文字が小文字だったため、二文字目以降がずれていた。&lt;/p&gt;
+
+&lt;p&gt;まず、ずれているアイコンを直すことにした。そのアイコンはBookmarkなのだが、PinboardがFontawesomeになかったため、だいたいを探したがZocialしかなかったし、使いづらかった。いろいろ探しているうちに、&lt;a href=&#34;http://fontello.com/&#34;&gt;Fontello&lt;/a&gt;を見つけた。これは、複数のアイコンをウェブフォント化してくれるサービスだ。FontawesomeもZocialも必要なアイコンだけフォント化して出力してくれる。&lt;/p&gt;
+
+&lt;p&gt;今回使用するアイコンは6つだけだったので、こちらの方が速いだろうということと、使ってみたかったという勢いで使うことにした。使う際に、いくつかアイコンを変更した。スクウェア型とサークル型の白抜きアイコンが混じっていたので、白抜きでないものに変更した。&lt;/p&gt;
+
+&lt;p&gt;そのほか、フッターのマージンを調整して、コミットした。&lt;/p&gt;
+
+&lt;p&gt;シンプル、というよりミニマルに近いので、細かい部分を修正しないと違和感が大きくなるのだと思った。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

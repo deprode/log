@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>ネタ on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/%E3%83%8D%E3%82%BF/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Tue, 28 Apr 2015 23:32:44 JST</updated>
+    
+    <item>
+      <title>2015 04 28</title>
+      <link>http://log.deprode.net/logs/2015-04-28/</link>
+      <pubDate>Tue, 28 Apr 2015 23:32:44 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-28/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;DigitalOceanでCentOS立ち上げてPostfixインストールして諸々の設定試そうと思ったら、普通にPostifxインストールしてあったし、mailx入れたらメール送信できた。
+
+&lt;ul&gt;
+&lt;li&gt;kickstartで入れただけっぽいことがわかってきた。
+
+&lt;ul&gt;
+&lt;li&gt;調べたら今ってデフォルトでPostfix入ってるっぽい。よかった、これで解決ですね。
+
+&lt;ul&gt;
+&lt;li&gt;よくない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;諸々の設定と対策はしてないようなので、やらないとダメっぽい。&lt;/li&gt;
+&lt;li&gt;とりあえず、いろいろやってわかったのでDroplet削除した。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;終わらせなければ、終わらないんじゃ。&lt;/li&gt;
+&lt;li&gt;ピクミン「ｳｪｰｲwww」
+
+&lt;ul&gt;
+&lt;li&gt;割と聞こえるんだけど、俺の頭がおかしいのか。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;父のブラビアのYoutube終わったので更新してるけど、UXがいろいろおかしい。
+
+&lt;ul&gt;
+&lt;li&gt;とりあえず、読み込みが遅いのはテレビだから仕方ないとして、読み込み失敗で何も表示されないのはよくない。&lt;/li&gt;
+&lt;li&gt;ネットチャンネルの更新が通信設定にあって、わかる人にはわかる分類。&lt;/li&gt;
+&lt;li&gt;ネットチャンネルを更新しても、ホームメニューが更新されないのでお気に入り登録してもホームメニューが強制終了する。
+
+&lt;ul&gt;
+&lt;li&gt;他のネットチャンネルに関しても同様。&lt;/li&gt;
+&lt;li&gt;本体更新する必要があるかと思ったが、最新版だった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;結局、ネットチャンネルの一覧から選べばみれるので、そういう方法でお願いした。
+
+&lt;ul&gt;
+&lt;li&gt;ホームメニューはショートカット(symlink)を作り直すために本体アップデートが必要になるけど、いろいろあってできないみたいな感じなんだと思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;45分かかった。プログラミングできても、電子機器に弱い。&lt;/li&gt;
+&lt;li&gt;ネットはネットワーク機器で見ろってことで。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;「デザインあ」は、普段意識してないデザインを意識させる力を育てる知育番組、という理解でいいのかな。
+
+&lt;ul&gt;
+&lt;li&gt;おそらく、いいデザインを蓄積するだけではダメで、いいデザインを知った上で悪いデザインに触れると圧倒的成長をしていることにテンションが上がるのでそういう感じにして欲しいけど、15分で成り立つ番組だから無理だろうなあ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;仕事を頼むときは予算と納期を書いてからメールすると吉じゃ。&lt;/li&gt;
+&lt;li&gt;ゼノブレイドクロスはするーする。時間が死ぬほどあれば遊ぶけど、現状では無理です。
+
+&lt;ul&gt;
+&lt;li&gt;ヌルゲーマーがどういう定義かは知らないけど、昔みたいに遊べなくなった気がしてる。&lt;/li&gt;
+&lt;li&gt;ゼノブレイド、今日も遊べなかったけど無駄な時間に遊んでいれば遊べたので、&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;今日もだいぶつらかった。寒暖の差がいっそう激しくなった。夏の陽気になった割に夜はだいぶ冷える。日が昇るのが早くなり、早くに目が覚めてしまう。二度寝でひどい寝汗をかくので、一日疲れている。つらい。何とかしたい。
+
+&lt;ul&gt;
+&lt;li&gt;J-RAPかよ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;大型連休終了までにやること:8f73a75d95c43e7c58849f135f16516c&#34;&gt;大型連休終了までにやること&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;VPSの移転＋運用&lt;/li&gt;
+&lt;li&gt;Yodobashiで買い物&lt;/li&gt;
+&lt;li&gt;ゼノブレイド 〜クリア&lt;/li&gt;
+&lt;li&gt;JavaScriptパターン 〜読了&lt;/li&gt;
+&lt;li&gt;vue.jsのチュートリアルやる&lt;/li&gt;
+&lt;li&gt;twitter botを作り直す&lt;/li&gt;
+&lt;li&gt;Feedlyの未読（+ブックマーク保留）を0にする&lt;/li&gt;
+&lt;li&gt;理髪に行く&lt;/li&gt;
+&lt;li&gt;iTunesで映画を見る&lt;/li&gt;
+&lt;li&gt;GWまとめをブログに書く&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

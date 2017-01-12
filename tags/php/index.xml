@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Php on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/php/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>Failed to start the session because headers have already been sent by &#34;&#34; at line 0</title>
+      <link>http://log.deprode.net/logs/2016-09-02_20-24-04/</link>
+      <pubDate>Fri, 02 Sep 2016 20:24:04 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-09-02_20-24-04/</guid>
+      <description>
+
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+
+&lt;p&gt;PHP 5.6.22
+Symfony 2.8
+FOSRestBundle 2.0&lt;/p&gt;
+
+&lt;h2 id=&#34;エラー&#34;&gt;エラー&lt;/h2&gt;
+
+&lt;p&gt;クライアント側からPOSTでSymfonyのAPIにデータを送り、その後データを更新して更新したデータをJSONで返すプログラムを作っていたところ、次のようなエラーが出た。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Uncaught PHP Exception RuntimeException: Failed to start the session because headers have already been sent by &amp;quot;&amp;quot; at line 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;しばらくSymfonyのエラーログを見たり、FOSRestBundleのエラーを追っていたが、全く情報がつかめなかった。しばらくして &lt;a href=&#34;https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo&#34;&gt;Advanced REST client&lt;/a&gt; でデータを送ったところ、以下の出力が得られた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
+&amp;lt;b&amp;gt;Deprecated&amp;lt;/b&amp;gt;:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set &#39;always_populate_raw_post_data&#39; to &#39;-1&#39; in php.ini and use the php://input stream instead. in &amp;lt;b&amp;gt;Unknown&amp;lt;/b&amp;gt; on line &amp;lt;b&amp;gt;0&amp;lt;/b&amp;gt;&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;b&amp;gt;Warning&amp;lt;/b&amp;gt;:  Cannot modify header information - headers already sent in &amp;lt;b&amp;gt;Unknown&amp;lt;/b&amp;gt; on line &amp;lt;b&amp;gt;0&amp;lt;/b&amp;gt;&amp;lt;br /&amp;gt;
+{&amp;quot;code&amp;quot;:500,&amp;quot;message&amp;quot;:&amp;quot;Failed to start the session because headers have already been sent by \&amp;quot;\&amp;quot; at line 0.&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;クライアント側ではこのようなエラーが取得できていた。（フロント側はPromiseを使っていたので&lt;code&gt;response.json()&lt;/code&gt;でパースエラーになってもPHPでエラー出てるから同じでしょ？と思っていたのが間違いだったようだ。）&lt;/p&gt;
+
+&lt;p&gt;エラーの内容は、「&lt;code&gt;always_populate_raw_post_data&lt;/code&gt;は非推奨だから-1にしろ」とそれに付随するものだったようだ。これはPHPのバグらしく、&lt;a href=&#34;https://bugs.php.net/bug.php?id=67991&#34;&gt;PHP :: Doc Bug #67991 :: always_populate_raw_post_data deprecation warning buggy&lt;/a&gt;で報告されている。&lt;/p&gt;
+
+&lt;p&gt;そして、このエラーがSymfonyのheaderが出力される前に出ていたため、Symfony側のエラーで「sessionの開始前にレンダリングするな」となっていたのではないかと思われる。&lt;/p&gt;
+
+&lt;p&gt;このあと、php.iniの&lt;code&gt;always_populate_raw_post_data&lt;/code&gt;に-1を設定したらエラーが解決した。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PHPをアップデートするだけのplaybookを書いた</title>
+      <link>http://log.deprode.net/logs/2016-04-13_18-14-52/</link>
+      <pubDate>Wed, 13 Apr 2016 18:14:52 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-13_18-14-52/</guid>
+      <description>
+
+&lt;h2 id=&#34;phpをアップデートするだけのplaybookを書いた&#34;&gt;PHPをアップデートするだけのplaybookを書いた&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/deprode/php-update-playbook&#34;&gt;deprode/php-update-playbook: PHPをアップデートするAnsible playbook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;以前にAnsibleを使ってVPSをセットアップするplaybookを書いていたのだが、個別のタスクになっていなかったので、「PHPのアップデートだけやる」というタスクはこなせなかった。そのため、PHPのアップデートが遅れてしまうことがたびたびあった。そのため、@official_phpがアップデート告知をするたびに申し訳ない気持ちになっていた。&lt;/p&gt;
+
+&lt;h3 id=&#34;使い方&#34;&gt;使い方&lt;/h3&gt;
+
+&lt;p&gt;前提としてAnsibleが入っており、まずssh_configファイルを編集する必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Host defaults
+  HostName 127.0.0.1 # 自分のHostNameにする
+  User foobar # ユーザ名を変更
+  Port 22 # ポートの変更
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /Users/foobar/.ssh/id_rsa # SSH鍵の場所を変更
+  IdentitiesOnly yes
+  LogLevel FATAL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/deprode/php-update-playbook/blob/master/group_vars/repo.yml&#34;&gt;group_vars&lt;/a&gt;のURLとprefixを適当なものに変更し、コマンドを実行する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ansible-playbook site.yml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これでいつセキュリティフィックスがあっても大丈夫だ。たぶん。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 02 07</title>
+      <link>http://log.deprode.net/logs/2016-02-07/</link>
+      <pubDate>Sun, 07 Feb 2016 21:35:06 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-02-07/</guid>
+      <description>
+
+&lt;h2 id=&#34;tumblrのrssを書き換えて元のurlへリンクする&#34;&gt;TumblrのRSSを書き換えて元のURLへリンクする&lt;/h2&gt;
+
+&lt;p&gt;書いた。&lt;a href=&#34;https://github.com/tumblr/tumblr.php&#34;&gt;tumblr/tumblr.php&lt;/a&gt;を使用した。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.tumblr.com/oauth/apps&#34;&gt;Tumblrにアプリを登録&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://api.tumblr.com/console&#34;&gt;API Console&lt;/a&gt;で、API Keyを取得&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;composer require tumblr/tumblr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;以下のコード＋定数の設定ファイルを書いて、デプロイ&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script src=&#34;https://gist.github.com/deprode/4c8cb16a34739a727692.js&#34;&gt;&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Tumblrにbotがリンクを投稿しているので、それを読んでいる。だが、そのサイトのRSSをTwitterに流したら&amp;rdquo;xxxx.tumblr.com&amp;rdquo;のURLがツイートされた。昔は元のURLも含まれていた気がしたのだが、気のせいだったかもしれない。いずれにしても元のURLでツイートしないと気まずいので、RSSを書き換えて、IFTTTで連携することにした。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 01 15</title>
+      <link>http://log.deprode.net/logs/2016-01-15/</link>
+      <pubDate>Fri, 15 Jan 2016 23:38:33 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-01-15/</guid>
+      <description>
+
+&lt;h2 id=&#34;昨日作ったやつのバックエンドをslim3にした&#34;&gt;昨日作ったやつのバックエンドをSlim3にした&lt;/h2&gt;
+
+&lt;p&gt;「&lt;a href=&#34;http://deprode.net/log/logs/2016-01-12/&#34;&gt;Twitterから非公開TumblrにLikesをバックアップした&lt;/a&gt;」で作ったやつを「&lt;a href=&#34;http://deprode.net/log/logs/2016-01-14/&#34;&gt;フロントをVueで作り直した&lt;/a&gt;」ので、今日はバックエンドを&lt;a href=&#34;http://www.slimframework.com/&#34;&gt;Slim Framework&lt;/a&gt;にした。&lt;/p&gt;
+
+&lt;p&gt;以前も、slimで掲示板作ったりしたけど、RESTっぽいのは作ってなかったので、ドキュメントと過去のコードを見ながらいろいろやった。&lt;a href=&#34;https://github.com/slimphp/Slim-Skeleton&#34;&gt;スケルトン（いい感じにフレームワークが使い始められるえるようにしたプロジェクト）&lt;/a&gt;があるので、それを使って作り始めた。&lt;/p&gt;
+
+&lt;p&gt;vueのindex.htmlをtemplatesとしてindex.phtmlにした。ほかのPHPスクリプトは、ほぼコピペでとりあえず動くので、そうした。元々20〜100行程度の小さいスクリプトで、面倒だったので全部routes.phpに押し込んだ。（ちょっとハンドラに移した方がいいだろうとも思った。）あとはvueの送信先とJavaScriptのルータを適切なパスにして、それでほぼ動いたのでよかった。&lt;/p&gt;
+
+&lt;p&gt;とりあえず、どこかのリモートリポジトリのあげておけば、&lt;code&gt;composer install deprode/twitter-to-tumblr&lt;/code&gt;と&lt;code&gt;php -S localhost:8000 -t public public/index.php&lt;/code&gt;で（ConsumerKeyなど設定すれば）ローカルで動く。&lt;/p&gt;
+
+&lt;p&gt;で、VPSにあげたのだが、ドキュメントルートをとるのが難しい環境になっていたので、動かなかった。ドメインを割り当てていなかったのだ。ドメイン設定やnginxの設定などがあり、面倒になってやめてしまった。とりあえず、ドメイン設定だけしたので、あとは暇なときにやる。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 12 16</title>
+      <link>http://log.deprode.net/logs/2015-12-16/</link>
+      <pubDate>Wed, 16 Dec 2015 21:52:29 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-12-16/</guid>
+      <description>
+
+&lt;h2 id=&#34;phpのrepl-psyshの使い方メモ&#34;&gt;PHPのREPL、PsySHの使い方メモ&lt;/h2&gt;
+
+&lt;p&gt;公式サイト：&lt;a href=&#34;http://psysh.org/&#34;&gt;PsySH(http://psysh.org/)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;PHPのREPL（Read-Eval-Print Loop、対話的にプログラムを実行する環境）ライブラリ。ほかにもデバッグを補助する機能や、PHP Manualを簡易的に参照する機能がある。&lt;/p&gt;
+
+&lt;h3 id=&#34;インストール&#34;&gt;インストール&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ composer g require psy/psysh:@stable
+$ psysh
+Psy Shell v0.1.11 (PHP 5.6.16 — cli) by Justin Hileman
+&amp;gt;&amp;gt;&amp;gt; q
+Exit:  Goodbye.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;例ではglobal環境にインストールしたが、プロジェクトがあればプロジェクトごとに&lt;code&gt;composer require psy/psysh:@stable --dev&lt;/code&gt;した方がいい。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;psysh&lt;/code&gt;でREPLが起動する。helpでコマンド一覧が見られる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; help
+  help      Show a list of commands. Type `help [foo]` for information about [fo
+  ls        List local, instance or class variables, methods and constants.
+  dump      Dump an object or primitive.
+  doc       Read the documentation for an object, class, constant, method or pro
+  show      Show the code for an object, class, constant, method or property.
+  wtf       Show the backtrace of the most recent exception.
+  trace     Show the current call stack.
+  buffer    Show (or clear) the contents of the code input buffer.
+  clear     Clear the Psy Shell screen.
+  history   Show the Psy Shell history.
+  exit      End the current session and return to caller
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;help単体だと、コマンド一覧の表示。helpの後にコマンドをつけることでコマンドの解説。ex:&lt;code&gt;help ls&lt;/code&gt;,&lt;code&gt;help wtf&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;exitで終了できる。（quit, qもAliasとして設定してある。）&lt;/p&gt;
+
+&lt;h3 id=&#34;使う&#34;&gt;使う&lt;/h3&gt;
+
+&lt;p&gt;（コマンドなしで）設定済み変数を打ち込むと、変数の中身が表示される。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; $foo = &amp;quot;foo&amp;quot;;
+=&amp;gt; &amp;quot;foo&amp;quot;
+&amp;gt;&amp;gt;&amp;gt; $foo
+=&amp;gt; &amp;quot;foo&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;lsコマンドは現在の変数を把握できる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; ls
+&amp;gt;&amp;gt;&amp;gt; ls -la
+
+Variables:
+  $_   null
+&amp;gt;&amp;gt;&amp;gt; $foo = &amp;quot;foo&amp;quot;
+=&amp;gt; &amp;quot;foo&amp;quot;
+&amp;gt;&amp;gt;&amp;gt; ls
+Variables: $foo
+&amp;gt;&amp;gt;&amp;gt; ls -la
+
+Variables:
+  $foo   &amp;quot;foo&amp;quot;
+  $_     &amp;quot;foo&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;$_は直前に扱った変数、$_eは直前のエラーを表す。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; throw new Exception($_)
+Exception with message &#39;foo&#39;
+&amp;gt;&amp;gt;&amp;gt; $_e
+=&amp;gt; &amp;lt;Exception #0000000033f9114200000001170b7c6f&amp;gt; {
+       message: &amp;quot;foo&amp;quot;,
+       file: &amp;quot;/Users/deprode/.composer/vendor/psy/psysh/src/Psy/ExecutionLoop/Loop.php(67) : eval()&#39;d code&amp;quot;,
+       line: 1
+   }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;定義したクラスはprivate変数を含めて見ることができる。&lt;/p&gt;
+
+&lt;pre&gt;
+&gt;&gt;&gt; class Foo {
+...     private $bar;
+...     public function __construct($b) {
+...        $this-&gt;bar = $b;
+...     }
+...     public function getBar() {
+...        return $this-&gt;bar;
+...     }
+... }
+&gt;&gt;&gt; $foo = new Foo(&#34;foo&#34;);
+=&gt; &lt;Foo #0000000072abbf7d0000000169886235&gt; {}
+&gt;&gt;&gt; ls -la $foo
+
+Class Properties:
+  $bar   &#34;foo&#34;
+
+Class Methods:
+  __construct   public function __construct($b)
+  getBar        public function getBar()
+&lt;/pre&gt;
+
+&lt;h3 id=&#34;tips&#34;&gt;tips&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;~/.config/psysh/config.php&lt;/code&gt;に設定ファイルを設置できる&lt;/li&gt;
+&lt;li&gt;historyコマンドで今までのコマンドを確認することができる&lt;/li&gt;
+&lt;li&gt;wtfコマンドで直前の例外を表示できる&lt;/li&gt;
+&lt;li&gt;traceコマンドで現在のコールスタックを見ることができる&lt;/li&gt;
+&lt;li&gt;docコマンドでPHPDoc形式のコメントがあればオブジェクトを指定してドキュメントを表示できる
+
+&lt;ul&gt;
+&lt;li&gt;ほかにも、GithubからリンクされているPHP Manualを&lt;code&gt;~/.local/share/psysh/&lt;/code&gt;または&lt;code&gt;~/.psysh/&lt;/code&gt;に配置することで、docコマンドでマニュアルを参照できる。ex:&lt;code&gt;doc print_r&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;デバッグ&#34;&gt;デバッグ&lt;/h3&gt;
+
+&lt;p&gt;Rubyのbinding.pry感覚でブレークポイントを設置できる（らしい）。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;eval(\Psy\sh());&lt;/code&gt;を差し込むことで、その地点の情報を見ることができる。（ただ、ステップ実行や実行後の動作保証はないので、そういうのをしたい場合はxdebug使う。）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+require(&#39;vendor/autoload.php&#39;);
+
+class Foo {
+    public $bar;
+    public function hello() {
+        return &#39;hello&#39; . $this-&amp;gt;bar;
+    }
+}
+$foo = new Foo();
+$foo-&amp;gt;bar = &#39;baz&#39;;
+eval(\Psy\sh());
+echo $foo-&amp;gt;hello() . PHP_EOL;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;showコマンドを使うと、その時点で把握しているオブジェクト（≠インスタンス）のコードを見ることができる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ php test.php
+#!/usr/bin/env php
+
+Psy Shell v0.6.1 (PHP 5.6.16 — cli) by Justin Hileman
+&amp;gt;&amp;gt;&amp;gt; show $foo
+  &amp;gt; 4| class Foo {
+    5|     public $bar;
+    6|     public function hello() {
+    7|         return &#39;hello&#39; . $bar;
+    8|     }
+    9| }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ちょっと触っただけなので、間違ってたらごめん。&lt;/p&gt;
+
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.engineyard.co.jp/blog/2014/php-psysh/&#34;&gt;PHPをインタラクティブに実行する PsySH - Engine Yard Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://blog.kazu69.net/2015/02/28/php-repl-psysh-was-so-convenient/&#34;&gt;phpのREPL psysh が便利そうだった | 69log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cho-phper.hateblo.jp/entry/2015/11/10/031000&#34;&gt;PHPを「シェル化」する [psy/psysh] - 超PHPerになろう&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;http://qiita.com/zaru/items/84d7ffd264b8093dca20&#34;&gt;var_dumpからの卒業、PHP開発を加速するデバッグ手法を考える - Qiita&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 12 15</title>
+      <link>http://log.deprode.net/logs/2015-12-15/</link>
+      <pubDate>Tue, 15 Dec 2015 21:48:29 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-12-15/</guid>
+      <description>
+
+&lt;h2 id=&#34;unitテスト書いてる&#34;&gt;Unitテスト書いてる&lt;/h2&gt;
+
+&lt;p&gt;CodeceptionでUnitテストを書いてる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;公式：&lt;a href=&#34;http://codeception.com/docs/05-UnitTests&#34;&gt;05-UnitTests - Codeception - Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最初はBDDスタイルで書こうとspecifyとverifyを入れて、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private $foo;
+//...
+$this-&amp;gt;specify(&amp;quot;hogehoge test&amp;quot;, function () {
+	$this-&amp;gt;foo = &#39;foo&#39;;
+	verify($this-&amp;gt;getFoo())-&amp;gt;equals(&#39;foo&#39;);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/deprode/refacted-p-bbs/blob/63dac6f9824c17e180e63b303d74f0aec0504f69/tests/unit/PostTest.php&#34;&gt;上記のように書いていた&lt;/a&gt;のだが、なぜか今日になってテストがフリーズするようになってしまった。原因がわからないままspecifyとverifyを除いたら通るようになった。エラーログにはメモリ枯渇だと書かれていたのでいろいろ調べたら、どちらかに使われているライブラリがdeepcopy失敗していたようだった。&lt;/p&gt;
+
+&lt;p&gt;とにかくBDDスタイルだとテストも通らないし困るので&lt;a href=&#34;https://github.com/deprode/refacted-p-bbs/commit/b438cf36dd61d5914f643a3b3bcd355896423c0a#diff-071b0ea2340d6d1ad97359536939385b&#34;&gt;TDDスタイルで書き直した&lt;/a&gt;。テストも通るようになった。&lt;/p&gt;
+
+&lt;p&gt;スタブはCodeceptionのものを使っていて、今のところ問題はない。が、面倒なことをやるようならMockeryとかAspectMockとか使うと思う。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;それにしても、Unitテストを書いてわかったのは、異常系のこと考えてないことと、Testableなコードになってなかったことだ。少なくとも、staticなメソッドの中でインスタンス生成（というかnew）しちゃだめだと思った。テスト書くときにDIするように変えたけど、まだあちらこちらにある。&lt;/p&gt;
+
+&lt;p&gt;引き続きユニットテストを書いていきたい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 25</title>
+      <link>http://log.deprode.net/logs/2015-10-25/</link>
+      <pubDate>Sun, 25 Oct 2015 22:11:27 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-25/</guid>
+      <description>
+
+&lt;h2 id=&#34;slim-3-0-rcを使ったbbsをとりあえず公開した&#34;&gt;slim 3.0@RCを使ったbbsをとりあえず公開した&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/deprode/slimbbs&#34;&gt;deprode/slimbbs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;とりあえず、できたところまで公開することにした。Slim(php)というマイクロフレームワークを使うとどんな感じなのかな、と思って掲示板のサンプル作った。&lt;/p&gt;
+
+&lt;p&gt;Slimは2.xが安定バージョンで出ており、3.0@RCを使う理由はほとんどないのだが、日本語の資料が全くない状況で作る練習として適切だと思ったので使った。というか、英語の資料も&lt;a href=&#34;http://www.slimframework.com/docs/&#34;&gt;公式ドキュメント&lt;/a&gt;と&lt;a href=&#34;http://akrabat.com/category/slim-framework/&#34;&gt;Rob Allenのブログ&lt;/a&gt;でほぼ全部だった。そのため、ときにはソースコードを読む必要もあった。&lt;/p&gt;
+
+&lt;p&gt;しかし、まだやりかけということもあり、あまり達成感はない。NGワード・NGホスト、過去ログ閲覧、様々なテストと、あとこれ書いてる途中で直すべきところが見つかってしまった。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;なお、この成果物は人に使ってもらうために作ったわけではないので、composerでinstallが必要だったり、PHP5.5〜が必要だったり、ドキュメントがなかったりで、学習のためにはよかったけど、もうちょっと人に使ってもらう感じにした方がよかったかもしれない。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;あと、テストは&lt;a href=&#34;http://codeception.com/&#34;&gt;Codeception&lt;/a&gt;を使いたいけど、全然知らないので学習して使うことになると思う。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 22</title>
+      <link>http://log.deprode.net/logs/2015-10-22/</link>
+      <pubDate>Thu, 22 Oct 2015 23:50:04 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-22/</guid>
+      <description>
+
+&lt;h2 id=&#34;fuelphp-validationで独自のルールを追加する&#34;&gt;fuelphp/validationで独自のルールを追加する&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/fuelphp/validation&#34;&gt;fuelphp/validation&lt;/a&gt;には、配列のvalidationがない。そのため、フォームから配列形式でチェックするためには独自のルールを追加する必要があった。&lt;/p&gt;
+
+&lt;p&gt;で、&lt;a href=&#34;https://github.com/fuelphp/validation/blob/b6971693617b883c978466c07f167724f002363f/src/Rule/Number.php&#34;&gt;他のRuleのソース&lt;/a&gt;を読むと、Fuel\Validation\AbstractRuleを継承して作っていたのでそのようにしたらうまくいった。&lt;/p&gt;
+
+&lt;p&gt;以下は、フォームからIDを配列（ids[]）で渡す際、IDがすべて英数字かどうかをチェックするサンプル。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+// ArrayRule.php
+
+namespace App\Rule;
+
+class ArrayRule extends \Fuel\Validation\AbstractRule
+{
+    protected $message = &#39;エラーです&#39;;
+
+    public function validate($value, $field = null, $allFields = null)
+    {
+        if (count($value) === 0) {
+            return false;
+        }
+
+        foreach ($value as $i =&amp;gt; $val) {
+            if (preg_match(&#39;/[0-9a-zA-Z]/&#39;, $val) == false) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;public function validation($input)
+{
+    $val = $this-&amp;gt;validate;
+    $val-&amp;gt;addCustomRule(&#39;arrayRule&#39;, &#39;\App\Rule\ArrayRule&#39;);
+    $val-&amp;gt;addField(&#39;ids&#39;, &#39;ID&#39;)
+               -&amp;gt;arrayRule()
+                   -&amp;gt;setMessage(&#39;IDは必須です。&#39;);
+
+    $result = $this-&amp;gt;validate-&amp;gt;run($input);
+
+    return $result;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 21</title>
+      <link>http://log.deprode.net/logs/2015-10-21/</link>
+      <pubDate>Wed, 21 Oct 2015 21:59:35 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-21/</guid>
+      <description>
+
+&lt;h2 id=&#34;phpでトレイト使おうと思ったけどやめてた&#34;&gt;PHPでトレイト使おうと思ったけどやめてた&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://tototoshi.hatenablog.com/entry/2015/01/14/172602&#34;&gt;PHP のトレイトに気をつける - tototoshi の日記&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;読んだ。トレイトを安易に使うと容易に依存関係が生まれるから、staticメソッドや委譲、集約で済んでたものはそっちでやれという話。今作ってるのもtraitで作ろうかな、と思っていたときに見たので普通にクラス作ってDIコンテナでインジェクションした。&lt;/p&gt;
+
+&lt;p&gt;ただ、&lt;a href=&#34;http://shin1x1.hatenablog.com/entry/anonymous-class-change-class-in-php7&#34;&gt;PHP 7 の無名クラスから考えるクラスの在り方 - Shin x Hatena Blog&lt;/a&gt;にあるような、トレイトを無名クラスで使っていくような考え方が浸透するなら、PHP7からはトレイトを積極的に使っていくかもしれない。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 14</title>
+      <link>http://log.deprode.net/logs/2015-10-14/</link>
+      <pubDate>Wed, 14 Oct 2015 21:51:36 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-14/</guid>
+      <description>
+
+&lt;h2 id=&#34;ダミーデータを作成する&#34;&gt;ダミーデータを作成する&lt;/h2&gt;
+
+&lt;p&gt;ダミーデータを作成する方法はいろいろある。実際のデータを借りてきてやるのが一番いいけど、それがダメなときは自動生成したり、手動である程度入力する。&lt;/p&gt;
+
+&lt;p&gt;Webサイト作成だと、Sketchのプラグインでさっと用意できる。（リンク先はGithubだけどデモがある。最初に見たとき、かなり驚いた。）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/timuric/Content-generator-sketch-plugin&#34;&gt;timuric/Content-generator-sketch-plugin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;また、ダミーデータが個人情報っぽいものであれば、&lt;a href=&#34;http://kazina.com/dummy/index.html&#34;&gt;なんちゃって個人情報&lt;/a&gt;あたりを使えばいい。&lt;/p&gt;
+
+&lt;p&gt;だが、フォーマットが独自で内容も自分で用意しなくてはいけない場合、こういったものにすがることは難しい。今作っているものもダミーデータが必要になってきており、ダミーデータを入力して作る必要が出てきた。が、さすがに面倒なので自動生成するようにした。以下スクリプト。&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/deprode/4b6c44ebd1fad4c40a38.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;code&gt;$ php makelog.php 100&lt;/code&gt;みたいな感じでターミナルから使う。第一引数に出力するログの件数を指定できる。&lt;/p&gt;
+
+&lt;p&gt;あんまりきれいなコードじゃないけど、使い捨てるのであまり気にしてなかった。とりあえず、目的は達成した。&lt;/p&gt;
+
+&lt;p&gt;それと、恥ずかしながら&lt;code&gt;$this-&amp;gt;{$key}&lt;/code&gt;みたいな動的にプロパティ指定するの始めて使ったかもしれない。まだまだ未熟だと思った。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 13</title>
+      <link>http://log.deprode.net/logs/2015-10-13/</link>
+      <pubDate>Tue, 13 Oct 2015 21:40:24 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-13/</guid>
+      <description>
+
+&lt;h2 id=&#34;hugoのrssを書き換えてtwitterへ投稿する&#34;&gt;HugoのRSSを書き換えてTwitterへ投稿する&lt;/h2&gt;
+
+&lt;p&gt;このウェブ日記は、HugoでGithubにデプロイしている。その後、IFTTTがRSSの更新を検知し、Bufferへ予約され、Twitterに投稿される仕組みとなっている。&lt;/p&gt;
+
+&lt;p&gt;ピタゴラ装置並みに手間がかかっているのだが、出力はしょぼい。タイトルとURLを投稿するだけだったのだが、タイトルが日付だけなのでわかりづらいし読みにくい。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;ウェブ日記書いた - 2015 10 11 &lt;a href=&#34;http://t.co/7PLTGZhlVR&#34;&gt;http://t.co/7PLTGZhlVR&lt;/a&gt;&lt;/p&gt;&amp;mdash; deproden (@deproden) &lt;a href=&#34;https://twitter.com/deproden/status/653200148873519104&#34;&gt;2015, 10月 11&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;もちろん、適切なタイトルを書くこともできる。しかし、今までやっていなかったことを手動でやっても続かないと思ったので、h2要素を抜き出してRSSを書き換えるスクリプトを作成した。&lt;/p&gt;
+
+&lt;script src=&#34;https://gist.github.com/deprode/e69fda6801be5154c63a.js&#34;&gt;&lt;/script&gt;
+
+&lt;p&gt;IFTTTのRSSをこのスクリプトに差し替えた結果、今まで通りの書き方で、投稿結果だけ変えることができた。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;✏️&amp;hellip; - 2015 10 12 / SplatoonでウデマエS達成, 木曽路行った &lt;a href=&#34;http://t.co/cmggmsLZP1&#34;&gt;http://t.co/cmggmsLZP1&lt;/a&gt;&lt;/p&gt;&amp;mdash; deproden (@deproden) &lt;a href=&#34;https://twitter.com/deproden/status/653914693145391104&#34;&gt;2015, 10月 13&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;なお、IFTTTはFeedURLの末尾がphpだとダメかもしれない。URL末尾に?をつけて回避した。こういうのを昼休みにさっと作れたので、今日は満足してしまってあまり成果が出なかった。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 09</title>
+      <link>http://log.deprode.net/logs/2015-10-09/</link>
+      <pubDate>Fri, 09 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-09/</guid>
+      <description>
+
+&lt;h2 id=&#34;refacted-p-bbs&#34;&gt;refacted-p-bbs&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://php.s3.to/&#34;&gt;レッツPHP!&lt;/a&gt;様の&lt;a href=&#34;http://php.s3.to/bbs/bbs1.php&#34;&gt;P-BBS&lt;/a&gt;のリファクタリングをいったん区切りにするので、Githubに公開することにした。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/deprode/refacted-p-bbs&#34;&gt;deprode/refacted-p-bbs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;やり残したことに関しては、Isuuesに登録してある。テストもないしバグもあるので、descriptionにWIPって書いてある。直すのかは未定。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;今回の結果は、敗北感しかない。だらだらやってしまったことや、手順が確立されていなかったことに加え、コード設計もこうしたらよかったと思う部分は多々ある。それでも、完璧なコードを書く前提で進めていたら完成しない。&lt;/p&gt;
+
+&lt;p&gt;12〜15年前のコードだったので、global変数が多々あるなどいろいろな部分が読みづらかった。コードをリファクタリングするにしても、Testableじゃないのでテストは後から書こうと思っていたが、これ以上やってもよくなることはないところまで来てしまったので、その気力がなくなった。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;読みやすさ優先でコードを直したら、明らかに前よりコード量が増えてしまった。工夫して一回のループで終わるより、ループ二回の読みやすいコードの方がよかったのだが、これで目的が達成できたのか。二律背反のコードだと、やってもあまり充実感がなかったし、背徳感すらあった。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;今回大変だったのはno dependencies、他のライブラリに依存なしで作ることだった。&lt;/p&gt;
+
+&lt;p&gt;テンプレートエンジンにTwigを使ったり、ValidationにFuelのValidationを使ったりできるマイクロフレームワークは偉大なんだけど、PHPスクリプト探している人がSSHでログインしてcomposer install できるかというと無理なので、こういう形になった。&lt;/p&gt;
+
+&lt;p&gt;もっとも、うまくできたかというと、できてないのだが。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;他の人のOSS見るとちゃんと設計したりコーディングできているので、それが余計に劣等感を刺激してつらい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 07</title>
+      <link>http://log.deprode.net/logs/2015-10-07/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-07/</guid>
+      <description>
+
+&lt;h2 id=&#34;slim3で掲示板風&#34;&gt;Slim3で掲示板風&lt;/h2&gt;
+
+&lt;p&gt;とりあえず、書き込みと表示はできた。というか、原理や使い方がわかればここまで4時間くらいでできそう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/fuelphp/validation/&#34;&gt;FuelPHPのvalidation&lt;/a&gt;、1.xのやつと微妙に違っていて、前は組み合わせてできたけど今回はできないものがあるので苦労した。&lt;/p&gt;
+
+&lt;p&gt;削除パスは英数字とアンダースコアに対応するので、次のようにした。1.xのやつならvalid_stringという便利関数で条件を満たすか検証できたのだが、ないっぽいのでRegexを使った。Typeというのもあるが、is_stringとかでチェックする上に複数指定してもORではなくANDでチェックする用なので用途が違った&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$this-&amp;gt;validate-&amp;gt;addField(&#39;del_pass&#39;, &#39;削除パス&#39;)
+                        -&amp;gt;Regex(&#39;/\w/&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;session関係、削除、ログローテーションとか、まだ全然できてないし先は長いと思う。&lt;/p&gt;
+
+&lt;p&gt;関係ないけど、前の掲示板のスクリプト、書き込み相当の処理をfopen〜fputs〜fcloseだったはずなので、file_put_contentsでよかった。&lt;/p&gt;
+
+&lt;h2 id=&#34;splatoon&#34;&gt;Splatoon&lt;/h2&gt;
+
+&lt;p&gt;ガチマッチ（ガチヤグラ）で、A+20からA+6まで下がって、A+78まで上がった。マッチング機能してないときは下がるし、機能しているときは上がるっぽい。&lt;/p&gt;
+
+&lt;p&gt;ガチヤグラでヤグラ絶対乗らないイカがいるらしいのは聞いてたけど、全然やってなかったので見たことなかった。今日始めてみたけど、残り5カウントとかで自分しかいなくても乗らないのでカルチャーショックだった。私はヤグラ絶対乗るマンなので、余計に。&lt;/p&gt;
+
+&lt;p&gt;まあ、ガチヤグラで何でもかんでも戦犯扱いするのはよくないね。キルレシオが悪くて批判する人もいるけど、ヤグラに乗らずにキルしてるだけの方がキルは増えるし、ヤグラに乗れば3人くらいから狙われてデスが増えるし、キルレシオだけで批判するのは結果的にヤグラに乗らないイカを増やすだけでよくないと思った。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 05</title>
+      <link>http://log.deprode.net/logs/2015-10-05/</link>
+      <pubDate>Mon, 05 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-05/</guid>
+      <description>
+
+&lt;h2 id=&#34;phpunitでphpunit-xmlとbootstrap-php&#34;&gt;PHPUnitでphpunit.xmlとbootstrap.php&lt;/h2&gt;
+
+&lt;p&gt;PHPUnitには、テスト数が多くなったときなどに使える設定ファイルがある。phpunitコマンドを使うディレクトリ（通常はトップディレクトリ）にphpunit.xmlまたはphpunit.xml.distをおいておけば、phpunitコマンドで自動で読み込んで設定に反映してくれる。&lt;/p&gt;
+
+&lt;p&gt;設定ファイルを使うことで、余計なテストを実行せずに済ませることなどができる。また、オプションを設定ファイルへ移すことも可能。&lt;/p&gt;
+
+&lt;p&gt;PHPUnitを自動化するために作成することにした。だが、オプションの中にbootstrapというものがあり、それが何を意味するのかよくわからなかった。PHPUnitのサイトを見ても、&lt;code&gt;テストの前に実行される &amp;quot;ブートストラップ&amp;quot; PHP ファイルを指定します。&lt;/code&gt;とだけ書かれているので調べることにした。&lt;/p&gt;
+
+&lt;p&gt;結果、bootstrap.phpでクラスのローダーを作るというのはわかったが、どのクラスの何を読み込むのかがよくわからないままだった。この辺に関して何も資料がないため、他のOSSを読み込んだりしたがわからなかったので適当に書いた。var_dumpしたらPHPUnit関連が読み込まれていた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+// bootstrap.php
+
+spl_autoload_register(
+    function ($classname) {
+        $new_classname = end(explode(&#39;\\&#39;, $classname));
+        $filepath = __DIR__ . &#39;/classes/&#39; . $new_classname . &#39;.php&#39;;
+
+        if (is_readable($filepath)) {
+            require $filepath;
+        }
+    }
+);
+
+require_once __DIR__ . &#39;/../vendor/autoload.php&#39;;
+// テスト対象がクラスではなかったため、index.phpを読み込んでいる
+require __DIR__ . &#39;/../index.php&#39;;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;// bootstrap.xml
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;phpunit bootstrap=&amp;quot;./tests/bootstrap.php&amp;quot;
+        colors=&amp;quot;true&amp;quot;&amp;gt;
+    &amp;lt;testsuites&amp;gt;
+        &amp;lt;testsuite name=&amp;quot;tests&amp;quot;&amp;gt;
+            &amp;lt;directory suffix=&amp;quot;.php&amp;quot;&amp;gt;./tests/&amp;lt;/directory&amp;gt;
+        &amp;lt;/testsuite&amp;gt;
+    &amp;lt;/testsuites&amp;gt;
+&amp;lt;/phpunit&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;bootstrap.phpを書き始めたときは、エラーが出ずに&lt;code&gt;No tests executed!&lt;/code&gt;となっていたが、上記のように書いたら&lt;code&gt;phpunit&lt;/code&gt;コマンドだけで実行できた。autoloadがうまくいってなかったためだと思われる。&lt;/p&gt;
+
+&lt;h2 id=&#34;github-current-streak&#34;&gt;Github current streak&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://shopetan.hatenablog.com/entry/2015/06/04/005755&#34;&gt;GitHubで芝生が何故かContributionsに反映されない時 - 未来永劫&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;全然気にしてなかったんだけど、Githubはgitの設定項目であるuser.emailを見てGtihubのメールアドレスと同一なら同じ人物と見なして緑にするらしい。&lt;/p&gt;
+
+&lt;p&gt;これ知らなくて、他人のコードに貢献したときに芝が生えると思ってたので、半年くらいの芝が消失したことが判明した。まあ、ほとんどウェブ日記だから関係ないといえばないのだが。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 03</title>
+      <link>http://log.deprode.net/logs/2015-10-03/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-03/</guid>
+      <description>
+
+&lt;h2 id=&#34;slimでformの値を受け取る&#34;&gt;Slimでformの値を受け取る&lt;/h2&gt;
+
+&lt;p&gt;Slimでは、getParsedBodyでformの値を一括で取得できる。また、任意の値をgetParamで取得できる。まあ、Validationライブラリによっては値を一括で渡してやる、というものもあるので、適切な方を使えばいいと思う。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Request.php#L920-L959&#34;&gt;Slim getParsedBody&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Request.php#L1023-L1047&#34;&gt;Slim getParam&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$input = $request-&amp;gt;getParsedBody();
+$impression = $input[&#39;impression&#39;];
+// または
+$impression = $request-&amp;gt;getParam(&#39;impression&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;splatoon&#34;&gt;Splatoon&lt;/h2&gt;
+
+&lt;p&gt;カーボンローラーデコが新しくブキとして使えるようになった。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;明日10月3日午前11時、新しいブキ「カーボンローラーデコ」が追加される。&amp;#10;メインウェポンの性能はオリジナルと変わらずだが、サブとスペシャルの組み合わせ「チェイスボム」「ボムラッシュ」が特徴的なブキだ。&amp;#10;スペシャル発動時は圧巻だぞ。 &lt;a href=&#34;http://t.co/ROgfnq9dfo&#34;&gt;pic.twitter.com/ROgfnq9dfo&lt;/a&gt;&lt;/p&gt;&amp;mdash; Splatoon（スプラトゥーン） (@SplatoonJP) &lt;a href=&#34;https://twitter.com/SplatoonJP/status/649870992693587968&#34;&gt;2015, 10月 2&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;メインはカーボンローラーと同じなのだが、サブがチェイスボムになったことで、直線を高速に移動することができる。そのため、直線で待ち伏せする相手に攻撃が届くようになった。&lt;/p&gt;
+
+&lt;p&gt;また、チェイスボムラッシュが追加されたことで、障害物のない直線での制圧力（前線押し上げ）はローラーで一番になったと思う。主に、アロワナモールやヒラメが丘団地で役立つ。&lt;/p&gt;
+
+&lt;p&gt;というか、単純にインクの80%を使うチェイスボムをボムラッシュで使えるのは楽しいので、使っていて面白い。&lt;/p&gt;
+
+&lt;p&gt;反面、クイックボムがなくなったことで、高い壁を塗って登ることや高い場所にいる敵を攻撃する手段がなくなった。そのため、高い位置を相手に占領された場合は、味方の支援がないと手も足も出ない。&lt;/p&gt;
+
+&lt;p&gt;何にしても、よりピーキーなブキになったので使い手は限られるかもしれない。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

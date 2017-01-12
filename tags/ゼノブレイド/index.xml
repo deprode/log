@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>ゼノブレイド on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/%E3%82%BC%E3%83%8E%E3%83%96%E3%83%AC%E3%82%A4%E3%83%89/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 04 24</title>
+      <link>http://log.deprode.net/logs/2015-04-24/</link>
+      <pubDate>Fri, 24 Apr 2015 23:22:18 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-24/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Ansibleなど
+
+&lt;ul&gt;
+&lt;li&gt;CasperJSも入れたいなと思ってたら、PhantomJSは2.0になってて、困る。&lt;/li&gt;
+&lt;li&gt;stackoverflowによると、1.1-beta3ブランチはPhantomJS1.8以下2.0以上でexitするようになってるらしい。
+
+&lt;ul&gt;
+&lt;li&gt;手元のMac版はhomebrewで管理してるけど、前に間違って2.0にあげてしまったのでcasperjs動かない。bootstrap.jsをgistで動くように書き換えて、無保証で動かせばいいっぽい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;でもgithub見ると普通に1.9ブランチはあるし、rereaseブランチに1.9.7のものがある。
+
+&lt;ul&gt;
+&lt;li&gt;と思ったら、build.shを動かさないとだめっぽので、bitbucketのビルド済みイメージ（1.9.8）をダウンロードする方向に切り替えた&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ビルドなしで、解凍して&lt;code&gt;/usr/local/bin/&lt;/code&gt;以下に配置してみる。
+
+&lt;ul&gt;
+&lt;li&gt;get_urlだとリモートにダウンロードするけど、unarchiveがローカルにしか対応してない？
+
+&lt;ul&gt;
+&lt;li&gt;copy=noでよかった&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;その後のリモート→リモート間のコピーするモジュールがないっぽい。
+
+&lt;ul&gt;
+&lt;li&gt;commandでmvとかcpとか使うみたい。&lt;/li&gt;
+&lt;li&gt;statとregisterでファイルがあるかチェックした結果を格納して、whenで判定すればいちいちcpやmvを実行しなくていい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;unarchiveでcreatesの使い方がわからなかったけど、テストで使ってたので他人に見せるコードはテスト書くの大事だなと思った。
+
+&lt;ul&gt;
+&lt;li&gt;てか、assertモジュールあるのか。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CasperJSはnpmでインストールすればよかったのでは、という気分になってる。
+
+&lt;ul&gt;
+&lt;li&gt;まあ、適当なフォルダに解凍してlinkするだけなので、どうでもいいけど。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;nginxの設定ファイル、サイトごとに設定してるファイル違うんだけど……。
+
+&lt;ul&gt;
+&lt;li&gt;デフォルトがincludeで*.confを全部読み込んでるからだった。
+
+&lt;ul&gt;
+&lt;li&gt;apacheで見た。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;phpinfo出そうと思ったけど、そのまま出ることになってたけど、&lt;code&gt;&amp;lt;?&lt;/code&gt;だけだったからだった。
+
+&lt;ul&gt;
+&lt;li&gt;teratailで全く同じ質問あって笑ってしまった。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://teratail.com/questions/5773&#34;&gt;https://teratail.com/questions/5773&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;続きは明日以降。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;メールは使わないけど、logwatchとか通知用にPostfixインストールしないとと思ってる。
+
+&lt;ul&gt;
+&lt;li&gt;さくらVPSなら最初から使えるので何の問題もない。&lt;/li&gt;
+&lt;li&gt;DigitalOceanはコミュニティにインストール方法の記事が書いてあった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;花金で飯画像がアップされると同時に画像解析し、店を割り出し、急行してマシンガンを撃ち出すドローン。&lt;/li&gt;
+&lt;li&gt;竹の子もらいすぎて価格高騰とか信じられないんですが。&lt;/li&gt;
+&lt;li&gt;関数型ポエムで失った信頼を回復するために、秀和システムが達人プログラマーの権利を買い取るけど社内政治の末、例の人が翻訳を担当することになる悪夢&lt;/li&gt;
+&lt;li&gt;「一流の女優がバラエティ番組に出ると緊張で失敗したり謙虚になったりする仕草がかわいい」という系譜を「仲間由紀恵・綾瀬はるか」ラインと私は呼んでるんですけど
+
+&lt;ul&gt;
+&lt;li&gt;やめた。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ゼノブレイド、現在Lv63、65時間。
+
+&lt;ul&gt;
+&lt;li&gt;シナリオ中心に進めてるけど、サブイベントが恋しくなってくる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 04 17</title>
+      <link>http://log.deprode.net/logs/2015-04-17/</link>
+      <pubDate>Fri, 17 Apr 2015 23:26:07 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-17/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;PHP The Right Way、昨日の続き。
+
+&lt;ul&gt;
+&lt;li&gt;CLIでphp.iniを指定したり、CGIモードで実行時間を計測したりできるの初めて知った。&lt;/li&gt;
+&lt;li&gt;Xdebug使うためだけにPHPStorm欲しい
+
+&lt;ul&gt;
+&lt;li&gt;Codebug&lt;a href=&#34;http://codebugapp.com/&#34;&gt;http://codebugapp.com/&lt;/a&gt;という手もあるみたいだけど、サポート状況に不安がある。&lt;/li&gt;
+&lt;li&gt;Vimでもできるみたい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Composerは昨日やった。
+
+&lt;ul&gt;
+&lt;li&gt;homebrewでインストールできそう。homebrew search composer&lt;/li&gt;
+&lt;li&gt;バージョンの指定
+
+&lt;ul&gt;
+&lt;li&gt;公式: &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#package-versions&#34;&gt;https://getcomposer.org/doc/01-basic-usage.md#package-versions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;初心者向け: &lt;a href=&#34;http://tech.quartetcom.co.jp/2015/01/19/composer-practices/&#34;&gt;http://tech.quartetcom.co.jp/2015/01/19/composer-practices/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;エルビス演算子 &lt;code&gt;?:&lt;/code&gt; って三単項演算子とセットで説明されてるだけに罠。
+
+&lt;ul&gt;
+&lt;li&gt;エルビス演算子っていうの初めて知った。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;switchは緩やかな比較なので、これも成り立つ。怖い。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+$n = null;
+
+switch ($n) {
+    case 0:
+      echo &amp;quot;let&#39;s php!&amp;quot;;
+      break;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;続き
+
+&lt;ul&gt;
+&lt;li&gt;Design Patterns.
+
+&lt;ul&gt;
+&lt;li&gt;ちょくちょく別ページを挟んでくるのいいですね。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PHPのデザインパターン実装集なんてあるのか。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/domnikl/DesignPatternsPHP&#34;&gt;https://github.com/domnikl/DesignPatternsPHP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;マルチバイト（UTF-8）はまあ、そうですよね、という感じ。
+
+&lt;ul&gt;
+&lt;li&gt;日本語圏は&lt;code&gt;mb_*&lt;/code&gt;関数しか使ってない印象がある。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 04 15</title>
+      <link>http://log.deprode.net/logs/2015-04-15/</link>
+      <pubDate>Wed, 15 Apr 2015 21:56:56 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-15/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;PHP: The Right Way読んでる
+
+&lt;ul&gt;
+&lt;li&gt;phpbrew入れた。
+
+&lt;ul&gt;
+&lt;li&gt;systemのやつからswitchできるんだ。へー。&lt;/li&gt;
+&lt;li&gt;PHPUnit使うとシステムのphpを使われる（#!/usr/bin/phpを使ってる）問題ってどうなったんだろ。
+
+&lt;ul&gt;
+&lt;li&gt;これ→&lt;a href=&#34;http://nianote.com/programing/1745&#34;&gt;http://nianote.com/programing/1745&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;最近のだと&lt;code&gt;#!/usr/bin/env php&lt;/code&gt;を使ってるみたいなので、よかったみたい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;仕方ないんだけど、あとからvariantsのこれだけ入れたい、みたいなのできないのかな。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;sublime-phpfmt入れた
+
+&lt;ul&gt;
+&lt;li&gt;PHP5.5以上が必要&lt;/li&gt;
+&lt;li&gt;formatを自動でPSR-1とかPSR-2とかに対応させる
+
+&lt;ul&gt;
+&lt;li&gt;設定がいくつか必要。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;日本語どころか海外でもほとんど話題になってないけど大丈夫なのか。
+
+&lt;ul&gt;
+&lt;li&gt;ダメだったらPHP Coding Standards Fixerに変更する。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PHP5.3(2009年)、PHP5.4(2012年)、PHP5.5(2013年)、PHP5.6(2014年)
+
+&lt;ul&gt;
+&lt;li&gt;名前空間が5.3、トレイトが5.4、ジェネレータが5.5、5.6は定数式？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PHP.netを読んでた。&lt;/li&gt;
+&lt;li&gt;「クロージャの詳細を知りたければ、RFCを読めばいいよ」&lt;/li&gt;
+&lt;li&gt;PHP、知らないことがたくさんある。
+
+&lt;ul&gt;
+&lt;li&gt;無理して使う必要はないんだろうけど、ジェネレータとか使ったことない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

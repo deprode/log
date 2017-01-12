@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>input[type=date]にPikadayを使う  - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-09-07_17-06-40/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-09-07_17-06-40/">
+            
+                input[type=date]にPikadayを使う
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-09-07T17:06:40&#43;09:00">2016-09-07</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="input-type-date-にpikadayを使う">input[type=date]にPikadayを使う</h2>
+
+<p>input要素にカレンダーを表示するには<code>type=date</code>にすればよい。ただし2016年9月時点ではChromeとEdgeのみ対応しており、SafariとFirefoxとIEは対応していない。</p>
+
+<p>以前同じものを作ったときはjQuery+jQueryUIでできた気がするのだが、脱jQueryの動きもあるので別のやり方でやってみることにした。なお、jQueryを使わないライブラリは、<a href="http://www.vanillalist.com/">Vanilla List</a>から探すことができる。</p>
+
+<p>今回は<a href="https://github.com/dbushell/Pikaday">Pikaday</a>と<a href="https://github.com/Modernizr/Modernizr">Modernizr</a>を使うことにした。なお、Pikadayはフォーマットの際に<a href="http://momentjs.com/">Momentjs</a>が必要なようだ。</p>
+
+<p>簡単なサンプルを用意した。貼り付けだとなぜかポジションが効かないので、<a href="http://codepen.io/deprode/pen/PGqPOy">Codepenで直接見てほしい。</a></p>
+
+<p>input要素にフォーカスするとカレンダーが表示され、選択で<code>YYYY-MM-DD</code>形式の文字列が入力される。すでにdateが定義されているかは、1行目の<code>if (!Modernizr.inputtypes.date)</code>で判断している。（そのためChromeやEdgeでは標準のカレンダーが表示される。）</p>
+
+<p>ファイル数は変わらないが、ファイルサイズが削減され多少読み込みが早くなったと思われる。</p>
+
+<ul>
+<li><a href="https://github.com/dbushell/Pikaday">dbushell/Pikaday: A refreshing JavaScript Datepicker — lightweight, no dependencies, modular CSS</a></li>
+<li><a href="https://github.com/Modernizr/Modernizr">Modernizr/Modernizr: Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.</a></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-09-07T17:06:40&#43;09:00">2016-09-07 17:06:40</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/javascript">JavaScript</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

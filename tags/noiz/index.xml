@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Noiz on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/noiz/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>logからblogへ大部分の記事を移した</title>
+      <link>http://log.deprode.net/logs/2016-04-26_17-55-23/</link>
+      <pubDate>Tue, 26 Apr 2016 17:55:23 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-26_17-55-23/</guid>
+      <description>
+
+&lt;h2 id=&#34;logからblogへ大部分の記事を移した&#34;&gt;logからblogへ大部分の記事を移した&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://log.deprode.net/logs/2016-04-01/&#34;&gt;2016 04 01 logを書き始めて1年が経過した - log&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;このLogは、学んだことも、ゲームの記録も、雑感も「日別で毎日」書いていくスタイルなので完全に違っているのだが、TILに寄せた方がいいかな、と思うことがかなりある。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;以前の日記でこう書いていたのだが、技術的な記事と読書感想以外のほとんどの記事を&lt;a href=&#34;http://blog.deprode.net/&#34;&gt;blog.deprode.net&lt;/a&gt;へ移した。また7月17日以前のテキストは箇条書きのリストが大部分を占めていたので、一部のゲームの感想はブログに移し、一部の記事と技術的なメモのみ残した。&lt;/p&gt;
+
+&lt;p&gt;なお、リダイレクト処理を行うことができない&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;ため、削除された記事への被リンクは修正していただけると助かる。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;以前と同じように毎日更新ができなくなっている以上、毎日書くこと（つまりGithubに芝を生やすこと）を前提とした運用はやめて、今後は書き残しておきたい文章を置く場所として利用する。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;というか、記事のURLが変わったため一つ一つリダイレクト処理をする必要があり、非常に面倒。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>logを日付単位からtopic単位に変更した</title>
+      <link>http://log.deprode.net/logs/2016-04-13_16-10-17/</link>
+      <pubDate>Wed, 13 Apr 2016 16:10:17 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-13_16-10-17/</guid>
+      <description>
+
+&lt;h2 id=&#34;logを日付単位からtopic単位に変更した&#34;&gt;logを日付単位からtopic単位に変更した&lt;/h2&gt;
+
+&lt;p&gt;以前書いたように、このlogを毎日更新するスタイルから、トピックごとに更新するスタイルに変更する。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://log.deprode.net/logs/2016-04-01/&#34;&gt;2016 04 01 logを書き始めて1年が経過した - log&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;DescriptionをやめTitleに変更したことで、いろいろな箇所を変更する必要があった。&lt;/p&gt;
+
+&lt;p&gt;トップページとlogsのリスト表示では、タイトルを日付にし、Descriptionをタイトルとして表示していた。これを、互換性を保ちつつ「タイトル - 日付」で表示するように修正した。&lt;/p&gt;
+
+&lt;p&gt;また、個別ページも同様に、Descriptionがない場合はタイトルを表示するように修正した。同時に、タイトル表示をタイトル風の表示からぱんくずリスト風の表示に変更した。この変更は、同じ内容のDescriptionを上部に表示しているため、重複を避ける目的で行った。&lt;/p&gt;
+
+&lt;p&gt;通知の経路も変更した。VPS上のPHPでRSSを読み込んで、DescriptionをTitleに設定し、それをIFTTT経由でBufferに送っていた。タイトルを直接指定できるので、VPS上のPHPは必要なくなる。なので、IFTTTのレシピを変更した。&lt;/p&gt;
+
+&lt;p&gt;ファイル名も日付からトピック名に変更することにしたのだが、英語が書けないので適当な英語になるし、重複を避けるだけなら日時で問題ないので、日時のファイル名にした。&lt;/p&gt;
+
+&lt;p&gt;あと、800文字程度書いてPublishする習慣もなくす。文章の練習になるからと最低文字数を決めていたのだが、意味がないことがわかったのでやめる。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 04 02</title>
+      <link>http://log.deprode.net/logs/2016-04-02/</link>
+      <pubDate>Sat, 02 Apr 2016 21:37:34 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-02/</guid>
+      <description>
+
+&lt;h2 id=&#34;ヘルシープログラマ-を読み終えた&#34;&gt;「ヘルシープログラマ」を読み終えた&lt;/h2&gt;
+
+&lt;p&gt;プログラマに限らず長時間パソコンの前で座ったまま仕事を続ける人に、健康状態を高めるためにできることが書かれている本。プログラマにわかりやすいようにO&amp;rsquo;Reillyっぽく書かれているが、内容は対象を限定しない。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.oreilly.co.jp/community/blog/2016/02/helthy-programmers-talk-training-part1.html&#34;&gt;Community Blog - 握力王 vs 日本男児 ヘルシーすぎるプログラマ対談&lt;/a&gt;で電子書籍が値引きされており、購入に至った。&lt;/p&gt;
+
+&lt;p&gt;「20分以上座りっぱなしや立ちっぱなしなど同じ姿勢はよくない」「腰痛にならない座り方、座ったままできるストレッチ」「おすすめのエクササイズ・筋トレ」「外に出てビタミンDを摂る」など、わりとよくある内容なのだが、すべてにソースとなる論拠があり、理路整然と述べられているので反論できずやるしかない気持ちになる。&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;歩数をはかるために歩数計を買おう&amp;rdquo;とあったので、実際に歩数計（カロリスキャン）を買ってしまった。実際に歩数が増えた形跡はないが、常に歩数が足りないプレッシャーがかかるのでストレッチやエクササイズに逃げており、別の形で役に立っている。&lt;/p&gt;
+
+&lt;p&gt;一日一万歩以外は実現可能&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;な内容になっており、続けることについてもアドバイスが書いてある。できる範囲で、本書に書いてあることを続けていきたいと思っている。&lt;/p&gt;
+
+&lt;p&gt;公式：&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873117287/&#34;&gt;O&amp;rsquo;Reilly Japan - ヘルシープログラマ&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;メモ&#34;&gt;メモ&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;三大エクササイズ（7〜8秒保持＋4〜5回）
+
+&lt;ul&gt;
+&lt;li&gt;カールアップ&lt;/li&gt;
+&lt;li&gt;サイドブリッジ&lt;/li&gt;
+&lt;li&gt;バードドッグ（アーム＆レッグレイズ）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;エクササイズ
+
+&lt;ul&gt;
+&lt;li&gt;腕立て伏せ または ハーフプッシュアップ&lt;/li&gt;
+&lt;li&gt;バイシクルマニューバー（バイシクルクランチ）&lt;/li&gt;
+&lt;li&gt;ダブルニーフレックス（ヒップレイズ）&lt;/li&gt;
+&lt;li&gt;スクワット&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;なぜ毎日一万歩が実現不可能かというと、田舎だと外に出るだけでいろいろな人の目があり、気持ちが続かないから。また、都会の人は一駅歩くだけで2000歩は稼げるのでいいが、田舎だと普段使いの隣町のスーパーに歩いて行くと10000歩になるため車を使わざるを得ない。なお、普段の歩数は1000歩くらいです。察しろ。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 04 01</title>
+      <link>http://log.deprode.net/logs/2016-04-01/</link>
+      <pubDate>Fri, 01 Apr 2016 23:14:12 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-01/</guid>
+      <description>
+
+&lt;h2 id=&#34;logを書き始めて1年が経過した&#34;&gt;logを書き始めて1年が経過した&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://log.deprode.net/logs/2015-04-01/&#34;&gt;2015 04 01 日記を書くことにした - log&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;これを書いてから、一年が経過した。最初は自意識過剰でいたために、「日別に書いて、他の人が参照できず、広まりにくいようにする」「相手から批判されることがないように、誰からも興味を持たれないように書く」ようにしていた。杞憂だった。今やネットには、&amp;rdquo;一般人クラスタ&amp;rdquo;ができるほど一般人があふれているが、こんな雑文を読む人はいないのだ。&lt;/p&gt;
+
+&lt;p&gt;そのことがわかってから、日記のスタイルを今の見出し＋段落スタイルに変更した。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Logを書いていて、途中から運用が変わったことがあった。&lt;/p&gt;
+
+&lt;p&gt;昔は前述の通り自意識ライジングだったため、タイトルをつけずに日付だけ表示していたのだが、過去の記録を自分で探すことができなかった。すぐに記録を参照できるように、タイトルを併記するようにした。&lt;/p&gt;
+
+&lt;p&gt;このことがきっかけで、複数のことを取り扱わず、1日に1つのトピックを扱うようになっていった。そのため、合わせ技で一本とるような、細かいトピックを合わせてある程度の体裁を取り繕う更新ができなくなり、ついに年が変わったあとに更新が途切れるようになった。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;最近は、&amp;rdquo;Today I Learned（TIL）&amp;rdquo;というリポジトリがあるらしい。今日学んだことを記録していくリポジトリだ。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://syossan.hateblo.jp/entry/2016/02/16/144305&#34;&gt;GithubでTILというリポジトリが流行りつつあるのかもしれない - 生涯未熟&lt;/a&gt;
+&lt;a href=&#34;http://www.softantenna.com/wp/webservice/til/&#34;&gt;GitHubのリポジトリを利用した意識高い「til」&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;このLogは、学んだことも、ゲームの記録も、雑感も「日別で毎日」書いていくスタイルなので完全に違っているのだが、TILに寄せた方がいいかな、と思うことがかなりある。&lt;/p&gt;
+
+&lt;p&gt;というのも、毎日ある程度の品質を確保して更新するのがしんどくなった。なので、まず毎日の更新をあきらめることにした。それから一日一つまでの更新はせず、書くことがあればトピックごとにまとめて一日いくつでも更新できるようにする。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 03 22</title>
+      <link>http://log.deprode.net/logs/2016-03-22/</link>
+      <pubDate>Tue, 22 Mar 2016 16:29:18 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-03-22/</guid>
+      <description>
+
+&lt;h2 id=&#34;習慣をもう一度考える&#34;&gt;習慣をもう一度考える&lt;/h2&gt;
+
+&lt;p&gt;メモ。ほぼ日手帳には5つのチェックボックスがあり、そこに5つの習慣を書いていた。「早寝早起き」「ちょっと運動」「一日三食」「外に出る」「よく笑う」の5つだ。これらは、日内変動が激しかった時期に指標として導入したものだった。&lt;/p&gt;
+
+&lt;p&gt;しかし現在は病状はほぼ回復しており、惰性でつけているのでなんとか改善したかった。まず、主観で評価している部分を客観視できるようにしたい。次に、計測可能にしたい。そして、習慣化することで得するものを項目にしたい。&lt;/p&gt;
+
+&lt;p&gt;というわけで変更した。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;廃止
+
+&lt;ul&gt;
+&lt;li&gt;一日三食（食事欄があるので別に集計可能、ほぼ毎日達成するから）&lt;/li&gt;
+&lt;li&gt;外に出る（外出時は別に記載、記載する意味がない）&lt;/li&gt;
+&lt;li&gt;よく笑う（計測できないから）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;変更
+
+&lt;ul&gt;
+&lt;li&gt;早寝早起き→十分な睡眠
+
+&lt;ul&gt;
+&lt;li&gt;7時間以上、もしくはそこそこの目覚め三角&lt;/li&gt;
+&lt;li&gt;8時間以上、もしくはよい目覚め○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;継続
+
+&lt;ul&gt;
+&lt;li&gt;ちょっと運動
+
+&lt;ul&gt;
+&lt;li&gt;3000歩以上で三角&lt;/li&gt;
+&lt;li&gt;300kcal以上で○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;新規
+
+&lt;ul&gt;
+&lt;li&gt;学び
+
+&lt;ul&gt;
+&lt;li&gt;学ぶで三角&lt;/li&gt;
+&lt;li&gt;学びをアウトプットして○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;好きなこと
+
+&lt;ul&gt;
+&lt;li&gt;好きなことを1時間以上した三角&lt;/li&gt;
+&lt;li&gt;好きなことを2時間以上した○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;一日の気分
+
+&lt;ul&gt;
+&lt;li&gt;ひどい気分になることがあれば三角&lt;/li&gt;
+&lt;li&gt;おおむね問題がなければ○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以前は前日を参考にする性質上、継続性を問題にしていなかった。だが、もう少し継続することを大切にしていきたい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 03 18</title>
+      <link>http://log.deprode.net/logs/2016-03-18/</link>
+      <pubDate>Fri, 18 Mar 2016 23:32:38 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-03-18/</guid>
+      <description>
+
+&lt;h2 id=&#34;cssは知らないことだらけ&#34;&gt;CSSは知らないことだらけ&lt;/h2&gt;
+
+&lt;p&gt;CSSを使う機会がありいろいろ調べているのだが、CSSの知らない小技が山のように出てくる。&lt;/p&gt;
+
+&lt;p&gt;CSSは知らないことが多すぎるので検索エンジンで探すのだが、出てきたものが正しいか、使えるのか、よりよい実装があるのか確かめる方法がわからないのでその場しのぎで終わってしまう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://syncer.jp/css-reverse-reference/line-break&#34;&gt;CSSでbrタグみたいに改行する方法&lt;/a&gt;や、&lt;a href=&#34;https://css-tricks.com/snippets/css/css-triangle/&#34;&gt;CSS Triangle | CSS-Tricks&lt;/a&gt;など、本当に採用しても大丈夫なのかよくわからない。caniuse.comで調べればいいのだが、tipsごとに調べるのは面倒だ。&lt;/p&gt;
+
+&lt;p&gt;簡単に身につかない技術だからこそ、技術職としてのWebデザイナー（というかコーダー）がいるのだと思う。だけど、&amp;rdquo;簡単に身につかないのは情報が整理されていないから&amp;rdquo;であれば、tipsがあふれているのは問題だ。&lt;/p&gt;
+
+&lt;p&gt;大昔に作られたWEBデザイナー御用達逆引き辞典みたいなサイトがひっかかるのだが、そういうサイトのテクニックはアップデートされないし、こちらからPullRequestもできない。&lt;/p&gt;
+
+&lt;p&gt;以前考えたのは、betterCSS.comみたいなWikiができて、そこでTipsをまとめられればCSSの作業効率も上がるのではないかと思った。もしうまくいけばCSSのTipsをわら山から探す手間が省ける。ただ、誰がメンテナンスをするのか。&lt;/p&gt;
+
+&lt;p&gt;やはり本を読んで、コーディングして、ちゃんと学ぶべきなのか。と思い、先日HTML5/CSS3モダンコーディングをやったのだった。それでも、カバーできない部分はある。そういう場合は、今はコードを読むしかないのかもしれない。&lt;/p&gt;
+
+&lt;p&gt;CSSを書いたことがない人でも、（ボックスモデルなどの）原理を知ればあとはこのWikiを見ておいて、ですむような未来が来てほしい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 03 14</title>
+      <link>http://log.deprode.net/logs/2016-03-14/</link>
+      <pubDate>Mon, 14 Mar 2016 23:14:09 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-03-14/</guid>
+      <description>
+
+&lt;h2 id=&#34;webサイト作るときに使うstartarを更新した&#34;&gt;Webサイト作るときに使うstartarを更新した&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://log.deprode.net/logs/2016-01-20/&#34;&gt;2016 01 20 Webサイト作るときに最初に使うやつ作ってた - log&lt;/a&gt;のやつ。&lt;/p&gt;
+
+&lt;p&gt;体調が非常にあれだったので、とりあえず以前から手つかずだった「startar」の更新を行った。&lt;/p&gt;
+
+&lt;p&gt;startarは、EJS、Stylus、Browserify、gulpで静的Webサイトの開発をはじめられるツールを目指して、とりあえず試しに作った。なのだが、実際にWebサイトを作っていくと、使いづらい部分が相当あったので直したかった。&lt;/p&gt;
+
+&lt;p&gt;まず、EJSのテンプレートを再構築した。ヘッダー・フッターで分けていたが、ヘッダーが一括だとincludeするときに渡すデータが多くなるので、それぞれのページで書ける方がいいと判断した。とくにdescriptionやkeywordはページ別の方がいいだろうと判断した。ヘッダやフッタに共通のogpやtwitterカード、css、scriptsは分けたが、ogpは別にした方がよかったかもしれない。&lt;/p&gt;
+
+&lt;p&gt;次に、タスクを分割した。gulpfile.jsが肥大していたため、それぞれのファイルに分けて見通しをよくしたかった。結果的に見通しはよくなったが、果たしてこれでよかったのか。何も覚えてなければタスクは分けていた方がいいが、一つのファイルにあることでいくつものファイルを行き来する手間が増えただけではないか。とも思ったが、無視していいレベルなので無視した。&lt;/p&gt;
+
+&lt;p&gt;baberifyのあと、uglifyが失敗する問題を修正した。これは、baberifyにpresetsが設定されてなかったからだった。&lt;/p&gt;
+
+&lt;p&gt;stylusにlintを追加した。stylusにはCSSCombのように自動でプロパティを並び替えるライブラリがない。そのため、lintを導入して都度手動で直す必要がある。今作ってるサイトには導入していないのだが、試しにlintをかけたところ、lintは最初から導入しておくべきだという知見を得た。（エラーが大量すぎて直す気力が起きない。）&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;gulp --env production&lt;/code&gt;でプロダクション用の出力ができるのを忘れていたので、READMEに書いておいた。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;startarはWebサイトを作るために作ったのだが、実際に作っているときに使ってみると、使いづらい部分が出てきた。実際にやってみて、使いづらい部分を修正し、そしてまた次のプロジェクトに使っていきたい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 02 19</title>
+      <link>http://log.deprode.net/logs/2016-02-19/</link>
+      <pubDate>Fri, 19 Feb 2016 20:20:02 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-02-19/</guid>
+      <description>
+
+&lt;h2 id=&#34;mailboxが終了するのでinboxに移行した&#34;&gt;Mailboxが終了するのでInboxに移行した&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;It’s with heavy hearts that we let you know we’ll be shutting down Mailbox on February 26, 2016.&lt;br /&gt;
+&lt;a href=&#34;https://www.mailboxapp.com/&#34;&gt;Mailbox&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;あと1週間で終了するので、移行した。結果的にはInbox（&lt;a href=&#34;https://inbox.google.com/&#34;&gt;https://inbox.google.com/&lt;/a&gt;）でやっていくことにした。&lt;/p&gt;
+
+&lt;p&gt;もともとメールのやりとりは少なかったのだが、メールを処理したか一目でわかるデザインだったのでMailboxを使い出した。ほかにも、Yahooメールに緊急度の低いメールを集約していたので、日中時は気が散らないようにMailboxのみを開いておくライフハックを使っていた。（MacのMail.appはアカウントごとに通知のON/OFFができない）&lt;/p&gt;
+
+&lt;p&gt;しかし、Mailboxが終了してしまうので、Inboxに移行することにした。InboxはGoogleのメール管理サービス。Mailboxにかなり近いし、公式サービスなので使うことにした。&lt;/p&gt;
+
+&lt;p&gt;iOSアプリは公式のものがあるからよかったが、Macアプリはなかった。Chromeアプリランチャーだと、Chromeが開いてしまうのでださい。&lt;a href=&#34;http://www.boxyapp.co/&#34;&gt;Boxy&lt;/a&gt;というウェブをアプリ化したようなアプリがあったが、600円だった。&lt;/p&gt;
+
+&lt;p&gt;これで600円？と思ったのでInboxをアプリかできないか調べた。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://fluidapp.com/&#34;&gt;Fluid&lt;/a&gt;というアプリがあったが、寄付しないと一部機能が使えないみたいだし、El Capitanに対応してるのか不明なので見送った。代わりに&lt;a href=&#34;https://github.com/jiahaog/Nativefier&#34;&gt;jiahaog/nativefier&lt;/a&gt;というElectronを使ったデスクトップアプリ作成アプリが見つかったので、以下のページを参考にしつつ使った。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/taiyoslime/items/98be154455e76710df9d&#34;&gt;Webページをデスクトップアプリ化 - nativefierを使ってみる - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/Jacminik/items/a4c8fe20a4cba62f428b&#34;&gt;Macアプリの.icnsを作るときのメモ - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;また、アイコンを作る際にエラーになったのだが、これはpngがアルファチャンネルをサポートしていないとエラーになるようだった。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://notes.underscorediscovery.com/el-capitan-iconutil-unsuported-image-format/&#34;&gt;fix iconutil El Capitan &amp;ldquo;Unsuported image format&amp;rdquo;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以下のコードでアプリが生成される。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo npm install nativefier -g
+$ iconutil -c icns inbox.iconset
+$ nativefier --name &amp;quot;Inbox&amp;quot; --honest &amp;quot;inbox.google.com&amp;quot; -b --icon inbox.icns
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;badgeオプションをつけてるけど、対応していないようだ。もちろん、デスクトップに通知もされない。そこが問題なのだが、緊急の用事なら電話が来るため、今のところ問題になってない。&lt;/p&gt;
+
+&lt;p&gt;セキュリティ的にどうなのか、という問題があるのだが、&lt;a href=&#34;https://github.com/atom/electron/issues/1753&#34;&gt;このへん&lt;/a&gt;で確認できる。Inboxのwebサイトに任意のHTMLがInjectionできたらアウトだが、たぶんないだろうという楽観的な気持ちで作った。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; data-lang=&#34;ja&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;Inbox &lt;a href=&#34;https://t.co/BReTokE7c6&#34;&gt;pic.twitter.com/BReTokE7c6&lt;/a&gt;&lt;/p&gt;&amp;mdash; deproden (@deproden) &lt;a href=&#34;https://twitter.com/deproden/status/700612372105302016&#34;&gt;2016, 2月 19&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 02 13</title>
+      <link>http://log.deprode.net/logs/2016-02-13/</link>
+      <pubDate>Sat, 13 Feb 2016 18:28:22 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-02-13/</guid>
+      <description>
+
+&lt;h2 id=&#34;最近-日記が書けていない&#34;&gt;最近、日記が書けていない&lt;/h2&gt;
+
+&lt;p&gt;日記が書けていない。これには2つ理由があって、一つは日記を書くことをほかの時間に割けば有意義に使えるのではないかと思ったからだ。ただ、結果的にはほかのことをやる、ということはなかった。次のような行動になると思っていた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function action(motivation) {
+  if ( motivation &amp;gt; 70 ) {
+      return &#39;write a code&#39;;
+  } else if (motivation &amp;gt; 50) {
+      return &#39;read a book&#39;;
+  } else if (motivation &amp;gt; 40) {
+      return &#39;write a diary&#39;;
+  } else if (motivation &amp;gt; 25) {
+      return &#39;play games&#39;;
+  } else if (motivation &amp;gt; 10) {
+      return &#39;read a feed&#39;;
+  } else {
+      return &#39;play splatoon&#39;;
+  }
+}
+
+var motivation = this.getMotivation();
+var doAction = action(motivation);
+console.log(doAction);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;実際は次のようだった。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function action(motivation) {
+  if (motivation &amp;lt; 80) {
+    return &#39;play splatoon&#39;;
+  } else if ( motivation &amp;gt; 70 ) {
+      /// ...
+  } else {
+      return &#39;splatoon&#39;;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;つまり、やる気があってもなくてもSplatoonをやっていた。Splatoonは気分転換になるが、それでほかのことを頑張ろうと思えなかった。完全に関係がなかった。&lt;/p&gt;
+
+&lt;p&gt;もう一つは、アウトプットを行っていなかったこと。いま、SQL実践入門を読んでいて、アウトプットできるようなことをやれていない。SketchでContent generatorは最新にした方がいいとか、見積もれないことは軽く見られがちなので値切られる要因になるとか、その程度のことだ。なので、もっとアウトプットできることをやっていきたい。&lt;/p&gt;
+
+&lt;p&gt;そのためには、まずSQL実践入門を読み終えなければ。今8章。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 02 04</title>
+      <link>http://log.deprode.net/logs/2016-02-04/</link>
+      <pubDate>Thu, 04 Feb 2016 19:49:36 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-02-04/</guid>
+      <description>
+
+&lt;h2 id=&#34;markdownを書く環境のメモ&#34;&gt;Markdownを書く環境のメモ&lt;/h2&gt;
+
+&lt;p&gt;ちょっと長い文章をMarkdownで書いているのだが、最終的にVisualStudioCodeで書いている。&lt;/p&gt;
+
+&lt;p&gt;コードを含んでいるので、SublimeTextで書いて適当にPreviewをしていたのだが、SublimeCodeIntelの影響か、日本語に対しても補完するので使いづらかった。特に、&lt;code&gt;「&lt;/code&gt;でも補完するため、ほとんどすべてのキーワードを補完してくれて、しかもEnterでもTabでも補完するのでいちいちEscキーを押さないといけない。&lt;/p&gt;
+
+&lt;p&gt;そこで、この日記を書いているByWordで書いてみようと思った。だが、多段リストを使っているうえ、横幅がWideまでしか広がらないため見づらい。また、設定を長文用のWide・Helvetica17ptにし、日記の時はいちいち戻すのが面倒だった。&lt;/p&gt;
+
+&lt;p&gt;そのとき、VisualStudioCodeを思い出した。インストールしたあと放置していて、特にプラグインを導入することもなかったため、補完はされなかった。プレビューもCmd+Shift+PからToggle Previewと横にウィンドウを出す方法から選べる。&lt;/p&gt;
+
+&lt;p&gt;また、独自CSSを使えたり、MarkdownをHTMLにするタスクを走らせたり、それをgulpと連携して自動で行わせたりできる。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://code.visualstudio.com/Docs/languages/markdown&#34;&gt;Markdown editing with Visual Studio Code&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;ほかにも、DayOne（横幅が足りない上に用途とは違う、ネット共有機能があるので危ない）やGithubやBitbucketなどのリポジトリのエディタ（ネットに出せないのでだめ）、環境音を聴きながらかける&lt;a href=&#34;http://www.noisli.com/&#34;&gt;noisli&lt;/a&gt;とか、Qiitaと連携できるKobitoとか、独自記法をサポートしている&lt;a href=&#34;https://stackedit.io/&#34;&gt;StackEdit&lt;/a&gt;などもあったが、VSCodeでいいかと思って使わなかった。&lt;/p&gt;
+
+&lt;p&gt;オチはないが、拡張機能が充実してきたらVisualStudioCodeに移行してもいいかな、と思っているのでMicrosoftには頑張ってほしい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 01 27</title>
+      <link>http://log.deprode.net/logs/2016-01-27/</link>
+      <pubDate>Wed, 27 Jan 2016 21:47:03 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-01-27/</guid>
+      <description>
+
+&lt;h2 id=&#34;雑なポエム集&#34;&gt;雑なポエム集&lt;/h2&gt;
+
+&lt;p&gt;あれです。まとまって書くことがないのでpplogに書こうとしてやめてるいくつかのことを800字まで書いていく。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;DigitalOceanには&lt;a href=&#34;https://www.digitalocean.com/features/one-click-apps/lamp/&#34;&gt;1クリックでLAMP設定が起動する機能がある&lt;/a&gt;のだが、iptablesの設定とかどうなっているのか気になっていた。確認したところ、何も設定していなかった。この分だと、&lt;a href=&#34;https://www.digitalocean.com/features/one-click-apps/wordpress/&#34;&gt;Wordpress&lt;/a&gt;も設定してなくて、ザルになってそう。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/%E3%83%8F%E3%83%B3%E3%83%AD%E3%83%B3%E3%81%AE%E5%89%83%E5%88%80&#34;&gt;ハンロンの剃刀&lt;/a&gt;（無能で十分説明されることに悪意を見出すな）。これはと別に、「よかれと思って」やったことが、結果的にその人の迷惑になることがあり、&lt;a href=&#34;http://www.1101.com/darling_column/2007-11-05.html&#34;&gt;糸井重里がコラムにしていた&lt;/a&gt;。我が家では、毎日このハンロンの剃刀と「よかれと思って」が繰り返されており、精神的に厳しい。でも、海馬が萎縮している人なので覚えてもらうことが難しい。&lt;/li&gt;
+&lt;li&gt;おそ松さんを視聴させていただいている。大変面白いのだが、バンダイチャンネルで見ているので、一週間遅れになり、すべてのネタバレを回避して見なくては満足に楽しめない。以前ひかりTVがフライング配信して、それをSNSに拡散し、「ネタバレやめろ」がまとめられたことがあるが、長野では日常茶飯事だぜ！（AT-Xでしか放送されてないのでネットで一週間遅れの放送を見るしかない）&lt;/li&gt;
+&lt;li&gt;ちなみに、アニメを見なくなったのはTIGER &amp;amp; BUNNYの時に最終話までネタバレされまくったから。&lt;/li&gt;
+&lt;li&gt;以前作ったTwitterからTumblrにバックアップするやつ、ファイル書き込みができないので止めていたが、検証したら画像を一時保存するtmpフォルダの所有者がユーザになってた。chownでnginxにしたら直った。こんな初歩の初歩で躓いていて、全く気づかなかったので、思い込みはよくないと思った。（書き込むやつだけ別のスクリプトで動かしたらできたため、よくわからないままだったが、実行ユーザがnginxかユーザかの違いで……）&lt;/li&gt;
+&lt;li&gt;twittbot.netからの通信を遮断するだけでだいぶTwitterが平和になるんだけど、あまり話題にならない。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 01 22</title>
+      <link>http://log.deprode.net/logs/2016-01-22/</link>
+      <pubDate>Fri, 22 Jan 2016 17:36:37 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-01-22/</guid>
+      <description>
+
+&lt;h2 id=&#34;tumblrにtwitterをembed形式で貼り付けて表示する&#34;&gt;TumblrにTwitterをEmbed形式で貼り付けて表示する&lt;/h2&gt;
+
+&lt;p&gt;Twitterの「このツイートをサイトに埋め込む」で表示されたツイートがこちら。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;blockquote class=&amp;quot;twitter-tweet&amp;quot; lang=&amp;quot;ja&amp;quot;&amp;gt;
+	&amp;lt;p lang=&amp;quot;en&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;Who needs a hug today? 
+		&amp;lt;a href=&amp;quot;https://twitter.com/hashtag/NationalHugDay?src=hash&amp;quot;&amp;gt;#NationalHugDay&amp;lt;/a&amp;gt;&amp;amp;#10;&amp;amp;#10;
+		&amp;lt;a href=&amp;quot;https://t.co/3cFgsuUQKg&amp;quot;&amp;gt;https://t.co/3cFgsuUQKg&amp;lt;/a&amp;gt;&amp;amp;#10;
+		&amp;lt;a href=&amp;quot;https://t.co/Hw1sEKdb6B&amp;quot;&amp;gt;https://t.co/Hw1sEKdb6B&amp;lt;/a&amp;gt;
+	&amp;lt;/p&amp;gt;&amp;amp;mdash; Twitter (@twitter) 
+	&amp;lt;a href=&amp;quot;https://twitter.com/twitter/status/690247513194954752&amp;quot;&amp;gt;2016, 1月 21&amp;lt;/a&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+&amp;lt;script async src=&amp;quot;//platform.twitter.com/widgets.js&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これが、Tumblr(t.umblr.com)のリダイレクト機能によって、リンクがすべて書き換えられる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;blockquote class=&amp;quot;twitter-tweet&amp;quot; lang=&amp;quot;ja&amp;quot;&amp;gt;
+ 	&amp;lt;p lang=&amp;quot;en&amp;quot; dir=&amp;quot;ltr&amp;quot;&amp;gt;Who needs a hug today? 
+ 		&amp;lt;a href=&amp;quot;http://t.umblr.com/redirect?z=https%3A%2F%2Ftwitter.com%2Fhashtag%2FNationalHugDay%3Fsrc%3Dhash&amp;amp;amp;t=NjRlNTYzNWIxNzNjMzI5ZDBjYzc2ZmI0MDBkMzZmZjk3MTlkZDgzYiwzTmxnZWJ5Qg%3D%3D&amp;quot;&amp;gt;#NationalHugDay&amp;lt;/a&amp;gt;
+ 		&amp;lt;a href=&amp;quot;http://t.umblr.com/redirect?z=https%3A%2F%2Ft.co%2F3cFgsuUQKg&amp;amp;amp;t=NDg0OWZjYTk3YjYwNjc5NGFhZmIzYzhiZjVmMGMxNzZmOGFiZmFhNSwzTmxnZWJ5Qg%3D%3D&amp;quot;&amp;gt;https://t.co/3cFgsuUQKg&amp;lt;/a&amp;gt;
+ 		&amp;lt;a href=&amp;quot;http://t.umblr.com/redirect?z=https%3A%2F%2Ft.co%2FHw1sEKdb6B&amp;amp;amp;t=MDExOTViOGYyMDFmYWNlOTQ0NmRkZDc5M2M5YmJlMTNkMzA2NmMzMSwzTmxnZWJ5Qg%3D%3D&amp;quot;&amp;gt;https://t.co/Hw1sEKdb6B&amp;lt;/a&amp;gt;
+ 	&amp;lt;/p&amp;gt;&amp;amp;mdash; Twitter (@twitter) 
+ 	&amp;lt;a href=&amp;quot;http://t.umblr.com/redirect?z=https%3A%2F%2Ftwitter.com%2Ftwitter%2Fstatus%2F690247513194954752&amp;amp;amp;t=MjNjYzEyZDc2MmQxYmYxMWI3MWFmZGFjNjQxZDgyNWJiNGI1ZDI0ZSwzTmxnZWJ5Qg%3D%3D&amp;quot;&amp;gt;2016, 1&amp;amp;#26376; 21&amp;lt;/a&amp;gt;
+ &amp;lt;/blockquote&amp;gt;
+&amp;lt;script async src=&amp;quot;//platform.twitter.com/widgets.js&amp;quot; charset=&amp;quot;utf-8&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;twitterのwidgets.jsは、blockquoteの最後のaタグのIDを見て、embedを展開しているらしく、t.umblr.comに書き換えられると展開に失敗する。&lt;/p&gt;
+
+&lt;p&gt;サーバサイドでリンクが書き換わっているため、フロントサイドでリダイレクト先のURLを書き換えて表示するようにすればいいはず。なので、試しに作った。&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;268&#34; data-theme-id=&#34;0&#34; data-slug-hash=&#34;gPoNLJ&#34; data-default-tab=&#34;result&#34; data-user=&#34;deprode&#34; class=&#39;codepen&#39;&gt;See the Pen &lt;a href=&#39;http://codepen.io/deprode/pen/gPoNLJ/&#39;&gt;gPoNLJ&lt;/a&gt; by deprode (&lt;a href=&#39;http://codepen.io/deprode&#39;&gt;@deprode&lt;/a&gt;) on &lt;a href=&#39;http://codepen.io&#39;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;//assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;ツイートの埋め込みと動画の埋め込みはCSSのクラスが別なので、&lt;code&gt;.twitter-tweet&lt;/code&gt;と&lt;code&gt;.twitter-video&lt;/code&gt;を別々に処理してる。&lt;/p&gt;
+
+&lt;p&gt;というわけで、attribute(href)を書き換えるだけで表示できたため、これをTumblrのテーマに貼り付けて、無事に表示できた。動画の貼り付けは一部(Momentsなど)表示されないけど、おおむね表示できるのでまあいいかということに。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;それにしても、classもidも埋め込みコードに入れずにURLからID取得して表示するTwitterも、何でもかんでもリダイレクトURLにしちゃうTumblrもヤバい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 01 21</title>
+      <link>http://log.deprode.net/logs/2016-01-21/</link>
+      <pubDate>Thu, 21 Jan 2016 21:29:11 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-01-21/</guid>
+      <description>
+
+&lt;h2 id=&#34;現金書留出した&#34;&gt;現金書留出した&lt;/h2&gt;
+
+&lt;p&gt;現金書留を出した。ただそれだけなのだけど、実行するのに30分くらいかかった気がする。未来のためにログを残す。&lt;/p&gt;
+
+&lt;p&gt;必要な物：現金、封筒代、送料、三文判、送付先の情報（郵便番号、住所、氏名、電話番号）&lt;/p&gt;
+
+&lt;p&gt;現金書留は、現金をそのまま送付するための仕組みで、2016年現在、お金をそのまま送るには現金書留以外の方法がない。&lt;/p&gt;
+
+&lt;p&gt;まず、中に入れるための現金を用意する必要がある。1550円送るのであれば、中に入れるためのお金として1550円必要になる。その際、郵便局では両替ができないので、銀行に行く・コンビニで消費するなどして両替し、細かいお金までそろえる必要がある。&lt;/p&gt;
+
+&lt;p&gt;お金を用意できたら、現金書留の封筒を買う必要がある。封筒の代金として一通あたり21円かかる。&lt;/p&gt;
+
+&lt;p&gt;封筒を受け取ったら、封筒の上部にある郵便番号欄に相手の郵便番号を書く。そのあと住所、氏名、電話番号を書き、 「損害要償額」の欄に入れた金額と同額の数字を書く。&lt;/p&gt;
+
+&lt;p&gt;書き終えたら、中にお金・同封する物を入れて封をする。封をするやり方は裏面に書いてある。（白い面にのりをつけ、茶色の封筒の切れ目に貼り付け、そのあと普通にのり付けし封を閉じる。）のり付けしたら、割り印として封筒の境目に印鑑かサインをする。&lt;/p&gt;
+
+&lt;p&gt;それから、郵便局員に提出し、送料をはかってもらう。送料は512円〜で、50グラムを超えると定形外郵便として扱われるためより高くなる。&lt;a href=&#34;http://www.post.japanpost.jp/cgi-simulator/envelope.php&#34;&gt;料金計算（手紙） - 日本郵便&lt;/a&gt;で計算できる。&lt;/p&gt;
+
+&lt;p&gt;送料を払い、領収書と受領証を受け取る。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;たとえば1000円を送る場合、中身の1000円と封筒21円、送料512円で1533円かかる。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;現金書留、もう少し楽に送れるようになってほしい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 01 20</title>
+      <link>http://log.deprode.net/logs/2016-01-20/</link>
+      <pubDate>Wed, 20 Jan 2016 23:21:28 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-01-20/</guid>
+      <description>
+
+&lt;h2 id=&#34;webサイト作るときに最初に使うやつ作ってた&#34;&gt;Webサイト作るときに最初に使うやつ作ってた&lt;/h2&gt;
+
+&lt;p&gt;近々、Webサイトを作る予定なのだが、gulp含めいろいろな使い方をすっかり忘れているので、試しにWebサイトを作る前にスターターキットというか、ボイラープレートを準備することになった。&lt;/p&gt;
+
+&lt;p&gt;とりあえず、(Node.js+npm)+gulp+EJS+Stylus+Browserify+browser-syncにした。&lt;/p&gt;
+
+&lt;h3 id=&#34;jade-vs-ejs&#34;&gt;Jade vs EJS&lt;/h3&gt;
+
+&lt;p&gt;emmetがいつまでたってもアップデートでJadeに展開しないのと、Jadeの文法がミニマルすぎて覚えづらいので、HTMLを書けるEJSにしました。ECTはgulpfile書いてから気づいた。&lt;/p&gt;
+
+&lt;h3 id=&#34;stylus-vs-sass-scss&#34;&gt;Stylus vs Sass(SCSS)&lt;/h3&gt;
+
+&lt;p&gt;npmだけで完結したい。というか、ruby+Sassが入ってなくてもいいので、Stylusにした。今からならPostCSSを選んでもいいと思った。だけど、StylusからPostCSSへの変換も当然のように出る気がしたので、焦って手を出さなくてもいいと思い、Stylusにした。&lt;/p&gt;
+
+&lt;h3 id=&#34;jquery-vs-other&#34;&gt;jQuery vs other&lt;/h3&gt;
+
+&lt;p&gt;jQueryにある諸々の機能を全部備えたライブラリが、Zepto.jsくらいしかないので、jQueryの替わりはない。その替わり、必要な機能だけほかから使うことはできる。……のだが、fetchやPromise、document.querySelector、Velocity.js、とかで足りるとしても、ホームページ作るのに使って保守する人が使えるのか考えるとjQueryでとりあえず作る。どうしてもDOMをいじるならVueやmithril、Reactなど使えばいい。&lt;/p&gt;
+
+&lt;p&gt;とかいろいろ悩んだ結果、jQueryのCDNへindex.ejsからリンクした。&lt;/p&gt;
+
+&lt;h3 id=&#34;jqueryをbrowserify-licensify-uglifyするとsizzleのライセンスが消える&#34;&gt;jQueryをbrowserify+licensify+uglifyするとsizzleのライセンスが消える&lt;/h3&gt;
+
+&lt;p&gt;上記のようなことがあったので&lt;a href=&#34;http://jquery.com/download/&#34;&gt;Download jQuery | jQuery&lt;/a&gt;からcompressedを見たところ、ライセンス消えてるので問題ないと思う。&lt;/p&gt;
+
+&lt;h3 id=&#34;画像圧縮&#34;&gt;画像圧縮&lt;/h3&gt;
+
+&lt;p&gt;gulp-imageminを使った。前にimageminを使ったときに謎のバグで画像を出力できなかったのだが、問題なく使えた。&lt;/p&gt;
+
+&lt;h3 id=&#34;size&#34;&gt;size&lt;/h3&gt;
+
+&lt;p&gt;という感じで、やっていった結果、node_modules以下が90MBになった。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ du -k -s node_modules
+89976	node_modules
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;そして、ES2015対応やったら100M超えるのでは、と思って今やったら超えた。(browserifyを使わないverも記述してあるため、babelifyだけではだめ。)&lt;/p&gt;
+
+&lt;h3 id=&#34;参考用リンク&#34;&gt;参考用リンク&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://gulpjs.com/&#34;&gt;gulp.js - the streaming build system&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://app.codegrid.net/entry/gulp-1&#34;&gt;gulpとは何か | CodeGrid&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/joe-re/items/e04010ed03826fb94a16&#34;&gt;gulp4.0 migration guide - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://jade-lang.com/&#34;&gt;Jade - Template Engine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ejs.co/&#34;&gt;EJS &amp;ndash; Embedded JavaScript templates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stylus-lang.com/&#34;&gt;Expressive, dynamic, robust CSS — expressive, robust, feature-rich CSS preprocessor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://parashuto.com/rriver/tools/what-is-postcss-summary-in-bullet-list&#34;&gt;PostCSSってなに？導入前に知っておきたいことを箇条書きでまとめてみた – Rriver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://umi-uyura.hatenablog.com/entry/2015/07/29/193409&#34;&gt;React + BrowserifyプロジェクトでJS/CSS/HTMLを圧縮(Minify)する - Umi Uyuraのブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.npmjs.com/package/gulp-imagemin&#34;&gt;gulp-imagemin&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;参考にしたgulpfile&#34;&gt;参考にしたgulpfile&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/sanographix/rin&#34;&gt;sanographix/rin: A Lean HTML &amp;amp; SASS Boilerplate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/h5bp/html5-boilerplate&#34;&gt;h5bp/html5-boilerplate: A professional front-end template for building fast, robust, and adaptable web apps or sites.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/google/web-starter-kit&#34;&gt;google/web-starter-kit: Web Starter Kit - a workflow for multi-device websites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/kouh/items/823737d48faefd9fe3a0&#34;&gt;JavaScript - gulp.jsでWeb開発環境をつくる - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/tokimari/items/8cb648e06c4db072e7aa&#34;&gt;vendor prefix, minify, 開発/本番用ビルドの切り替え&amp;hellip; CSSのあれこれをGulpにさせてみた - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 01 12</title>
+      <link>http://log.deprode.net/logs/2016-01-12/</link>
+      <pubDate>Tue, 12 Jan 2016 21:43:13 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-01-12/</guid>
+      <description>
+
+&lt;h2 id=&#34;twitterから非公開tumblrにlikesをバックアップした経緯など&#34;&gt;Twitterから非公開TumblrにLikesをバックアップした経緯など&lt;/h2&gt;
+
+&lt;p&gt;TwitterにはLikes(いいね)という、ツイートに対する好意的な気持ちを示すための機能がある。この機能、Favorite（お気に入り）の頃から使っていたのだが、使い方は現在の&lt;a href=&#34;https://support.twitter.com/articles/20171538&#34;&gt;公式ヘルプの説明&lt;/a&gt;とは違っていた。&lt;/p&gt;
+
+&lt;p&gt;TwitterのFavoriteの使い方は十人十色だった。ある人は好意的な気持ちを示すために使い、またある人はあとで読む資料を集めるために使い、そして私のように厳選したツイートを収集するために使う人もいた。&lt;/p&gt;
+
+&lt;p&gt;あるときから、Favoritesはお気に入り登録した順番の表示ではなくなり、時系列表示になった。リソースの問題だと思う。ユーザー数が爆発的に増え、個々人のお気に入り順を登録するのが大変になったのだ。&lt;/p&gt;
+
+&lt;p&gt;お気に入りが時系列順になったため、過去の物も閲覧しやすくするためにFavをつけるのをためらうようになった。そして、あまりFavをしなくなった。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;このままではいけないと思い、いろいろ考えて実行した。サブアカウントを作ってFavをしようとしたこともあったが、増えていくお気に入りからお気に入りを厳選する心理は変わらなかった。ツイートを保存しようにも、IFTTT連携はイマイチだし手動で保存すると&amp;rdquo;ユーザー名&amp;rdquo;、&amp;rdquo;URL&amp;rdquo;、&amp;rdquo;投稿時間&amp;rdquo;、&amp;rdquo;画像&amp;rdquo;がばらばらに保存されてしまうため、一覧性に欠き、元のツイートを見られなかった。&lt;/p&gt;
+
+&lt;p&gt;この問題を回避するには、一度お気に入りを「ユーザー名が変更されても元のツイートにたどれる」「ツイートが消えても個人的に見返せる」「お気に入りした順で見ることができる」という条件でバックアップし、さらに手動で逐一バックアップできる体制が必要だった。&lt;/p&gt;
+
+&lt;p&gt;それらを実現するため、PHPでTwitterの投稿をTumblrに投稿できるツールを作った。Tumblrはメインブログにパスワードがつけられないため、著作権問題に引っかかる（自動公衆送信が成立する）。そのため、サブブログを作成してそちらにReblogすることにした。ツールに関しては省略するが、ライブラリはTwitterOAuthとtumblr/tumblrphpを使った。コードはすごく雑で、自動テストも書いていない。動くところまで6時間、デザインに6時間、細かいブラッシュアップに6時間程度使った。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;こうして、&lt;a href=&#34;https://twitter.com/deproden/likes&#34;&gt;自分のお気に入り&lt;/a&gt;から、Tumblrのサブブログへのバックアップが終了した。これで、安心して好意を示すため、またあとで読み返すツイートにハートをつけることができ、さらにバックアップをとることもできるようになった。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

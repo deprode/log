@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Markdown on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/markdown/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Fri, 10 Apr 2015 17:55:27 JST</updated>
+    
+    <item>
+      <title>2015 04 10</title>
+      <link>http://log.deprode.net/logs/2015-04-10/</link>
+      <pubDate>Fri, 10 Apr 2015 17:55:27 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-10/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;ガッテンバイアスについて
+
+&lt;ul&gt;
+&lt;li&gt;ものすごい複雑なことなんだけど、わかりやすいメンタルモデルが提示されたときにすごいガッテンすることがある。
+
+&lt;ul&gt;
+&lt;li&gt;難しくわからなかったことがすっと心に入ってくるとき。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;もし、そのすっと入ってきたものが間違っていた場合、訂正することが難しく、またそれ自体間違っていると検証することが難しい。
+
+&lt;ul&gt;
+&lt;li&gt;すごいがんばってプログラム書いて、思った通りの結果が出たとき、その結果を検証する気力がなくて「動いてるから、これでいい」みたいになる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;間違って覚えていることを修正できずに迷惑かけたりかけられたりするのが社会だけど、曲解したまま訂正できないのは何か人間自体に&lt;del&gt;バグ&lt;/del&gt;バイアスがあるのではないか、と思ったので。
+
+&lt;ul&gt;
+&lt;li&gt;脳の回路を書き換えるより、元々作られている回路を強化する方が容易なので、易きに流れて生き残ってしまう。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Twitterには、前にFavつけなかったけど、突然思い出してもつけられるようにする機能が必要。&lt;/li&gt;
+&lt;li&gt;自宅で花を見たので今年の花見は実行したことになった。&lt;/li&gt;
+&lt;li&gt;はてな記法だと[]でURLを囲むのにMarkdownだと()で囲む必要があり、そのため はてな記法を長いこと使っている人ほどMarkdownの[]()を一発出かけない印象がある。
+
+&lt;ul&gt;
+&lt;li&gt;[http:~~で書き出すのがはてな記法なので、[]と()で混乱するけど今日見た&lt;a href=&#34;http://qiita.com/DQNEO/items/fe32a2420506dca98bf4&#34;&gt;これ&lt;/a&gt;で割と別回路で覚えられそうな気はする。&lt;/li&gt;
+&lt;li&gt;やわらか日本語は()でalphabetは[]と相性がいいみたいなことかもしれない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;プログラムは書いたとおりに動くが、人間はマニュアルを書いたとおりに動かない。&lt;/li&gt;
+&lt;li&gt;60分一本勝負は、一日の内に60分という時間で負荷がかかりすぎない上に練習になるから、みたいな動機で作られたと思ったけど。
+
+&lt;ul&gt;
+&lt;li&gt;現実は厳しい&lt;/li&gt;
+&lt;li&gt;コーディングは60分でプロダクトできないと思うけど、ラクガキのようなものはできる。
+
+&lt;ul&gt;
+&lt;li&gt;一日30分コーディングして芝生生やすとかも、同じような感じなのか。&lt;/li&gt;
+&lt;li&gt;一日ごとにデプロイできる仕組みを作るの大事ってことなのかも。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;アウトプットの粒度は一週間くらいがちょうどいいと思うけど、完全に気まぐれで作るタイプだと難しいし、作りたいものが大きいほど難しい気がする。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;私も30分だけ何かやるかと思って、mocha チュートリアルやろうと思ったら環境そろえるだけで30分超えた。
+
+&lt;ul&gt;
+&lt;li&gt;Asyncテスト簡単にできてすごい。&lt;/li&gt;
+&lt;li&gt;後からpower-assert入れたら、これはpower-assert使うよねってなった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;JavaScriptのDateのこの動作って未だに納得できない。（理解できるし、妥当だと思うけど、なんか気持ち悪いというか……）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;var date = new Date(&amp;quot;2015/03/31&amp;quot;);
+console.log(date);  // Tue Mar 31 2015 00:00:00 GMT+0900 (JST)
+date.setMonth(3);  // 4月
+console.log(date);  // Fri May 01 2015 00:00:00 GMT+0900 (JST)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://log.deprode.net/log/media/2015-04-10 16.34.05.png&#34;&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;勉強をやった日よりも、前からやろうと思っていたことを手を動かしてやった日の方が満足度が高い。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 09 07 PHPまた直してる - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-09-07/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-09-07/">
+            
+                PHPまた直してる
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-09-07T23:32:50&#43;09:00">2015-09-07</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="phpまた直してる">PHPまた直してる</h2>
+
+<p>また直してる。</p>
+
+<p>PHPは5.3.2で、flockがfcloseで自動的に解除されなくなった。あまりファイルロック操作をしなかったこともあって、知らなかった。昔はどうだったのか知らないけど、LOCK_EXなどの定義済みの値があるが使ってなかったので使うようにした。</p>
+
+<p>ディレクトリロックの仕様があったのだが、削除した。ディレクトリロックは、Windows95/98（NFS）と一部のUnixで使われているのだが、使われている環境が確認できないことがあり、削除した。ただ、使われている環境が知らないところであるかもしれないので復活するかもしれない。</p>
+
+<p>そのほか、リファクタリングをした。リファクタリング、生産性は0に近いのだがコードの質を上げることで生産速度が上がったり手戻りが発生しにくくなるので、道路の補修工事のような感じ。壊れる前に直して、快適に走る。</p>
+
+<p>staticでいいものはstaticにしたり、クラス名と重複している変数名を短くしたり、制御と表示を分けたり、多少遅くなっても読みやすさ重視で直す、などの改善をした。</p>
+
+<p>読みやすさを重視するのはコードを書く速度を上げるため、という理由のほかに、きれいな遅いコードから汚い速いコードにするのは簡単だけど、逆は時間がかかるため、きれいなコード重視でやっている。</p>
+
+<p>コードが最初からきれいに書ければいいんだけど、時流や体調、環境に左右されずに万全の状態でないと書くことは難しいと思う。きれいの水準が上がっていることも、きれいに書くことが難しい一因になっている。</p>
+
+<p>リーダブルコードを読み直すときなのかもしれない。リファクタリングも。</p>
+
+<hr />
+
+<p>今日の日記、かなり論理が飛び飛びで読みづらいと思うけど、これもきれいに書くことが難しい原因の一つである&rdquo;疲労困憊&rdquo;があげられると思う。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-09-07T23:32:50&#43;09:00">2015-09-07 23:32:50</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

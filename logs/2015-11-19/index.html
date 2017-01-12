@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 11 19 Mithril 読み終えた - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-11-19/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-11-19/">
+            
+                Mithril 読み終えた
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-11-19T18:34:31&#43;09:00">2015-11-19</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="mithril-読み終えた">Mithril 読み終えた</h2>
+
+<p><a href="http://www.oreilly.co.jp/books/9784873117447/">Mithril――最速クライアントサイドMVC</a> を読み終えた。APIを極限までシンプルに保つことで、覚えやすく軽量で高速なフレームワークを実現した<a href="http://mithril.js.org/">Mithril</a>の入門書。</p>
+
+<p>JavaScript界隈のフレームワークは移り変わりが激しく、Backbone→Knockout→Ember→Angular→（React）→Reduxと、（これで正しいのかわからないがこんな感じだった気がするが、）毎年流行のフレームワークが変わるので保守するのに困る。かつてCoffeeScriptで設定ファイルとかhubotとか書いたけど全部負債になったので、忘れても思い出しやすく、完全に忘れても覚えやすいフレームワークに手を出そうと思った。</p>
+
+<p>Mithrilは、メソッドが全部で15個。第2章のTodoは、m/m.mount/m.prop/m.withAttr/m.route/m.requestの6つのメソッドだけで作られている。メソッドも、Rootingを行うm.routerの使い方が複数あるだけで、他のものは簡単に使いこなせる。</p>
+
+<p>しかし、フレームワークのドキュメントは充実しているが、実際にどうコーディングをするのがベターなのか、README以上のサンプルはどう書くのか、テストはどうするのかなど、包括的な知識がないと不安だったため、本書を購入した。</p>
+
+<p>本書ではMithrilだけではなく、Bootstrapやmocha、Promise、Typescriptなどの周辺技術を使った解説もある。Mithrilはフレームワークが薄いため、JavaScriptや周辺技術に対する理解が大切だと感じていたため、この辺は助かった。</p>
+
+<p>書籍のコードを写経しても動かないことがあったのが困ったが、<a href="https://github.com/oreilly-japan/mithril-book-sample">作者のサンプルリポジトリ</a>に最新のコードがあるので、こちらを参考にして動かした。</p>
+
+<p>Mithrilは、m.moduleをm.mountにするなど多少の変更はあるが、Promiseを徐々にES6のものにする以外は大幅な変更は今後もないだろうし、しばらくはMithrilを中心にやってもそうそう困らないだろうと思う。ので、流し読みだけじゃなくて実際にちょっと使ってみようと思う。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-11-19T18:34:31&#43;09:00">2015-11-19 18:34:31</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/%E8%AA%AD%E6%9B%B8">読書</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

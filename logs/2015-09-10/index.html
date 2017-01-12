@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 09 10 まだPHP直してる - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-09-10/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-09-10/">
+            
+                まだPHP直してる
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-09-10T23:06:47&#43;09:00">2015-09-10</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="まだphp直してる">まだPHP直してる</h2>
+
+<p>調子が悪いというか、1つのタスクを片付けると2つタスクが増える、という感じになっている。増えた理由を正確にあげるとすれば、セキュリティで思いついたのをあげたら10個くらい増えた、という顛末なのだが。</p>
+
+<hr />
+
+<p>一部はネットの記事を参考にしながらいろいろ作ったり直したりしているが、提唱していることが正しいのかどうかわからないことがある。たとえば、autoloadは自作せずにComposerのやつを使うなどしましょう、という提言がある。ただ、今作っているのはデプロイは手動でComposerによるインストール（というかCLI操作）が不要という明文化されていない仕様があるため、Githubにあるライブラリなどは使えない。もちろん、Composerも使えないため、自作autoloadを（PHP逆引きレシピ第2版を参考に）書いている。おそらく記事を書いた人はプログラマなのだが、果たしてこの判断は正しいのか、それがよくわからない。</p>
+
+<hr />
+
+<p>昔のPHPスクリプトは、先頭に設定項目という名の変数宣言群があり、その後に関数群やHTML組み立てがあった。上から下に処理が流れる、わかりやすいけど変更しにくいプログラムだった。これらを今風に変えているのだが、果たしてわかりやすく変更にも強いプログラムになっているのか不安ではある。</p>
+
+<p>autoloadも、素人から見たら何をやっているのかわからないのは確かなのだが、たとえばPHP初心者が見たらわかるのかとか、10年後の人がspl_autoload_registerとか知ってるのかとか、そういうことを考え出すときりがないのだが、たとえばプログラムを作っても保守する人が自分の半分くらいの技量だったらその人がわかるようにいろいろ書かないといけないかな、と思うのだが、果たしてそれが正しいのか。よくわかっていない。</p>
+
+<hr />
+
+<p>こういうまじめ過ぎる態度が生産性を落としているので、気をつけたい。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-09-10T23:06:47&#43;09:00">2015-09-10 23:06:47</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 14 ダミーデータを作成する - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-14/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-14/">
+            
+                ダミーデータを作成する
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-14T21:51:36&#43;09:00">2015-10-14</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="ダミーデータを作成する">ダミーデータを作成する</h2>
+
+<p>ダミーデータを作成する方法はいろいろある。実際のデータを借りてきてやるのが一番いいけど、それがダメなときは自動生成したり、手動である程度入力する。</p>
+
+<p>Webサイト作成だと、Sketchのプラグインでさっと用意できる。（リンク先はGithubだけどデモがある。最初に見たとき、かなり驚いた。）</p>
+
+<ul>
+<li><a href="https://github.com/timuric/Content-generator-sketch-plugin">timuric/Content-generator-sketch-plugin</a></li>
+</ul>
+
+<p>また、ダミーデータが個人情報っぽいものであれば、<a href="http://kazina.com/dummy/index.html">なんちゃって個人情報</a>あたりを使えばいい。</p>
+
+<p>だが、フォーマットが独自で内容も自分で用意しなくてはいけない場合、こういったものにすがることは難しい。今作っているものもダミーデータが必要になってきており、ダミーデータを入力して作る必要が出てきた。が、さすがに面倒なので自動生成するようにした。以下スクリプト。</p>
+
+<script src="https://gist.github.com/deprode/4b6c44ebd1fad4c40a38.js"></script>
+
+<p><code>$ php makelog.php 100</code>みたいな感じでターミナルから使う。第一引数に出力するログの件数を指定できる。</p>
+
+<p>あんまりきれいなコードじゃないけど、使い捨てるのであまり気にしてなかった。とりあえず、目的は達成した。</p>
+
+<p>それと、恥ずかしながら<code>$this-&gt;{$key}</code>みたいな動的にプロパティ指定するの始めて使ったかもしれない。まだまだ未熟だと思った。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-14T21:51:36&#43;09:00">2015-10-14 21:51:36</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

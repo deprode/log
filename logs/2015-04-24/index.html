@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 04 24 Ansibleなど - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-04-24/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-04-24/">
+            
+                Ansibleなど
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-04-24T23:22:18&#43;09:00">2015-04-24</time></p>
+    </header>
+    <section class="single_content">
+        <ul>
+<li>Ansibleなど
+
+<ul>
+<li>CasperJSも入れたいなと思ってたら、PhantomJSは2.0になってて、困る。</li>
+<li>stackoverflowによると、1.1-beta3ブランチはPhantomJS1.8以下2.0以上でexitするようになってるらしい。
+
+<ul>
+<li>手元のMac版はhomebrewで管理してるけど、前に間違って2.0にあげてしまったのでcasperjs動かない。bootstrap.jsをgistで動くように書き換えて、無保証で動かせばいいっぽい。</li>
+</ul></li>
+<li>でもgithub見ると普通に1.9ブランチはあるし、rereaseブランチに1.9.7のものがある。
+
+<ul>
+<li>と思ったら、build.shを動かさないとだめっぽので、bitbucketのビルド済みイメージ（1.9.8）をダウンロードする方向に切り替えた</li>
+</ul></li>
+<li>ビルドなしで、解凍して<code>/usr/local/bin/</code>以下に配置してみる。
+
+<ul>
+<li>get_urlだとリモートにダウンロードするけど、unarchiveがローカルにしか対応してない？
+
+<ul>
+<li>copy=noでよかった</li>
+</ul></li>
+<li>その後のリモート→リモート間のコピーするモジュールがないっぽい。
+
+<ul>
+<li>commandでmvとかcpとか使うみたい。</li>
+<li>statとregisterでファイルがあるかチェックした結果を格納して、whenで判定すればいちいちcpやmvを実行しなくていい。</li>
+</ul></li>
+<li>unarchiveでcreatesの使い方がわからなかったけど、テストで使ってたので他人に見せるコードはテスト書くの大事だなと思った。
+
+<ul>
+<li>てか、assertモジュールあるのか。</li>
+</ul></li>
+</ul></li>
+<li>CasperJSはnpmでインストールすればよかったのでは、という気分になってる。
+
+<ul>
+<li>まあ、適当なフォルダに解凍してlinkするだけなので、どうでもいいけど。</li>
+</ul></li>
+<li>nginxの設定ファイル、サイトごとに設定してるファイル違うんだけど……。
+
+<ul>
+<li>デフォルトがincludeで*.confを全部読み込んでるからだった。
+
+<ul>
+<li>apacheで見た。</li>
+</ul></li>
+</ul></li>
+<li>phpinfo出そうと思ったけど、そのまま出ることになってたけど、<code>&lt;?</code>だけだったからだった。
+
+<ul>
+<li>teratailで全く同じ質問あって笑ってしまった。
+
+<ul>
+<li><a href="https://teratail.com/questions/5773">https://teratail.com/questions/5773</a></li>
+</ul></li>
+</ul></li>
+<li>続きは明日以降。</li>
+</ul></li>
+<li>メールは使わないけど、logwatchとか通知用にPostfixインストールしないとと思ってる。
+
+<ul>
+<li>さくらVPSなら最初から使えるので何の問題もない。</li>
+<li>DigitalOceanはコミュニティにインストール方法の記事が書いてあった。</li>
+</ul></li>
+<li>花金で飯画像がアップされると同時に画像解析し、店を割り出し、急行してマシンガンを撃ち出すドローン。</li>
+<li>竹の子もらいすぎて価格高騰とか信じられないんですが。</li>
+<li>関数型ポエムで失った信頼を回復するために、秀和システムが達人プログラマーの権利を買い取るけど社内政治の末、例の人が翻訳を担当することになる悪夢</li>
+<li>「一流の女優がバラエティ番組に出ると緊張で失敗したり謙虚になったりする仕草がかわいい」という系譜を「仲間由紀恵・綾瀬はるか」ラインと私は呼んでるんですけど
+
+<ul>
+<li>やめた。</li>
+</ul></li>
+<li>ゼノブレイド、現在Lv63、65時間。
+
+<ul>
+<li>シナリオ中心に進めてるけど、サブイベントが恋しくなってくる。</li>
+</ul></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-04-24T23:22:18&#43;09:00">2015-04-24 23:22:18</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/ansible">Ansible</a></li>
+            
+                <li class="page_tags"><a href="/tags/casperjs">CasperJS</a></li>
+            
+                <li class="page_tags"><a href="/tags/%E3%82%BC%E3%83%8E%E3%83%96%E3%83%AC%E3%82%A4%E3%83%89">ゼノブレイド</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

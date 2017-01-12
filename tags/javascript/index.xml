@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Javascript on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/javascript/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>メニューを通り過ぎると、上部に固定するメニュー</title>
+      <link>http://log.deprode.net/logs/2016-09-22_17-57-58/</link>
+      <pubDate>Thu, 22 Sep 2016 17:57:58 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-09-22_17-57-58/</guid>
+      <description>
+
+&lt;p&gt;参考資料とほとんど同じなので詳細は省く。違う場所は、jQueryを使わずに実装するところ。動作確認はChrome53とFirefox48でしかしてない。スマホは非対応。&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;265&#34; data-theme-id=&#34;0&#34; data-slug-hash=&#34;gwLoNX&#34; data-default-tab=&#34;js,result&#34; data-user=&#34;deprode&#34; data-embed-version=&#34;2&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/deprode/pen/gwLoNX/&#34;&gt;gwLoNX&lt;/a&gt; by deprode (&lt;a href=&#34;http://codepen.io/deprode&#34;&gt;@deprode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;//assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;scrolltop-scrollleft&#34;&gt;scrollTop、scrollLeft&lt;/h2&gt;
+
+&lt;p&gt;scrollTopとscrollLeftはスクロール量を取得するプロパティ。このコードではそれぞれ&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-JavaScript&#34;&gt;document.documentElement.scrollTop || document.body.scrollTop
+document.documentElement.scrollLeft || document.body.scrollLeft
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;で取得してる。&lt;/p&gt;
+
+&lt;p&gt;もうちょい厳密にやる場合は、&lt;a href=&#34;http://stackoverflow.com/a/20478983&#34;&gt;&lt;code&gt;window.pageYOffset || documentElement.scrollTop || body.scrollTop || 0;&lt;/code&gt;&lt;/a&gt;でいいし、jQueryと同じにしたい場合は&lt;a href=&#34;https://github.com/jquery/jquery/blob/305f193aa57014dc7d8fa0739a3fefd47166cd44/src/offset.js#L185-L208&#34;&gt;このように実装すればいい。&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;offset&#34;&gt;offset&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Element.getBoundingClientRect&lt;/code&gt;は左上を0,0とした表示領域の座標が取得できるメソッドで、左上からの座標とスクロール量を合わせた値がoffsetになる。つまり、getBoundingClientRectとscrollTop(scrollLeft)を合わせた値がoffset。&lt;/p&gt;
+
+&lt;p&gt;getBoundingClientRectをサポートしてないブラウザはほぼ現存していないので、その辺のコードを省いた。（元のコードはgetBoundingClientRectが存在しないとjQueryでoffsetを取得しているが、jQueryを使わないコードだとoffsetを取得するためにoffsetを取得することになるので無理だし、最新のjQueryでは&lt;a href=&#34;https://github.com/jquery/jquery/blob/305f193aa57014dc7d8fa0739a3fefd47166cd44/src/offset.js#L77-L119&#34;&gt;getBoundingClientRectでoffsetを取得してる&lt;/a&gt;から、getBoundingClientRectが取得できないという想定が非標準的っぽい。）&lt;/p&gt;
+
+&lt;h2 id=&#34;addclass-removeclass&#34;&gt;addClass、removeClass&lt;/h2&gt;
+
+&lt;p&gt;Element.classListを使用しているが、IE10以上でサポートしている。なので、IE9はサポートしてない。IE9をサポートする場合は、素直にjQueryを使ったり、&lt;a href=&#34;https://github.com/eligrey/classList.js/&#34;&gt;eligrey/classList.js&lt;/a&gt;のようなpolyfillを使った方がいい。&lt;/p&gt;
+
+&lt;h2 id=&#34;その他&#34;&gt;その他&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;header&amp;gt;&lt;/code&gt;が高さ固定でメニューを内包しているので問題になってないが、そうでない場合はスクロールするとメニューを&lt;code&gt;position: fixed&lt;/code&gt;にするとずれる。そのため、同じメニューを置いてfixedと切り替えて表示するなどが必要だった。&lt;/p&gt;
+
+&lt;h2 id=&#34;参考資料&#34;&gt;参考資料&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/zaru/items/82d61ac90394885fb486&#34;&gt;CSSとJSで、スクロールして一定の場所を過ぎると、上部固定するメニューを作る - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ANTON072/items/ea5b95ae5b7f0f6186f7&#34;&gt;jQueryより速いoffset値の取得方法 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect&#34;&gt;Element.getBoundingClientRect() - Web APIs | MDN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://caniuse.com/#feat=classlist&#34;&gt;Can I use&amp;hellip; Support tables for HTML5, CSS3, etc（classlistのサポート）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>input[type=date]にPikadayを使う</title>
+      <link>http://log.deprode.net/logs/2016-09-07_17-06-40/</link>
+      <pubDate>Wed, 07 Sep 2016 17:06:40 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-09-07_17-06-40/</guid>
+      <description>
+
+&lt;h2 id=&#34;input-type-date-にpikadayを使う&#34;&gt;input[type=date]にPikadayを使う&lt;/h2&gt;
+
+&lt;p&gt;input要素にカレンダーを表示するには&lt;code&gt;type=date&lt;/code&gt;にすればよい。ただし2016年9月時点ではChromeとEdgeのみ対応しており、SafariとFirefoxとIEは対応していない。&lt;/p&gt;
+
+&lt;p&gt;以前同じものを作ったときはjQuery+jQueryUIでできた気がするのだが、脱jQueryの動きもあるので別のやり方でやってみることにした。なお、jQueryを使わないライブラリは、&lt;a href=&#34;http://www.vanillalist.com/&#34;&gt;Vanilla List&lt;/a&gt;から探すことができる。&lt;/p&gt;
+
+&lt;p&gt;今回は&lt;a href=&#34;https://github.com/dbushell/Pikaday&#34;&gt;Pikaday&lt;/a&gt;と&lt;a href=&#34;https://github.com/Modernizr/Modernizr&#34;&gt;Modernizr&lt;/a&gt;を使うことにした。なお、Pikadayはフォーマットの際に&lt;a href=&#34;http://momentjs.com/&#34;&gt;Momentjs&lt;/a&gt;が必要なようだ。&lt;/p&gt;
+
+&lt;p&gt;簡単なサンプルを用意した。貼り付けだとなぜかポジションが効かないので、&lt;a href=&#34;http://codepen.io/deprode/pen/PGqPOy&#34;&gt;Codepenで直接見てほしい。&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;input要素にフォーカスするとカレンダーが表示され、選択で&lt;code&gt;YYYY-MM-DD&lt;/code&gt;形式の文字列が入力される。すでにdateが定義されているかは、1行目の&lt;code&gt;if (!Modernizr.inputtypes.date)&lt;/code&gt;で判断している。（そのためChromeやEdgeでは標準のカレンダーが表示される。）&lt;/p&gt;
+
+&lt;p&gt;ファイル数は変わらないが、ファイルサイズが削減され多少読み込みが早くなったと思われる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dbushell/Pikaday&#34;&gt;dbushell/Pikaday: A refreshing JavaScript Datepicker — lightweight, no dependencies, modular CSS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Modernizr/Modernizr&#34;&gt;Modernizr/Modernizr: Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 02 08</title>
+      <link>http://log.deprode.net/logs/2016-02-08/</link>
+      <pubDate>Mon, 08 Feb 2016 17:50:18 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-02-08/</guid>
+      <description>
+
+&lt;h2 id=&#34;animate-cssとwow-js&#34;&gt;Animate.cssとWow.js&lt;/h2&gt;
+
+&lt;p&gt;脱jQueryしようといろいろ調べているのだが、アニメーション系を&lt;a href=&#34;http://julian.com/research/velocity/&#34;&gt;Velocity.js&lt;/a&gt;以外でやる方法を調べていた。で、表示するときに動作させるだけであれば、Animate.cssとWow.jsでよさそう。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://daneden.github.io/animate.css/&#34;&gt;Animate.css&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mynameismatthieu.com/WOW/&#34;&gt;Reveal Animations When Scrolling — WOW.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;サンプル。下にスクロールするとさらに3つ表示される。&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;268&#34; data-theme-id=&#34;0&#34; data-slug-hash=&#34;KVrPLa&#34; data-default-tab=&#34;result&#34; data-user=&#34;deprode&#34; class=&#39;codepen&#39;&gt;See the Pen &lt;a href=&#39;http://codepen.io/deprode/pen/KVrPLa/&#39;&gt;KVrPLa&lt;/a&gt; by deprode (&lt;a href=&#39;http://codepen.io/deprode&#39;&gt;@deprode&lt;/a&gt;) on &lt;a href=&#39;http://codepen.io&#39;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;//assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;スクロール位置によってアニメーションは発動するけど、スクロールを戻したときに再度開始することはできない。あと、Animate.cssのサイトではjQueryをクラスのtoggleとbinding(one)で使ってる。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;jQuery、別にWebサイトとかで使う分には全然ありだけど、モバイルでちょっと重いし、できれば使いたくない。ただjQuery抜きだと、「アニメーションのあとにコールバックで何かする処理が加わると、Promise使う」「クロスブラウザでajaxが面倒だからgithub/fetch使う」……とか、いろいろ加わると「じゃあjQueryでいいじゃん」となってしまう。しかし、それでページ内で密結合な処理を書いていくと不吉なにおいが立ちこめるので避けたい。&lt;/p&gt;
+
+&lt;p&gt;とか書いていたら、「&lt;a href=&#34;http://news.mynavi.jp/news/2016/02/02/137/&#34;&gt;Chromeがさらに増加、1月ブラウザシェア | マイナビニュース&lt;/a&gt;」という記事を見つけた。IE11の次にIE8で8%近くのシェアがあった。私はまだ、jQuery2.xすら使えないのかもしれない。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

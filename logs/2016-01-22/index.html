@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2016 01 22 TumblrにTwitterをEmbed形式で貼り付けて表示する - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-01-22/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-01-22/">
+            
+                TumblrにTwitterをEmbed形式で貼り付けて表示する
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-01-22T17:36:37&#43;09:00">2016-01-22</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="tumblrにtwitterをembed形式で貼り付けて表示する">TumblrにTwitterをEmbed形式で貼り付けて表示する</h2>
+
+<p>Twitterの「このツイートをサイトに埋め込む」で表示されたツイートがこちら。</p>
+
+<pre><code>&lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;ja&quot;&gt;
+	&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Who needs a hug today? 
+		&lt;a href=&quot;https://twitter.com/hashtag/NationalHugDay?src=hash&quot;&gt;#NationalHugDay&lt;/a&gt;&amp;#10;&amp;#10;
+		&lt;a href=&quot;https://t.co/3cFgsuUQKg&quot;&gt;https://t.co/3cFgsuUQKg&lt;/a&gt;&amp;#10;
+		&lt;a href=&quot;https://t.co/Hw1sEKdb6B&quot;&gt;https://t.co/Hw1sEKdb6B&lt;/a&gt;
+	&lt;/p&gt;&amp;mdash; Twitter (@twitter) 
+	&lt;a href=&quot;https://twitter.com/twitter/status/690247513194954752&quot;&gt;2016, 1月 21&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>これが、Tumblr(t.umblr.com)のリダイレクト機能によって、リンクがすべて書き換えられる。</p>
+
+<pre><code> &lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;ja&quot;&gt;
+ 	&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Who needs a hug today? 
+ 		&lt;a href=&quot;http://t.umblr.com/redirect?z=https%3A%2F%2Ftwitter.com%2Fhashtag%2FNationalHugDay%3Fsrc%3Dhash&amp;amp;t=NjRlNTYzNWIxNzNjMzI5ZDBjYzc2ZmI0MDBkMzZmZjk3MTlkZDgzYiwzTmxnZWJ5Qg%3D%3D&quot;&gt;#NationalHugDay&lt;/a&gt;
+ 		&lt;a href=&quot;http://t.umblr.com/redirect?z=https%3A%2F%2Ft.co%2F3cFgsuUQKg&amp;amp;t=NDg0OWZjYTk3YjYwNjc5NGFhZmIzYzhiZjVmMGMxNzZmOGFiZmFhNSwzTmxnZWJ5Qg%3D%3D&quot;&gt;https://t.co/3cFgsuUQKg&lt;/a&gt;
+ 		&lt;a href=&quot;http://t.umblr.com/redirect?z=https%3A%2F%2Ft.co%2FHw1sEKdb6B&amp;amp;t=MDExOTViOGYyMDFmYWNlOTQ0NmRkZDc5M2M5YmJlMTNkMzA2NmMzMSwzTmxnZWJ5Qg%3D%3D&quot;&gt;https://t.co/Hw1sEKdb6B&lt;/a&gt;
+ 	&lt;/p&gt;&amp;mdash; Twitter (@twitter) 
+ 	&lt;a href=&quot;http://t.umblr.com/redirect?z=https%3A%2F%2Ftwitter.com%2Ftwitter%2Fstatus%2F690247513194954752&amp;amp;t=MjNjYzEyZDc2MmQxYmYxMWI3MWFmZGFjNjQxZDgyNWJiNGI1ZDI0ZSwzTmxnZWJ5Qg%3D%3D&quot;&gt;2016, 1&amp;#26376; 21&lt;/a&gt;
+ &lt;/blockquote&gt;
+&lt;script async src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>twitterのwidgets.jsは、blockquoteの最後のaタグのIDを見て、embedを展開しているらしく、t.umblr.comに書き換えられると展開に失敗する。</p>
+
+<p>サーバサイドでリンクが書き換わっているため、フロントサイドでリダイレクト先のURLを書き換えて表示するようにすればいいはず。なので、試しに作った。</p>
+
+<p><p data-height="268" data-theme-id="0" data-slug-hash="gPoNLJ" data-default-tab="result" data-user="deprode" class='codepen'>See the Pen <a href='http://codepen.io/deprode/pen/gPoNLJ/'>gPoNLJ</a> by deprode (<a href='http://codepen.io/deprode'>@deprode</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
+
+<p>ツイートの埋め込みと動画の埋め込みはCSSのクラスが別なので、<code>.twitter-tweet</code>と<code>.twitter-video</code>を別々に処理してる。</p>
+
+<p>というわけで、attribute(href)を書き換えるだけで表示できたため、これをTumblrのテーマに貼り付けて、無事に表示できた。動画の貼り付けは一部(Momentsなど)表示されないけど、おおむね表示できるのでまあいいかということに。</p>
+
+<hr />
+
+<p>それにしても、classもidも埋め込みコードに入れずにURLからID取得して表示するTwitterも、何でもかんでもリダイレクトURLにしちゃうTumblrもヤバい。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-01-22T17:36:37&#43;09:00">2016-01-22 17:36:37</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

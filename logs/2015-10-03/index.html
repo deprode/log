@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 03 Slimでformの値を受け取る, カーボンローラーデコ - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-03/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-03/">
+            
+                Slimでformの値を受け取る, カーボンローラーデコ
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-03T00:00:00&#43;09:00">2015-10-03</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="slimでformの値を受け取る">Slimでformの値を受け取る</h2>
+
+<p>Slimでは、getParsedBodyでformの値を一括で取得できる。また、任意の値をgetParamで取得できる。まあ、Validationライブラリによっては値を一括で渡してやる、というものもあるので、適切な方を使えばいいと思う。</p>
+
+<ul>
+<li><a href="https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Request.php#L920-L959">Slim getParsedBody</a></li>
+<li><a href="https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Request.php#L1023-L1047">Slim getParam</a></li>
+</ul>
+
+<pre><code>$input = $request-&gt;getParsedBody();
+$impression = $input['impression'];
+// または
+$impression = $request-&gt;getParam('impression');
+</code></pre>
+
+<h2 id="splatoon">Splatoon</h2>
+
+<p>カーボンローラーデコが新しくブキとして使えるようになった。</p>
+
+<p><blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">明日10月3日午前11時、新しいブキ「カーボンローラーデコ」が追加される。&#10;メインウェポンの性能はオリジナルと変わらずだが、サブとスペシャルの組み合わせ「チェイスボム」「ボムラッシュ」が特徴的なブキだ。&#10;スペシャル発動時は圧巻だぞ。 <a href="http://t.co/ROgfnq9dfo">pic.twitter.com/ROgfnq9dfo</a></p>&mdash; Splatoon（スプラトゥーン） (@SplatoonJP) <a href="https://twitter.com/SplatoonJP/status/649870992693587968">2015, 10月 2</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>メインはカーボンローラーと同じなのだが、サブがチェイスボムになったことで、直線を高速に移動することができる。そのため、直線で待ち伏せする相手に攻撃が届くようになった。</p>
+
+<p>また、チェイスボムラッシュが追加されたことで、障害物のない直線での制圧力（前線押し上げ）はローラーで一番になったと思う。主に、アロワナモールやヒラメが丘団地で役立つ。</p>
+
+<p>というか、単純にインクの80%を使うチェイスボムをボムラッシュで使えるのは楽しいので、使っていて面白い。</p>
+
+<p>反面、クイックボムがなくなったことで、高い壁を塗って登ることや高い場所にいる敵を攻撃する手段がなくなった。そのため、高い位置を相手に占領された場合は、味方の支援がないと手も足も出ない。</p>
+
+<p>何にしても、よりピーキーなブキになったので使い手は限られるかもしれない。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-03T00:00:00&#43;09:00">2015-10-03 00:00:00</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/slim">Slim</a></li>
+            
+                <li class="page_tags"><a href="/tags/splatoon">Splatoon</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

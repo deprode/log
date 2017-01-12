@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 04 08 ドットインストールのAnsibleやった - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-04-08/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-04-08/">
+            
+                ドットインストールのAnsibleやった
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-04-08T22:05:50&#43;09:00">2015-04-08</time></p>
+    </header>
+    <section class="single_content">
+        <ul>
+<li>ドットインストールのAnsibleやった 参考:<a href="http://dotinstall.com/lessons/basic_ansible/">ドットインストール</a>
+
+<ol>
+<li>Vagrant 立ち上げ
+
+<ol>
+<li><a href="https://vagrantcloud.com/">VagrantCloud</a>を使う</li>
+<li>vagrant initでVagrantFile作る</li>
+<li>VagrantFileを編集（box,hostname,networkを設定）</li>
+<li>vagrant up</li>
+</ol></li>
+<li>hostを設定
+
+<ol>
+<li>vagrant ssh host</li>
+<li>epelをインストール（epel-release-6-8.noarch.rpm）</li>
+<li>ansibleをyumでインストール</li>
+<li>.ssh/configを設定しPermissionを600にする（webとdbに使う）</li>
+<li>ssh-keygenで公開鍵を作成</li>
+<li>ssh-copy-idでwebとdbにidをコピー
+
+<ol>
+<li>参考:<a href="http://www.unixuser.org/~euske/doc/openssh/jman/">OpenSSH 日本語マニュアルページ</a></li>
+<li>参考:<a href="http://qiita.com/tag1216/items/5d06bad7468f731f590e">インフラエンジニアじゃなくても押さえておきたいSSHの基礎知識 - Qiita</a></li>
+</ol></li>
+</ol></li>
+<li>Ansibleの設定
+
+<ol>
+<li>Inventory ファイル（hosts）を作成
+
+<ol>
+<li><a href="http://docs.ansible.com/intro_inventory.html">参考</a></li>
+</ol></li>
+<li>Inventoryが正しいか、pingを打って確認</li>
+<li>デフォルトのInventoryファイルを設定
+
+<ol>
+<li><a href="http://docs.ansible.com/intro_configuration.html#inventory">参考</a></li>
+</ol></li>
+</ol></li>
+<li>playbookの作成
+
+<ol>
+<li>書き上げる
+
+<ol>
+<li>hosts,sudo,tasksなど、<a href="http://docs.ansible.com/playbooks_intro.html#basics">公式ドキュメント</a>見ながら</li>
+<li>変数を使う<a href="http://docs.ansible.com/playbooks_variables.html">var</a></li>
+<li>ユーザ入力を変数にする<a href="https://docs.ansible.com/playbooks_prompts.html">vars_prompt</a></li>
+<li><a href="http://docs.ansible.com/yum_module.html">yum Module</a>とかaptでインストール</li>
+<li><a href="http://docs.ansible.com/service_module.html">service Module</a>で状態を設定</li>
+<li><a href="http://docs.ansible.com/file_module.html">file Module</a>でファイルownerやmodeを変更(chmodやchown,touchなど)</li>
+<li><a href="http://docs.ansible.com/copy_module.html">copy Module</a>でファイルをコピーする()</li>
+<li>with_itemsで複数のitemを指定する（その他のLoop処理: <a href="http://docs.ansible.com/playbooks_loops.html">Loops</a>）
+
+<ul>
+<li>with_random_choiceってどんな需要があって作られたんだろ……</li>
+</ul></li>
+<li>notifyとhandlerで、changedの時だけ最後に実行する　<a href="http://docs.ansible.com/playbooks_intro.html#handlers-running-operations-on-change">参考</a></li>
+<li>Database関連は専用のModuleがあるので、そちらを使う。</li>
+</ol></li>
+<li><code>--syntax-check</code>オプションで文法チェック</li>
+<li><code>--check</code>で実行した場合のテスト
+
+<ol>
+<li><a href="http://docs.ansible.com/playbooks_checkmode.html">参考</a></li>
+</ol></li>
+<li><code>ansible-playbook playbook.yml</code>とかで実行</li>
+</ol></li>
+</ol></li>
+<li>感想
+
+<ul>
+<li>あとは、whenとか、エラーハンドリングとか、Roleで切り分けるのとか、ファイルからvarsをincludeとか、実際に使ったときのはまりポイントとかがわからん。
+
+<ul>
+<li>ググったら出てきそうだし、前半はマニュアルにも書いてあるからそれで。</li>
+</ul></li>
+<li>WindowsでAnsibleサポートしてないからhost用にcentosのvm作ってそこから操作してたのか。納得した。
+
+<ul>
+<li>Windowsをサポートって、Windowsサーバをセットアップできるよってことか。</li>
+</ul></li>
+</ul></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-04-08T22:05:50&#43;09:00">2015-04-08 22:05:50</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/dotinstall">dotinstall</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

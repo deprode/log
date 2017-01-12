@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Node on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/node/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Wed, 27 May 2015 20:45:09 JST</updated>
+    
+    <item>
+      <title>2015 05 27</title>
+      <link>http://log.deprode.net/logs/2015-05-27/</link>
+      <pubDate>Wed, 27 May 2015 20:45:09 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-27/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;恐怖駆動開発
+
+&lt;ul&gt;
+&lt;li&gt;モチベーションを何で保つのか。ごほうび、向上心、情熱、恐怖、絶望、怒り、物語を読むといろいろなモデルがある。&lt;/li&gt;
+&lt;li&gt;恐怖はもっとも原始的な感情だ。それ故に、危険にあったときと同様に体が臨戦態勢に入る。集中力が増し、活動的になる。&lt;/li&gt;
+&lt;li&gt;一方で、長期間恐怖にさらされることを、人体は想定していない。ストレスが長期間かかれば、それだけ体をむしばんでいく。&lt;/li&gt;
+&lt;li&gt;だから、ここぞというとき以外は恐怖で人を縛ってはいけない。いつ怒られるかわからない状況が常に支配していれば、ここぞというときに力が発揮できなくなる。&lt;/li&gt;
+&lt;li&gt;そのため、恐怖以外の感情を大切にすることだ。外発的であろうと内発的であろうと、種火を消さぬように、無理せずにやっていくことが重要だ。&lt;/li&gt;
+&lt;li&gt;あなたが他人のジョークを見抜けないように、他人もまた、あなたの傷ついた心を見抜くことはできないのだ。気にしないことができないのなら、気になったことを紙に書いて破り捨てよう。&lt;/li&gt;
+&lt;li&gt;最近、見放される恐怖からいろいろなことをやっていたので、自戒を込めて書いた。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Node.jsの例外処理
+
+&lt;ul&gt;
+&lt;li&gt;普通に考えれば、throwしたものをtry-catchで処理して終わりなんだけど、非同期処理（setTimeout）が入ると、非同期処理内部でthrowしたときに普通に処理すると例外をとらえられなくて怒られる。&lt;/li&gt;
+&lt;li&gt;今回は、例外（というかエラー処理）を非同期処理内部で処理できたので、それでよしとした。&lt;/li&gt;
+&lt;li&gt;本来は、Domainを使うみたい。でも、よくわかってない。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://nodejs.org/api/domain.html&#34;&gt;Domain Node.js v0.12.4 Manual &amp;amp; Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Tumblr_bot
+
+&lt;ul&gt;
+&lt;li&gt;作った。とりあえず、テスト用で6時間ごとcronで呼び出してる。&lt;/li&gt;
+&lt;li&gt;Tumblrにある、Twitterを引用している投稿を収集。収集したものの中から重複したものをTwitterでRetweetする仕組み。&lt;/li&gt;
+&lt;li&gt;ちょっと試したけど、もっと多くの人から収集した方がよさそう。
+
+&lt;ul&gt;
+&lt;li&gt;ここでcineraria氏のデータが役に立つ。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cineraria.tumblr.com/post/25754147910/tumblr-reblog&#34;&gt;cineraria, tumblrアカウントのクラスタ分けをしてみました。クラスタ分けの方法は、誰が誰からReblogしたか&amp;hellip;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;扇風機出した。暑すぎるでしょう。
+
+&lt;ul&gt;
+&lt;li&gt;インド45度だって。信じられない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

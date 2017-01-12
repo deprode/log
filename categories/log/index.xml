@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Log on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/categories/log/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>DigitalOceanからHerokuとS3に移行した</title>
+      <link>http://log.deprode.net/logs/2017-01-12_23-53-08/</link>
+      <pubDate>Thu, 12 Jan 2017 23:53:08 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2017-01-12_23-53-08/</guid>
+      <description>&lt;p&gt;さくらのレンタルサーバ→さくらのVPS→DigitalOceanの順に移行してきた。レンタルサーバでは自由にcronを使うなどの自由を求めてVPSに移行した。DigitalOceanへは簡単にCPUや容量を増やせる手軽さを求めて移行した。&lt;/p&gt;
+
+&lt;p&gt;Ansibleを学び、DigitalOceanのセットアップを自動で行った私だったが、度重なる脆弱性の対応に不安になり、管理することが重荷になっていた。GHOST、Heartbleed、DROWN、POODLEなどに対策しても、次々出てくる脆弱性にこのまま対応できるのか、忙しくてもパッチを当てられるのかが不安だった。果たして今後も素早く対応できるのかわからない。なら少しコストがかさんでも他人に任せた方がいいだろうと考えたのだった。&lt;/p&gt;
+
+&lt;p&gt;レンタルサーバに戻ることを真っ先に考えた。試算すると、レンタルサーバも悪くはなかった。年5000円でいいのだから。しかし制約が多すぎるため、PHPを動かすのであれば別のところがいいだろう。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;であれば、やはりPaaSを使うのが得策だろうと思った。いろいろ調べた結果、Herokuなら楽にプログラムを走らせられそうだった。PHPも対応しており、他の言語も問題なさそうだったので少しずつプログラムを移行していった。全てのプログラムを移行し終えたとき、静的ウェブサイトだけが残った。&lt;/p&gt;
+
+&lt;p&gt;あまり気乗りではなかったが、AWSのS3を使うことにした。気乗りでなかった理由は、リージョンの違うRDSが表示されず、知らない間に課金されていると勘違いしてアカウントごと停止していたから。忘れていたい黒歴史である。何年も前のことだったのだが、AWSを停止したままでは使えないので、サポートにメールをしてAWSのアカウントを再開した。&lt;/p&gt;
+
+&lt;p&gt;それから2FAの設定やIAMの作成、Billing Alertの設定などセキュリティ対策を行い、ようやくS3でウェブサイトを表示できたのだった。最終的にはRoute53とCloudFront、SES、AWS ACMを使い、独自ドメインとHTTPS対応も行った。なお、HTTPS対応は2週間くらい放置していたため、httpsページはエラー表示のまま放置されており、大変申し訳なかった。&lt;/p&gt;
+
+&lt;p&gt;何はともあれ、Heroku+S3で管理しなくてもいい状態になり、ストレスフリーな環境へ無事に移行したのだった。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;今後移行するとしたらDocker swarm&amp;amp;AWS Lambdaだと思う。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;ただし1枚PHPをcronで毎時動かしたい程度であれば、レンタルサーバでいい。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;移行したけど、DigitalOceanはSnapshot（すぐ復元できるバックアップ）を使用しているので月10円くらいかかってる。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>メニューを通り過ぎると、上部に固定するメニュー</title>
+      <link>http://log.deprode.net/logs/2016-09-22_17-57-58/</link>
+      <pubDate>Thu, 22 Sep 2016 17:57:58 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-09-22_17-57-58/</guid>
+      <description>
+
+&lt;p&gt;参考資料とほとんど同じなので詳細は省く。違う場所は、jQueryを使わずに実装するところ。動作確認はChrome53とFirefox48でしかしてない。スマホは非対応。&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;265&#34; data-theme-id=&#34;0&#34; data-slug-hash=&#34;gwLoNX&#34; data-default-tab=&#34;js,result&#34; data-user=&#34;deprode&#34; data-embed-version=&#34;2&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/deprode/pen/gwLoNX/&#34;&gt;gwLoNX&lt;/a&gt; by deprode (&lt;a href=&#34;http://codepen.io/deprode&#34;&gt;@deprode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;//assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;scrolltop-scrollleft&#34;&gt;scrollTop、scrollLeft&lt;/h2&gt;
+
+&lt;p&gt;scrollTopとscrollLeftはスクロール量を取得するプロパティ。このコードではそれぞれ&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-JavaScript&#34;&gt;document.documentElement.scrollTop || document.body.scrollTop
+document.documentElement.scrollLeft || document.body.scrollLeft
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;で取得してる。&lt;/p&gt;
+
+&lt;p&gt;もうちょい厳密にやる場合は、&lt;a href=&#34;http://stackoverflow.com/a/20478983&#34;&gt;&lt;code&gt;window.pageYOffset || documentElement.scrollTop || body.scrollTop || 0;&lt;/code&gt;&lt;/a&gt;でいいし、jQueryと同じにしたい場合は&lt;a href=&#34;https://github.com/jquery/jquery/blob/305f193aa57014dc7d8fa0739a3fefd47166cd44/src/offset.js#L185-L208&#34;&gt;このように実装すればいい。&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;offset&#34;&gt;offset&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Element.getBoundingClientRect&lt;/code&gt;は左上を0,0とした表示領域の座標が取得できるメソッドで、左上からの座標とスクロール量を合わせた値がoffsetになる。つまり、getBoundingClientRectとscrollTop(scrollLeft)を合わせた値がoffset。&lt;/p&gt;
+
+&lt;p&gt;getBoundingClientRectをサポートしてないブラウザはほぼ現存していないので、その辺のコードを省いた。（元のコードはgetBoundingClientRectが存在しないとjQueryでoffsetを取得しているが、jQueryを使わないコードだとoffsetを取得するためにoffsetを取得することになるので無理だし、最新のjQueryでは&lt;a href=&#34;https://github.com/jquery/jquery/blob/305f193aa57014dc7d8fa0739a3fefd47166cd44/src/offset.js#L77-L119&#34;&gt;getBoundingClientRectでoffsetを取得してる&lt;/a&gt;から、getBoundingClientRectが取得できないという想定が非標準的っぽい。）&lt;/p&gt;
+
+&lt;h2 id=&#34;addclass-removeclass&#34;&gt;addClass、removeClass&lt;/h2&gt;
+
+&lt;p&gt;Element.classListを使用しているが、IE10以上でサポートしている。なので、IE9はサポートしてない。IE9をサポートする場合は、素直にjQueryを使ったり、&lt;a href=&#34;https://github.com/eligrey/classList.js/&#34;&gt;eligrey/classList.js&lt;/a&gt;のようなpolyfillを使った方がいい。&lt;/p&gt;
+
+&lt;h2 id=&#34;その他&#34;&gt;その他&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;header&amp;gt;&lt;/code&gt;が高さ固定でメニューを内包しているので問題になってないが、そうでない場合はスクロールするとメニューを&lt;code&gt;position: fixed&lt;/code&gt;にするとずれる。そのため、同じメニューを置いてfixedと切り替えて表示するなどが必要だった。&lt;/p&gt;
+
+&lt;h2 id=&#34;参考資料&#34;&gt;参考資料&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/zaru/items/82d61ac90394885fb486&#34;&gt;CSSとJSで、スクロールして一定の場所を過ぎると、上部固定するメニューを作る - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ANTON072/items/ea5b95ae5b7f0f6186f7&#34;&gt;jQueryより速いoffset値の取得方法 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect&#34;&gt;Element.getBoundingClientRect() - Web APIs | MDN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://caniuse.com/#feat=classlist&#34;&gt;Can I use&amp;hellip; Support tables for HTML5, CSS3, etc（classlistのサポート）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>input[type=date]にPikadayを使う</title>
+      <link>http://log.deprode.net/logs/2016-09-07_17-06-40/</link>
+      <pubDate>Wed, 07 Sep 2016 17:06:40 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-09-07_17-06-40/</guid>
+      <description>
+
+&lt;h2 id=&#34;input-type-date-にpikadayを使う&#34;&gt;input[type=date]にPikadayを使う&lt;/h2&gt;
+
+&lt;p&gt;input要素にカレンダーを表示するには&lt;code&gt;type=date&lt;/code&gt;にすればよい。ただし2016年9月時点ではChromeとEdgeのみ対応しており、SafariとFirefoxとIEは対応していない。&lt;/p&gt;
+
+&lt;p&gt;以前同じものを作ったときはjQuery+jQueryUIでできた気がするのだが、脱jQueryの動きもあるので別のやり方でやってみることにした。なお、jQueryを使わないライブラリは、&lt;a href=&#34;http://www.vanillalist.com/&#34;&gt;Vanilla List&lt;/a&gt;から探すことができる。&lt;/p&gt;
+
+&lt;p&gt;今回は&lt;a href=&#34;https://github.com/dbushell/Pikaday&#34;&gt;Pikaday&lt;/a&gt;と&lt;a href=&#34;https://github.com/Modernizr/Modernizr&#34;&gt;Modernizr&lt;/a&gt;を使うことにした。なお、Pikadayはフォーマットの際に&lt;a href=&#34;http://momentjs.com/&#34;&gt;Momentjs&lt;/a&gt;が必要なようだ。&lt;/p&gt;
+
+&lt;p&gt;簡単なサンプルを用意した。貼り付けだとなぜかポジションが効かないので、&lt;a href=&#34;http://codepen.io/deprode/pen/PGqPOy&#34;&gt;Codepenで直接見てほしい。&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;input要素にフォーカスするとカレンダーが表示され、選択で&lt;code&gt;YYYY-MM-DD&lt;/code&gt;形式の文字列が入力される。すでにdateが定義されているかは、1行目の&lt;code&gt;if (!Modernizr.inputtypes.date)&lt;/code&gt;で判断している。（そのためChromeやEdgeでは標準のカレンダーが表示される。）&lt;/p&gt;
+
+&lt;p&gt;ファイル数は変わらないが、ファイルサイズが削減され多少読み込みが早くなったと思われる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/dbushell/Pikaday&#34;&gt;dbushell/Pikaday: A refreshing JavaScript Datepicker — lightweight, no dependencies, modular CSS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Modernizr/Modernizr&#34;&gt;Modernizr/Modernizr: Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Failed to start the session because headers have already been sent by &#34;&#34; at line 0</title>
+      <link>http://log.deprode.net/logs/2016-09-02_20-24-04/</link>
+      <pubDate>Fri, 02 Sep 2016 20:24:04 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-09-02_20-24-04/</guid>
+      <description>
+
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+
+&lt;p&gt;PHP 5.6.22
+Symfony 2.8
+FOSRestBundle 2.0&lt;/p&gt;
+
+&lt;h2 id=&#34;エラー&#34;&gt;エラー&lt;/h2&gt;
+
+&lt;p&gt;クライアント側からPOSTでSymfonyのAPIにデータを送り、その後データを更新して更新したデータをJSONで返すプログラムを作っていたところ、次のようなエラーが出た。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Uncaught PHP Exception RuntimeException: Failed to start the session because headers have already been sent by &amp;quot;&amp;quot; at line 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;しばらくSymfonyのエラーログを見たり、FOSRestBundleのエラーを追っていたが、全く情報がつかめなかった。しばらくして &lt;a href=&#34;https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo&#34;&gt;Advanced REST client&lt;/a&gt; でデータを送ったところ、以下の出力が得られた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
+&amp;lt;b&amp;gt;Deprecated&amp;lt;/b&amp;gt;:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set &#39;always_populate_raw_post_data&#39; to &#39;-1&#39; in php.ini and use the php://input stream instead. in &amp;lt;b&amp;gt;Unknown&amp;lt;/b&amp;gt; on line &amp;lt;b&amp;gt;0&amp;lt;/b&amp;gt;&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;b&amp;gt;Warning&amp;lt;/b&amp;gt;:  Cannot modify header information - headers already sent in &amp;lt;b&amp;gt;Unknown&amp;lt;/b&amp;gt; on line &amp;lt;b&amp;gt;0&amp;lt;/b&amp;gt;&amp;lt;br /&amp;gt;
+{&amp;quot;code&amp;quot;:500,&amp;quot;message&amp;quot;:&amp;quot;Failed to start the session because headers have already been sent by \&amp;quot;\&amp;quot; at line 0.&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;クライアント側ではこのようなエラーが取得できていた。（フロント側はPromiseを使っていたので&lt;code&gt;response.json()&lt;/code&gt;でパースエラーになってもPHPでエラー出てるから同じでしょ？と思っていたのが間違いだったようだ。）&lt;/p&gt;
+
+&lt;p&gt;エラーの内容は、「&lt;code&gt;always_populate_raw_post_data&lt;/code&gt;は非推奨だから-1にしろ」とそれに付随するものだったようだ。これはPHPのバグらしく、&lt;a href=&#34;https://bugs.php.net/bug.php?id=67991&#34;&gt;PHP :: Doc Bug #67991 :: always_populate_raw_post_data deprecation warning buggy&lt;/a&gt;で報告されている。&lt;/p&gt;
+
+&lt;p&gt;そして、このエラーがSymfonyのheaderが出力される前に出ていたため、Symfony側のエラーで「sessionの開始前にレンダリングするな」となっていたのではないかと思われる。&lt;/p&gt;
+
+&lt;p&gt;このあと、php.iniの&lt;code&gt;always_populate_raw_post_data&lt;/code&gt;に-1を設定したらエラーが解決した。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>logからblogへ大部分の記事を移した</title>
+      <link>http://log.deprode.net/logs/2016-04-26_17-55-23/</link>
+      <pubDate>Tue, 26 Apr 2016 17:55:23 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-26_17-55-23/</guid>
+      <description>
+
+&lt;h2 id=&#34;logからblogへ大部分の記事を移した&#34;&gt;logからblogへ大部分の記事を移した&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://log.deprode.net/logs/2016-04-01/&#34;&gt;2016 04 01 logを書き始めて1年が経過した - log&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;このLogは、学んだことも、ゲームの記録も、雑感も「日別で毎日」書いていくスタイルなので完全に違っているのだが、TILに寄せた方がいいかな、と思うことがかなりある。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;以前の日記でこう書いていたのだが、技術的な記事と読書感想以外のほとんどの記事を&lt;a href=&#34;http://blog.deprode.net/&#34;&gt;blog.deprode.net&lt;/a&gt;へ移した。また7月17日以前のテキストは箇条書きのリストが大部分を占めていたので、一部のゲームの感想はブログに移し、一部の記事と技術的なメモのみ残した。&lt;/p&gt;
+
+&lt;p&gt;なお、リダイレクト処理を行うことができない&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;ため、削除された記事への被リンクは修正していただけると助かる。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;以前と同じように毎日更新ができなくなっている以上、毎日書くこと（つまりGithubに芝を生やすこと）を前提とした運用はやめて、今後は書き残しておきたい文章を置く場所として利用する。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;というか、記事のURLが変わったため一つ一つリダイレクト処理をする必要があり、非常に面倒。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>「新しい文章力の教室」読み終えた</title>
+      <link>http://log.deprode.net/logs/2016-04-22_22-27-04/</link>
+      <pubDate>Fri, 22 Apr 2016 22:27:04 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-22_22-27-04/</guid>
+      <description>
+
+&lt;h2 id=&#34;新しい文章力の教室-読み終えた&#34;&gt;「新しい文章力の教室」読み終えた&lt;/h2&gt;
+
+&lt;p&gt;ある日Webサイトに載せる文章をもらったのだが、句読点が一切なかった。こちらで推敲しようにも推敲する技術がない。ならば習得するしかない。そういった経緯で、新しい文章力の教室を買ったのだった。&lt;/p&gt;
+
+&lt;p&gt;本書では書ける人が自然とやっているテクニックが77項目にわたって書いてある。個人的に自信がなかった&amp;rdquo;文頭一語目の読点&amp;rdquo;や、&amp;rdquo;といった&amp;rdquo;・&amp;rdquo;など&amp;rdquo;という濁し言葉をどう扱うのかがわかった。&lt;/p&gt;
+
+&lt;p&gt;おそらく文章を日常的に書いている人であれば、半分くらいの項目は自然と実行しているだろう。しかし全てを実行できている人は少ない。私も係り受けに関連する項目は全くわかっていなかったし、感想文における感想の引き出し方も知らなかった。この本を読んだことで他人の文章と差がつく、あるいは他人と同じくらいの文章が書けるようになる。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;本書は文章を&amp;rdquo;事実&amp;rdquo;、&amp;rdquo;ロジック&amp;rdquo;、&amp;rdquo;言葉づかい&amp;rdquo;の3つのレイヤーにわけて考えている。しかしテクニックの半分以上は言葉づかいを磨くものなので、ロジックを考えたい人には「数学文章読本」や「考える技術・書く技術」を推しておく。&lt;/p&gt;
+
+&lt;p&gt;なおWebサイトの文章はうまく直った……といいたいところだが、本書が届いたときにはすでにレイアウトが決まっており、ほとんど直せない状態だった。次からちゃんと直す。&lt;/p&gt;
+
+&lt;p&gt;公式： &lt;a href=&#34;http://book.impress.co.jp/books/1114101132&#34;&gt;新しい文章力の教室 苦手を得意に変えるナタリー式トレーニング（できるビジネス） - インプレスブックス&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;（かもしれない。）
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>「オブジェクト指向JavaScriptの原則」を読み終えた</title>
+      <link>http://log.deprode.net/logs/2016-04-15_19-57-19/</link>
+      <pubDate>Fri, 15 Apr 2016 19:57:19 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-15_19-57-19/</guid>
+      <description>
+
+&lt;h2 id=&#34;オブジェクト指向javascriptの原則-を読み終えた&#34;&gt;「オブジェクト指向JavaScriptの原則」を読み終えた&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;本書はJavaScriptが持つオブジェクト指向的な言語特性や、その特性を強力にサポートするECMAScript 5の機能を紹介し、それらの特性や機能を活かすプログラミングの方法、考え方、パターンについて、深くそして簡潔に解説する書籍です。&lt;br /&gt;
+&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873116815/&#34;&gt;O&amp;rsquo;Reilly Japan - オブジェクト指向JavaScriptの原則&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ECMAScript2015（ES2015）を使っていろいろ使用と思ったのだが、その前にECMAScript 5（ES5）をよく知らなかったので学ぼうと思った。追加されたのはいくつかあるが、主に4つ。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;オブジェクトやオブジェクト関連の新たなAPI&lt;/li&gt;
+&lt;li&gt;配列操作メソッド&lt;/li&gt;
+&lt;li&gt;Strictモード&lt;/li&gt;
+&lt;li&gt;JSONサポート&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;このうち、オブジェクト関連がよくわからなかったので本書を購入した。ES5のオブジェクトの仕組みや、コンストラクタ、プロトタイプ、継承などを学ぶことができた。が、構文が複雑なので半年経ったらメンテ不可能になりそう。結果的にJavaScriptはオブジェクト指向向いてないのでは、という気分になった。&lt;/p&gt;
+
+&lt;p&gt;だが、ES2015にはclass構文が追加されている。これを使えば覚えるのが面倒で複雑な宣言を書かなくてもいい、というメリットはあるのだが、実際にclassからbabelを使ったあとのコードを見たり、ES2015以前の古いコードを見たときに何をやっているかわかるので、本書に書いてあることは有益だった。&lt;/p&gt;
+
+&lt;p&gt;ちなみに、&lt;a href=&#34;http://es6-features.org/&#34;&gt;es6-features.org&lt;/a&gt;というサイトでは、ES5と書き方を比較できるのだが、&lt;a href=&#34;http://es6-features.org/#ClassDefinition&#34;&gt;classも比較できる&lt;/a&gt;ため、どれくらい複雑な書き方が単純化されたか見てとれる。&lt;/p&gt;
+
+&lt;p&gt;本書は2014年の本だが、2年でここまで変わるJavaScript界隈ついてくのが大変そうだと感じた。書き方は楽になっているのでいいが、いろいろできるようになると選択が難しい。&lt;/p&gt;
+
+&lt;p&gt;余談だが、&lt;a href=&#34;http://node.green/&#34;&gt;node.green&lt;/a&gt;でES2015がnodeでサポートされているか見ることができるのだが、v5.10.1まであげて&amp;ndash;es_stagingフラグをつければclass構文が使えるし、babelを使う手もある。&lt;/p&gt;
+
+&lt;p&gt;公式：&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873116815/&#34;&gt;O&amp;rsquo;Reilly Japan - オブジェクト指向JavaScriptの原則&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Noto sansをやめ、通常のフォント指定に変更した</title>
+      <link>http://log.deprode.net/logs/2016-04-15_11-44-45/</link>
+      <pubDate>Fri, 15 Apr 2016 11:44:45 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-15_11-44-45/</guid>
+      <description>
+
+&lt;h2 id=&#34;noto-sansをやめ-通常のフォント指定に変更した&#34;&gt;Noto sansをやめ、通常のフォント指定に変更した&lt;/h2&gt;
+
+&lt;p&gt;このlogに指定してあるフォントを変更した。&lt;a href=&#34;https://www.google.com/get/noto/#sans-lgc&#34;&gt;Google Noto Fonts&lt;/a&gt;のNoto sansを使っていたのだが、Webフォントをやめ、以下のものに変更した。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;font-family: &#39;Hiragino Kaku Gothic Pro&#39;, &#39;ヒラギノ角ゴ Pro W3&#39;, &#39;メイリオ&#39;, Meiryo, sans-serif;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;スマートフォンでは読み込みが遅くなるためすでにWebフォントをやめていたのだが、sans-serifのみの指定だった。こちらも同様のフォント指定にした。&lt;/p&gt;
+
+&lt;p&gt;変更した理由は、見づらいから。FOUT&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;が発生するためFOUT対策としてフォントのローディング完了まで文字を非表示にしているのだが、ユーザはフォントの読み込み完了まで何も表示されていないWebサイトを見ることになる。その時間が最近長く感じたのでやめた。また、ほぼテキストだけのサイトなので、わざわざ重いWebフォントを使うメリットは薄い。&lt;/p&gt;
+
+&lt;p&gt;sans-serifだけでもいいと思ったのだが、Win7のIE11でMSPゴシックが表示されるらしいのでメイリオを指定している。しかしそうなると、Macでもメイリオが表示される人もいると思い、ヒラギノを指定した。&lt;/p&gt;
+
+&lt;p&gt;印象がすっきりしたので、私の心もすっきりした。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;全然関係ないが、CSS（normalize.css, skeleton.css）をcdnjsを使ったものに統一した。トップページとそれ以外で違う指定がしてあり、つまりその、バグだったので修正した。おそらく1年近く放置してあったので、恥ずかしく思う。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;Flash of Unstyled Textの略で、フォントの読み込み完了まで別のフォントが使われる現象。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Let’s Encrypt 設定した</title>
+      <link>http://log.deprode.net/logs/2016-04-14_21-49-45/</link>
+      <pubDate>Thu, 14 Apr 2016 21:49:45 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-14_21-49-45/</guid>
+      <description>
+
+&lt;h2 id=&#34;let-s-encrypt-設定した&#34;&gt;Let’s Encrypt 設定した&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://letsencrypt.org/2016/04/12/leaving-beta-new-sponsors.html&#34;&gt;Leaving Beta, New Sponsors - Let&amp;rsquo;s Encrypt - Free SSL/TLS Certificates&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s EncryptからBetaがとれたので&lt;a href=&#34;https://deprode.net&#34;&gt;deprode.net&lt;/a&gt;をhttpsに対応した。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# インストール
+git clone https://github.com/letsencrypt/letsencrypt
+cd letsencrypt
+
+# ヘルプの参照（パッケージが不足している場合はインストールされる）
+./letsencrypt-auto --help all
+
+# 証明書の生成
+./letsencrypt-auto certonly --webroot -w /var/www/html/deprode.net/ -d deprode.net
+
+# Deffie-Hellman鍵の生成（生成していない場合）
+sudo openssl dhparam -out /etc/ssl/private/dhparam.pem 2048
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;証明書が生成できたので、nginxの設定をして再起動し、httpsで表示できた。その後テストを行ったが、この時点ではCだった。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.ssllabs.com/ssltest/&#34;&gt;SSL Server Test (Powered by Qualys SSL Labs)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;そのため、MozillaによるWebサーバのSSL設定ジェネレータを参考にして設定し直した。（DH鍵はこの時点で生成した。）&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://mozilla.github.io/server-side-tls/ssl-config-generator/&#34;&gt;Generate Mozilla Security Recommended Web Server Configuration Files&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;その後再びテストを行い、A+を確認した。また、crontabで証明書の自動更新を設定した。（&lt;code&gt;./letsencrypt-auto renew --force-renew &amp;amp;&amp;amp; sudo service nginx restart&lt;/code&gt;で証明書が更新できるので、crontab用にパスなどを変更し、cronを設定した。）&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;追記：2016-05-12&lt;/p&gt;
+
+&lt;p&gt;ユーザのcronだとsudoで失敗するので、&lt;code&gt;/etc/cron.daily/&lt;/code&gt;に以下のスクリプトを登録した。（手抜きなので、公式の&lt;a href=&#34;https://letsencrypt.org/getting-started/&#34;&gt;Getting Started &lt;/a&gt;にあるスクリプトを参考にした方がよい。）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+
+cd /home/deprode/letsencrypt
+
+./letsencrypt-auto renew --webroot -w /var/www/nginx/deprode.net/
+
+service nginx reload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;スクリプトをchmodで実行可能にすることを忘れずに。&lt;/p&gt;
+
+&lt;p&gt;追記：2016-5-18&lt;/p&gt;
+
+&lt;p&gt;実行時に&amp;ndash;force-renewすると強制的にアップデートするはずだが、アップデート回数の上限に達したとエラーが出たのでスクリプトから外した。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;以下のサイトを参考にした。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://letsencrypt.org/getting-started/&#34;&gt;Getting Started - Let&amp;rsquo;s Encrypt - Free SSL/TLS Certificates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://knowledge.sakura.ad.jp/tech/3936/&#34;&gt;すべてのWebサイトの暗号化を目指すLet’s Encryptを試す - さくらのナレッジ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ww24/items/9fa19594b4e3a8eb9b6f&#34;&gt;Let&amp;rsquo;s Encrypt で手軽に HTTPS サーバを設定する - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.apar.jp/linux/3619/&#34;&gt;Let’s Encrypt サーバー証明書の取得と自動更新設定メモ | あぱーブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.teradas.net/archives/13222/&#34;&gt;特定ユーザー・プログラムにのみcronでのsudoをパスワード無しで許可する設定 | TeraDas－テラダス&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PHPをアップデートするだけのplaybookを書いた</title>
+      <link>http://log.deprode.net/logs/2016-04-13_18-14-52/</link>
+      <pubDate>Wed, 13 Apr 2016 18:14:52 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-13_18-14-52/</guid>
+      <description>
+
+&lt;h2 id=&#34;phpをアップデートするだけのplaybookを書いた&#34;&gt;PHPをアップデートするだけのplaybookを書いた&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/deprode/php-update-playbook&#34;&gt;deprode/php-update-playbook: PHPをアップデートするAnsible playbook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;以前にAnsibleを使ってVPSをセットアップするplaybookを書いていたのだが、個別のタスクになっていなかったので、「PHPのアップデートだけやる」というタスクはこなせなかった。そのため、PHPのアップデートが遅れてしまうことがたびたびあった。そのため、@official_phpがアップデート告知をするたびに申し訳ない気持ちになっていた。&lt;/p&gt;
+
+&lt;h3 id=&#34;使い方&#34;&gt;使い方&lt;/h3&gt;
+
+&lt;p&gt;前提としてAnsibleが入っており、まずssh_configファイルを編集する必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Host defaults
+  HostName 127.0.0.1 # 自分のHostNameにする
+  User foobar # ユーザ名を変更
+  Port 22 # ポートの変更
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /Users/foobar/.ssh/id_rsa # SSH鍵の場所を変更
+  IdentitiesOnly yes
+  LogLevel FATAL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/deprode/php-update-playbook/blob/master/group_vars/repo.yml&#34;&gt;group_vars&lt;/a&gt;のURLとprefixを適当なものに変更し、コマンドを実行する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ansible-playbook site.yml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これでいつセキュリティフィックスがあっても大丈夫だ。たぶん。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>logを日付単位からtopic単位に変更した</title>
+      <link>http://log.deprode.net/logs/2016-04-13_16-10-17/</link>
+      <pubDate>Wed, 13 Apr 2016 16:10:17 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-13_16-10-17/</guid>
+      <description>
+
+&lt;h2 id=&#34;logを日付単位からtopic単位に変更した&#34;&gt;logを日付単位からtopic単位に変更した&lt;/h2&gt;
+
+&lt;p&gt;以前書いたように、このlogを毎日更新するスタイルから、トピックごとに更新するスタイルに変更する。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://log.deprode.net/logs/2016-04-01/&#34;&gt;2016 04 01 logを書き始めて1年が経過した - log&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;DescriptionをやめTitleに変更したことで、いろいろな箇所を変更する必要があった。&lt;/p&gt;
+
+&lt;p&gt;トップページとlogsのリスト表示では、タイトルを日付にし、Descriptionをタイトルとして表示していた。これを、互換性を保ちつつ「タイトル - 日付」で表示するように修正した。&lt;/p&gt;
+
+&lt;p&gt;また、個別ページも同様に、Descriptionがない場合はタイトルを表示するように修正した。同時に、タイトル表示をタイトル風の表示からぱんくずリスト風の表示に変更した。この変更は、同じ内容のDescriptionを上部に表示しているため、重複を避ける目的で行った。&lt;/p&gt;
+
+&lt;p&gt;通知の経路も変更した。VPS上のPHPでRSSを読み込んで、DescriptionをTitleに設定し、それをIFTTT経由でBufferに送っていた。タイトルを直接指定できるので、VPS上のPHPは必要なくなる。なので、IFTTTのレシピを変更した。&lt;/p&gt;
+
+&lt;p&gt;ファイル名も日付からトピック名に変更することにしたのだが、英語が書けないので適当な英語になるし、重複を避けるだけなら日時で問題ないので、日時のファイル名にした。&lt;/p&gt;
+
+&lt;p&gt;あと、800文字程度書いてPublishする習慣もなくす。文章の練習になるからと最低文字数を決めていたのだが、意味がないことがわかったのでやめる。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 04 02</title>
+      <link>http://log.deprode.net/logs/2016-04-02/</link>
+      <pubDate>Sat, 02 Apr 2016 21:37:34 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-02/</guid>
+      <description>
+
+&lt;h2 id=&#34;ヘルシープログラマ-を読み終えた&#34;&gt;「ヘルシープログラマ」を読み終えた&lt;/h2&gt;
+
+&lt;p&gt;プログラマに限らず長時間パソコンの前で座ったまま仕事を続ける人に、健康状態を高めるためにできることが書かれている本。プログラマにわかりやすいようにO&amp;rsquo;Reillyっぽく書かれているが、内容は対象を限定しない。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.oreilly.co.jp/community/blog/2016/02/helthy-programmers-talk-training-part1.html&#34;&gt;Community Blog - 握力王 vs 日本男児 ヘルシーすぎるプログラマ対談&lt;/a&gt;で電子書籍が値引きされており、購入に至った。&lt;/p&gt;
+
+&lt;p&gt;「20分以上座りっぱなしや立ちっぱなしなど同じ姿勢はよくない」「腰痛にならない座り方、座ったままできるストレッチ」「おすすめのエクササイズ・筋トレ」「外に出てビタミンDを摂る」など、わりとよくある内容なのだが、すべてにソースとなる論拠があり、理路整然と述べられているので反論できずやるしかない気持ちになる。&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;歩数をはかるために歩数計を買おう&amp;rdquo;とあったので、実際に歩数計（カロリスキャン）を買ってしまった。実際に歩数が増えた形跡はないが、常に歩数が足りないプレッシャーがかかるのでストレッチやエクササイズに逃げており、別の形で役に立っている。&lt;/p&gt;
+
+&lt;p&gt;一日一万歩以外は実現可能&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;な内容になっており、続けることについてもアドバイスが書いてある。できる範囲で、本書に書いてあることを続けていきたいと思っている。&lt;/p&gt;
+
+&lt;p&gt;公式：&lt;a href=&#34;https://www.oreilly.co.jp/books/9784873117287/&#34;&gt;O&amp;rsquo;Reilly Japan - ヘルシープログラマ&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;メモ&#34;&gt;メモ&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;三大エクササイズ（7〜8秒保持＋4〜5回）
+
+&lt;ul&gt;
+&lt;li&gt;カールアップ&lt;/li&gt;
+&lt;li&gt;サイドブリッジ&lt;/li&gt;
+&lt;li&gt;バードドッグ（アーム＆レッグレイズ）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;エクササイズ
+
+&lt;ul&gt;
+&lt;li&gt;腕立て伏せ または ハーフプッシュアップ&lt;/li&gt;
+&lt;li&gt;バイシクルマニューバー（バイシクルクランチ）&lt;/li&gt;
+&lt;li&gt;ダブルニーフレックス（ヒップレイズ）&lt;/li&gt;
+&lt;li&gt;スクワット&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;なぜ毎日一万歩が実現不可能かというと、田舎だと外に出るだけでいろいろな人の目があり、気持ちが続かないから。また、都会の人は一駅歩くだけで2000歩は稼げるのでいいが、田舎だと普段使いの隣町のスーパーに歩いて行くと10000歩になるため車を使わざるを得ない。なお、普段の歩数は1000歩くらいです。察しろ。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 04 01</title>
+      <link>http://log.deprode.net/logs/2016-04-01/</link>
+      <pubDate>Fri, 01 Apr 2016 23:14:12 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-01/</guid>
+      <description>
+
+&lt;h2 id=&#34;logを書き始めて1年が経過した&#34;&gt;logを書き始めて1年が経過した&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://log.deprode.net/logs/2015-04-01/&#34;&gt;2015 04 01 日記を書くことにした - log&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;これを書いてから、一年が経過した。最初は自意識過剰でいたために、「日別に書いて、他の人が参照できず、広まりにくいようにする」「相手から批判されることがないように、誰からも興味を持たれないように書く」ようにしていた。杞憂だった。今やネットには、&amp;rdquo;一般人クラスタ&amp;rdquo;ができるほど一般人があふれているが、こんな雑文を読む人はいないのだ。&lt;/p&gt;
+
+&lt;p&gt;そのことがわかってから、日記のスタイルを今の見出し＋段落スタイルに変更した。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Logを書いていて、途中から運用が変わったことがあった。&lt;/p&gt;
+
+&lt;p&gt;昔は前述の通り自意識ライジングだったため、タイトルをつけずに日付だけ表示していたのだが、過去の記録を自分で探すことができなかった。すぐに記録を参照できるように、タイトルを併記するようにした。&lt;/p&gt;
+
+&lt;p&gt;このことがきっかけで、複数のことを取り扱わず、1日に1つのトピックを扱うようになっていった。そのため、合わせ技で一本とるような、細かいトピックを合わせてある程度の体裁を取り繕う更新ができなくなり、ついに年が変わったあとに更新が途切れるようになった。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;最近は、&amp;rdquo;Today I Learned（TIL）&amp;rdquo;というリポジトリがあるらしい。今日学んだことを記録していくリポジトリだ。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://syossan.hateblo.jp/entry/2016/02/16/144305&#34;&gt;GithubでTILというリポジトリが流行りつつあるのかもしれない - 生涯未熟&lt;/a&gt;
+&lt;a href=&#34;http://www.softantenna.com/wp/webservice/til/&#34;&gt;GitHubのリポジトリを利用した意識高い「til」&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;このLogは、学んだことも、ゲームの記録も、雑感も「日別で毎日」書いていくスタイルなので完全に違っているのだが、TILに寄せた方がいいかな、と思うことがかなりある。&lt;/p&gt;
+
+&lt;p&gt;というのも、毎日ある程度の品質を確保して更新するのがしんどくなった。なので、まず毎日の更新をあきらめることにした。それから一日一つまでの更新はせず、書くことがあればトピックごとにまとめて一日いくつでも更新できるようにする。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 03 22</title>
+      <link>http://log.deprode.net/logs/2016-03-22/</link>
+      <pubDate>Tue, 22 Mar 2016 16:29:18 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-03-22/</guid>
+      <description>
+
+&lt;h2 id=&#34;習慣をもう一度考える&#34;&gt;習慣をもう一度考える&lt;/h2&gt;
+
+&lt;p&gt;メモ。ほぼ日手帳には5つのチェックボックスがあり、そこに5つの習慣を書いていた。「早寝早起き」「ちょっと運動」「一日三食」「外に出る」「よく笑う」の5つだ。これらは、日内変動が激しかった時期に指標として導入したものだった。&lt;/p&gt;
+
+&lt;p&gt;しかし現在は病状はほぼ回復しており、惰性でつけているのでなんとか改善したかった。まず、主観で評価している部分を客観視できるようにしたい。次に、計測可能にしたい。そして、習慣化することで得するものを項目にしたい。&lt;/p&gt;
+
+&lt;p&gt;というわけで変更した。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;廃止
+
+&lt;ul&gt;
+&lt;li&gt;一日三食（食事欄があるので別に集計可能、ほぼ毎日達成するから）&lt;/li&gt;
+&lt;li&gt;外に出る（外出時は別に記載、記載する意味がない）&lt;/li&gt;
+&lt;li&gt;よく笑う（計測できないから）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;変更
+
+&lt;ul&gt;
+&lt;li&gt;早寝早起き→十分な睡眠
+
+&lt;ul&gt;
+&lt;li&gt;7時間以上、もしくはそこそこの目覚め三角&lt;/li&gt;
+&lt;li&gt;8時間以上、もしくはよい目覚め○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;継続
+
+&lt;ul&gt;
+&lt;li&gt;ちょっと運動
+
+&lt;ul&gt;
+&lt;li&gt;3000歩以上で三角&lt;/li&gt;
+&lt;li&gt;300kcal以上で○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;新規
+
+&lt;ul&gt;
+&lt;li&gt;学び
+
+&lt;ul&gt;
+&lt;li&gt;学ぶで三角&lt;/li&gt;
+&lt;li&gt;学びをアウトプットして○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;好きなこと
+
+&lt;ul&gt;
+&lt;li&gt;好きなことを1時間以上した三角&lt;/li&gt;
+&lt;li&gt;好きなことを2時間以上した○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;一日の気分
+
+&lt;ul&gt;
+&lt;li&gt;ひどい気分になることがあれば三角&lt;/li&gt;
+&lt;li&gt;おおむね問題がなければ○&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以前は前日を参考にする性質上、継続性を問題にしていなかった。だが、もう少し継続することを大切にしていきたい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 03 18</title>
+      <link>http://log.deprode.net/logs/2016-03-18/</link>
+      <pubDate>Fri, 18 Mar 2016 23:32:38 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-03-18/</guid>
+      <description>
+
+&lt;h2 id=&#34;cssは知らないことだらけ&#34;&gt;CSSは知らないことだらけ&lt;/h2&gt;
+
+&lt;p&gt;CSSを使う機会がありいろいろ調べているのだが、CSSの知らない小技が山のように出てくる。&lt;/p&gt;
+
+&lt;p&gt;CSSは知らないことが多すぎるので検索エンジンで探すのだが、出てきたものが正しいか、使えるのか、よりよい実装があるのか確かめる方法がわからないのでその場しのぎで終わってしまう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://syncer.jp/css-reverse-reference/line-break&#34;&gt;CSSでbrタグみたいに改行する方法&lt;/a&gt;や、&lt;a href=&#34;https://css-tricks.com/snippets/css/css-triangle/&#34;&gt;CSS Triangle | CSS-Tricks&lt;/a&gt;など、本当に採用しても大丈夫なのかよくわからない。caniuse.comで調べればいいのだが、tipsごとに調べるのは面倒だ。&lt;/p&gt;
+
+&lt;p&gt;簡単に身につかない技術だからこそ、技術職としてのWebデザイナー（というかコーダー）がいるのだと思う。だけど、&amp;rdquo;簡単に身につかないのは情報が整理されていないから&amp;rdquo;であれば、tipsがあふれているのは問題だ。&lt;/p&gt;
+
+&lt;p&gt;大昔に作られたWEBデザイナー御用達逆引き辞典みたいなサイトがひっかかるのだが、そういうサイトのテクニックはアップデートされないし、こちらからPullRequestもできない。&lt;/p&gt;
+
+&lt;p&gt;以前考えたのは、betterCSS.comみたいなWikiができて、そこでTipsをまとめられればCSSの作業効率も上がるのではないかと思った。もしうまくいけばCSSのTipsをわら山から探す手間が省ける。ただ、誰がメンテナンスをするのか。&lt;/p&gt;
+
+&lt;p&gt;やはり本を読んで、コーディングして、ちゃんと学ぶべきなのか。と思い、先日HTML5/CSS3モダンコーディングをやったのだった。それでも、カバーできない部分はある。そういう場合は、今はコードを読むしかないのかもしれない。&lt;/p&gt;
+
+&lt;p&gt;CSSを書いたことがない人でも、（ボックスモデルなどの）原理を知ればあとはこのWikiを見ておいて、ですむような未来が来てほしい。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Mithril on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/mithril/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 10 28</title>
+      <link>http://log.deprode.net/logs/2015-10-28/</link>
+      <pubDate>Wed, 28 Oct 2015 23:52:15 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-28/</guid>
+      <description>
+
+&lt;h2 id=&#34;いろいろ学習している&#34;&gt;いろいろ学習している&lt;/h2&gt;
+
+&lt;h3 id=&#34;codeception&#34;&gt;Codeception&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://codeception.com/&#34;&gt;Codeception&lt;/a&gt;はPHPのテストフレームワーク。&lt;a href=&#34;https://phpunit.de/&#34;&gt;PHPUnit&lt;/a&gt;はユニットテストを行うためのテストフレームワークだが、Codeceptionはユニットテスト、機能テスト、受け入れテストを行える総合テストフレームワーク。&lt;/p&gt;
+
+&lt;p&gt;ユニットテストは実行にPHPUnitを使用しているため、PHPUnitのテストをCodeceptionのテストに作り替えることが容易にできる。また、受け入れテストはPHPBrowserを使っているが、設定を変更すればSeleniumを使うこともできる。&lt;/p&gt;
+
+&lt;p&gt;testフォルダ以下の構成がかなり複雑になるのが難点だが、テストコードを書きやすくするためなので仕方ない。&lt;/p&gt;
+
+&lt;h3 id=&#34;mithril-js&#34;&gt;Mithril.js&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://lhorie.github.io/mithril/&#34;&gt;Mithril&lt;/a&gt;はJavaScriptのフレームワーク。小さく、速く、無駄がないのが特徴。公開APIが16個しかないため、覚えやすく思い出しやすい。&lt;/p&gt;
+
+&lt;p&gt;とりあえず、&lt;a href=&#34;http://www.oreilly.co.jp/books/9784873117447/&#34;&gt;O&amp;rsquo;Reilly Japan - Mithril&lt;/a&gt;を購入して、第二章までやった。&lt;/p&gt;
+
+&lt;p&gt;かつてJavaScriptのフレームワークに手を出して、数ヶ月の後にコードが読めなくなっていたことを思い出すと、チュートリアルのコードの単純さがありがたいし、Mithrilのコードが思い出せなくても見ればわかるので楽だ。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

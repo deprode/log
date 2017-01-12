@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 05 14 CentOS6.5にHugoをインストール - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-05-14/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-05-14/">
+            
+                CentOS6.5にHugoをインストール
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-05-14T21:04:08&#43;09:00">2015-05-14</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h3 id="centos6-5にhugoをインストール">CentOS6.5にHugoをインストール</h3>
+
+<p>DigitalOecanのCentOS6.5にHugoをインストールした。</p>
+
+<ol>
+<li>gitをインストール</li>
+<li>Goを入れてパスを通す</li>
+<li>Hugoを入れる</li>
+</ol>
+
+<p>まず、Hugoのインストールにgitを入れる。yumだと1.7.xが入るが、1.7.xだとHugoのインストールが失敗する。</p>
+
+<p><a href="https://github.com/spf13/hugo/issues/297">Unable to download gopkg.in/yaml.v1 with git 1.7.1 · Issue #297 · spf13/hugo</a></p>
+
+<p>ソースから2.x（1.9以上）を入れる。</p>
+
+<p><a href="http://qiita.com/sirone/items/2e233ab9697a030f1335">CentOS 6.5, yum でインストールした Git を 1.7.1 から 2.x にバージョンアップする (※Git2.4.0まで対応) - Qiita</a></p>
+
+<pre><code>sudo yum remove git
+sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker
+wget https://www.kernel.org/pub/software/scm/git/git-2.4.1.tar.gz
+tar -zxf git-2.4.1.tar.gz
+cd git-2.4.1
+sudo make prefix=/usr/local all
+sudo make prefix=/usr/local install
+</code></pre>
+
+<p>このあと、パスが通ってないので、パスを通した。</p>
+
+<pre><code>export PATH=$PATH:/usr/local/bin/git
+source ~/.bashrc
+git --version
+</code></pre>
+
+<p>Goをインストール。
+<a href="http://golang-jp.org/doc/install">インストール - The Go Programming Language</a></p>
+
+<pre><code>cd /usr/local/src
+sudo wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.4.2.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+</code></pre>
+
+<p>Goのインストールテスト。hello.goを作成し、<code>go run hello.go</code>を実行。</p>
+
+<pre><code>// hello.go
+package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Printf(&quot;hello, world\n&quot;)
+}
+</code></pre>
+
+<p>Hugoのインストール。今見たらReleaseパッケージがあるので、それを<code>/usr/local/bin</code>に置けばいいっぽい。
+<a href="http://gohugo.io/overview/installing/">Installing Hugo</a></p>
+
+<pre><code>wget https://github.com/spf13/hugo/releases/download/v0.13/hugo_0.13_linux_amd64.tar.gz
+tar -xzf hugo_0.13_linux_amd64.tar.gz
+sudo mv hugo_0.13_linux_amd64/hugo_0.13_linux_amd64 /usr/local/bin/hugo
+hugo version
+</code></pre>
+
+<p>以上。このあと、git cloneで<a href="https://github.com/deprode/log">日記</a>を書く環境を整えた。</p>
+
+<h3 id="その他">その他</h3>
+
+<ul>
+<li>GOPATHもexportしないといけない気がした。（~/goに設定したけど、もっと適切なやり方がある気がする。）</li>
+<li>手順を残しておくだけの日記。</li>
+<li>Macだとgoインストールしたら<code>brew install hugo</code>でいけた気がする。</li>
+<li>以前も（わざと）誰にも参考にならないようにHugoの日記書いたけど、書き直したい。</li>
+<li>vimってshellから相対パスで起動できないの？</li>
+<li>以前のjpドメインそのままにしたらページランクひどいことになったので、DigitalOceanでDNS設定してnginxに301リダイレクトする処理書いた。
+
+<ul>
+<li>参考: <a href="http://nginx.org/en/docs/http/converting_rewrite_rules.html">Converting rewrite rules</a></li>
+<li>日本語で「nginx 301リダイレクト」とかで検索するとだとrewrite使ってるけど、nginxが0.9.1以前でなければreturn使った方がいい。</li>
+</ul></li>
+</ul>
+
+<pre><code>server {
+    listen       80;
+    server_name  example.org;
+    return       301 http://www.example.org$request_uri;
+}
+</code></pre>
+
+<ul>
+<li>ゼノブレイドやりたかった。</li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-05-14T21:04:08&#43;09:00">2015-05-14 21:04:08</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/hugo">Hugo</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

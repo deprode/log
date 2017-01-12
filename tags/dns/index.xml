@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Dns on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/dns/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 09 24</title>
+      <link>http://log.deprode.net/logs/2015-09-24/</link>
+      <pubDate>Thu, 24 Sep 2015 21:58:22 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-09-24/</guid>
+      <description>
+
+&lt;h2 id=&#34;dns&#34;&gt;DNS&lt;/h2&gt;
+
+&lt;p&gt;DNSをムームードメインからDigitalOcean……VPSを借りてる方で設定するように変更した。&lt;/p&gt;
+
+&lt;p&gt;というのも、元々DigitalOceanで設定してたのだが、ムームーメールを使うかもしれないので変更した。しかし、別にムームーメール使わなかったし、logwatchのメールがスパム判定されてしまったので、逆引き設定のためにVPSにドメインを設定することにした。&lt;/p&gt;
+
+&lt;p&gt;DigitalOceanはさくらVPSと違って、サーバにホスト名が割り振られていないから、IPが……いや、よくわかってないんだが、メール用にVPSにドメインを設定すればいいのだと思ってDNSをDigitalOceanに設定した。&lt;/p&gt;
+
+&lt;p&gt;自前のドメインでほぼ影響ないので日中に戻したのだが、DNSが切り替わらずに表示できなかったので焦った。というか、nslookupやdig、ping、VPSからのcurlなどを試してみて、どうも自分以外は切り替わってるっぽかったので放置したら表示できるようになって、よかったようなよくないような。次からは気をつけよう。&lt;/p&gt;
+
+&lt;p&gt;とりあえず、logwatchのメールをgmailに送ることはできたのでよかった。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

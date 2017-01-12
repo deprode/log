@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Github on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/github/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 10 05</title>
+      <link>http://log.deprode.net/logs/2015-10-05/</link>
+      <pubDate>Mon, 05 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-05/</guid>
+      <description>
+
+&lt;h2 id=&#34;phpunitでphpunit-xmlとbootstrap-php&#34;&gt;PHPUnitでphpunit.xmlとbootstrap.php&lt;/h2&gt;
+
+&lt;p&gt;PHPUnitには、テスト数が多くなったときなどに使える設定ファイルがある。phpunitコマンドを使うディレクトリ（通常はトップディレクトリ）にphpunit.xmlまたはphpunit.xml.distをおいておけば、phpunitコマンドで自動で読み込んで設定に反映してくれる。&lt;/p&gt;
+
+&lt;p&gt;設定ファイルを使うことで、余計なテストを実行せずに済ませることなどができる。また、オプションを設定ファイルへ移すことも可能。&lt;/p&gt;
+
+&lt;p&gt;PHPUnitを自動化するために作成することにした。だが、オプションの中にbootstrapというものがあり、それが何を意味するのかよくわからなかった。PHPUnitのサイトを見ても、&lt;code&gt;テストの前に実行される &amp;quot;ブートストラップ&amp;quot; PHP ファイルを指定します。&lt;/code&gt;とだけ書かれているので調べることにした。&lt;/p&gt;
+
+&lt;p&gt;結果、bootstrap.phpでクラスのローダーを作るというのはわかったが、どのクラスの何を読み込むのかがよくわからないままだった。この辺に関して何も資料がないため、他のOSSを読み込んだりしたがわからなかったので適当に書いた。var_dumpしたらPHPUnit関連が読み込まれていた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+// bootstrap.php
+
+spl_autoload_register(
+    function ($classname) {
+        $new_classname = end(explode(&#39;\\&#39;, $classname));
+        $filepath = __DIR__ . &#39;/classes/&#39; . $new_classname . &#39;.php&#39;;
+
+        if (is_readable($filepath)) {
+            require $filepath;
+        }
+    }
+);
+
+require_once __DIR__ . &#39;/../vendor/autoload.php&#39;;
+// テスト対象がクラスではなかったため、index.phpを読み込んでいる
+require __DIR__ . &#39;/../index.php&#39;;
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;// bootstrap.xml
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;
+&amp;lt;phpunit bootstrap=&amp;quot;./tests/bootstrap.php&amp;quot;
+        colors=&amp;quot;true&amp;quot;&amp;gt;
+    &amp;lt;testsuites&amp;gt;
+        &amp;lt;testsuite name=&amp;quot;tests&amp;quot;&amp;gt;
+            &amp;lt;directory suffix=&amp;quot;.php&amp;quot;&amp;gt;./tests/&amp;lt;/directory&amp;gt;
+        &amp;lt;/testsuite&amp;gt;
+    &amp;lt;/testsuites&amp;gt;
+&amp;lt;/phpunit&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;bootstrap.phpを書き始めたときは、エラーが出ずに&lt;code&gt;No tests executed!&lt;/code&gt;となっていたが、上記のように書いたら&lt;code&gt;phpunit&lt;/code&gt;コマンドだけで実行できた。autoloadがうまくいってなかったためだと思われる。&lt;/p&gt;
+
+&lt;h2 id=&#34;github-current-streak&#34;&gt;Github current streak&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://shopetan.hatenablog.com/entry/2015/06/04/005755&#34;&gt;GitHubで芝生が何故かContributionsに反映されない時 - 未来永劫&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;全然気にしてなかったんだけど、Githubはgitの設定項目であるuser.emailを見てGtihubのメールアドレスと同一なら同じ人物と見なして緑にするらしい。&lt;/p&gt;
+
+&lt;p&gt;これ知らなくて、他人のコードに貢献したときに芝が生えると思ってたので、半年くらいの芝が消失したことが判明した。まあ、ほとんどウェブ日記だから関係ないといえばないのだが。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

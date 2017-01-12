@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 05 PHPUnitでphpunit.xmlとbootstrap.php,Github current streak反映 - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-05/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-05/">
+            
+                PHPUnitでphpunit.xmlとbootstrap.php,Github current streak反映
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-05T00:00:00&#43;09:00">2015-10-05</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="phpunitでphpunit-xmlとbootstrap-php">PHPUnitでphpunit.xmlとbootstrap.php</h2>
+
+<p>PHPUnitには、テスト数が多くなったときなどに使える設定ファイルがある。phpunitコマンドを使うディレクトリ（通常はトップディレクトリ）にphpunit.xmlまたはphpunit.xml.distをおいておけば、phpunitコマンドで自動で読み込んで設定に反映してくれる。</p>
+
+<p>設定ファイルを使うことで、余計なテストを実行せずに済ませることなどができる。また、オプションを設定ファイルへ移すことも可能。</p>
+
+<p>PHPUnitを自動化するために作成することにした。だが、オプションの中にbootstrapというものがあり、それが何を意味するのかよくわからなかった。PHPUnitのサイトを見ても、<code>テストの前に実行される &quot;ブートストラップ&quot; PHP ファイルを指定します。</code>とだけ書かれているので調べることにした。</p>
+
+<p>結果、bootstrap.phpでクラスのローダーを作るというのはわかったが、どのクラスの何を読み込むのかがよくわからないままだった。この辺に関して何も資料がないため、他のOSSを読み込んだりしたがわからなかったので適当に書いた。var_dumpしたらPHPUnit関連が読み込まれていた。</p>
+
+<pre><code>&lt;?php
+// bootstrap.php
+
+spl_autoload_register(
+    function ($classname) {
+        $new_classname = end(explode('\\', $classname));
+        $filepath = __DIR__ . '/classes/' . $new_classname . '.php';
+
+        if (is_readable($filepath)) {
+            require $filepath;
+        }
+    }
+);
+
+require_once __DIR__ . '/../vendor/autoload.php';
+// テスト対象がクラスではなかったため、index.phpを読み込んでいる
+require __DIR__ . '/../index.php';
+
+</code></pre>
+
+<pre><code>// bootstrap.xml
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;phpunit bootstrap=&quot;./tests/bootstrap.php&quot;
+        colors=&quot;true&quot;&gt;
+    &lt;testsuites&gt;
+        &lt;testsuite name=&quot;tests&quot;&gt;
+            &lt;directory suffix=&quot;.php&quot;&gt;./tests/&lt;/directory&gt;
+        &lt;/testsuite&gt;
+    &lt;/testsuites&gt;
+&lt;/phpunit&gt;
+</code></pre>
+
+<p>bootstrap.phpを書き始めたときは、エラーが出ずに<code>No tests executed!</code>となっていたが、上記のように書いたら<code>phpunit</code>コマンドだけで実行できた。autoloadがうまくいってなかったためだと思われる。</p>
+
+<h2 id="github-current-streak">Github current streak</h2>
+
+<ul>
+<li><a href="http://shopetan.hatenablog.com/entry/2015/06/04/005755">GitHubで芝生が何故かContributionsに反映されない時 - 未来永劫</a></li>
+</ul>
+
+<p>全然気にしてなかったんだけど、Githubはgitの設定項目であるuser.emailを見てGtihubのメールアドレスと同一なら同じ人物と見なして緑にするらしい。</p>
+
+<p>これ知らなくて、他人のコードに貢献したときに芝が生えると思ってたので、半年くらいの芝が消失したことが判明した。まあ、ほとんどウェブ日記だから関係ないといえばないのだが。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-05T00:00:00&#43;09:00">2015-10-05 00:00:00</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/github">Github</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

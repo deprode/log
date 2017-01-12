@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 11 05 Hugo 0.14でSummaryが70字で区切られない - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-11-05/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-11-05/">
+            
+                Hugo 0.14でSummaryが70字で区切られない
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-11-05T11:58:17&#43;09:00">2015-11-05</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="hugo-0-14でsummaryが70字で区切られない">Hugo 0.14でSummaryが70字で区切られない</h2>
+
+<p><a href="http://yet.unresolved.xyz/blog/2015/10/09/hugo-support-cjk-language/">HugoのSummaryが日本語に対応した | Unresolved</a></p>
+
+<p>見た。というわけで、私も<code>config.yaml</code>に<code>HasCJKLanguage: true</code>を追記してみたけど、できなかった。ひょっとして<code>isCJKLanguage</code>なのかとか、小文字なのかとか、Hugoのバージョンが古いんじゃないかとか、いろいろ調べたけどダメだった。</p>
+
+<p>Hugoのバージョンは実際に古かったので、homebrewでバージョンを0.14にした。だけどやっぱりダメで、Githubのソースコードには書いてあるのに何でだろうと思って寝る前まで粘ったけどダメだった。</p>
+
+<p>翌日になって、オプションが効かないなら、ローカルのソースコードに書いてないのではという仮説を立てた。その通りだった。releaseされた0.14には<code>HasCJKLanguage</code>というオプションは書かれていなかった。</p>
+
+<p>アホ丸出しだし情けないなーと思いながら、じゃあなぜ元のブログは現実に70字で区切られているのかと調べた。推測だが、masterブランチをローカルでビルドして、そのままローカルからデプロイしていたからだろう。</p>
+
+<p><a href="https://github.com/dim0627/dim0627.github.io/tree/master">ブログのリポジトリ（masterブランチ）</a>には、publicに書き出した内容をmasterブランチにpushしている。ということは、ローカルでbuildしていることになり、その70字で区切られているローカルのhugoは、spf13/hugoのmasterブランチからビルドしていなければならない。</p>
+
+<p>なので、自分もそのようにすれば今すぐ70字区切りでできるのだが、面倒なのでやめた。0.15を待つ。</p>
+
+<hr />
+
+<p>ちなみに、masterブランチにSummaryとWordCountはUTF-8対応するコミットがマージされている。</p>
+
+<p><a href="https://github.com/spf13/hugo/commit/0e1fd78fb22e8a870ff3a922f36a9a4d0475c090">WordCount Summary support UTF-8 string · spf13/hugo@0e1fd78</a></p>
+
+<p>なので、別に何もしなくても0.15にしたら問題解決するのではないかとみている。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-11-05T11:58:17&#43;09:00">2015-11-05 11:58:17</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/hugo">Hugo</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

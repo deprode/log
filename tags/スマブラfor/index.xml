@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>スマブラfor on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/%E3%82%B9%E3%83%9E%E3%83%96%E3%83%A9for/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 04 15</title>
+      <link>http://log.deprode.net/logs/2015-04-15/</link>
+      <pubDate>Wed, 15 Apr 2015 21:56:56 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-15/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;PHP: The Right Way読んでる
+
+&lt;ul&gt;
+&lt;li&gt;phpbrew入れた。
+
+&lt;ul&gt;
+&lt;li&gt;systemのやつからswitchできるんだ。へー。&lt;/li&gt;
+&lt;li&gt;PHPUnit使うとシステムのphpを使われる（#!/usr/bin/phpを使ってる）問題ってどうなったんだろ。
+
+&lt;ul&gt;
+&lt;li&gt;これ→&lt;a href=&#34;http://nianote.com/programing/1745&#34;&gt;http://nianote.com/programing/1745&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;最近のだと&lt;code&gt;#!/usr/bin/env php&lt;/code&gt;を使ってるみたいなので、よかったみたい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;仕方ないんだけど、あとからvariantsのこれだけ入れたい、みたいなのできないのかな。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;sublime-phpfmt入れた
+
+&lt;ul&gt;
+&lt;li&gt;PHP5.5以上が必要&lt;/li&gt;
+&lt;li&gt;formatを自動でPSR-1とかPSR-2とかに対応させる
+
+&lt;ul&gt;
+&lt;li&gt;設定がいくつか必要。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;日本語どころか海外でもほとんど話題になってないけど大丈夫なのか。
+
+&lt;ul&gt;
+&lt;li&gt;ダメだったらPHP Coding Standards Fixerに変更する。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PHP5.3(2009年)、PHP5.4(2012年)、PHP5.5(2013年)、PHP5.6(2014年)
+
+&lt;ul&gt;
+&lt;li&gt;名前空間が5.3、トレイトが5.4、ジェネレータが5.5、5.6は定数式？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PHP.netを読んでた。&lt;/li&gt;
+&lt;li&gt;「クロージャの詳細を知りたければ、RFCを読めばいいよ」&lt;/li&gt;
+&lt;li&gt;PHP、知らないことがたくさんある。
+
+&lt;ul&gt;
+&lt;li&gt;無理して使う必要はないんだろうけど、ジェネレータとか使ったことない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

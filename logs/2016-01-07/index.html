@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2016 01 07 Flexboxを触った - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-01-07/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-01-07/">
+            
+                Flexboxを触った
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-01-07T22:16:44&#43;09:00">2016-01-07</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="flexboxを触った">Flexboxを触った</h2>
+
+<p>以前から気になっていたFlexboxを触ったので経緯を残す。ちゃんと学びたい場合は、<a href="https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">CSS flexible box の利用 - CSS | MDN</a>を参考にするといい。</p>
+
+<hr />
+
+<p>Flexboxは、floatやそのほかのCSSでは難しいレイアウトを様々なサイズで実現するためのプロパティ。以前から知っていたが、使ったことはなかった。昨年、<a href="http://yoshiko-pg.github.io/slides/20151215-scripty/">まだ中央寄せで消耗してるの？ - @yoshiko_pg</a>を読んで、学ぶことを決意した。で、IEのサポートが11になる（Vista SP2は9）ので、このタイミングで学ぼうと思った。<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
+
+<p>ベンダープレフィックスは、IE10とiOS8以前、Andoroid4.3以前に必要らしい。まあ、別にもうサポートしなくてもいいだろう、と思って念のため調べたら、<a href="http://developer.android.com/intl/ja/about/dashboards/index.html">Googleの発表しているAndroidバージョン別シェア</a>で4.3以前が30%近くいるので、<code>-webkit-</code>をつけた方がいいかもしれない。ちなみに<a href="https://developer.apple.com/support/app-store/">Appleの発表したデータだと</a>、iOS8は21%。まあ、たぶんみんなAutoprefixer使ってるからあんまり気にしてないと思うけど。</p>
+
+<hr />
+
+<p>まず、<a href="http://www.webcreatorbox.com/tech/flexbox/">これからのCSSレイアウトはFlexboxで決まり！ | Webクリエイターボックス</a>をやった。わかりやすくていいチュートリアルだった。</p>
+
+<p>その後、<a href="http://coliss.com/articles/build-websites/operation/css/css3-flexbox-properties-by-scotch.html">CSS3 Flexbox の各プロパティの使い方をヴィジュアルで詳しく解説 | コリス</a>を見た。プロパティの数が多すぎるので、<a href="https://scotch.io/demos/visual-guide-to-css3-flexbox-flexbox-playground">Flexbox Playground</a>をいじりつつ調べた。</p>
+
+<p>とりあえず、ほかにもいろいろ調べたが、とりあえずきりがいいので終えた。</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1"><a href="https://www.microsoft.com/ja-jp/windows/lifecycle/iesupport/">Internet Explorerサポートポリシー変更の重要なお知らせ - Microsoft</a>
+ <a class="footnote-return" href="#fnref:1">↩</a></li>
+</ol>
+</div>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-01-07T22:16:44&#43;09:00">2016-01-07 22:16:44</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/css">CSS</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

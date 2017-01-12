@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 08 03 Express入門やった - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-08-03/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-08-03/">
+            
+                Express入門やった
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-08-03T22:03:42&#43;09:00">2015-08-03</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="express入門やった">Express入門やった</h2>
+
+<p>ドットインストールのExpress入門やった。</p>
+
+<p>ExpressはNode.jsのウェブアプリケーションフレームワーク（WAF）。高速かつシンプルな構成。最近は、generator/yieldで記述をシンプルにできるKoaがExpress作者を筆頭に作られている。という知識しかない状態で入門した。</p>
+
+<p>Expressは4.x系が最新だが、3.x系の記事がネットに多数存在する。ドットインストールも例外ではなく、3.x系のままとなっている。一応、補足情報があることである程度はカバーできたが、#11以降は自分で調べてくださいとのことなので、調べながらやった。</p>
+
+<p>Expressは4.x系になって、大きく変わった。expressに取り込まれていた機能の多くがmiddlewareになったため、3.x系のコードがそのまま動かないことも多々ある。</p>
+
+<p>参考：
+* Migrating from 3.x to 4.x · strongloop/express Wiki](<a href="https://github.com/strongloop/express/wiki/Migrating-from-3.x-to-4.x">https://github.com/strongloop/express/wiki/Migrating-from-3.x-to-4.x</a>)
+* <a href="https://github.com/senchalabs/connect#middleware">senchalabs/connect</a></p>
+
+<p>また、middlewareもアップデートで変更があったのか、デフォルトを要求するようになったり、その他いろいろ変更があったようだ。そのため、ドットインストールをExpress4でやるときの解説ページがすでに役に立たなくなっていた。まあ、自分で調べた方が学習になるのでいいのだが、この速度はいろいろ厳しい気がする。</p>
+
+<p>Expressはテンプレートエンジンを選択することができる。動画ではEJSを使っていたが、何となくJadeにしてみた。インデント2にしないと、あっという間にネストが深くなるのだが、パーセントを打たなくていいだけで割と好印象だった。</p>
+
+<p>Express3系から変わってる部分が多いため、役に立つ日本語の資料がほとんどない（らしい）ので、英語ドキュメント読みながらじゃないとつらそう。</p>
+
+<p>express-generatorでsfaffoldingできるので、ある程度はそれに従って作ればいいのだろうけど、そう考えるとスケールしない気がする。それとも、<a href="https://github.com/strongloop/express/tree/master/examples">Examples</a>見ればそういう例もあるのかな。</p>
+
+<p>とりあえず、前から触ってみようと思っていたので、触れてよかった。構成がシンプルなので、複雑なことをしないウェブアプリ作るならExpressでもよさそうだと思った。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-08-03T22:03:42&#43;09:00">2015-08-03 22:03:42</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/express">Express</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

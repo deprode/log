@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 09 30 PHPとか（SlimのSkeleton） - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-09-30/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-09-30/">
+            
+                PHPとか（SlimのSkeleton）
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-09-30T21:32:31&#43;09:00">2015-09-30</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="phpとか">PHPとか</h2>
+
+<p>Slimでなんか作ろう、と思ってSlimを調べていたら、SlimのSkeleton(<a href="https://github.com/akrabat/slim3-skeleton">akrabat/slim3-skeleton</a>)があったので、ソースコードやディレクトリ配置を参考にするためにGithubからComposerでプロジェクトを作成した。</p>
+
+<p>create-projectは、<code>git clone</code>と<code>composer install</code>を実行するのとほとんど同じなので、Githubにスケルトンとcomposer.jsonがあればいい感じにscaffoldしてくれるっぽい。</p>
+
+<p>で、READMEを読みつつビルトインサーバを起動させたが、php.iniにtimezoneが設定してないとエラーが出た。phpbrewを使っていたが、<code>php --ini</code>で設定ファイルの場所を調べても出てこない。何かおかしいと思ったので、phpbrewを再インストールして、php56を入れ直した。で、php.iniを直せばいいのに、エラー箇所の前でタイムゾーン設定してとりあえずしのいだ。</p>
+
+<p>とりあえず表示はできたが、livereload的なものが欲しかったので、<a href="http://www.browsersync.io/">browser-sync</a>を入れた。これだけだと他のデバイスからテスト的に見ることはできないので、ターミナルからの起動オプションなどを調べた結果、<code>browser-sync start --proxy 0.0.0.0:8888 --files &quot;app/**/*, public/**/*&quot;</code>で起動させた。サーバはビルトインサーバで<code>php -S 0.0.0.0:8888 -t public public/index.php</code>で起動させている。</p>
+
+<p>IPを<code>0.0.0.0</code>にすることで、LAN内のデバイスからMacのIPにアクセスすることで表示できる。（<code>192.168.11.1:8888</code>とか。IPはifconfigコマンドなどで調べられる。）</p>
+
+<p>無事にライブリロードもできたので、とりあえず取りかかれる。</p>
+
+<p>まあ、本当はVagrantなりDockerなり使えば本番と同じ軽環境を簡易に構築できるのだろうけど、今回はそこまでやらないのでこれでいい。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-09-30T21:32:31&#43;09:00">2015-09-30 21:32:31</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

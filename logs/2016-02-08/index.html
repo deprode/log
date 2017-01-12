@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2016 02 08 Animate.cssとWow.js - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-02-08/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-02-08/">
+            
+                Animate.cssとWow.js
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-02-08T17:50:18&#43;09:00">2016-02-08</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="animate-cssとwow-js">Animate.cssとWow.js</h2>
+
+<p>脱jQueryしようといろいろ調べているのだが、アニメーション系を<a href="http://julian.com/research/velocity/">Velocity.js</a>以外でやる方法を調べていた。で、表示するときに動作させるだけであれば、Animate.cssとWow.jsでよさそう。</p>
+
+<ul>
+<li><a href="https://daneden.github.io/animate.css/">Animate.css</a></li>
+<li><a href="http://mynameismatthieu.com/WOW/">Reveal Animations When Scrolling — WOW.js</a></li>
+</ul>
+
+<p>サンプル。下にスクロールするとさらに3つ表示される。</p>
+
+<p><p data-height="268" data-theme-id="0" data-slug-hash="KVrPLa" data-default-tab="result" data-user="deprode" class='codepen'>See the Pen <a href='http://codepen.io/deprode/pen/KVrPLa/'>KVrPLa</a> by deprode (<a href='http://codepen.io/deprode'>@deprode</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
+
+<p>スクロール位置によってアニメーションは発動するけど、スクロールを戻したときに再度開始することはできない。あと、Animate.cssのサイトではjQueryをクラスのtoggleとbinding(one)で使ってる。</p>
+
+<hr />
+
+<p>jQuery、別にWebサイトとかで使う分には全然ありだけど、モバイルでちょっと重いし、できれば使いたくない。ただjQuery抜きだと、「アニメーションのあとにコールバックで何かする処理が加わると、Promise使う」「クロスブラウザでajaxが面倒だからgithub/fetch使う」……とか、いろいろ加わると「じゃあjQueryでいいじゃん」となってしまう。しかし、それでページ内で密結合な処理を書いていくと不吉なにおいが立ちこめるので避けたい。</p>
+
+<p>とか書いていたら、「<a href="http://news.mynavi.jp/news/2016/02/02/137/">Chromeがさらに増加、1月ブラウザシェア | マイナビニュース</a>」という記事を見つけた。IE11の次にIE8で8%近くのシェアがあった。私はまだ、jQuery2.xすら使えないのかもしれない。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-02-08T17:50:18&#43;09:00">2016-02-08 17:50:18</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/css">css</a></li>
+            
+                <li class="page_tags"><a href="/tags/javascript">javascript</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

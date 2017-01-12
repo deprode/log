@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2016 02 03 アップしたやつにnginxのBasic認証を行うようにした - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-02-03/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-02-03/">
+            
+                アップしたやつにnginxのBasic認証を行うようにした
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-02-03T23:17:28&#43;09:00">2016-02-03</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="アップしたやつにnginxのbasic認証を行うようにした">アップしたやつにnginxのBasic認証を行うようにした</h2>
+
+<blockquote>
+<p><a href="http://log.deprode.net/logs/2016-01-12/">2016 01 12 Twitterから非公開TumblrにLikesをバックアップした経緯など - log</a></p>
+</blockquote>
+
+<p>上記のもの（Twitterから非公開TumblrにReblogするサービス）をVPSにアップロードしたのだが、Basic認証を行っていなかったため誰にでも見える状態だった。とりあえず、Basic認証をかけることにした。</p>
+
+<p>ちゃんとした人は、Digest認証にしましょう。</p>
+
+<blockquote>
+<p><a href="https://www.nginx.com/resources/wiki/modules/auth_digest/?highlight=digest">HTTP Digest Authentication | NGINX</a>
+<a href="http://qiita.com/murachi1208/items/5e8d3101472fc2e295c0">Nginx で Digest認証が出来なかったのでソースからコンパイルしてみたぜ - Qiita</a></p>
+</blockquote>
+
+<p>次の情報を参考にした。</p>
+
+<blockquote>
+<p><a href="http://qiita.com/hayak/items/97c99dfbc82daed0ad45">nginxでBasic認証をする - Qiita</a></p>
+</blockquote>
+
+<pre><code># httpd-toolsのインストール
+$ sudo yum install -y httpd-tools
+$ cd /etc/nginx
+# .htpasswdファイルの生成（ユーザー名を引数にとって、パスワード入力）
+$ sudo htpasswd -c .htpasswd foo
+New password:
+Re-type new password:
+# 設定の変更（auth_basicには適切なメッセージを）
+$ sudo vim /etc/nginx/conf.d/virtual.conf
+    location / {
+        auth_basic &quot;Input username and password&quot;;
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+# 設定の再読込
+$ sudo service nginx reload
+</code></pre>
+
+<p>あと、<a href="https://github.com/github/fetch">github/fetch</a>を使っているので、データ取得部分を修正した</p>
+
+<pre><code>fetch(url, {
+    headers: {
+        'Authorization': 'Basic '+btoa('username'+':'+'password')
+    },
+    method: 'post',
+    body: data
+}).then(function(response){
+    // ...
+}).catch(function(ex){
+    // ...
+});
+</code></pre>
+
+<p>動作確認して、終わり。こういうときに、Selenium的なテストがあると大変はかどるのだが……。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-02-03T23:17:28&#43;09:00">2016-02-03 23:17:28</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/nginx">nginx</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

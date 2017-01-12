@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 04 22 if文が怪しいなど - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css" id="webfont">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-04-22/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="title"><a href="http://log.deprode.net/logs/2015-04-22/">2015 04 22</a> - <a href="http://log.deprode.net/">log</a></h1>
+        <p><time datetime="2015-04-22T22:01:35&#43;09:00">2015-04-22</time></p>
+    </header>
+    <section>
+        <ul>
+<li>酒、タバコ、車、女、ギャンブル、パチンコ、スマホゲー、スポーツあたりの趣味が全くないので、そういう人たちと（これらで）全く会話がかみ合わない。
+
+<ul>
+<li>他はともかく、車に全く興味がないと車種を言われてもわからない上に車社会だと普通に車買い換える際にいろいろ調べるので詳しくなるのだけど、ない。</li>
+</ul></li>
+<li>父のPCにノートンインストールした。
+
+<ul>
+<li>こういうのも他人に頼むと普通にN千円かかるので、やっていく必要がある。</li>
+<li>ノートンインストール＝技術費＋交通費＋人件費＋雑費＝N千円</li>
+<li>もちろん無料でやった。（お菓子もらった）</li>
+</ul></li>
+<li>Ansible
+
+<ul>
+<li>ansibleでサーバセットアップ時、remiやepelがリンク切れになるって聞いたけどどうしてるんだろ。</li>
+<li>webtaticというリポジトリがあるみたい。
+
+<ul>
+<li>信頼性？個人で使うやつだから。（そういう問題じゃない）</li>
+</ul></li>
+<li>コマンド一つでぽんぽんインストールされるのテンション上がる。
+
+<ul>
+<li>それまでにplaybookを調べて書く作業があるけど。</li>
+</ul></li>
+</ul></li>
+<li>「if文が怪しいとは何だったのか」って前に書いたかな……
+
+<ol>
+<li>if文を使うべきところで使えないことがある</li>
+<li>やたらと波括弧を省略する</li>
+<li>if文の中で代入式</li>
+<li>if文の中で大量の比較</li>
+<li>if文の中にデバッグ用に書いたtrueがたまに残る</li>
+<li>比較を正しく使えない
+
+<ul>
+<li>PHPだと、nullが入る可能性がある箇所で0と緩い比較をしてるとアウト</li>
+</ul></li>
+<li>三単項演算子でいいところでif文を使う、あるいはその逆</li>
+<li>switch文でいいところでif文を使う、あるいはその逆</li>
+<li>if文における条件の順序が読みづらい</li>
+<li>（他人が書いた怪しくない）if文を読み解けない</li>
+<li>それ以外のコード
+
+<ol>
+<li>if文が30個くらい続いてる</li>
+<li>// 念のためもう一度同じ条件でやる</li>
+<li>// なぜかもう一度書くとうまくいく</li>
+<li>if文がない言語だけを習得している</li>
+<li>仕様通りに実装できてない</li>
+<li>メガデモとかコードゴルフ</li>
+<li>if文の中にコメントがある</li>
+<li>一時変数を何が何でも使わないif文</li>
+<li>else文が怪しい</li>
+</ol></li>
+</ol></li>
+<li>言語に対する理解、コードをわかりやすく書く技術、コードを読む能力、読まれることを想定する能力などが必要なことがわかった。</li>
+<li>ゼノブレイドやれてない。</li>
+<li><img src="http://d-cache.microad.jp/images/9580/1477736_1.png" alt="teratail" />この画像見るたびに、「公式にも翻訳版にもググれば1ページ目にも書いてあるのに質問する人いるのかな」って思ってるし、「セミコロンないけどいいのかな」とも思ってる。</li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-04-22T22:01:35&#43;09:00">2015-04-22 22:01:35</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/%E7%A4%BE%E4%BC%9A">社会</a></li>
+            
+                <li class="page_tags"><a href="/tags/ansible">Ansible</a></li>
+            
+                <li class="page_tags"><a href="/tags/%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0">コーディング</a></li>
+            
+                <li class="page_tags"><a href="/tags/if%E6%96%87%E3%81%8C%E6%80%AA%E3%81%97%E3%81%84">if文が怪しい</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; deprode</p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script>
+  (function(){
+    document.getElementById('webfont').rel = 'stylesheet';
+  })();
+</script>
+</body>
+</html>

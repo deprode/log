@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>DigitalOceanからHerokuとS3に移行した  - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2017-01-12_23-53-08/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2017-01-12_23-53-08/">
+            
+                DigitalOceanからHerokuとS3に移行した
+            
+            </a>
+        </h1>
+        <p><time datetime="2017-01-12T23:53:08&#43;09:00">2017-01-12</time></p>
+    </header>
+    <section class="single_content">
+        <p>さくらのレンタルサーバ→さくらのVPS→DigitalOceanの順に移行してきた。レンタルサーバでは自由にcronを使うなどの自由を求めてVPSに移行した。DigitalOceanへは簡単にCPUや容量を増やせる手軽さを求めて移行した。</p>
+
+<p>Ansibleを学び、DigitalOceanのセットアップを自動で行った私だったが、度重なる脆弱性の対応に不安になり、管理することが重荷になっていた。GHOST、Heartbleed、DROWN、POODLEなどに対策しても、次々出てくる脆弱性にこのまま対応できるのか、忙しくてもパッチを当てられるのかが不安だった。果たして今後も素早く対応できるのかわからない。なら少しコストがかさんでも他人に任せた方がいいだろうと考えたのだった。</p>
+
+<p>レンタルサーバに戻ることを真っ先に考えた。試算すると、レンタルサーバも悪くはなかった。年5000円でいいのだから。しかし制約が多すぎるため、PHPを動かすのであれば別のところがいいだろう。<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
+
+<p>であれば、やはりPaaSを使うのが得策だろうと思った。いろいろ調べた結果、Herokuなら楽にプログラムを走らせられそうだった。PHPも対応しており、他の言語も問題なさそうだったので少しずつプログラムを移行していった。全てのプログラムを移行し終えたとき、静的ウェブサイトだけが残った。</p>
+
+<p>あまり気乗りではなかったが、AWSのS3を使うことにした。気乗りでなかった理由は、リージョンの違うRDSが表示されず、知らない間に課金されていると勘違いしてアカウントごと停止していたから。忘れていたい黒歴史である。何年も前のことだったのだが、AWSを停止したままでは使えないので、サポートにメールをしてAWSのアカウントを再開した。</p>
+
+<p>それから2FAの設定やIAMの作成、Billing Alertの設定などセキュリティ対策を行い、ようやくS3でウェブサイトを表示できたのだった。最終的にはRoute53とCloudFront、SES、AWS ACMを使い、独自ドメインとHTTPS対応も行った。なお、HTTPS対応は2週間くらい放置していたため、httpsページはエラー表示のまま放置されており、大変申し訳なかった。</p>
+
+<p>何はともあれ、Heroku+S3で管理しなくてもいい状態になり、ストレスフリーな環境へ無事に移行したのだった。<sup class="footnote-ref" id="fnref:2"><a rel="footnote" href="#fn:2">2</a></sup>今後移行するとしたらDocker swarm&amp;AWS Lambdaだと思う。</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">ただし1枚PHPをcronで毎時動かしたい程度であれば、レンタルサーバでいい。
+ <a class="footnote-return" href="#fnref:1">↩</a></li>
+<li id="fn:2">移行したけど、DigitalOceanはSnapshot（すぐ復元できるバックアップ）を使用しているので月10円くらいかかってる。
+ <a class="footnote-return" href="#fnref:2">↩</a></li>
+</ol>
+</div>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2017-01-12T23:53:08&#43;09:00">2017-01-12 23:53:08</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/server">server</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

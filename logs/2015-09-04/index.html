@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 09 04 PHPの古いコード読んでる - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-09-04/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-09-04/">
+            
+                PHPの古いコード読んでる
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-09-04T00:00:00&#43;09:00">2015-09-04</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="古いコード読んでる">古いコード読んでる</h2>
+
+<p>先週からPHPの古いコードを読んで直している。直した経過を随時どこかに書けばいいのだが、直すだけで満足してしまい、書いていない。後で自分が参考にすることもあるのだから、書けばいいと思う。</p>
+
+<p>15年くらい前に書き上がって、3年くらい管理されていたことがわかる掲示板のコードを読んでいる。昔は自分のホームページに掲示板や箱庭ゲームなんかを設置することが流行っていた。PerlかPHPで書かれていたコードは、今は保守されていないことが多く、まともに動かないまま配布されていることもある。</p>
+
+<p>今読んでいるPHPのコードの特徴をいくつかあげると、</p>
+
+<ul>
+<li>$_GETや$_POSTをextractで展開し、global宣言で関数に値を渡すことなく使っている</li>
+<li>スクリプト先頭にglobal変数として設定項目が書いてあり、それを各所で使用している</li>
+<li>foreachは使わず、while+list+eachで配列などを処理している。</li>
+<li>ヒアドキュメントは使われていない</li>
+<li>ereg系の正規表現関数が使われている。（現在はpreg系を使う）</li>
+<li>データの記録時にhtmlspecialcharsを使っている。（現在は出力時が一般的）</li>
+<li>関数に切り分けられているが、（特にView周りは）機能で切り分けられているわけではない</li>
+<li>MVCは意識されていない</li>
+<li>ログはテキストファイル（.log）として保存する。区切り文字は&rdquo;&lt;&gt;&rdquo;</li>
+<li>だれでもHTMLタグを使って投稿できる機能がある</li>
+<li>ファイルの文字コードがShift_JIS</li>
+<li>書き出すHTMLタグにcenterやfont、basefontなどがある</li>
+</ul>
+
+<p>といったところ。これらを現代風のソースコードに直している。直していて思ったのは、作者の意図がわかるコードは直しやすいことだ。コピペがまだそれほどなかった時代のためか、作者のクセが読みやすいので割といじりやすい。大規模なコードでもないので変な増築も少ない。それに、上から順次実行していくコードなので、あちこち飛んでいない分解析しやすかった。</p>
+
+<p>私も13年前はこんなコード書いてたと思い、けっこう懐かしい気分にもなった。（今こんなコード書いたら怒られるな、とも思った。）</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-09-04T00:00:00&#43;09:00">2015-09-04 00:00:00</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

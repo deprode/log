@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 12 27 Docker実践入門を読み終えた - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-12-27/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-12-27/">
+            
+                Docker実践入門を読み終えた
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-12-27T23:34:12&#43;09:00">2015-12-27</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="docker実践入門を読み終えた">Docker実践入門を読み終えた</h2>
+
+<p>公式サイト：<a href="http://gihyo.jp/book/2015/978-4-7741-7654-3">Docker実践入門――Linuxコンテナ技術の基礎から応用まで：書籍案内｜技術評論社</a></p>
+
+<p>2014年のバズワードになったDockerを始める人のための入門書。Dockerを使うと開発環境はどうなるのかといった理論から始まり、実際にDockerコンテナを起動させ、そして実際にできること一覧を確認するという王道を行く入門書だった。とりあえずDocker使ってみたい人におすすめ。</p>
+
+<p>第4章ではDockerの内部構造を解説しており、dm-thinを用いたイメージ管理などの深い話も書かれている。</p>
+
+<p>全180ページ。あっさり読める割に、Dockerの逆引き辞書的にも使える第三章があるため、手元に置いておけば使う頻度も増えると思う。</p>
+
+<hr />
+
+<p>この本を買ったのは、自前の仮想開発環境をVagrantからDockerにしたいため、またVPSをDockerで動かそうと思っていたためだった。VPSの方は無理して変える必要はないのかもしれないが、VagrantはDockerにした方が便利そうだった。</p>
+
+<p>今までだと、php+mysqlでbrowser-syncやら何やら入れて、その後「何やら」で何をしたのかわからなくなっていた。なので、普通にVagrantfile（と起動スクリプト）から再現できない。dockerならシンプルな構成にすることができるし、commit履歴を追うことでインフラへの変更がわかると思った。<a href="https://hub.docker.com/_/php/">Docker Hub</a>でphpのコンテナも配布されている。<a href="https://hub.docker.com/_/mysql/">mysql</a>も<a href="https://hub.docker.com/_/postgres/">postgre</a>もある。ここから<code>docker pull</code>してくればとりあえず動くコンテナがすぐ手に入る。</p>
+
+<p>すごい便利だけど、Dockerの流儀的なものがいまいちよくわかってない。1アプリ1コンテナなのはわかるけど、cronどうするのとか。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-12-27T23:34:12&#43;09:00">2015-12-27 23:34:12</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/%E8%AA%AD%E6%9B%B8">読書</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

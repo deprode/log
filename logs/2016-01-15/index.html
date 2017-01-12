@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2016 01 15 昨日作ったやつのバックエンドをSlim3にした - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-01-15/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-01-15/">
+            
+                昨日作ったやつのバックエンドをSlim3にした
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-01-15T23:38:33&#43;09:00">2016-01-15</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="昨日作ったやつのバックエンドをslim3にした">昨日作ったやつのバックエンドをSlim3にした</h2>
+
+<p>「<a href="http://deprode.net/log/logs/2016-01-12/">Twitterから非公開TumblrにLikesをバックアップした</a>」で作ったやつを「<a href="http://deprode.net/log/logs/2016-01-14/">フロントをVueで作り直した</a>」ので、今日はバックエンドを<a href="http://www.slimframework.com/">Slim Framework</a>にした。</p>
+
+<p>以前も、slimで掲示板作ったりしたけど、RESTっぽいのは作ってなかったので、ドキュメントと過去のコードを見ながらいろいろやった。<a href="https://github.com/slimphp/Slim-Skeleton">スケルトン（いい感じにフレームワークが使い始められるえるようにしたプロジェクト）</a>があるので、それを使って作り始めた。</p>
+
+<p>vueのindex.htmlをtemplatesとしてindex.phtmlにした。ほかのPHPスクリプトは、ほぼコピペでとりあえず動くので、そうした。元々20〜100行程度の小さいスクリプトで、面倒だったので全部routes.phpに押し込んだ。（ちょっとハンドラに移した方がいいだろうとも思った。）あとはvueの送信先とJavaScriptのルータを適切なパスにして、それでほぼ動いたのでよかった。</p>
+
+<p>とりあえず、どこかのリモートリポジトリのあげておけば、<code>composer install deprode/twitter-to-tumblr</code>と<code>php -S localhost:8000 -t public public/index.php</code>で（ConsumerKeyなど設定すれば）ローカルで動く。</p>
+
+<p>で、VPSにあげたのだが、ドキュメントルートをとるのが難しい環境になっていたので、動かなかった。ドメインを割り当てていなかったのだ。ドメイン設定やnginxの設定などがあり、面倒になってやめてしまった。とりあえず、ドメイン設定だけしたので、あとは暇なときにやる。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-01-15T23:38:33&#43;09:00">2016-01-15 23:38:33</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

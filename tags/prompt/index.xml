@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Prompt on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/prompt/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Sun, 17 May 2015 23:58:05 JST</updated>
+    
+    <item>
+      <title>2015 05 17</title>
+      <link>http://log.deprode.net/logs/2015-05-17/</link>
+      <pubDate>Sun, 17 May 2015 23:58:05 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-17/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;マジかよ……iPadで日記書ける体制整えたと思ったら、Promptの日本語入力に問題があった。Bywordで書いて、貼り付けて出力かな。
+
+&lt;ul&gt;
+&lt;li&gt;と思って実行したら、こちらもダメ。日本語の扱い自体が微妙なので、ファイル名指定以外は使えないっぽい。&lt;/li&gt;
+&lt;li&gt;たぶん、解決法はazu氏みたいなDropbox同期とかの（Promptで編集を行わないファイル転送後）にデプロイするみたいな感じになると思うけど、面倒。&lt;/li&gt;
+&lt;li&gt;Hugo使ってるので、そもそもファイルをサーバで生成している以上、日本語入力ができないと無理という結論に至った。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;日中も含めほとんどの時間が眠いので、さすがに春眠暁を覚えずというわけではなさそう。なので、今日から薬を減らして様子みる。（医者にはこの件を話して許可をもらってる。勝手に減薬するとひどくなるのでやめましょう。）&lt;/li&gt;
+&lt;li&gt;ゼノブレイド、現在Lv98、118時間。
+
+&lt;ul&gt;
+&lt;li&gt;全てのユニークモンスターを倒したので、目標はすべて達成した。というわけで、終了。&lt;/li&gt;
+&lt;li&gt;意外とレベル高くしてモンスターごとの対策を取れば勝てた。スパイクに種類があったのあまり知らなかったし、即死対策、転倒対策、気絶対策など、必要な対策が違えども基本的な戦略は同じだった。&lt;/li&gt;
+&lt;li&gt;つまり、素早さをあげて命中率を上げつつ適時防御を上げたり回復したりして、相手の攻撃を凌ぎながら仲間に任せて倒す。&lt;/li&gt;
+&lt;li&gt;結局100時間遊んでも不明なシステムはあったし、いろいろわからない部分もあった。不親切な点や、退屈な遊びなども組み込まれていた。&lt;/li&gt;
+&lt;li&gt;だが、そんなでも100時間以上遊べたのは事実だし、そういう点を除けば面白かったのもまた事実。最後の敵を倒すのに何時間もかけて装備を探したり、ジェムを作ったりしたのもいい思い出になると思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ジモトギョージが6月下旬まであるので、日記も不定期になるしどうしよう。無理して更新しないようにするけど、最悪更新できない。仕方ない。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 04 27</title>
+      <link>http://log.deprode.net/logs/2015-04-27/</link>
+      <pubDate>Mon, 27 Apr 2015 20:56:13 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-27/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;アルファベットって重要な語句が一目でわからないからデザインが進歩してタイポグラフィが重要に見えるのでは。逆に日本語だと漢字がそのまま重要語句になるので、必要がなくなってミニマルデザインが生える。
+
+&lt;ul&gt;
+&lt;li&gt;ごめん、適当いった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;暑すぎる。
+
+&lt;ul&gt;
+&lt;li&gt;もしかして：夏&lt;/li&gt;
+&lt;li&gt;外が明るいので全然夕暮れブーストかからない。&lt;/li&gt;
+&lt;li&gt;今年もまた35度の中でMac miniと戯れなければならんのかと思うと、絶望しかない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;下ネタを言わないのはピュアな人と変態だけ仮説。（変態が下ネタ言わないのは下ネタにするとどん引きする趣味だから。）
+
+&lt;ul&gt;
+&lt;li&gt;でも、どん引きされてもいいなら下ネタ話すので、やはり下ネタを言わないのはピュアな人だけなのかもしれない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;プログラマともだちがいないので、どういう仕事に需要があるとか、どういう人に仕事を頼みたいとか、どういう人と仕事したいとか、どういう……
+
+&lt;ul&gt;
+&lt;li&gt;考えても仕方ない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Prompt買って、VPS経由でiPadでlog書けるようにしようと思ったけど、Go言語からインストールするの面倒だな、と思ってAnsibleのplaybookに書いて次のVPSからちゃんとやるようにしたい。
+
+&lt;ul&gt;
+&lt;li&gt;というか、Hugoのインストール途中で止まるので、あとで。&lt;/li&gt;
+&lt;li&gt;圧倒的にクロイガメン力が足りない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ToDoを管理するためにTodoist使ってみてるけど、GTDっぽくしたほうが使い勝手がいいようなので、変更した。&lt;/li&gt;
+&lt;li&gt;今日はダメな日だった。圧倒的に。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

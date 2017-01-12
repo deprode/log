@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 11 04 refacted-p-bbsのテストをCodeceptionで書き進めた - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-11-04/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-11-04/">
+            
+                refacted-p-bbsのテストをCodeceptionで書き進めた
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-11-04T23:58:58&#43;09:00">2015-11-04</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="refacted-p-bbsのテストをcodeceptionで書き進めた">refacted-p-bbsのテストをCodeceptionで書き進めた</h2>
+
+<ul>
+<li><a href="https://github.com/deprode/refacted-p-bbs">deprode/refacted-p-bbs</a></li>
+</ul>
+
+<p>Codeceptionを覚えたが受け入れテストを（ほぼ）書かないままだった。とりあえず気づいているところだけでも書き進めようと思い、書いていた。</p>
+
+<p>以下を参考にして書いた。</p>
+
+<ul>
+<li><a href="http://codeception.com/docs/07-AdvancedUsage">07-AdvancedUsage - Codeception - Documentation</a></li>
+</ul>
+
+<p>今回は、tests/acceptance/_bootstrap.phpにクラスを読み込む処理を書き、管理者削除やユーザ削除などのテストを追加した。setUp/tearDownに相当する_before, _afterメソッドがCestクラスにある。これは便利なのだが、テストごとに必ず実行されてしまうので困ることもある。</p>
+
+<p>そういうときは、「Before/After Annotations」を使う。（上記リンク中段に書いてある。）protectedメソッドを追加した後、コメントで@before/@afterを指定すればテストごとに実行するメソッドを指定できる。これが結構便利だった。</p>
+
+<p>たとえば、「管理者権限で書き込みを削除する」というテストを実行するには、「すでに書き込みがある」「ログインしている」という状況が必要になる。これだけなら、_befor, _afterを使えばいい。しかし、後々「書き込みがない状況で書き込もうとする」という場合は書き込む部分を_beforeに書けない。そういうときに、個別に状況を設定できるAnnotationsが役に立つ。</p>
+
+<p>なお、Codeceptionだけじゃなくて、<a href="https://phpunit.de/manual/current/ja/appendixes.annotations.html">PHPUnitにもアノテーションはある</a>。</p>
+
+<hr />
+
+<p>あと、bbs.logにテストデータが書かれていたので修正して空ファイルにした。その後、<code>git update-index --assume-unchanged bbs.log</code>で変更があっても関知しないように設定した。前に設定した気がしてたけど、気のせいだったようだ。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-11-04T23:58:58&#43;09:00">2015-11-04 23:58:58</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/codeception">Codeception</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

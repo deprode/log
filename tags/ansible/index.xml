@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Ansible on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/ansible/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>PHPをアップデートするだけのplaybookを書いた</title>
+      <link>http://log.deprode.net/logs/2016-04-13_18-14-52/</link>
+      <pubDate>Wed, 13 Apr 2016 18:14:52 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-13_18-14-52/</guid>
+      <description>
+
+&lt;h2 id=&#34;phpをアップデートするだけのplaybookを書いた&#34;&gt;PHPをアップデートするだけのplaybookを書いた&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/deprode/php-update-playbook&#34;&gt;deprode/php-update-playbook: PHPをアップデートするAnsible playbook&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;以前にAnsibleを使ってVPSをセットアップするplaybookを書いていたのだが、個別のタスクになっていなかったので、「PHPのアップデートだけやる」というタスクはこなせなかった。そのため、PHPのアップデートが遅れてしまうことがたびたびあった。そのため、@official_phpがアップデート告知をするたびに申し訳ない気持ちになっていた。&lt;/p&gt;
+
+&lt;h3 id=&#34;使い方&#34;&gt;使い方&lt;/h3&gt;
+
+&lt;p&gt;前提としてAnsibleが入っており、まずssh_configファイルを編集する必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Host defaults
+  HostName 127.0.0.1 # 自分のHostNameにする
+  User foobar # ユーザ名を変更
+  Port 22 # ポートの変更
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /Users/foobar/.ssh/id_rsa # SSH鍵の場所を変更
+  IdentitiesOnly yes
+  LogLevel FATAL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/deprode/php-update-playbook/blob/master/group_vars/repo.yml&#34;&gt;group_vars&lt;/a&gt;のURLとprefixを適当なものに変更し、コマンドを実行する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ansible-playbook site.yml
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これでいつセキュリティフィックスがあっても大丈夫だ。たぶん。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 05 05</title>
+      <link>http://log.deprode.net/logs/2015-05-05/</link>
+      <pubDate>Tue, 05 May 2015 23:57:08 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-05/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;VagrantでDigitalOceanを立ち上げるのとProvisionを別にした方が良さそうな気がしてきた。
+
+&lt;ul&gt;
+&lt;li&gt;要するに、rootパスワード変更、sshポート変更、iptables設定、yum update、などを最初にやる必要があるのだが、これをやると接続ポートを変更する必要があるため、次回以降接続するために設定を変更する必要がある。
+
+&lt;ul&gt;
+&lt;li&gt;また、rootパスワード変更は手動でやった方がいい気がする。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;なので、provisionは別でansibleで行うことにした。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Vagrant-DigitalOceanやろうと思ったら、&lt;code&gt;An active machine was found with a different provider.&lt;/code&gt;エラー。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.vagrant&lt;/code&gt;フォルダを削除するといいらしい。
+
+&lt;ul&gt;
+&lt;li&gt;ということは、Develop用とProvision用の2つのVagrantFileが必要になるってことなのかな。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DigitalOceanは最近cliend-id&amp;amp;api-key方式からapi-token方式に切り替わったので、過去の資料（の一部）が役に立たなくなってるなどがあった。&lt;/li&gt;
+&lt;li&gt;しょうがないので、DigitalOceanテスト用にVagrantFile作る
+
+&lt;ul&gt;
+&lt;li&gt;参考→&lt;a href=&#34;http://blog.morizotter.com/2015/01/05/create-instant-server-instance-with-vagrantdigitalocean/&#34;&gt;Vagrant+DigitalOceanで使い捨て即席サーバを作成する | Morizotter Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;hostsファイル書いてなくてprovision失敗したけど、サーバは起動した。やった。₍₍ (ง &amp;lsquo;ω&amp;rsquo;)ว ⁾⁾
+
+&lt;ul&gt;
+&lt;li&gt;vagrant sshでrootログインできた。&lt;/li&gt;
+&lt;li&gt;sshのport変えたらログインできなくなった
+
+&lt;ul&gt;
+&lt;li&gt;config.ssh.portを設定して再度vagrant up&lt;/li&gt;
+&lt;li&gt;sshはssh-configを~/.ssh/configに書いたので接続できるけど、vagrant sshが読み込まれてない&lt;/li&gt;
+&lt;li&gt;普通にansibleコマンドも使える。ので、vagrant sshのssh-configを再読込できれば問題ないことになる。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://girigiribauer.com/archives/1749&#34;&gt;Vagrant で SSH の接続ポート番号を変える、という発想がそもそも間違ってた | girigiribauer.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;終わり。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;要は、Vagrantは同一環境の仮想環境を起動するところまでが役割だからSSHポート変更したらvagrant sshで接続できなくなってもかまわないってことなのかな……。
+
+&lt;ul&gt;
+&lt;li&gt;いや、普通はvagrant reloadとかで直った気がする。providerがあることでどうのこうの。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;とりあえずansibleだけでやる。
+
+&lt;ul&gt;
+&lt;li&gt;ERROR: &lt;code&gt;InnoDB: Cannot allocate memory for the buffer pool&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;メモリが足りてなかった。（Swap領域がなかったのでダメだったっぽい。）
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://nekopunch.hatenablog.com/entry/2014/03/22/020507&#34;&gt;Vagrant+VirtualBox+CentOS環境でMySQL5.6が起動しない場合の対処法 - 憂鬱な世界にネコパンチ！&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;あとでtagつけて切り替えられるようにしたい。&lt;/li&gt;
+&lt;li&gt;ntpdateでcommand実行してるので、常にchangedになるけど、okにする方法がわからない。ansible力が足りない。&lt;/li&gt;
+&lt;li&gt;fileモジュールでstate=touchにすると常にchangedになるんだけど、okにする方法がわからない。( ˘ω˘)&lt;/li&gt;
+&lt;li&gt;とりあえずfailed=0になったのでよかった。（˶˘◡˘˶）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;で、このあとiptablesとsshdの設定を別のplaybookでやった。
+
+&lt;ul&gt;
+&lt;li&gt;一部は手動。sshdのファイル設定。&lt;/li&gt;
+&lt;li&gt;で、ここでrootのログインを禁止した後に作業ユーザーのパスワードをちゃんと設定できていないことが判明し、詰んだので作り直す。
+
+&lt;ul&gt;
+&lt;li&gt;失敗できるやつでよかった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;python -c &#39;import crypt; print crypt.crypt(&amp;quot;password&amp;quot;, &amp;quot;$1$SomeSalt$&amp;quot;)&#39;&lt;/code&gt;でpasswordを暗号化してansibleで使えるようになるのだが、環境によって違うっぽい。MacだとSaltがない13桁の文字列になる。
+
+&lt;ul&gt;
+&lt;li&gt;というか、公式にもOS Xだとアレだからって書いてあった。&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.ansible.com/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module&#34;&gt;Frequently Asked Questions — Ansible Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/15231661/how-do-i-create-a-user-and-set-a-password-using-ansible/17992126#17992126&#34;&gt;cryptography - How do I create a user and set a password using ansible? - Stack Overflow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;とりあえず、CentOSで暗号化して、何とかなった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;iptablesでsshポートを変えたがsshポートの設定を変える処理忘れてた。
+
+&lt;ul&gt;
+&lt;li&gt;管理画面からrootでログインしてsshのポート変えて設定読み直して事なきを得た。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;とりあえず何とかなってるので、よかった。もう寝る。
+
+&lt;ul&gt;
+&lt;li&gt;メモリとか見ると心許ない。今のところ大丈夫だけど、落ちるようなら……。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 05 04</title>
+      <link>http://log.deprode.net/logs/2015-05-04/</link>
+      <pubDate>Mon, 04 May 2015 21:27:15 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-04/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Naoyaさんのスライド見た。まだストリームとかReactiveプログラミングを理解する脳になってない。コードはわかるのにフローが描けない。&lt;/li&gt;
+&lt;li&gt;Ansible
+
+&lt;ul&gt;
+&lt;li&gt;MySQLに&lt;code&gt;mysql_secure_installation&lt;/code&gt;コマンドあるのに、Ansibleで自動化していいのか悩む。
+
+&lt;ul&gt;
+&lt;li&gt;rootパスワード設定、匿名ユーザー削除、リモートからのrootログイン禁止、testデータベースの削除、&lt;code&gt;privilege tables&lt;/code&gt;の再読込? 、を自動化……うーん。&lt;/li&gt;
+&lt;li&gt;あとでコマンド使うことにした。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ntpのインストールでntp実行中にntpdate使えない。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-u&lt;/code&gt;オプションつけることでできた
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/AH_korikori/items/be10e725048707908162&#34;&gt;http://qiita.com/AH_korikori/items/be10e725048707908162&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PostfixはDigitalOceanのやつ参考にしつつMaildir形式とかサイズ制限など参考にしつつ作った。&lt;/li&gt;
+&lt;li&gt;php.iniはPHP逆引きレシピ第2版を参考にしつつ作成した。&lt;/li&gt;
+&lt;li&gt;php-fpm単体で起動しようとするとエラーが出るんだけど、こういうものなの？versionはちゃんと出るし、nginxとの連携でphpも動く。プロセス再起動しても動く。何これ怖い。
+
+&lt;ul&gt;
+&lt;li&gt;versionでfpm-fcgiが出るのは確認できるけど、ほとんどのブログでphp-fpmがちゃんと動いてるか確認してないのだが、大丈夫なのか？&lt;/li&gt;
+&lt;li&gt;phpinfoにもFPM/FastCGIは出てるっぽい。
+
+&lt;ul&gt;
+&lt;li&gt;二重に起動しようとしてエラー出てただけだった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;明日はDigitalOceanで使い始める。移すだけのやつはFTPで移す。それ以外はデプロイできるように整備してから再度移す。
+
+&lt;ul&gt;
+&lt;li&gt;vagrant以外から普通にsshする方法がアレでいいのかわからないので、試してからやる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazonで「正解 -テスト -入試 -試験」で調べた結果、本のタイトルに正解とつくジャンルほど、正解がない。
+
+&lt;ul&gt;
+&lt;li&gt;ということは、「本のタイトルに○○とつくジャンルほど、○○でない（傾向がある）」ということか？&lt;/li&gt;
+&lt;li&gt;この話はやめましょう。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;他人の技術ブログ読んでて書き間違いに気づいたときに、それとなく教えるボタン欲しい。&lt;/li&gt;
+&lt;li&gt;プログラミングで高度な技術を用いると、保守にかかるコストが高くなる。ので、読みやすく解析しやすいコードを書くことは重要だと思った。
+
+&lt;ul&gt;
+&lt;li&gt;保守コストを考えると、Web開発において失敗の蓄積されてない最新の技術を使う必要はないんじゃ。
+
+&lt;ul&gt;
+&lt;li&gt;保守にかけられるお金があるなら最新の技術を使って保守し続けるのが吉ぞい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 04 24</title>
+      <link>http://log.deprode.net/logs/2015-04-24/</link>
+      <pubDate>Fri, 24 Apr 2015 23:22:18 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-24/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Ansibleなど
+
+&lt;ul&gt;
+&lt;li&gt;CasperJSも入れたいなと思ってたら、PhantomJSは2.0になってて、困る。&lt;/li&gt;
+&lt;li&gt;stackoverflowによると、1.1-beta3ブランチはPhantomJS1.8以下2.0以上でexitするようになってるらしい。
+
+&lt;ul&gt;
+&lt;li&gt;手元のMac版はhomebrewで管理してるけど、前に間違って2.0にあげてしまったのでcasperjs動かない。bootstrap.jsをgistで動くように書き換えて、無保証で動かせばいいっぽい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;でもgithub見ると普通に1.9ブランチはあるし、rereaseブランチに1.9.7のものがある。
+
+&lt;ul&gt;
+&lt;li&gt;と思ったら、build.shを動かさないとだめっぽので、bitbucketのビルド済みイメージ（1.9.8）をダウンロードする方向に切り替えた&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ビルドなしで、解凍して&lt;code&gt;/usr/local/bin/&lt;/code&gt;以下に配置してみる。
+
+&lt;ul&gt;
+&lt;li&gt;get_urlだとリモートにダウンロードするけど、unarchiveがローカルにしか対応してない？
+
+&lt;ul&gt;
+&lt;li&gt;copy=noでよかった&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;その後のリモート→リモート間のコピーするモジュールがないっぽい。
+
+&lt;ul&gt;
+&lt;li&gt;commandでmvとかcpとか使うみたい。&lt;/li&gt;
+&lt;li&gt;statとregisterでファイルがあるかチェックした結果を格納して、whenで判定すればいちいちcpやmvを実行しなくていい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;unarchiveでcreatesの使い方がわからなかったけど、テストで使ってたので他人に見せるコードはテスト書くの大事だなと思った。
+
+&lt;ul&gt;
+&lt;li&gt;てか、assertモジュールあるのか。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;CasperJSはnpmでインストールすればよかったのでは、という気分になってる。
+
+&lt;ul&gt;
+&lt;li&gt;まあ、適当なフォルダに解凍してlinkするだけなので、どうでもいいけど。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;nginxの設定ファイル、サイトごとに設定してるファイル違うんだけど……。
+
+&lt;ul&gt;
+&lt;li&gt;デフォルトがincludeで*.confを全部読み込んでるからだった。
+
+&lt;ul&gt;
+&lt;li&gt;apacheで見た。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;phpinfo出そうと思ったけど、そのまま出ることになってたけど、&lt;code&gt;&amp;lt;?&lt;/code&gt;だけだったからだった。
+
+&lt;ul&gt;
+&lt;li&gt;teratailで全く同じ質問あって笑ってしまった。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://teratail.com/questions/5773&#34;&gt;https://teratail.com/questions/5773&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;続きは明日以降。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;メールは使わないけど、logwatchとか通知用にPostfixインストールしないとと思ってる。
+
+&lt;ul&gt;
+&lt;li&gt;さくらVPSなら最初から使えるので何の問題もない。&lt;/li&gt;
+&lt;li&gt;DigitalOceanはコミュニティにインストール方法の記事が書いてあった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;花金で飯画像がアップされると同時に画像解析し、店を割り出し、急行してマシンガンを撃ち出すドローン。&lt;/li&gt;
+&lt;li&gt;竹の子もらいすぎて価格高騰とか信じられないんですが。&lt;/li&gt;
+&lt;li&gt;関数型ポエムで失った信頼を回復するために、秀和システムが達人プログラマーの権利を買い取るけど社内政治の末、例の人が翻訳を担当することになる悪夢&lt;/li&gt;
+&lt;li&gt;「一流の女優がバラエティ番組に出ると緊張で失敗したり謙虚になったりする仕草がかわいい」という系譜を「仲間由紀恵・綾瀬はるか」ラインと私は呼んでるんですけど
+
+&lt;ul&gt;
+&lt;li&gt;やめた。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ゼノブレイド、現在Lv63、65時間。
+
+&lt;ul&gt;
+&lt;li&gt;シナリオ中心に進めてるけど、サブイベントが恋しくなってくる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

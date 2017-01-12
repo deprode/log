@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 12 16 PHPのREPL、PsySHのメモ - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-12-16/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-12-16/">
+            
+                PHPのREPL、PsySHのメモ
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-12-16T21:52:29&#43;09:00">2015-12-16</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="phpのrepl-psyshの使い方メモ">PHPのREPL、PsySHの使い方メモ</h2>
+
+<p>公式サイト：<a href="http://psysh.org/">PsySH(http://psysh.org/)</a></p>
+
+<p>PHPのREPL（Read-Eval-Print Loop、対話的にプログラムを実行する環境）ライブラリ。ほかにもデバッグを補助する機能や、PHP Manualを簡易的に参照する機能がある。</p>
+
+<h3 id="インストール">インストール</h3>
+
+<pre><code>$ composer g require psy/psysh:@stable
+$ psysh
+Psy Shell v0.1.11 (PHP 5.6.16 — cli) by Justin Hileman
+&gt;&gt;&gt; q
+Exit:  Goodbye.
+</code></pre>
+
+<p>例ではglobal環境にインストールしたが、プロジェクトがあればプロジェクトごとに<code>composer require psy/psysh:@stable --dev</code>した方がいい。</p>
+
+<p><code>psysh</code>でREPLが起動する。helpでコマンド一覧が見られる。</p>
+
+<pre><code>&gt;&gt;&gt; help
+  help      Show a list of commands. Type `help [foo]` for information about [fo
+  ls        List local, instance or class variables, methods and constants.
+  dump      Dump an object or primitive.
+  doc       Read the documentation for an object, class, constant, method or pro
+  show      Show the code for an object, class, constant, method or property.
+  wtf       Show the backtrace of the most recent exception.
+  trace     Show the current call stack.
+  buffer    Show (or clear) the contents of the code input buffer.
+  clear     Clear the Psy Shell screen.
+  history   Show the Psy Shell history.
+  exit      End the current session and return to caller
+</code></pre>
+
+<p>help単体だと、コマンド一覧の表示。helpの後にコマンドをつけることでコマンドの解説。ex:<code>help ls</code>,<code>help wtf</code></p>
+
+<p>exitで終了できる。（quit, qもAliasとして設定してある。）</p>
+
+<h3 id="使う">使う</h3>
+
+<p>（コマンドなしで）設定済み変数を打ち込むと、変数の中身が表示される。</p>
+
+<pre><code>&gt;&gt;&gt; $foo = &quot;foo&quot;;
+=&gt; &quot;foo&quot;
+&gt;&gt;&gt; $foo
+=&gt; &quot;foo&quot;
+</code></pre>
+
+<p>lsコマンドは現在の変数を把握できる。</p>
+
+<pre><code>&gt;&gt;&gt; ls
+&gt;&gt;&gt; ls -la
+
+Variables:
+  $_   null
+&gt;&gt;&gt; $foo = &quot;foo&quot;
+=&gt; &quot;foo&quot;
+&gt;&gt;&gt; ls
+Variables: $foo
+&gt;&gt;&gt; ls -la
+
+Variables:
+  $foo   &quot;foo&quot;
+  $_     &quot;foo&quot;
+</code></pre>
+
+<p>$_は直前に扱った変数、$_eは直前のエラーを表す。</p>
+
+<pre><code>&gt;&gt;&gt; throw new Exception($_)
+Exception with message 'foo'
+&gt;&gt;&gt; $_e
+=&gt; &lt;Exception #0000000033f9114200000001170b7c6f&gt; {
+       message: &quot;foo&quot;,
+       file: &quot;/Users/deprode/.composer/vendor/psy/psysh/src/Psy/ExecutionLoop/Loop.php(67) : eval()'d code&quot;,
+       line: 1
+   }
+</code></pre>
+
+<p>定義したクラスはprivate変数を含めて見ることができる。</p>
+
+<pre>
+>>> class Foo {
+...     private $bar;
+...     public function __construct($b) {
+...        $this->bar = $b;
+...     }
+...     public function getBar() {
+...        return $this->bar;
+...     }
+... }
+>>> $foo = new Foo("foo");
+=> <Foo #0000000072abbf7d0000000169886235> {}
+>>> ls -la $foo
+
+Class Properties:
+  $bar   "foo"
+
+Class Methods:
+  __construct   public function __construct($b)
+  getBar        public function getBar()
+</pre>
+
+<h3 id="tips">tips</h3>
+
+<ul>
+<li><code>~/.config/psysh/config.php</code>に設定ファイルを設置できる</li>
+<li>historyコマンドで今までのコマンドを確認することができる</li>
+<li>wtfコマンドで直前の例外を表示できる</li>
+<li>traceコマンドで現在のコールスタックを見ることができる</li>
+<li>docコマンドでPHPDoc形式のコメントがあればオブジェクトを指定してドキュメントを表示できる
+
+<ul>
+<li>ほかにも、GithubからリンクされているPHP Manualを<code>~/.local/share/psysh/</code>または<code>~/.psysh/</code>に配置することで、docコマンドでマニュアルを参照できる。ex:<code>doc print_r</code></li>
+</ul></li>
+</ul>
+
+<h3 id="デバッグ">デバッグ</h3>
+
+<p>Rubyのbinding.pry感覚でブレークポイントを設置できる（らしい）。<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup></p>
+
+<p><code>eval(\Psy\sh());</code>を差し込むことで、その地点の情報を見ることができる。（ただ、ステップ実行や実行後の動作保証はないので、そういうのをしたい場合はxdebug使う。）</p>
+
+<pre><code>&lt;?php
+require('vendor/autoload.php');
+
+class Foo {
+    public $bar;
+    public function hello() {
+        return 'hello' . $this-&gt;bar;
+    }
+}
+$foo = new Foo();
+$foo-&gt;bar = 'baz';
+eval(\Psy\sh());
+echo $foo-&gt;hello() . PHP_EOL;
+</code></pre>
+
+<p>showコマンドを使うと、その時点で把握しているオブジェクト（≠インスタンス）のコードを見ることができる。</p>
+
+<pre><code>$ php test.php
+#!/usr/bin/env php
+
+Psy Shell v0.6.1 (PHP 5.6.16 — cli) by Justin Hileman
+&gt;&gt;&gt; show $foo
+  &gt; 4| class Foo {
+    5|     public $bar;
+    6|     public function hello() {
+    7|         return 'hello' . $bar;
+    8|     }
+    9| }
+</code></pre>
+
+<p>ちょっと触っただけなので、間違ってたらごめん。</p>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+<li><a href="http://www.engineyard.co.jp/blog/2014/php-psysh/">PHPをインタラクティブに実行する PsySH - Engine Yard Blog</a></li>
+<li><a href="http://blog.kazu69.net/2015/02/28/php-repl-psysh-was-so-convenient/">phpのREPL psysh が便利そうだった | 69log</a></li>
+<li><a href="http://cho-phper.hateblo.jp/entry/2015/11/10/031000">PHPを「シェル化」する [psy/psysh] - 超PHPerになろう</a></li>
+</ul>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1"><a href="http://qiita.com/zaru/items/84d7ffd264b8093dca20">var_dumpからの卒業、PHP開発を加速するデバッグ手法を考える - Qiita</a>
+ <a class="footnote-return" href="#fnref:1">↩</a></li>
+</ol>
+</div>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-12-16T21:52:29&#43;09:00">2015-12-16 21:52:29</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/psysh">PsySH</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

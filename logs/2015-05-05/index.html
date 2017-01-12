@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 05 05 VagrantでDigitalOcean - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-05-05/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-05-05/">
+            
+                VagrantでDigitalOcean
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-05-05T23:57:08&#43;09:00">2015-05-05</time></p>
+    </header>
+    <section class="single_content">
+        <ul>
+<li>VagrantでDigitalOceanを立ち上げるのとProvisionを別にした方が良さそうな気がしてきた。
+
+<ul>
+<li>要するに、rootパスワード変更、sshポート変更、iptables設定、yum update、などを最初にやる必要があるのだが、これをやると接続ポートを変更する必要があるため、次回以降接続するために設定を変更する必要がある。
+
+<ul>
+<li>また、rootパスワード変更は手動でやった方がいい気がする。</li>
+</ul></li>
+<li>なので、provisionは別でansibleで行うことにした。</li>
+</ul></li>
+<li>Vagrant-DigitalOceanやろうと思ったら、<code>An active machine was found with a different provider.</code>エラー。
+
+<ul>
+<li><code>.vagrant</code>フォルダを削除するといいらしい。
+
+<ul>
+<li>ということは、Develop用とProvision用の2つのVagrantFileが必要になるってことなのかな。</li>
+</ul></li>
+<li>DigitalOceanは最近cliend-id&amp;api-key方式からapi-token方式に切り替わったので、過去の資料（の一部）が役に立たなくなってるなどがあった。</li>
+<li>しょうがないので、DigitalOceanテスト用にVagrantFile作る
+
+<ul>
+<li>参考→<a href="http://blog.morizotter.com/2015/01/05/create-instant-server-instance-with-vagrantdigitalocean/">Vagrant+DigitalOceanで使い捨て即席サーバを作成する | Morizotter Blog</a></li>
+</ul></li>
+<li>hostsファイル書いてなくてprovision失敗したけど、サーバは起動した。やった。₍₍ (ง &lsquo;ω&rsquo;)ว ⁾⁾
+
+<ul>
+<li>vagrant sshでrootログインできた。</li>
+<li>sshのport変えたらログインできなくなった
+
+<ul>
+<li>config.ssh.portを設定して再度vagrant up</li>
+<li>sshはssh-configを~/.ssh/configに書いたので接続できるけど、vagrant sshが読み込まれてない</li>
+<li>普通にansibleコマンドも使える。ので、vagrant sshのssh-configを再読込できれば問題ないことになる。</li>
+<li><a href="http://girigiribauer.com/archives/1749">Vagrant で SSH の接続ポート番号を変える、という発想がそもそも間違ってた | girigiribauer.com</a></li>
+<li>終わり。</li>
+</ul></li>
+<li>要は、Vagrantは同一環境の仮想環境を起動するところまでが役割だからSSHポート変更したらvagrant sshで接続できなくなってもかまわないってことなのかな……。
+
+<ul>
+<li>いや、普通はvagrant reloadとかで直った気がする。providerがあることでどうのこうの。</li>
+</ul></li>
+<li>とりあえずansibleだけでやる。
+
+<ul>
+<li>ERROR: <code>InnoDB: Cannot allocate memory for the buffer pool</code></li>
+<li>メモリが足りてなかった。（Swap領域がなかったのでダメだったっぽい。）
+
+<ul>
+<li><a href="http://nekopunch.hatenablog.com/entry/2014/03/22/020507">Vagrant+VirtualBox+CentOS環境でMySQL5.6が起動しない場合の対処法 - 憂鬱な世界にネコパンチ！</a></li>
+</ul></li>
+<li>あとでtagつけて切り替えられるようにしたい。</li>
+<li>ntpdateでcommand実行してるので、常にchangedになるけど、okにする方法がわからない。ansible力が足りない。</li>
+<li>fileモジュールでstate=touchにすると常にchangedになるんだけど、okにする方法がわからない。( ˘ω˘)</li>
+<li>とりあえずfailed=0になったのでよかった。（˶˘◡˘˶）</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>で、このあとiptablesとsshdの設定を別のplaybookでやった。
+
+<ul>
+<li>一部は手動。sshdのファイル設定。</li>
+<li>で、ここでrootのログインを禁止した後に作業ユーザーのパスワードをちゃんと設定できていないことが判明し、詰んだので作り直す。
+
+<ul>
+<li>失敗できるやつでよかった。</li>
+</ul></li>
+<li><code>python -c 'import crypt; print crypt.crypt(&quot;password&quot;, &quot;$1$SomeSalt$&quot;)'</code>でpasswordを暗号化してansibleで使えるようになるのだが、環境によって違うっぽい。MacだとSaltがない13桁の文字列になる。
+
+<ul>
+<li>というか、公式にもOS Xだとアレだからって書いてあった。</li>
+<li><a href="http://docs.ansible.com/faq.html#how-do-i-generate-crypted-passwords-for-the-user-module">Frequently Asked Questions — Ansible Documentation</a></li>
+<li><a href="http://stackoverflow.com/questions/15231661/how-do-i-create-a-user-and-set-a-password-using-ansible/17992126#17992126">cryptography - How do I create a user and set a password using ansible? - Stack Overflow</a></li>
+<li>とりあえず、CentOSで暗号化して、何とかなった。</li>
+</ul></li>
+<li>iptablesでsshポートを変えたがsshポートの設定を変える処理忘れてた。
+
+<ul>
+<li>管理画面からrootでログインしてsshのポート変えて設定読み直して事なきを得た。</li>
+</ul></li>
+</ul></li>
+<li>とりあえず何とかなってるので、よかった。もう寝る。
+
+<ul>
+<li>メモリとか見ると心許ない。今のところ大丈夫だけど、落ちるようなら……。</li>
+</ul></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-05-05T23:57:08&#43;09:00">2015-05-05 23:57:08</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/vagrant">Vagrant</a></li>
+            
+                <li class="page_tags"><a href="/tags/digitalocean">DigitalOcean</a></li>
+            
+                <li class="page_tags"><a href="/tags/ansible">Ansible</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

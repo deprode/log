@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Mac on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/mac/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 12 14</title>
+      <link>http://log.deprode.net/logs/2015-12-14/</link>
+      <pubDate>Mon, 14 Dec 2015 23:56:44 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-12-14/</guid>
+      <description>
+
+&lt;h2 id=&#34;いろいろ&#34;&gt;いろいろ&lt;/h2&gt;
+
+&lt;p&gt;ちょっと体調悪くて休みつつやっていた。&lt;/p&gt;
+
+&lt;h3 id=&#34;ファイル保存の確認をせずウィンドウを閉じる&#34;&gt;ファイル保存の確認をせずウィンドウを閉じる&lt;/h3&gt;
+
+&lt;p&gt;MacでBywordというアプリを使って書いている。前のMacではウィンドウを閉じるときに保存するか聞かれずにいたのだが、新しいMacだと保存するか聞かれるようになった。また、アプリ起動時にファイルが復元しなくなった。&lt;/p&gt;
+
+&lt;p&gt;これは、設定＞一般の「アプリケーションを終了するときにウィンドウを閉じる」にチェックが入っているから。チェックが入っているとアプリの起動が少し遅くなる。最初に起動するファイルをデフォルトのUntitledからDropbox内のUntitled.txtにしたいため、チェックを入れている。&lt;/p&gt;
+
+&lt;h3 id=&#34;デスクトップに外部ディスクを表示しない&#34;&gt;デスクトップに外部ディスクを表示しない&lt;/h3&gt;
+
+&lt;p&gt;Finderの左上メニューから環境設定（cmd+,）を選び、外部ディスクを外す。&lt;/p&gt;
+
+&lt;h3 id=&#34;拡張子を表示する&#34;&gt;拡張子を表示する&lt;/h3&gt;
+
+&lt;p&gt;Finderの左上メニューから環境設定（cmd+,）＞詳細を選び、すべてのファイル名拡張子を表示にチェックを入れる。&lt;/p&gt;
+
+&lt;h3 id=&#34;本の注文&#34;&gt;本の注文&lt;/h3&gt;
+
+&lt;p&gt;した。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gihyo.jp/book/2015/978-4-7741-7301-6&#34;&gt;SQL実践入門──高速でわかりやすいクエリの書き方&lt;/a&gt;と&lt;a href=&#34;http://gihyo.jp/book/2015/978-4-7741-7654-3&#34;&gt;Docker実践入門――Linuxコンテナ技術の基礎から応用まで&lt;/a&gt;の二冊。どちらも興味があったので買ったけど、Dockerの方は流れが速いので少し不安ではある。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

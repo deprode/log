@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Nodebrew on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/nodebrew/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 11 10</title>
+      <link>http://log.deprode.net/logs/2015-11-10/</link>
+      <pubDate>Tue, 10 Nov 2015 18:38:23 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-11-10/</guid>
+      <description>
+
+&lt;h2 id=&#34;今日の失敗ログ-node-npm&#34;&gt;今日の失敗ログ（node &amp;amp; npm）&lt;/h2&gt;
+
+&lt;p&gt;Nodeをv4.4.2にしようと思った。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;brew info node&lt;/code&gt;で確認すると5.0.0が入る。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;brew versions node&lt;/code&gt;で調べるがversionsコマンド削除されてたので&lt;code&gt;brew tap homebrew/versions&lt;/code&gt;で入れる&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;brew search node&lt;/code&gt;で調べて、&lt;code&gt;brew install node4-lts&lt;/code&gt;で入れる&lt;/li&gt;
+&lt;li&gt;競合してるっぽくて入らないので&lt;code&gt;brew unlink node&lt;/code&gt;で外す&lt;/li&gt;
+&lt;li&gt;再度、&lt;code&gt;brew install node4-lts&lt;/code&gt;を行い、無事にNode.jsがv4.4.2になる。&lt;/li&gt;
+&lt;li&gt;npmのpathがNode4内部（&lt;code&gt;/usr/local/Cellar/node4-lts/4.2.2/lib/node_modules&lt;/code&gt;）に切り替わったのでグローバルインストールしたモジュールが使用不可になる。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl https://www.npmjs.com/install.sh | sh&lt;/code&gt;で再度入れ直すも、versionはv2.1.9のまま。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;npm --version&lt;/code&gt;を実行すると&lt;code&gt;2.1.9&lt;/code&gt;が返ってくるが、Node v4.2.2の内部にはnpm@3.3.12が入っている。そして、&lt;code&gt;npm ls -g&lt;/code&gt;だとNode v4内部の情報が表示されるし、&lt;code&gt;npm install -g yo&lt;/code&gt;すると4.2.2に入る。&lt;/p&gt;
+
+&lt;p&gt;わけがわからなくなったので再インストールしようとアンインストールを試みた。homebrewはやめて、nodebrewで入れることにした。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sudo npm uninstall -g npm&lt;/code&gt;でも、なぜか2系が残るので、&lt;code&gt;rm -rf /usr/local/bin/npm&lt;/code&gt;を実行。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;brew uninstall node&lt;/code&gt;で&lt;code&gt;node 0.10.26&lt;/code&gt;がuninstallされ、&lt;code&gt;node -v&lt;/code&gt;で4.2.2が表示されたので、&lt;code&gt;brew uninstall node4-lts&lt;/code&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;その後は、&lt;a href=&#34;https://github.com/hokaccha/nodebrew&#34;&gt;hokaccha/nodebrew&lt;/a&gt;のREADMEに従ってnodebrewを入れてパスを通し、&lt;code&gt;nodebrew install v4.2.2&lt;/code&gt;→&lt;code&gt;nodebrew use v4.2.2&lt;/code&gt;でnodeを使えるようにした。&lt;/p&gt;
+
+&lt;p&gt;また、npmはnodeについてきたので、&lt;code&gt;sudo npm install -g npm&lt;/code&gt;でnpmをv3にアップデートできた。よかった。nodebrewすごい便利。&lt;/p&gt;
+
+&lt;p&gt;ただ、前にnpmでグローバルインストールしたライブラリは、再インストールし直しっぽい。（ログはあるし、あまり使ってなかったのがほとんどなので別に困ってない。）使ってないものを整理する機会だと思って、次に使うことになったらインストールしよう。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;npmがnodebrewの管理するNode.js内部にインストールされてるっぽいけど、nodeのバージョン切り替えるとどうなるんだろう。予想は切り替えでnode_modules再インストールし直しだけど。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

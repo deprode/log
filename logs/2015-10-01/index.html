@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 01 Slim(php)3でCSRF対策 - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-01/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-01/">
+            
+                Slim(php)3でCSRF対策
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-01T00:00:00&#43;09:00">2015-10-01</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="slim-php-3でcsrf対策">Slim(php)3でCSRF対策</h2>
+
+<p>Slim3を相変わらず触っている。</p>
+
+<p>SlimでCsrfを行うには、公式に用意されているCsrfライブラリを使う。</p>
+
+<ul>
+<li><a href="https://github.com/slimphp/Slim-Csrf">slimphp/Slim-Csrf</a></li>
+</ul>
+
+<p>基本的な使い方は、公式ドキュメントとSlimの生みの親であるRob Allenのブログに書いてあるので、こちらを参考に使えばいいだろう。</p>
+
+<ul>
+<li><a href="http://www.slimframework.com/docs/features/csrf.html">CSRF Protection - Slim Framework</a></li>
+<li><a href="http://akrabat.com/slim-csrf-with-slim-3/">Slim-Csrf with Slim 3 | Rob Allen&rsquo;s DevNotes</a></li>
+</ul>
+
+<p>個人的には<a href="https://github.com/akrabat/slim3-skeleton">slim3-skeleton</a>で使いたかったので、その方法を調べていた。</p>
+
+<p><code>composer require slim/csrf</code>でインストールした後は、middleware.phpで、宣言して<code>$app-&gt;add($guard)</code>のようにする。失敗したときの処理はsetFailureCallable内に書く。ここでは、別のクラスで判定したりするために変数を設定するだけにとどめる。</p>
+
+<pre><code>// middleware.php
+$guard = new Slim\Csrf\Guard();
+$guard-&gt;setFailureCallable(function ($request, $response, $next) {
+    $request = $request-&gt;withAttribute(&quot;csrf_status&quot;, false);
+    return $next($request, $response);
+});
+$app-&gt;add($guard);
+</code></pre>
+
+<p>Action（Controller）で、判定を行って失敗時の処理を行う。（本当ならViewを呼び出してrenderするべきだった。）</p>
+
+<pre><code>// SaveAction.php
+    if ($request-&gt;getAttribute('csrf_status') === false) {
+        $failed = &lt;&lt;&lt;EOT
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;不正な投稿が行われました&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;投稿をやり直してください&lt;/h1&gt;
+    &lt;p&gt;このエラーは意図しない投稿が行われた場合や、前に戻るを使った場合に出るエラーです。最初の画面から投稿をやり直してください。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+EOT;
+        return $response-&gt;write($failed);
+    }
+</code></pre>
+
+<p>送信元のActionは次のように書いた。</p>
+
+<pre><code>// HomeAction.php
+$name = $request-&gt;getAttribute('csrf_name');
+$value = $request-&gt;getAttribute('csrf_value');
+
+$this-&gt;view-&gt;render($response, 'home.twig', ['name' =&gt; $name, 'value' =&gt; $value]);
+</code></pre>
+
+<p>テンプレートは次のように書いた。</p>
+
+<pre><code>// home.twig
+&lt;form action=&quot;{{ path_for('save') }}&quot; method=&quot;post&quot; accept-charset=&quot;utf-8&quot;&gt;
+       &lt;input type=&quot;hidden&quot; name=&quot;csrf_name&quot; value=&quot;{{ name }}&quot;&gt;
+       &lt;input type=&quot;hidden&quot; name=&quot;csrf_value&quot; value=&quot;{{ value }}&quot;&gt;
+       &lt;input type=&quot;text&quot; name=&quot;impression&quot; value=&quot;&quot; placeholder=&quot;感想&quot;&gt;
+       &lt;input type=&quot;submit&quot; name=&quot;&quot; value=&quot;送信&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>本来なら<code>csrf_name</code>や<code>csrf_value</code>もとれるみたいなんだけど、面倒だし公式ドキュメントでもやってないので、まあいいかということにした。</p>
+
+<p>以上。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-01T00:00:00&#43;09:00">2015-10-01 00:00:00</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/slim">Slim</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

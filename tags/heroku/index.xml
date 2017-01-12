@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Heroku on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/heroku/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Wed, 01 Apr 2015 23:01:14 JST</updated>
+    
+    <item>
+      <title>2015 04 01</title>
+      <link>http://log.deprode.net/logs/2015-04-01/</link>
+      <pubDate>Wed, 01 Apr 2015 23:01:14 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-01/</guid>
+      <description>&lt;p&gt;仕事なくなったので日記を書くことにした。
+しばらくは前の仕事の無償修理的なやつをしながら暮らすと思う。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;前から気になっていたドットインストールの新HTML入門を聞き終わってから、気になってたのCSS入門だったことに気づいた。明日聞こう。&lt;/li&gt;
+&lt;li&gt;リファクタリングウェットウェアは4章まで読み進めた。脳、というか認知にはバイアスがかかるので、それを差し引いて検証することが重要らしい。自分も認知がゆがんでいるのでなかなか難しいけど、事実と思考を分けて考えればいいということなのだと思う。
+
+&lt;ul&gt;
+&lt;li&gt;モーニングページとしてlogに何か書けばいいのかもしれないけど、朝起きて不機嫌なものをネットにさらすのデメリットしかないし、ほぼ日手帳にでも書いておく。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;JavaScriptパータン、積ん読になってるので早く読み崩したい。
+
+&lt;ul&gt;
+&lt;li&gt;PHP: The Right Wayも、少しずつ崩していきたい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;さくらのVPS、今の使い方だと明らかにオーバースペックなので、一番小さいサイズにしたい。512M。ただ、これだとDocker動かないと思う。
+
+&lt;ul&gt;
+&lt;li&gt;別にDocker使わないと行けないわけでもないし、いざとなればまた契約し直せばいいのよ。&lt;/li&gt;
+&lt;li&gt;てか、Ansible使って、VPSの環境構築自動化したいけど、どこまで自動化できるんだろう。前に全て自動にして怒られてたエントリあったような。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Herokuの料金体系変更したのって、Herokuを眠らせないようにドーピングしまくってた一部の人がいたからなのでは……などと、根拠のないことを思った。
+
+&lt;ul&gt;
+&lt;li&gt;そういえば、前にMac miniがメモリ直づけになったのもメモリ交換で修理するときにメモリを無償でつけてるからコストが合わなくなってメモリ交換不能になったのだと思ったけど、MacBookの部品流用してるからで終わったの思い出した。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;エイプリルフールだったけど、IPというか、ブランドを貸し出して売上にして、実績もコネも作った会社が勝ち組ということにした。
+
+&lt;ul&gt;
+&lt;li&gt;ホームズを貸し出すとか、やっぱりすごいわ。ってか、犬逆転裁判って製品版のおまけでいいから作って欲しかった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;俺も東京に住んでいたらアニメとゲームで人生終わってたかもしれない。
+
+&lt;ul&gt;
+&lt;li&gt;明日からゼノブレイドで忙しいので日記終わると思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

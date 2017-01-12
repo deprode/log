@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>コーディングを支える技術 on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/%E3%82%B3%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%82%92%E6%94%AF%E3%81%88%E3%82%8B%E6%8A%80%E8%A1%93/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 07 12</title>
+      <link>http://log.deprode.net/logs/2015-07-12/</link>
+      <pubDate>Sun, 12 Jul 2015 12:00:59 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-07-12/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;コーディングを支える技術 読み終えた
+
+&lt;ul&gt;
+&lt;li&gt;この本は、「なぜその機能が出来たのか」に焦点を当てた、プログラミング言語の概念をわかりやすく教えてくれる。&lt;/li&gt;
+&lt;li&gt;コーディングにおいて、if文やfor文、トレイト、Mix-inなど、覚えることは多い。だが、実装手段を覚えても どういうときにその機能を使うのか、つまり &amp;ldquo;使いどき&amp;rdquo; はケースバイケースであり、教えられないことが多い。&lt;/li&gt;
+&lt;li&gt;プログラミングを学んでも、使わなければ覚えない。そして、&amp;rdquo;使いどき&amp;rdquo;がわからなければ、新しい機能を学ぶ気力も起きてこない。&lt;/li&gt;
+&lt;li&gt;そういった&amp;rdquo;使いどき&amp;rdquo;は、困ったときでもある。困ったときの打開策や定石として、使っている言語の機能を使う。たとえば、関数は自分以外の人が使うときに、同じ処理を書く無駄が省けるし、処理がまとまって名前がつくことで理解もしやすくなる。何度も同じ処理を書かないといけないとき、関数を使うと無駄が省けることが多い。&lt;/li&gt;
+&lt;li&gt;いくつかの言語の文法を勉強してきたのだが、この本を読むことで視点がクリアになった。
+
+&lt;ul&gt;
+&lt;li&gt;ゲームにおいて、「こういう武器を売ってます」「こういう機能が追加されました」だけ説明されることがあるが、肝心なのは「どういうときにこれを使うと有効です」という説明なのだ。&lt;/li&gt;
+&lt;li&gt;本書も、「これが出来たのは○○だったからで、□□という問題を解決しました」という説明が多い。なので、概念を理解しやすいし、早速使ってみたくなる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;これから先も、いろいろな機能が作られていくはずだ。そのときに、機能が出来た理由を知ることによって、これから先の機能も&amp;rdquo;使いどき&amp;rdquo;を知ることが出来ると思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;読書感想文下手だなあ、って思う。自分の中で消化できてないし、レビューと感想の比率も決めてないし、誰に向けて書いているのか絞ってないからかな……。
+
+&lt;ul&gt;
+&lt;li&gt;文章も、主語、副詞、形容詞、動詞の順番もよくわかってない。「他の人はきれいな文章をなぜ書けるのだろう」と思ったりする。「」で囲った部分も、順番入れ替えても割と成立するので、難しい。&lt;/li&gt;
+&lt;li&gt;そう思うと、子供の頃に読書感想文をよく書けたなーと思ったけど、読書感想文を書いた記憶がない。どういうことだ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

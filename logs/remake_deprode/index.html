@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>トップページを雑に作り直した  - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/remake_deprode/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/remake_deprode/">
+            
+                トップページを雑に作り直した
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-03-05T09:39:38&#43;09:00">2015-03-05</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<p>トップページを作り直しました。 <a href="http://deprode.jp">http://deprode.jp</a></p>
+
+<h2 id="log">log</h2>
+
+<ul>
+<li>Twitterの発言</li>
+</ul>
+
+<p>昔作ったトップページは個人的に気に入ってるけど、Hugoのデザインと合わないので作り直した。その際、CSSフレームワーク（というかボイラープレートとして）Skeletonを使った。</p>
+
+<p><a href="http://getskeleton.com/">Skeleton</a>は200行のCSSだが、使うときれいになる。レスポンシブも対応してる。</p>
+
+<p>fontawesome含め、外部のCSSとJSはCDNを使うようにした。</p>
+
+<p>削除したものは、html5shivとmetaタグのいくつか。html5shivは、IE8以下でもhtml5タグを認識できるようにするshim。アクセス解析を見て、IE8以下が1%切ってるので、削除した。（<a href="http://counter.hatena.ne.jp/sample/report?cid=11&amp;date=2015-02-01&amp;mode=summary&amp;target=browser&amp;type=monthly">はてなカウンター</a>とか見ると5%近くいる。）</p>
+
+<p>メタタグでなぜか<code>user-scalable=no</code>などが指定してあったので削除した。</p>
+
+<p>その他、いろいろリンクを追加したり、作ったものを追加した。おでんを押すと表示するようにした。jQueryをわざわざ使うほどでもないと思ったので、Valilla.jsで書いた。（よく考えたらJSがないと見られないので不親切だったけど、知らない方がいいこともあるのでいいことにした。）</p>
+
+<p>Githubにpushして終わり。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-03-05T09:39:38&#43;09:00">2015-03-05 09:39:38</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/css">css</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

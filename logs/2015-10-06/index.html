@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 06 Circle CIを使う - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-06/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-06/">
+            
+                Circle CIを使う
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-06T17:58:35&#43;09:00">2015-10-06</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="circle-ciを使う">Circle CIを使う</h2>
+
+<p>画像付きで何か書こうとしたけど、英語が読めなくても感覚的にわかると思うので、画像は添付しない。</p>
+
+<h3 id="はじめかた">はじめかた</h3>
+
+<ol>
+<li><a href="https://circleci.com/">Circle CIのトップページ</a>に行きます。</li>
+<li>Sign Upを押します</li>
+<li>Github連携を許可します</li>
+</ol>
+
+<p>あとは、ユーザ選択してプロジェクト選べば自動でビルドが実行されます。2回目以降はGithubにpushされたのを検知して、実行されます。</p>
+
+<h3 id="phpunitを実行する">PHPUnitを実行する</h3>
+
+<p>公式サイトを参考に書いていきます。</p>
+
+<p>設定ファイルである<code>circle.yml</code>に、タイムゾーン、使用するバージョン、あとテストコマンドを書けばいいみたい。</p>
+
+<ul>
+<li><a href="https://circleci.com/docs/configuration">Configuring CircleCI - CircleCI</a></li>
+<li><a href="http://qiita.com/mzp/items/bba3f378e555e1ed586d">CircleCIの便利な機能 - Qiita</a></li>
+</ul>
+
+<pre><code># circle.yml
+machine:
+  timezone:
+    Asia/Tokyo
+  php:
+    version:
+      5.6.5
+
+test:
+  override:
+    - ./vendor/phpunit/phpunit/phpunit
+</code></pre>
+
+<h3 id="seleniumを実行する">Seleniumを実行する</h3>
+
+<p>PHPのビルトインサーバを使う前提のcircle.ymlです。ビルトインサーバとselenium-serverを使うときはbackgroundオプションを有効にしないとCIが止まります。</p>
+
+<p>任意のコマンドはpreやpostに書けばいいので、ダウンロードや起動はそこに書いてます。</p>
+
+<pre><code># circle.yml
+machine:
+  timezone:
+    Asia/Tokyo
+  php:
+    version:
+      5.6.5
+
+dependencies:
+  post:
+    - php -S localhost:8000:
+          background: true
+    - wget http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.1.jar
+    - java -jar selenium-server-standalone-2.47.1.jar:
+          background: true
+    - sleep 10
+
+test:
+  override:
+    - ./vendor/phpunit/phpunit/phpunit
+</code></pre>
+
+<h3 id="実行結果">実行結果</h3>
+
+<p><a href="https://circleci.com/gh/deprode/sandbox/11">deprode/sandbox #11 - CircleCI</a></p>
+
+<h3 id="今日の失敗">今日の失敗</h3>
+
+<ol>
+<li>circle.ymlを何度も編集して、amendでコミットした後push -fする</li>
+<li>オンライン上でREADME編集する</li>
+<li>circle.ymlを編集して、amendでコミットした後push -fする</li>
+<li>READMEの中身が消失する</li>
+</ol>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-06T17:58:35&#43;09:00">2015-10-06 17:58:35</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/circle-ci">Circle CI</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

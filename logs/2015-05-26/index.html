@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 05 26 async.js→Q - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css" id="webfont">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-05-26/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="title"><a href="http://log.deprode.net/logs/2015-05-26/">2015 05 26</a> - <a href="http://log.deprode.net/">log</a></h1>
+        <p><time datetime="2015-05-26T23:32:12&#43;09:00">2015-05-26</time></p>
+    </header>
+    <section>
+        <ul>
+<li>async.js→Q
+
+<ul>
+<li>ダメだったっぽい。複数の非同期処理の終了を待ち受けて、完了時に何かする処理を書こうとしたけど、よくわからなかった。</li>
+<li>たとえるなら、手分けして買い物して、終わったら集合して買ったものとレシートを集める、みたいな処理。</li>
+<li>普通は処理が一つなので、paralellとかで非同期処理して終わったらcallbackで終了処理して、みたいな処理になる。</li>
+<li>非同期処理が複数の場合、実行することはできたけど終了時の非同期処理がよくわからなかった。whilst/doWhilst使って条件で〜〜みたいなのはできるけど、finish処理を行うのが難しい。（waterfallみたいなfinishFnがない）</li>
+<li>結局、非同期処理が全部終わったか変数・フラグで判定してcallback呼ぶ処理にしたけど、これでいいのかよくわからない。</li>
+<li>QがいいよってStackoverflowに出てた。Promise使うみたい。
+
+<ul>
+<li>その下には、Bluebirdもいいって書いてあった。</li>
+<li>そして、この二つはすでにazuさんがJSer.infoで書いてあった。<a href="http://jser.info/post/77696682011/es6-promises/">あなたが読むべきJavaScript Promises - JSer.info</a></li>
+<li>やっぱりJavaScriptPromiseの本を読んだ方がいいのかもしれない。
+
+<ul>
+<li><a href="http://azu.github.io/promises-book/">JavaScript Promiseの本</a></li>
+</ul></li>
+<li>coとかでもいいと思う。Express作った人のPromiseライブラリ。koaと一緒に使うとcool。</li>
+</ul></li>
+<li>次からはasync.jsじゃなくて、coかQかBluebird使おう。
+
+<ul>
+<li>あ、でもPromiseわかってからじゃないとつらいのかな。なんとなくでしかわかってない。</li>
+<li><a href="https://github.com/tj/co">tj/co</a>
+
+<ul>
+<li><a href="http://qiita.com/LightSpeedC/items/7980a6e790d6cb2d6dad">[JavaScript] 非同期処理のコールバック地獄から抜け出す方法 - Qiita</a></li>
+</ul></li>
+<li><a href="https://github.com/kriskowal/q">kriskowal/q</a>
+
+<ul>
+<li><a href="http://qiita.com/Awa_Dama/items/3f73ec4f5bf94bac2094">node.js Q 使い方 メモ - Qiita</a></li>
+</ul></li>
+<li><a href="https://github.com/petkaantonov/bluebird">petkaantonov/bluebird</a></li>
+<li>coとかQとかググラビリティ低すぎでは。</li>
+</ul></li>
+</ul></li>
+<li>tumblr_bot作成
+
+<ul>
+<li><a href="https://www.npmjs.com/package/tumblr.js">tumblr.js</a>を使った。</li>
+<li>途中なので結果は明日書く。</li>
+<li><code>npm install tumblr</code>だとtumblr.js入らないので厳しい。</li>
+<li>tumblr.js使うとPosts読み込みがだいぶ楽にできたのでよかった。</li>
+</ul></li>
+<li>室温30度いったけど、エアコンがないので我慢するしかない。
+
+<ul>
+<li>早く扇風機出さねば。</li>
+</ul></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-05-26T23:32:12&#43;09:00">2015-05-26 23:32:12</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/javascript">JavaScript</a></li>
+            
+                <li class="page_tags"><a href="/tags/bot">bot</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; deprode</p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script>
+  (function(){
+    document.getElementById('webfont').rel = 'stylesheet';
+  })();
+</script>
+</body>
+</html>

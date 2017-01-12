@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 02 Slim(php)3でリダイレクト,header出力,自動でエスケープ - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-02/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-02/">
+            
+                Slim(php)3でリダイレクト,header出力,自動でエスケープ
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-02T00:00:00&#43;09:00">2015-10-02</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="slim-php-3でリダイレクト">Slim(php)3でリダイレクト</h2>
+
+<p>Slim3では、一部のメソッドが変更されている。
+2.xでは、redirectだったが、3.xでは、withRedirectに変更されている。</p>
+
+<ul>
+<li><a href="https://github.com/slimphp/Slim/blob/2.x/Slim/Http/Response.php#L338-L351">Slim/Response.php at 2.x · slimphp/Slim</a></li>
+<li><a href="https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Response.php#L255-L270">Slim/Response.php at 3.x · slimphp/Slim</a></li>
+</ul>
+
+<p>Slim-skeleronでは、$responseの内部で使用する。</p>
+
+<pre><code>// HogeAction.php
+public function dispatch($request, $response, $args)
+{
+   return $response-&gt;withRedirect('/hoge/');
+}
+</code></pre>
+
+<h2 id="slimでheader出力">Slimでheader出力</h2>
+
+<p>withHaederを使用する。あんま調べてないけど、2.xだと<code>$response-&gt;headers</code>に直接指定することができたのが、3.xだとheadersがprotectedになっているのでwithHeaderを使った方がいい。</p>
+
+<ul>
+<li><a href="https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Message.php#L193-L214">Slim/Message.php at 3.x · slimphp/Slim</a></li>
+</ul>
+
+<pre><code>$response = $response-&gt;withHeader('X-Frame-Options', 'SAMEORIGIN');
+</code></pre>
+
+<h2 id="slimは自動でエスケープするか">Slimは自動でエスケープするか</h2>
+
+<p>PHPでは、そのまま変数を表示するとXSS脆弱性が発生することがある。そのため、主要なフレームワークはViewで表示するときに自動でエスケープする機能がある。</p>
+
+<p>Slimはどうだったか調べたら、Slim本体はテンプレートエンジンを持っておらず、公式ライブラリとしてTwigを使っている。Twigは自動でエスケープされるので、Twigを使った自動でエスケープされた。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-02T00:00:00&#43;09:00">2015-10-02 00:00:00</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/slim">Slim</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

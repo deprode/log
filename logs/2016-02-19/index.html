@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2016 02 19 Mailboxが終了するのでInboxに移行した - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-02-19/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-02-19/">
+            
+                Mailboxが終了するのでInboxに移行した
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-02-19T20:20:02&#43;09:00">2016-02-19</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="mailboxが終了するのでinboxに移行した">Mailboxが終了するのでInboxに移行した</h2>
+
+<blockquote>
+<p>It’s with heavy hearts that we let you know we’ll be shutting down Mailbox on February 26, 2016.<br />
+<a href="https://www.mailboxapp.com/">Mailbox</a></p>
+</blockquote>
+
+<p>あと1週間で終了するので、移行した。結果的にはInbox（<a href="https://inbox.google.com/">https://inbox.google.com/</a>）でやっていくことにした。</p>
+
+<p>もともとメールのやりとりは少なかったのだが、メールを処理したか一目でわかるデザインだったのでMailboxを使い出した。ほかにも、Yahooメールに緊急度の低いメールを集約していたので、日中時は気が散らないようにMailboxのみを開いておくライフハックを使っていた。（MacのMail.appはアカウントごとに通知のON/OFFができない）</p>
+
+<p>しかし、Mailboxが終了してしまうので、Inboxに移行することにした。InboxはGoogleのメール管理サービス。Mailboxにかなり近いし、公式サービスなので使うことにした。</p>
+
+<p>iOSアプリは公式のものがあるからよかったが、Macアプリはなかった。Chromeアプリランチャーだと、Chromeが開いてしまうのでださい。<a href="http://www.boxyapp.co/">Boxy</a>というウェブをアプリ化したようなアプリがあったが、600円だった。</p>
+
+<p>これで600円？と思ったのでInboxをアプリかできないか調べた。</p>
+
+<p><a href="http://fluidapp.com/">Fluid</a>というアプリがあったが、寄付しないと一部機能が使えないみたいだし、El Capitanに対応してるのか不明なので見送った。代わりに<a href="https://github.com/jiahaog/Nativefier">jiahaog/nativefier</a>というElectronを使ったデスクトップアプリ作成アプリが見つかったので、以下のページを参考にしつつ使った。</p>
+
+<ul>
+<li><a href="http://qiita.com/taiyoslime/items/98be154455e76710df9d">Webページをデスクトップアプリ化 - nativefierを使ってみる - Qiita</a></li>
+<li><a href="http://qiita.com/Jacminik/items/a4c8fe20a4cba62f428b">Macアプリの.icnsを作るときのメモ - Qiita</a></li>
+</ul>
+
+<p>また、アイコンを作る際にエラーになったのだが、これはpngがアルファチャンネルをサポートしていないとエラーになるようだった。</p>
+
+<ul>
+<li><a href="https://notes.underscorediscovery.com/el-capitan-iconutil-unsuported-image-format/">fix iconutil El Capitan &ldquo;Unsuported image format&rdquo;</a></li>
+</ul>
+
+<p>以下のコードでアプリが生成される。</p>
+
+<pre><code>$ sudo npm install nativefier -g
+$ iconutil -c icns inbox.iconset
+$ nativefier --name &quot;Inbox&quot; --honest &quot;inbox.google.com&quot; -b --icon inbox.icns
+</code></pre>
+
+<p>badgeオプションをつけてるけど、対応していないようだ。もちろん、デスクトップに通知もされない。そこが問題なのだが、緊急の用事なら電話が来るため、今のところ問題になってない。</p>
+
+<p>セキュリティ的にどうなのか、という問題があるのだが、<a href="https://github.com/atom/electron/issues/1753">このへん</a>で確認できる。Inboxのwebサイトに任意のHTMLがInjectionできたらアウトだが、たぶんないだろうという楽観的な気持ちで作った。</p>
+
+<p><blockquote class="twitter-tweet" data-lang="ja"><p lang="en" dir="ltr">Inbox <a href="https://t.co/BReTokE7c6">pic.twitter.com/BReTokE7c6</a></p>&mdash; deproden (@deproden) <a href="https://twitter.com/deproden/status/700612372105302016">2016, 2月 19</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-02-19T20:20:02&#43;09:00">2016-02-19 20:20:02</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

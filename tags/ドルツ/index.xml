@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>ドルツ on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/%E3%83%89%E3%83%AB%E3%83%84/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Thu, 30 Apr 2015 23:41:06 JST</updated>
+    
+    <item>
+      <title>2015 04 30</title>
+      <link>http://log.deprode.net/logs/2015-04-30/</link>
+      <pubDate>Thu, 30 Apr 2015 23:41:06 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-30/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;急にvagrant upできなくなって、真顔になった。
+
+&lt;ul&gt;
+&lt;li&gt;まさか昔の開発環境が負債になるとは……。将来はVagrantFileだけじゃなく、Dockerfileが負債になることもあるのかな。&lt;/li&gt;
+&lt;li&gt;Docker学びたいけど、いろいろもめてるので手を出しにくい。rkt(Rocket)とか。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ニコニコ動画見た。
+
+&lt;ul&gt;
+&lt;li&gt;mizchiさんの影響でチートバグ動画いろいろ見るようになった。&lt;/li&gt;
+&lt;li&gt;たまに、メモリ書き換えしてるだろってレベルの露骨すぎるテキストバグが出る動画があって、文字を格納してるメモリ領域をあれしてるのかと推察した。&lt;/li&gt;
+&lt;li&gt;あんまり露骨すぎるの嫌なので、バグノアの人や、バグサガ3の人に期待してる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;WordpressがNodeで動くのエイプリルフールのやつだったっぽい。&lt;/li&gt;
+&lt;li&gt;ドルツ届いたけど、歯磨き15分くらいしてたのが4分になったので、だいぶよかった。まあ、デンタルフロスも欲しいかな、と思うくらい水だけだとプラークは落ちないのだけど、歯に挟まったものが短時間でとれるので買ってよかった。&lt;/li&gt;
+&lt;li&gt;VisualStudio Code、まだ試してない。
+
+&lt;ul&gt;
+&lt;li&gt;mattnさんの凄い補完gifアニメ見て、試したくなった。けど、何の言語サブセットがあるのかすらまだわかってない。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/mattn_jp/status/593470179440513024/photo/1&#34;&gt;https://twitter.com/mattn_jp/status/593470179440513024/photo/1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.visualstudio.com/Docs/languages&#34;&gt;https://code.visualstudio.com/Docs/languages&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Luna？Luaじゃなくて？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ちょっといろいろ使ってみたい。
+
+&lt;ul&gt;
+&lt;li&gt;10分くらい使ったけど、すごい補完が早いし、起動も早いし、勢いが続けば選択肢の一つになるかな、と思った。&lt;/li&gt;
+&lt;li&gt;今はまだ他のエディタの方が補完やらプラグインが充実してるので、今後に期待したい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ゼノブレイド、現在Lv71、80時間。
+
+&lt;ul&gt;
+&lt;li&gt;とりあえず、シナリオ的にはあとはダンジョン2つくらい潜ってボス倒して終わりだと思うのだが、クエストが発生しているので10時間くらいはクエストやると思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;とりあえず、30日連続で日記書けたのでよかった。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

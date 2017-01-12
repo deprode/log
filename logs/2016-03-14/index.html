@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2016 03 14 Webサイト作るときに使うstartarを更新した - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-03-14/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-03-14/">
+            
+                Webサイト作るときに使うstartarを更新した
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-03-14T23:14:09&#43;09:00">2016-03-14</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="webサイト作るときに使うstartarを更新した">Webサイト作るときに使うstartarを更新した</h2>
+
+<p><a href="http://log.deprode.net/logs/2016-01-20/">2016 01 20 Webサイト作るときに最初に使うやつ作ってた - log</a>のやつ。</p>
+
+<p>体調が非常にあれだったので、とりあえず以前から手つかずだった「startar」の更新を行った。</p>
+
+<p>startarは、EJS、Stylus、Browserify、gulpで静的Webサイトの開発をはじめられるツールを目指して、とりあえず試しに作った。なのだが、実際にWebサイトを作っていくと、使いづらい部分が相当あったので直したかった。</p>
+
+<p>まず、EJSのテンプレートを再構築した。ヘッダー・フッターで分けていたが、ヘッダーが一括だとincludeするときに渡すデータが多くなるので、それぞれのページで書ける方がいいと判断した。とくにdescriptionやkeywordはページ別の方がいいだろうと判断した。ヘッダやフッタに共通のogpやtwitterカード、css、scriptsは分けたが、ogpは別にした方がよかったかもしれない。</p>
+
+<p>次に、タスクを分割した。gulpfile.jsが肥大していたため、それぞれのファイルに分けて見通しをよくしたかった。結果的に見通しはよくなったが、果たしてこれでよかったのか。何も覚えてなければタスクは分けていた方がいいが、一つのファイルにあることでいくつものファイルを行き来する手間が増えただけではないか。とも思ったが、無視していいレベルなので無視した。</p>
+
+<p>baberifyのあと、uglifyが失敗する問題を修正した。これは、baberifyにpresetsが設定されてなかったからだった。</p>
+
+<p>stylusにlintを追加した。stylusにはCSSCombのように自動でプロパティを並び替えるライブラリがない。そのため、lintを導入して都度手動で直す必要がある。今作ってるサイトには導入していないのだが、試しにlintをかけたところ、lintは最初から導入しておくべきだという知見を得た。（エラーが大量すぎて直す気力が起きない。）</p>
+
+<p><code>gulp --env production</code>でプロダクション用の出力ができるのを忘れていたので、READMEに書いておいた。</p>
+
+<hr />
+
+<p>startarはWebサイトを作るために作ったのだが、実際に作っているときに使ってみると、使いづらい部分が出てきた。実際にやってみて、使いづらい部分を修正し、そしてまた次のプロジェクトに使っていきたい。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-03-14T23:14:09&#43;09:00">2016-03-14 23:14:09</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

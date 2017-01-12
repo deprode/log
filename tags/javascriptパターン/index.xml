@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Javascriptパターン on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/javascript%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 07 30</title>
+      <link>http://log.deprode.net/logs/2015-07-30/</link>
+      <pubDate>Thu, 30 Jul 2015 23:39:34 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-07-30/</guid>
+      <description>
+
+&lt;h2 id=&#34;javascriptパターン&#34;&gt;JavaScriptパターン&lt;/h2&gt;
+
+&lt;p&gt;読み終えた。リーダブルコード的なものを想像して買ったけど、それとは違った。コーディングパターン、デザインパターン、アンチパターンについて書かれた本だった。買う前に見たけど、だいぶ期間が空いたので記憶が書き換えられていた。&lt;/p&gt;
+
+&lt;p&gt;JavaScript、Cから入ってオブジェクト指向やクラスを学んだ人から見たら取っつきにくい言語だと思うし、未だにprototypeを拡張するとか他の書き方はないんだろうかと思っているので、こういうJavaScriptの作法を知る本は必要だったし、結果オーライだった。&lt;/p&gt;
+
+&lt;p&gt;他の言語でシングルトンは作れても、JavaScriptでシングルトンってどうやって作るのか、あるいはプライベート変数を含むオブジェクト作りたいけどどうすればいいのか。そういったアプリケーションを作る上で出てくる課題を解く方法が書かれていた。&lt;/p&gt;
+
+&lt;p&gt;今だったらフレームワークとライブラリ使って作れば細かいこと知ってなくても作れるのかもしれないけど、こういうこと知ってると課題に対してパターン化した解決法を用いることができるので、別の言語になっても使えるかな、と思っている。&lt;/p&gt;
+
+&lt;p&gt;学べる時間は限られているので、複数領域に渡った学習をしないと効率的じゃないかなーと思ってしまったり。一つのことを深く理解できれば、他のことも応用で学べるらしいけど、そこまでたどり着ける頭をしてないので、つまみ食い的な学び方になってしまう。&lt;/p&gt;
+
+&lt;p&gt;5年前の本がどこまで通用するのかは不安だが、なんとなく使っていたパターンが紹介されていると少しうれしくなった。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

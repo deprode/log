@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>アイデア on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/%E3%82%A2%E3%82%A4%E3%83%87%E3%82%A2/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 05 04</title>
+      <link>http://log.deprode.net/logs/2015-05-04/</link>
+      <pubDate>Mon, 04 May 2015 21:27:15 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-04/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Naoyaさんのスライド見た。まだストリームとかReactiveプログラミングを理解する脳になってない。コードはわかるのにフローが描けない。&lt;/li&gt;
+&lt;li&gt;Ansible
+
+&lt;ul&gt;
+&lt;li&gt;MySQLに&lt;code&gt;mysql_secure_installation&lt;/code&gt;コマンドあるのに、Ansibleで自動化していいのか悩む。
+
+&lt;ul&gt;
+&lt;li&gt;rootパスワード設定、匿名ユーザー削除、リモートからのrootログイン禁止、testデータベースの削除、&lt;code&gt;privilege tables&lt;/code&gt;の再読込? 、を自動化……うーん。&lt;/li&gt;
+&lt;li&gt;あとでコマンド使うことにした。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ntpのインストールでntp実行中にntpdate使えない。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-u&lt;/code&gt;オプションつけることでできた
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/AH_korikori/items/be10e725048707908162&#34;&gt;http://qiita.com/AH_korikori/items/be10e725048707908162&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PostfixはDigitalOceanのやつ参考にしつつMaildir形式とかサイズ制限など参考にしつつ作った。&lt;/li&gt;
+&lt;li&gt;php.iniはPHP逆引きレシピ第2版を参考にしつつ作成した。&lt;/li&gt;
+&lt;li&gt;php-fpm単体で起動しようとするとエラーが出るんだけど、こういうものなの？versionはちゃんと出るし、nginxとの連携でphpも動く。プロセス再起動しても動く。何これ怖い。
+
+&lt;ul&gt;
+&lt;li&gt;versionでfpm-fcgiが出るのは確認できるけど、ほとんどのブログでphp-fpmがちゃんと動いてるか確認してないのだが、大丈夫なのか？&lt;/li&gt;
+&lt;li&gt;phpinfoにもFPM/FastCGIは出てるっぽい。
+
+&lt;ul&gt;
+&lt;li&gt;二重に起動しようとしてエラー出てただけだった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;明日はDigitalOceanで使い始める。移すだけのやつはFTPで移す。それ以外はデプロイできるように整備してから再度移す。
+
+&lt;ul&gt;
+&lt;li&gt;vagrant以外から普通にsshする方法がアレでいいのかわからないので、試してからやる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Amazonで「正解 -テスト -入試 -試験」で調べた結果、本のタイトルに正解とつくジャンルほど、正解がない。
+
+&lt;ul&gt;
+&lt;li&gt;ということは、「本のタイトルに○○とつくジャンルほど、○○でない（傾向がある）」ということか？&lt;/li&gt;
+&lt;li&gt;この話はやめましょう。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;他人の技術ブログ読んでて書き間違いに気づいたときに、それとなく教えるボタン欲しい。&lt;/li&gt;
+&lt;li&gt;プログラミングで高度な技術を用いると、保守にかかるコストが高くなる。ので、読みやすく解析しやすいコードを書くことは重要だと思った。
+
+&lt;ul&gt;
+&lt;li&gt;保守コストを考えると、Web開発において失敗の蓄積されてない最新の技術を使う必要はないんじゃ。
+
+&lt;ul&gt;
+&lt;li&gt;保守にかけられるお金があるなら最新の技術を使って保守し続けるのが吉ぞい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 12 03 ひどいコミットをpushした - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-12-03/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-12-03/">
+            
+                ひどいコミットをpushした
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-12-03T23:40:04&#43;09:00">2015-12-03</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="ひどいコミットをpushした">ひどいコミットをpushした</h2>
+
+<p><a href="https://github.com/deprode/refacted-p-bbs/commit/5ca1974535a289e338ba518da1886e284d4030d8">Add CSRF protection, and Restructure folders. · deprode/refacted-p-bbs@5ca1974</a></p>
+
+<p>これ。CSRF対策で（逆引きPHP2を参考にして）いろいろコードを書いたのだが、そのときにコミットをしたと勘違いして、フォルダを再構成した。</p>
+
+<p>いつもなら<code>git add -p</code>で何とかするのだが、mvというかrename扱いになっており、コミットを分割するにしても元の位置にファイルを戻す必要があった。しかし、そこだけ直してコミットしてテスト通らないとか最悪なので、全部を元に戻す必要があり、まとめてコミットしてしまった。</p>
+
+<p>そして、そのままpushしてしまった。これ、本来であれば怒られて信用丸つぶれだと思うので、完全に失敗したと思う。恥。「このプロジェクトはコミット履歴をきれいにするのが目的じゃないんだよ！」とかセリフ考えてる場合じゃなかった。</p>
+
+<hr />
+
+<p>おそらく、pushする前にgit stashしたあとchechoutで戻って、ちょっと手直ししてコミット書き直せばよかった。もうpushしちゃったけど、やろうと思えばできるし、やった方がいいだろうと思う。しかし、傷を残しておいた方が忘れにくく次回やらかさないだろうと思うのでこのままにしておいた。</p>
+
+<p>こまめにコミットして、失敗しないようにしたい。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-12-03T23:40:04&#43;09:00">2015-12-03 23:40:04</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

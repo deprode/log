@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Let’s Encrypt 設定した  - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-04-14_21-49-45/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-04-14_21-49-45/">
+            
+                Let’s Encrypt 設定した
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-04-14T21:49:45&#43;09:00">2016-04-14</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="let-s-encrypt-設定した">Let’s Encrypt 設定した</h2>
+
+<p><a href="https://letsencrypt.org/2016/04/12/leaving-beta-new-sponsors.html">Leaving Beta, New Sponsors - Let&rsquo;s Encrypt - Free SSL/TLS Certificates</a></p>
+
+<p>Let&rsquo;s EncryptからBetaがとれたので<a href="https://deprode.net">deprode.net</a>をhttpsに対応した。</p>
+
+<pre><code># インストール
+git clone https://github.com/letsencrypt/letsencrypt
+cd letsencrypt
+
+# ヘルプの参照（パッケージが不足している場合はインストールされる）
+./letsencrypt-auto --help all
+
+# 証明書の生成
+./letsencrypt-auto certonly --webroot -w /var/www/html/deprode.net/ -d deprode.net
+
+# Deffie-Hellman鍵の生成（生成していない場合）
+sudo openssl dhparam -out /etc/ssl/private/dhparam.pem 2048
+</code></pre>
+
+<p>証明書が生成できたので、nginxの設定をして再起動し、httpsで表示できた。その後テストを行ったが、この時点ではCだった。</p>
+
+<p><a href="https://www.ssllabs.com/ssltest/">SSL Server Test (Powered by Qualys SSL Labs)</a></p>
+
+<p>そのため、MozillaによるWebサーバのSSL設定ジェネレータを参考にして設定し直した。（DH鍵はこの時点で生成した。）</p>
+
+<p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/">Generate Mozilla Security Recommended Web Server Configuration Files</a></p>
+
+<p>その後再びテストを行い、A+を確認した。また、crontabで証明書の自動更新を設定した。（<code>./letsencrypt-auto renew --force-renew &amp;&amp; sudo service nginx restart</code>で証明書が更新できるので、crontab用にパスなどを変更し、cronを設定した。）</p>
+
+<hr />
+
+<p>追記：2016-05-12</p>
+
+<p>ユーザのcronだとsudoで失敗するので、<code>/etc/cron.daily/</code>に以下のスクリプトを登録した。（手抜きなので、公式の<a href="https://letsencrypt.org/getting-started/">Getting Started </a>にあるスクリプトを参考にした方がよい。）</p>
+
+<pre><code>#!/bin/bash
+
+cd /home/deprode/letsencrypt
+
+./letsencrypt-auto renew --webroot -w /var/www/nginx/deprode.net/
+
+service nginx reload
+</code></pre>
+
+<p>スクリプトをchmodで実行可能にすることを忘れずに。</p>
+
+<p>追記：2016-5-18</p>
+
+<p>実行時に&ndash;force-renewすると強制的にアップデートするはずだが、アップデート回数の上限に達したとエラーが出たのでスクリプトから外した。</p>
+
+<hr />
+
+<p>以下のサイトを参考にした。</p>
+
+<ul>
+<li><a href="https://letsencrypt.org/getting-started/">Getting Started - Let&rsquo;s Encrypt - Free SSL/TLS Certificates</a></li>
+<li><a href="http://knowledge.sakura.ad.jp/tech/3936/">すべてのWebサイトの暗号化を目指すLet’s Encryptを試す - さくらのナレッジ</a></li>
+<li><a href="http://qiita.com/ww24/items/9fa19594b4e3a8eb9b6f">Let&rsquo;s Encrypt で手軽に HTTPS サーバを設定する - Qiita</a></li>
+<li><a href="https://blog.apar.jp/linux/3619/">Let’s Encrypt サーバー証明書の取得と自動更新設定メモ | あぱーブログ</a></li>
+<li><a href="http://www.teradas.net/archives/13222/">特定ユーザー・プログラムにのみcronでのsudoをパスワード無しで許可する設定 | TeraDas－テラダス</a></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-04-14T21:49:45&#43;09:00">2016-04-14 21:49:45</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/server">server</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

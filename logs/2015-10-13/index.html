@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 13 HugoのRSSを書き換えてTwitterへ投稿する - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-13/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-13/">
+            
+                HugoのRSSを書き換えてTwitterへ投稿する
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-13T21:40:24&#43;09:00">2015-10-13</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="hugoのrssを書き換えてtwitterへ投稿する">HugoのRSSを書き換えてTwitterへ投稿する</h2>
+
+<p>このウェブ日記は、HugoでGithubにデプロイしている。その後、IFTTTがRSSの更新を検知し、Bufferへ予約され、Twitterに投稿される仕組みとなっている。</p>
+
+<p>ピタゴラ装置並みに手間がかかっているのだが、出力はしょぼい。タイトルとURLを投稿するだけだったのだが、タイトルが日付だけなのでわかりづらいし読みにくい。</p>
+
+<p><blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">ウェブ日記書いた - 2015 10 11 <a href="http://t.co/7PLTGZhlVR">http://t.co/7PLTGZhlVR</a></p>&mdash; deproden (@deproden) <a href="https://twitter.com/deproden/status/653200148873519104">2015, 10月 11</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<hr />
+
+<p>もちろん、適切なタイトルを書くこともできる。しかし、今までやっていなかったことを手動でやっても続かないと思ったので、h2要素を抜き出してRSSを書き換えるスクリプトを作成した。</p>
+
+<script src="https://gist.github.com/deprode/e69fda6801be5154c63a.js"></script>
+
+<p>IFTTTのRSSをこのスクリプトに差し替えた結果、今まで通りの書き方で、投稿結果だけ変えることができた。</p>
+
+<p><blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">✏️&hellip; - 2015 10 12 / SplatoonでウデマエS達成, 木曽路行った <a href="http://t.co/cmggmsLZP1">http://t.co/cmggmsLZP1</a></p>&mdash; deproden (@deproden) <a href="https://twitter.com/deproden/status/653914693145391104">2015, 10月 13</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>なお、IFTTTはFeedURLの末尾がphpだとダメかもしれない。URL末尾に?をつけて回避した。こういうのを昼休みにさっと作れたので、今日は満足してしまってあまり成果が出なかった。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-13T21:40:24&#43;09:00">2015-10-13 21:40:24</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

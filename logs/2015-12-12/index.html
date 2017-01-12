@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 12 12 logのデザイン変えた, スプラスピナーコラボ - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css" id="webfont">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-12-12/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="title"><a href="http://log.deprode.net/logs/2015-12-12/">2015 12 12</a> - <a href="http://log.deprode.net/">log</a></h1>
+        <p><time datetime="2015-12-12T17:55:07&#43;09:00">2015-12-12</time></p>
+    </header>
+    <section>
+        
+
+<h2 id="logのデザイン変えた:0485fc6353fe3da9f00ce6c925ff6ecf">logのデザイン変えた</h2>
+
+<p>変えました。</p>
+
+<ol>
+<li>Descriptionを表示するように</li>
+<li>tagsを別のページに</li>
+<li>logsとtagsの時トップページへのリンクを追加</li>
+<li>タグの最後のカンマを削除</li>
+</ol>
+
+<h3 id="descriptionを表示:0485fc6353fe3da9f00ce6c925ff6ecf">Descriptionを表示</h3>
+
+<p><code>{{.Date.Format &quot;2006-01-02&quot;}}</code>を<code>{{ .Description }}</code>に変更した。これで、日付タイトルの横に日付が表示されることはなくなった。個人的には見られたくない、というより後から見返すと恥ずかしいものもあるからタイトルつけたくないのだけど、自分で探すのも面倒だったのでつけた。（一方、Discriptionをつける作業が増えた。）</p>
+
+<h3 id="tagsを別のページに:0485fc6353fe3da9f00ce6c925ff6ecf">tagsを別のページに</h3>
+
+<p>以前やり方がよくわからなかったのでlogsにtagsを表示させていたのだが、公式サイトなどを見たら<code>_default/terms.html</code>を作れば<code>index.html</code>代わりになるし、個別のタグページは<code>_default/taxonomy.html</code>を作ればいいとわかった。</p>
+
+<h3 id="logsとtagsの時トップページへのリンクを追加:0485fc6353fe3da9f00ce6c925ff6ecf">logsとtagsの時トップページへのリンクを追加</h3>
+
+<p>微妙に気になったので直した。実質logsがトップページだったのだが、役割を変えたことで過去ログリストになったため、トップページへのリンクを追加した。</p>
+
+<h3 id="タグの最後のカンマを削除:0485fc6353fe3da9f00ce6c925ff6ecf">タグの最後のカンマを削除</h3>
+
+<p>面倒だったので放置していたが、横並びリストにして<code>.page_tags:not(:last-child):after</code>でカンマを追加した。</p>
+
+<h4 id="今後:0485fc6353fe3da9f00ce6c925ff6ecf">今後</h4>
+
+<p>logsもかなり数が増えているので一覧表示にすると見づらいかもしれないと思っているが、ページング処理をそろそろ入れてもいいかもと思っている。</p>
+
+<hr />
+
+<h2 id="スプラスピナーコラボ-試しに使った:0485fc6353fe3da9f00ce6c925ff6ecf">スプラスピナーコラボ 試しに使った</h2>
+
+<p><blockquote class="twitter-tweet" lang="ja"><p lang="ja" dir="ltr">明日12月12日午前11時、新しいブキ「スプラスピナーコラボ」が追加される。&#10;ギアメーカー「アイロニック」とコラボしたモデルだ。&#10;「ポイズンボール」で相手を足止めしてメインウェポンで一掃しよう。&#10;スペシャルは「バリア」だ。 <a href="https://t.co/ngCC0L9Tpy">pic.twitter.com/ngCC0L9Tpy</a></p>&mdash; Splatoon（スプラトゥーン） (@SplatoonJP) <a href="https://twitter.com/SplatoonJP/status/675234128070098944">2015, 12月 11</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p>かなり好きな構成なので、積極的に使っていきたいと思った。</p>
+
+<p>使い方もシンプルで、ポイズンボールを当てる→（バリアを張る）→メインで攻撃でほぼオッケーだった。隙が少ないので、エイムがしっかりしてれば問題ない。敵の射程が長ければバリアを張って前進すればいいし、非常に使いやすかった。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-12-12T17:55:07&#43;09:00">2015-12-12 17:55:07</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/hugo">Hugo</a></li>
+            
+                <li class="page_tags"><a href="/tags/splatoon">Splatoon</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; deprode</p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script>
+  (function(){
+    document.getElementById('webfont').rel = 'stylesheet';
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>技術的負債 on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/%E6%8A%80%E8%A1%93%E7%9A%84%E8%B2%A0%E5%82%B5/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Thu, 07 May 2015 23:47:46 JST</updated>
+    
+    <item>
+      <title>2015 05 07</title>
+      <link>http://log.deprode.net/logs/2015-05-07/</link>
+      <pubDate>Thu, 07 May 2015 23:47:46 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-07/</guid>
+      <description>
+
+&lt;h3 id=&#34;casperjsが動いてるかテストした:81333e29d946e3e202cc323da3a38bc7&#34;&gt;CasperJSが動いてるかテストした&lt;/h3&gt;
+
+&lt;p&gt;新しいVPSでCasperJSが動くのか試した。（メモリ枯渇的な調査）&lt;/p&gt;
+
+&lt;p&gt;まず、&lt;code&gt;casperjs --version&lt;/code&gt;でversionを確認した後、&lt;a href=&#34;http://docs.casperjs.org/en/latest/quickstart.html&#34;&gt;QuickStart&lt;/a&gt;でスクレイピングを試した。&lt;/p&gt;
+
+&lt;p&gt;Twitterのログイン画面では、fill系メソッドが使えないので&lt;a href=&#34;http://docs.casperjs.org/en/latest/modules/casper.html#sendkeys&#34;&gt;sendKeys&lt;/a&gt;を使った。&lt;/p&gt;
+
+&lt;p&gt;その後、いろいろあってダメだった。具体的には、プロフィールを変更ボタンにclickイベント、evalueteでclick、evalueteでjQueryを使ってclickなどしたけど、動かなかったので断念した。PC版は。&lt;/p&gt;
+
+&lt;p&gt;モバイル版はテキストボックスに見せかけたdivみたいな要素がないので、fillSelectors使ってすぐできた。
+&lt;img src=&#34;http://log.deprode.net/log/media/2015-05-07 16.43.48.png&#34; alt=&#34;2015-05-07 16.43.48&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;当初の目的である、512MBのVPSでCasperJSが動くのか確認できたのでよかった。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;今日学んだこと
+
+&lt;ul&gt;
+&lt;li&gt;CasperJSも完璧じゃない。できることとできないことがある。&lt;/li&gt;
+&lt;li&gt;BitbucketにあるPhantomJSを使うと日本語が表示されない。&lt;/li&gt;
+&lt;li&gt;Twitterのプロフィールは&lt;a href=&#34;https://dev.twitter.com/rest/reference/post/account/update_profile&#34;&gt;APIから変更できる&lt;/a&gt;。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;その他:81333e29d946e3e202cc323da3a38bc7&#34;&gt;その他&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Twitterのプロフィール名を恥ずかしい名前にすることで、モチベーションを上げてた。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;img src=&#34;http://log.deprode.net/log/media/hazukashii.png&#34; title=&#34;実際には青色専従者なのでギリギリ無職じゃない&#34;&gt;&lt;/li&gt;
+&lt;li&gt;俺は何をやっているんだ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ゼノブレイド、現在Lv95、110時間。
+
+&lt;ul&gt;
+&lt;li&gt;スキルポイントがたまると思ったらレベルが上がるにつれて全くたまらなくなったので全部やるとしたら修行か二周目になると思う。&lt;/li&gt;
+&lt;li&gt;チェインアタックで倒すとSP二倍になるの知ってたら、もう少しチェインアタック使ってたと思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;昔のファイルをいろいろ見たけど、git使ってなくてindex.php.bakとかあったり、リモートのファイルを直接いじってるのでローカルのファイルが古かったりしてて、移すだけでも大変そうだと思った。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 04 30</title>
+      <link>http://log.deprode.net/logs/2015-04-30/</link>
+      <pubDate>Thu, 30 Apr 2015 23:41:06 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-30/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;急にvagrant upできなくなって、真顔になった。
+
+&lt;ul&gt;
+&lt;li&gt;まさか昔の開発環境が負債になるとは……。将来はVagrantFileだけじゃなく、Dockerfileが負債になることもあるのかな。&lt;/li&gt;
+&lt;li&gt;Docker学びたいけど、いろいろもめてるので手を出しにくい。rkt(Rocket)とか。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ニコニコ動画見た。
+
+&lt;ul&gt;
+&lt;li&gt;mizchiさんの影響でチートバグ動画いろいろ見るようになった。&lt;/li&gt;
+&lt;li&gt;たまに、メモリ書き換えしてるだろってレベルの露骨すぎるテキストバグが出る動画があって、文字を格納してるメモリ領域をあれしてるのかと推察した。&lt;/li&gt;
+&lt;li&gt;あんまり露骨すぎるの嫌なので、バグノアの人や、バグサガ3の人に期待してる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;WordpressがNodeで動くのエイプリルフールのやつだったっぽい。&lt;/li&gt;
+&lt;li&gt;ドルツ届いたけど、歯磨き15分くらいしてたのが4分になったので、だいぶよかった。まあ、デンタルフロスも欲しいかな、と思うくらい水だけだとプラークは落ちないのだけど、歯に挟まったものが短時間でとれるので買ってよかった。&lt;/li&gt;
+&lt;li&gt;VisualStudio Code、まだ試してない。
+
+&lt;ul&gt;
+&lt;li&gt;mattnさんの凄い補完gifアニメ見て、試したくなった。けど、何の言語サブセットがあるのかすらまだわかってない。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://twitter.com/mattn_jp/status/593470179440513024/photo/1&#34;&gt;https://twitter.com/mattn_jp/status/593470179440513024/photo/1&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://code.visualstudio.com/Docs/languages&#34;&gt;https://code.visualstudio.com/Docs/languages&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Luna？Luaじゃなくて？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ちょっといろいろ使ってみたい。
+
+&lt;ul&gt;
+&lt;li&gt;10分くらい使ったけど、すごい補完が早いし、起動も早いし、勢いが続けば選択肢の一つになるかな、と思った。&lt;/li&gt;
+&lt;li&gt;今はまだ他のエディタの方が補完やらプラグインが充実してるので、今後に期待したい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ゼノブレイド、現在Lv71、80時間。
+
+&lt;ul&gt;
+&lt;li&gt;とりあえず、シナリオ的にはあとはダンジョン2つくらい潜ってボス倒して終わりだと思うのだが、クエストが発生しているので10時間くらいはクエストやると思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;とりあえず、30日連続で日記書けたのでよかった。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 04 04</title>
+      <link>http://log.deprode.net/logs/2015-04-04/</link>
+      <pubDate>Sat, 04 Apr 2015 23:26:55 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-04/</guid>
+      <description>&lt;p&gt;今日は一日ゼノブレイドしてた。現在Lv20。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quyo、なんか惜しいサービスな気がしてきた
+
+&lt;ul&gt;
+&lt;li&gt;いらないものというか、供養したいものNo.1がPHPとかの古くて間違ってる情報なんだけど、そういうサービスだったら使ってたかもしれない。&lt;/li&gt;
+&lt;li&gt;古い情報や間違った情報をブックマークっぽく確認できるようにすればかなり有用なサービスになりうると思う。（API使って拡張で確認するってことね）
+
+&lt;ul&gt;
+&lt;li&gt;ただ、これには問題がいくつかあるけど、まあいいか。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;キューピーコーワゴールドαプラス買おうかな。
+
+&lt;ul&gt;
+&lt;li&gt;コンボできそう
+
+&lt;ul&gt;
+&lt;li&gt;新 | キューピーコーワ | i or コンドロイザー or ゴールド | A or α | プラス&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;調べるほど、トウキ単体の効果が女性向けなので男性がプラスを買う意味あるのか疑問になってきた。&lt;/li&gt;
+&lt;li&gt;結局一時間かかって、プラスを買うことにした。1900円に慎重すぎる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;技術的負債をどうやったら普通の人にわかってもらえるか
+
+&lt;ul&gt;
+&lt;li&gt;他のいろんな身近なものにたとえてもダメだった。考えた中だと作文が一番わかりやすくたとえられる。&lt;/li&gt;
+&lt;li&gt;「作文で最初にだーっと書いて、テーマに沿っていて一応基準は満たしている状態がありますよね」&lt;/li&gt;
+&lt;li&gt;「文章に不備がなくても書き直そうと思ったときに書き直せる箇所が負債です」&lt;/li&gt;
+&lt;li&gt;「実際に、段落を入れ替えたり、文章を小さくするなど、書き直すことが負債の返済です」&lt;/li&gt;
+&lt;li&gt;「負債がたまった状態で文章を書き続けると、一から書き直した方が早くなります」&lt;/li&gt;
+&lt;li&gt;「負債が（ある程度）たまる前に書き直すと、他の人より書き終わるのが遅くなります」&lt;/li&gt;
+&lt;li&gt;「プロの作文は、一見するとできがいいので作文を買わない人にはよく見えますが、買う人にはいい文章化がわかります。また、編集者には文章の善し悪しがわかります」&lt;/li&gt;
+&lt;li&gt;「負債の多い作文を書くと、苦情が来るかもしれないので載せないかもしれませんし、次から仕事はもらえないかもしれません」&lt;/li&gt;
+&lt;li&gt;「最初から完璧な作文を作れるプロはいません。ただ、学生時代に作文を直したことがない人はいます」&lt;/li&gt;
+&lt;li&gt;ここまで書いておいて何だけど、普通に原典の「借金と利息」にたとえるやり方でよかったのではと思った。参考：&lt;a href=&#34;http://www.publickey1.jp/blog/13/post_232.html&#34;&gt;「技術的負債」とは何か。原典とその対応策を探る － Publickey&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;また、作文よりはマンガの方がたとえとしては適切だったかもしれない。（変更時にコマを全部作り直したりすることが想像できる、作業が分業制で行えるなどの理由）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

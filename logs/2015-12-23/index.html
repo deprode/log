@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 12 23 Todoist使うのやめた - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-12-23/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-12-23/">
+            
+                Todoist使うのやめた
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-12-23T21:47:15&#43;09:00">2015-12-23</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="todoist使うのやめた">Todoist使うのやめた</h2>
+
+<p><a href="http://deprode.net/log/logs/2015-05-31/">2015 05 31 - log</a>にも書いたけど、Todoistはほぼ使ってなかった。そして、最近だとTodo.mdすら使わなくなっている。</p>
+
+<p>しかし、あとで買おうと思っているものをTodoistにつけていたのを思い出したので、何かに書き出そうと思い、Todoistを開いてエクスポートのページを調べたが、たどり着けなかった。</p>
+
+<p>そこで、印刷ページを開きコピペすることにした。が、できなかった。JavaScriptでclickイベントをバインドしているらしく、Ctrl+Aでも選択できない。ソースからコピペしようと思ってview-source:で開いたらJavaScriptでModelを持っているらしく、これもだめだった。一応、DevToolsのxpathで選択する機能なら選択できたけど、面倒だったのでブラウザでいちいち開いてメモにコピペした。</p>
+
+<p>で、そのあといろいろ調べたがエクスポートは提供されていないらしく、APIを使ってエクスポートする<a href="https://github.com/darekkay/todoist-export">darekkay/todoist-export</a>という非公式ライブラリができていた。</p>
+
+<hr />
+
+<p>この体験から、退会処理以上に「退会の前にユーザがデータをエクスポートできる」ようにする機能は大切だと思った。ニコニコ動画のようにそこでしか使えないデータであれば、エクスポートする必要はほぼない。しかし、生活に密着したデータであれば、ほかに移ることが容易でないのは厳しいし、次のサービスを選ぶ基準として重要になると思う。</p>
+
+<hr />
+
+<p>Todoのエクスポートとしては、いくつかの形式を選べる（Github形式はMust）と使い始めやすい。たぶん理想が高すぎるので、Todoアプリ自作するしかないと思う。一応、できたらいいことをメモしておく。</p>
+
+<ul>
+<li>タスクを登録、達成、削除できる</li>
+<li>タグを設定でき、絞り込み表示できる</li>
+<li>締め切り、重要度を記録できる</li>
+<li>タスクを自由に並び替えできる</li>
+<li>達成した項目を見ることができる</li>
+<li>データを好みの形式でエクスポート</li>
+<li>簡易的な認証機能</li>
+<li>スマホから利用可能</li>
+<li>オフラインでもリストを切り替えることができる</li>
+<li>見た目がシンプル</li>
+</ul>
+
+<hr />
+
+<p>とりあえず、今は紙とiCloudのメモでなんとかしている。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-12-23T21:47:15&#43;09:00">2015-12-23 21:47:15</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

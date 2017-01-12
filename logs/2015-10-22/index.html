@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 22 fuelphp/validationで独自のルールを追加する - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-22/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-22/">
+            
+                fuelphp/validationで独自のルールを追加する
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-22T23:50:04&#43;09:00">2015-10-22</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="fuelphp-validationで独自のルールを追加する">fuelphp/validationで独自のルールを追加する</h2>
+
+<p><a href="https://github.com/fuelphp/validation">fuelphp/validation</a>には、配列のvalidationがない。そのため、フォームから配列形式でチェックするためには独自のルールを追加する必要があった。</p>
+
+<p>で、<a href="https://github.com/fuelphp/validation/blob/b6971693617b883c978466c07f167724f002363f/src/Rule/Number.php">他のRuleのソース</a>を読むと、Fuel\Validation\AbstractRuleを継承して作っていたのでそのようにしたらうまくいった。</p>
+
+<p>以下は、フォームからIDを配列（ids[]）で渡す際、IDがすべて英数字かどうかをチェックするサンプル。</p>
+
+<pre><code>&lt;?php
+// ArrayRule.php
+
+namespace App\Rule;
+
+class ArrayRule extends \Fuel\Validation\AbstractRule
+{
+    protected $message = 'エラーです';
+
+    public function validate($value, $field = null, $allFields = null)
+    {
+        if (count($value) === 0) {
+            return false;
+        }
+
+        foreach ($value as $i =&gt; $val) {
+            if (preg_match('/[0-9a-zA-Z]/', $val) == false) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+</code></pre>
+
+<pre><code>public function validation($input)
+{
+    $val = $this-&gt;validate;
+    $val-&gt;addCustomRule('arrayRule', '\App\Rule\ArrayRule');
+    $val-&gt;addField('ids', 'ID')
+               -&gt;arrayRule()
+                   -&gt;setMessage('IDは必須です。');
+
+    $result = $this-&gt;validate-&gt;run($input);
+
+    return $result;
+}
+</code></pre>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-22T23:50:04&#43;09:00">2015-10-22 23:50:04</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

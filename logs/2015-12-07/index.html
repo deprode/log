@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 12 07 MacbookPro セットアップ続き - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-12-07/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-12-07/">
+            
+                MacbookPro セットアップ続き
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-12-07T21:40:04&#43;09:00">2015-12-07</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="macbookpro-セットアップ続き">MacbookPro セットアップ続き</h2>
+
+<p><a href="http://deprode.net/log/logs/2015-12-05/">おととい</a>の続き。</p>
+
+<p>SublimeText3の設定を移そうとしてExportできるか調べていたが、Dropboxなどを使って設定を共有化できるらしいので試した。というか、設定を共有するとかどう考えても怪しいので、調べつつやった。</p>
+
+<p>Package Controlをインストールしたあと、PackageとInstalled Packagesを移す記事が見つかったが、これは間違いらしい。Package Controlの公式サイトではやるなって書いてある。正しい方法も。</p>
+
+<p><a href="https://packagecontrol.io/docs/syncing">Syncing - Package Control</a></p>
+
+<p>で、Macの場合はPackages/UserをDropboxに移した後、シンボリックリンク作って設定を共有するらしい。インストールは起動時に自動で行われるようだ。実際やってみたらうまくいったのでよかった。</p>
+
+<hr />
+
+<p>その後、Githubのファイルをそのまま移しただけではだめだった（すべてのファイルが変更済みとして表示される）ので、結局Githubからcloneして使うことにした。</p>
+
+<hr />
+
+<p>クラムシェルモードも試したのだが、なぜかうまくいかなかった。ディスプレイに映ったかと思えば、すぐに消えてしまう。ミラーモードやデュアルディスプレイはできるのになぜ。</p>
+
+<p>答えは簡単で、複数のアダプタを介していたから。miniDisplay→HDMI→D-DIVと変換していた。<a href="https://support.apple.com/ja-jp/HT1573">Appleのサポート</a>にも、「例：mini DisplayPort - DVI アダプタを DVI - HDMI アダプタに接続する構成は、複数のアダプタを使うことになるため、サポートされていません。」と書かれている。</p>
+
+<p>１つのアダプタを使ったらあっさり成功した。</p>
+
+<hr />
+
+<p>とりあえず、仮想マシン関連以外はなんとかできた。が、VagrantじゃなくDocker使いたい欲求がでてきたので、いろいろ試したい。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-12-07T21:40:04&#43;09:00">2015-12-07 21:40:04</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

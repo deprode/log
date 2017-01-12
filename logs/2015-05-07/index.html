@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 05 07 CasperJSが動いてるかテストした - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-05-07/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-05-07/">
+            
+                CasperJSが動いてるかテストした
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-05-07T23:47:46&#43;09:00">2015-05-07</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h3 id="casperjsが動いてるかテストした">CasperJSが動いてるかテストした</h3>
+
+<p>新しいVPSでCasperJSが動くのか試した。（メモリ枯渇的な調査）</p>
+
+<p>まず、<code>casperjs --version</code>でversionを確認した後、<a href="http://docs.casperjs.org/en/latest/quickstart.html">QuickStart</a>でスクレイピングを試した。</p>
+
+<p>Twitterのログイン画面では、fill系メソッドが使えないので<a href="http://docs.casperjs.org/en/latest/modules/casper.html#sendkeys">sendKeys</a>を使った。</p>
+
+<p>その後、いろいろあってダメだった。具体的には、プロフィールを変更ボタンにclickイベント、evalueteでclick、evalueteでjQueryを使ってclickなどしたけど、動かなかったので断念した。PC版は。</p>
+
+<p>モバイル版はテキストボックスに見せかけたdivみたいな要素がないので、fillSelectors使ってすぐできた。
+<img src="/log/media/2015-05-07 16.43.48.png" alt="2015-05-07 16.43.48"></p>
+
+<p>当初の目的である、512MBのVPSでCasperJSが動くのか確認できたのでよかった。</p>
+
+<ul>
+<li>今日学んだこと
+
+<ul>
+<li>CasperJSも完璧じゃない。できることとできないことがある。</li>
+<li>BitbucketにあるPhantomJSを使うと日本語が表示されない。</li>
+<li>Twitterのプロフィールは<a href="https://dev.twitter.com/rest/reference/post/account/update_profile">APIから変更できる</a>。</li>
+</ul></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-05-07T23:47:46&#43;09:00">2015-05-07 23:47:46</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/casperjs">CasperJS</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

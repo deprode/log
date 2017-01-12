@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 05 27 恐怖駆動開発, Node.jsの例外処理, Tumblr_bot - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css" id="webfont">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-05-27/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="title"><a href="http://log.deprode.net/logs/2015-05-27/">2015 05 27</a> - <a href="http://log.deprode.net/">log</a></h1>
+        <p><time datetime="2015-05-27T20:45:09&#43;09:00">2015-05-27</time></p>
+    </header>
+    <section>
+        <ul>
+<li>恐怖駆動開発
+
+<ul>
+<li>モチベーションを何で保つのか。ごほうび、向上心、情熱、恐怖、絶望、怒り、物語を読むといろいろなモデルがある。</li>
+<li>恐怖はもっとも原始的な感情だ。それ故に、危険にあったときと同様に体が臨戦態勢に入る。集中力が増し、活動的になる。</li>
+<li>一方で、長期間恐怖にさらされることを、人体は想定していない。ストレスが長期間かかれば、それだけ体をむしばんでいく。</li>
+<li>だから、ここぞというとき以外は恐怖で人を縛ってはいけない。いつ怒られるかわからない状況が常に支配していれば、ここぞというときに力が発揮できなくなる。</li>
+<li>そのため、恐怖以外の感情を大切にすることだ。外発的であろうと内発的であろうと、種火を消さぬように、無理せずにやっていくことが重要だ。</li>
+<li>あなたが他人のジョークを見抜けないように、他人もまた、あなたの傷ついた心を見抜くことはできないのだ。気にしないことができないのなら、気になったことを紙に書いて破り捨てよう。</li>
+<li>最近、見放される恐怖からいろいろなことをやっていたので、自戒を込めて書いた。</li>
+</ul></li>
+<li>Node.jsの例外処理
+
+<ul>
+<li>普通に考えれば、throwしたものをtry-catchで処理して終わりなんだけど、非同期処理（setTimeout）が入ると、非同期処理内部でthrowしたときに普通に処理すると例外をとらえられなくて怒られる。</li>
+<li>今回は、例外（というかエラー処理）を非同期処理内部で処理できたので、それでよしとした。</li>
+<li>本来は、Domainを使うみたい。でも、よくわかってない。
+
+<ul>
+<li><a href="https://nodejs.org/api/domain.html">Domain Node.js v0.12.4 Manual &amp; Documentation</a></li>
+</ul></li>
+</ul></li>
+<li>Tumblr_bot
+
+<ul>
+<li>作った。とりあえず、テスト用で6時間ごとcronで呼び出してる。</li>
+<li>Tumblrにある、Twitterを引用している投稿を収集。収集したものの中から重複したものをTwitterでRetweetする仕組み。</li>
+<li>ちょっと試したけど、もっと多くの人から収集した方がよさそう。
+
+<ul>
+<li>ここでcineraria氏のデータが役に立つ。</li>
+<li><a href="http://cineraria.tumblr.com/post/25754147910/tumblr-reblog">cineraria, tumblrアカウントのクラスタ分けをしてみました。クラスタ分けの方法は、誰が誰からReblogしたか&hellip;</a></li>
+</ul></li>
+</ul></li>
+<li>扇風機出した。暑すぎるでしょう。
+
+<ul>
+<li>インド45度だって。信じられない。</li>
+</ul></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-05-27T20:45:09&#43;09:00">2015-05-27 20:45:09</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/%E5%BF%83%E7%90%86">心理</a></li>
+            
+                <li class="page_tags"><a href="/tags/javascript">JavaScript</a></li>
+            
+                <li class="page_tags"><a href="/tags/node">Node</a></li>
+            
+                <li class="page_tags"><a href="/tags/bot">bot</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; deprode</p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script>
+  (function(){
+    document.getElementById('webfont').rel = 'stylesheet';
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 08 07 nodegit触ったが…… - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-08-07/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-08-07/">
+            
+                nodegit触ったが……
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-08-07T18:44:24&#43;09:00">2015-08-07</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="nodegit触ったが">nodegit触ったが……</h2>
+
+<p>このウェブ日記は、基本的に<a href="http://bywordapp.com/">Byword2</a>で書いたものを<a href="http://gohugo.io/">Hugo</a>を使って管理している。iPadにもBywordはあるのだが、Hugoで新しい日記のテンプレートを作り、gitでadd&amp;commit&amp;pushすることが難しい。日記のテンプレート自体はコピペで作れるのだが、git操作をiPadすることが難しい。</p>
+
+<p>iPadで日記を書いて、更新できないかと思い、いろいろ試行錯誤している。</p>
+
+<p>以前、VPS上でgitを使った更新を試みた。iPadからSSHクライアントを使って更新する、という部分はうまくいったが、SSHクライアントが日本語対応に難ありだったため、失敗した。</p>
+
+<p>そこで、VPSではなく、クライアントサイド経由で日記を更新してバックエンドでgit操作すればブラウザから更新できる、と思った。Node.jsでgit操作ができれば都合いいと思ったので、<a href="https://www.npmjs.com/package/nodegit">nodegit</a>を試したが、複雑なAPI操作が必要なので確実に負債になるし保守できないと思い、断念した。</p>
+
+<p>他に、何も考えなくても使えそうなAPIの<a href="https://www.npmjs.com/package/simple-git">simple-git</a>も試したが、癖があって使いにくかったので悩んでいる。</p>
+
+<p>だが、よく考えればiOSのGithubクライアントがあれば何の問題もないわけなので探したが、やはり既存ファイルの編集はできても新規ファイル作成ができないなど、ちょっと厳しかった。WIPをpushするわけにもいかないし。</p>
+
+<p>というわけで、やはりしばらくはMacを立ち上げて日記を書くことにした。キーボードもMacのキーボードに慣れてるからこちらの方が使いやすいし、iPadで日記書くこと一ヶ月に数回しかないし。まあ、優秀な人なら自分で何でも作っちゃうんだろうけど……。</p>
+
+<p>ただ、iOSのGithubクライアントで編集できることがわかったので、typoを外出先で直すことができそうなので、発想の外を調べてよかったと思う。</p>
+
+<hr />
+
+<p>まあ、Hugoだってこんな高頻度で更新する人を想定してないだろうし、しょうがないね。Dropbox使って同期を検知したらGithubにpushする方法もあるみたいだけど、DropboxをVPSにインストールするのが使用方法の関係で厳しい。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-08-07T18:44:24&#43;09:00">2015-08-07 18:44:24</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

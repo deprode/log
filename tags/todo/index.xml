@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Todo on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/todo/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Sun, 31 May 2015 23:47:24 JST</updated>
+    
+    <item>
+      <title>2015 05 31</title>
+      <link>http://log.deprode.net/logs/2015-05-31/</link>
+      <pubDate>Sun, 31 May 2015 23:47:24 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-31/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Splatoon
+
+&lt;ul&gt;
+&lt;li&gt;対戦3日目。現在ランク15。&lt;/li&gt;
+&lt;li&gt;すでにランク19の人もかなり見受けられる。ランク20はほとんどマッチングしないけど、その辺だけ特殊な感じになってる気がする。&lt;/li&gt;
+&lt;li&gt;ローラーでとにかく勝てないので何か策を講じないといけなくなった。
+
+&lt;ul&gt;
+&lt;li&gt;どのくらい勝てないかというと、10試合で勝ち1くらい。
+
+&lt;ul&gt;
+&lt;li&gt;最下位になることはなかったが、キル0デス5という試合もあった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ローラー動画を見直すと、上からの奇襲、ボムで牽制→逃げたところをひく、スペシャルで遠距離を牽制という感じだった。以外だが、基本的に高いところの方が有利なのはローラーでも変わらないらしい。
+
+&lt;ul&gt;
+&lt;li&gt;ただ、ローラーは直接攻撃しないと逃げられて倒されるので、裏をかいて攻撃するのが一番いいと思う。&lt;/li&gt;
+&lt;li&gt;見た目の割に忍者（アサシン）みたいな運用が求められる。たとえば、イカニンジャで壁に隠れてからの強襲など。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;そういうわけで、ダイナモローラー（攻撃までに1秒かかるローラー）でいろいろやった結果、なかなかうまくいったのでよかった。基本的に塗るより振った方が面積が広くぬれるが、最初は塗り残しを塗ってスペシャルを発動させて支援。スプリンクラーを陽動に使いつつ、上からインクばしゃぁで倒していた。&lt;/li&gt;
+&lt;li&gt;ガチホワイトを着て、イカニンジャで壁に隠れるのは何回かうまくいった。Bバスパークだと成功率高い。
+
+&lt;ul&gt;
+&lt;li&gt;キルスコアや塗ったポイントの結果が表示されるので、こういう遊びのプレイがなかなかできていない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;アロワナモールで1分前にピンポンパンポンとお知らせが入るのに気づいた。細かい。&lt;/li&gt;
+&lt;li&gt;割とまんべんなく武器を運用しているので、知的好奇心を満たすことができた。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Todo運用
+
+&lt;ul&gt;
+&lt;li&gt;紙→check*pad→RTM→Wunderlist→紙→Torello→Todoist→Todo.mdという経歴。&lt;/li&gt;
+&lt;li&gt;使ってみた中では、紙が最強だと思う。オフラインで確認できるのは紙か印刷したリストのみだから。&lt;/li&gt;
+&lt;li&gt;どのデバイスでも見ることができる、というのは重要。だが、それ以上に起動しなくても見ることができるというのはより重要。常にデバイスを装備しなくてもいいようにしないと、オフラインのタスクを管理できない。&lt;/li&gt;
+&lt;li&gt;一方で、RememberTheMilkのように、リマインダーは紙以外じゃないとダメだった。GoogleカレンダーやDueを使っている。&lt;/li&gt;
+&lt;li&gt;定期タスクも含めて、紙に書いた方が達成率・達成感ともに高い。&lt;/li&gt;
+&lt;li&gt;というわけで、また紙に戻る予定。Todo.mdは後でやるを書いておくのにちょうどいいけど、日常のタスクは紙がいい。机の上に置いておくだけでプレッシャーになって捗る。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 05 23</title>
+      <link>http://log.deprode.net/logs/2015-05-23/</link>
+      <pubDate>Sat, 23 May 2015 23:03:50 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-23/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Todo.txt
+
+&lt;ul&gt;
+&lt;li&gt;Trello、Todoist、check*padなど、オンラインのタスク管理ツールを個人的に使っていたけど、結局Todo.mdと紙に戻ってしまうので旧人類かもしれない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Style
+
+&lt;ul&gt;
+&lt;li&gt;Hugoとwerckerで更新されているので、あまりブラウザから確認することはないんだけど、改めて見づらいブログだな、と思った。&lt;/li&gt;
+&lt;li&gt;ヘッダ要素とp要素のバランスが悪いし、本文の文字が小さい。あと、リストがinsideになってるので見づらい。本文が横に広いので、一行が長すぎる。他にも個別ページからトップにいけない、リストが深くなると文字が小さくなるなどいくつか。&lt;/li&gt;
+&lt;li&gt;当初は誰にも見られない、参考にされない、役に立たないことを目的としていたのでこれでもいいか、という気になっていたのでこうなってる。&lt;/li&gt;
+&lt;li&gt;だけど、日別に思考などを切って書いてあるので、これをまとめるだけでブログの記事になってしまうわけで。なので、まとめるために閲覧性が必要になった。
+
+&lt;ul&gt;
+&lt;li&gt;閲覧性て……。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;そうでなくてもいろいろ見づらいので、何とかする必要がある。&lt;/li&gt;
+&lt;li&gt;できればMCSSというか、BEMやSMACSSを使いたいな、という気はする。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://operatino.github.io/MCSS/ja/&#34;&gt;MCSS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;試射会
+
+&lt;ul&gt;
+&lt;li&gt;朝8時からジモトギョージ氏につきあうことになってしまったので、割と絶望的。
+
+&lt;ul&gt;
+&lt;li&gt;「ジモトギョージ氏」というのは、システムの擬人化であり、直近の上の人を恨まないための工夫。&lt;/li&gt;
+&lt;li&gt;これは、中世ヨーロッパで罪人の代わりにキャベツをギロチンにかけていたことにヒントを得たアイデアです。割と気に入ってる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 04 28</title>
+      <link>http://log.deprode.net/logs/2015-04-28/</link>
+      <pubDate>Tue, 28 Apr 2015 23:32:44 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-28/</guid>
+      <description>
+
+&lt;ul&gt;
+&lt;li&gt;DigitalOceanでCentOS立ち上げてPostfixインストールして諸々の設定試そうと思ったら、普通にPostifxインストールしてあったし、mailx入れたらメール送信できた。
+
+&lt;ul&gt;
+&lt;li&gt;kickstartで入れただけっぽいことがわかってきた。
+
+&lt;ul&gt;
+&lt;li&gt;調べたら今ってデフォルトでPostfix入ってるっぽい。よかった、これで解決ですね。
+
+&lt;ul&gt;
+&lt;li&gt;よくない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;諸々の設定と対策はしてないようなので、やらないとダメっぽい。&lt;/li&gt;
+&lt;li&gt;とりあえず、いろいろやってわかったのでDroplet削除した。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;終わらせなければ、終わらないんじゃ。&lt;/li&gt;
+&lt;li&gt;ピクミン「ｳｪｰｲwww」
+
+&lt;ul&gt;
+&lt;li&gt;割と聞こえるんだけど、俺の頭がおかしいのか。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;父のブラビアのYoutube終わったので更新してるけど、UXがいろいろおかしい。
+
+&lt;ul&gt;
+&lt;li&gt;とりあえず、読み込みが遅いのはテレビだから仕方ないとして、読み込み失敗で何も表示されないのはよくない。&lt;/li&gt;
+&lt;li&gt;ネットチャンネルの更新が通信設定にあって、わかる人にはわかる分類。&lt;/li&gt;
+&lt;li&gt;ネットチャンネルを更新しても、ホームメニューが更新されないのでお気に入り登録してもホームメニューが強制終了する。
+
+&lt;ul&gt;
+&lt;li&gt;他のネットチャンネルに関しても同様。&lt;/li&gt;
+&lt;li&gt;本体更新する必要があるかと思ったが、最新版だった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;結局、ネットチャンネルの一覧から選べばみれるので、そういう方法でお願いした。
+
+&lt;ul&gt;
+&lt;li&gt;ホームメニューはショートカット(symlink)を作り直すために本体アップデートが必要になるけど、いろいろあってできないみたいな感じなんだと思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;45分かかった。プログラミングできても、電子機器に弱い。&lt;/li&gt;
+&lt;li&gt;ネットはネットワーク機器で見ろってことで。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;「デザインあ」は、普段意識してないデザインを意識させる力を育てる知育番組、という理解でいいのかな。
+
+&lt;ul&gt;
+&lt;li&gt;おそらく、いいデザインを蓄積するだけではダメで、いいデザインを知った上で悪いデザインに触れると圧倒的成長をしていることにテンションが上がるのでそういう感じにして欲しいけど、15分で成り立つ番組だから無理だろうなあ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;仕事を頼むときは予算と納期を書いてからメールすると吉じゃ。&lt;/li&gt;
+&lt;li&gt;ゼノブレイドクロスはするーする。時間が死ぬほどあれば遊ぶけど、現状では無理です。
+
+&lt;ul&gt;
+&lt;li&gt;ヌルゲーマーがどういう定義かは知らないけど、昔みたいに遊べなくなった気がしてる。&lt;/li&gt;
+&lt;li&gt;ゼノブレイド、今日も遊べなかったけど無駄な時間に遊んでいれば遊べたので、&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;今日もだいぶつらかった。寒暖の差がいっそう激しくなった。夏の陽気になった割に夜はだいぶ冷える。日が昇るのが早くなり、早くに目が覚めてしまう。二度寝でひどい寝汗をかくので、一日疲れている。つらい。何とかしたい。
+
+&lt;ul&gt;
+&lt;li&gt;J-RAPかよ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;大型連休終了までにやること:8f73a75d95c43e7c58849f135f16516c&#34;&gt;大型連休終了までにやること&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;VPSの移転＋運用&lt;/li&gt;
+&lt;li&gt;Yodobashiで買い物&lt;/li&gt;
+&lt;li&gt;ゼノブレイド 〜クリア&lt;/li&gt;
+&lt;li&gt;JavaScriptパターン 〜読了&lt;/li&gt;
+&lt;li&gt;vue.jsのチュートリアルやる&lt;/li&gt;
+&lt;li&gt;twitter botを作り直す&lt;/li&gt;
+&lt;li&gt;Feedlyの未読（+ブックマーク保留）を0にする&lt;/li&gt;
+&lt;li&gt;理髪に行く&lt;/li&gt;
+&lt;li&gt;iTunesで映画を見る&lt;/li&gt;
+&lt;li&gt;GWまとめをブログに書く&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2016 01 17 HugoのデプロイをWerckerからCircle CIに変更した - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-01-17/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-01-17/">
+            
+                HugoのデプロイをWerckerからCircle CIに変更した
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-01-17T17:50:09&#43;09:00">2016-01-17</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="hugoのデプロイをwerckerからcircle-ciに変更した">HugoのデプロイをWerckerからCircle CIに変更した</h2>
+
+<p>「<a href="http://hori-ryota.com/blog/create-blog-with-hugo-and-circleci/">HugoとCircleCIでGitHub PagesにBlogを公開してみた - Hori Blog</a>」や、「<a href="http://nobu666.com/2015/12/31/1022.html">WerckerやめてCircleCIに移行 · Real Beat</a>」を参考にした。とても助かった。</p>
+
+<hr />
+
+<p>上記のサイトと違うのは、git pushの先がgh-pagesになるので、git pushでgh-pagesを指定したのと、gh-pagesにCircle CIからdeployしたときにスキップするようにしたこと。あと、なぜかCNAMEを書き出さなかったので直接ファイルへ書き出したこと。</p>
+
+<p>作成したcircle.ymlは<a href="https://github.com/deprode/log/blob/513fc2c29cc9df90efc778f9745786ad821f83dc/circle.yml">githubにある</a>。</p>
+
+<hr />
+
+<p>もともと、werckerでもほとんど問題がなかったのだが、今回deprode.net/logからlog.deprode.netへドメインを変更した。そして、その頃からpublicフォルダに出力しない問題が出ていた。</p>
+
+<p>土日を使っていろいろ試したが、結局解決しなかったため、思い切ってCircle CIでdeployすることにしたのだった。少し前にwerckerで問題があったときにも乗り換えようと思ったのだが、そのときは解決策が何時間かして見つかったので思いとどまったのだった。</p>
+
+<p>今回は解決策が検討つかなかったので、Circle CIに移った。</p>
+
+<hr />
+
+<p>余談だが、<a href="http://deprode.net/">deprode.net</a>をVPS上に移した。理由は、github pagesのすべてのURLがdeprode.net以下になるから。logも、deprode.net/logだった。</p>
+
+<p>deprode.net以下にいろいろ小さいファイルを入れたくても入れられないのがすごい不便だったが、移したのでおととい作ったやつをサブドメインで運用できるようになった。現在稼働中。暇を見てAuthをつけたい。</p>
+
+<p>あと、deprode.netをVPSに移したので旧URLをリダイレクトする必要があったので、nginxでリダイレクトした。</p>
+
+<pre><code>server {
+    listen       80;
+    server_name  deprode.net;
+
+    location / {
+        root  /var/www/nginx/deprode.net;
+        index  index.html;
+    }
+
+    location /log {
+        rewrite ^/log/(.*)$ http://log.deprode.net/$1? permanent;
+    }
+}
+</code></pre>
+
+<p>もう少しいろいろ書いてあるけど、rewriteで書き換えてる。returnを使って301リダイレクトした方がいいのだが、Regexを使った処理が書けないっぽいのでrewrite使ってる。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-01-17T17:50:09&#43;09:00">2016-01-17 17:50:09</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/hugo">Hugo</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

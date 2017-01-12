@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 04 17 PHP The Right Way、昨日の続き - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-04-17/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-04-17/">
+            
+                PHP The Right Way、昨日の続き
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-04-17T23:26:07&#43;09:00">2015-04-17</time></p>
+    </header>
+    <section class="single_content">
+        <ul>
+<li>PHP The Right Way、昨日の続き。
+
+<ul>
+<li>CLIでphp.iniを指定したり、CGIモードで実行時間を計測したりできるの初めて知った。</li>
+<li>Xdebug使うためだけにPHPStorm欲しい
+
+<ul>
+<li>Codebug<a href="http://codebugapp.com/">http://codebugapp.com/</a>という手もあるみたいだけど、サポート状況に不安がある。</li>
+<li>Vimでもできるみたい。</li>
+</ul></li>
+<li>Composerは昨日やった。
+
+<ul>
+<li>homebrewでインストールできそう。homebrew search composer</li>
+<li>バージョンの指定
+
+<ul>
+<li>公式: <a href="https://getcomposer.org/doc/01-basic-usage.md#package-versions">https://getcomposer.org/doc/01-basic-usage.md#package-versions</a></li>
+<li>初心者向け: <a href="http://tech.quartetcom.co.jp/2015/01/19/composer-practices/">http://tech.quartetcom.co.jp/2015/01/19/composer-practices/</a></li>
+</ul></li>
+</ul></li>
+<li>エルビス演算子 <code>?:</code> って三単項演算子とセットで説明されてるだけに罠。
+
+<ul>
+<li>エルビス演算子っていうの初めて知った。</li>
+</ul></li>
+<li>switchは緩やかな比較なので、これも成り立つ。怖い。</li>
+</ul></li>
+</ul>
+
+<pre><code>&lt;?php
+$n = null;
+
+switch ($n) {
+    case 0:
+      echo &quot;let's php!&quot;;
+      break;
+}
+</code></pre>
+
+<ul>
+<li>続き
+
+<ul>
+<li>Design Patterns.
+
+<ul>
+<li>ちょくちょく別ページを挟んでくるのいいですね。</li>
+</ul></li>
+<li>PHPのデザインパターン実装集なんてあるのか。
+
+<ul>
+<li><a href="https://github.com/domnikl/DesignPatternsPHP">https://github.com/domnikl/DesignPatternsPHP</a></li>
+</ul></li>
+<li>マルチバイト（UTF-8）はまあ、そうですよね、という感じ。
+
+<ul>
+<li>日本語圏は<code>mb_*</code>関数しか使ってない印象がある。</li>
+</ul></li>
+</ul></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-04-17T23:26:07&#43;09:00">2015-04-17 23:26:07</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/%E6%98%A0%E7%94%BB">映画</a></li>
+            
+                <li class="page_tags"><a href="/tags/pplog">pplog</a></li>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/%E7%A4%BE%E4%BC%9A">社会</a></li>
+            
+                <li class="page_tags"><a href="/tags/%E3%82%BC%E3%83%8E%E3%83%96%E3%83%AC%E3%82%A4%E3%83%89">ゼノブレイド</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

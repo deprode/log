@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Server on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/server/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>DigitalOceanからHerokuとS3に移行した</title>
+      <link>http://log.deprode.net/logs/2017-01-12_23-53-08/</link>
+      <pubDate>Thu, 12 Jan 2017 23:53:08 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2017-01-12_23-53-08/</guid>
+      <description>&lt;p&gt;さくらのレンタルサーバ→さくらのVPS→DigitalOceanの順に移行してきた。レンタルサーバでは自由にcronを使うなどの自由を求めてVPSに移行した。DigitalOceanへは簡単にCPUや容量を増やせる手軽さを求めて移行した。&lt;/p&gt;
+
+&lt;p&gt;Ansibleを学び、DigitalOceanのセットアップを自動で行った私だったが、度重なる脆弱性の対応に不安になり、管理することが重荷になっていた。GHOST、Heartbleed、DROWN、POODLEなどに対策しても、次々出てくる脆弱性にこのまま対応できるのか、忙しくてもパッチを当てられるのかが不安だった。果たして今後も素早く対応できるのかわからない。なら少しコストがかさんでも他人に任せた方がいいだろうと考えたのだった。&lt;/p&gt;
+
+&lt;p&gt;レンタルサーバに戻ることを真っ先に考えた。試算すると、レンタルサーバも悪くはなかった。年5000円でいいのだから。しかし制約が多すぎるため、PHPを動かすのであれば別のところがいいだろう。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;であれば、やはりPaaSを使うのが得策だろうと思った。いろいろ調べた結果、Herokuなら楽にプログラムを走らせられそうだった。PHPも対応しており、他の言語も問題なさそうだったので少しずつプログラムを移行していった。全てのプログラムを移行し終えたとき、静的ウェブサイトだけが残った。&lt;/p&gt;
+
+&lt;p&gt;あまり気乗りではなかったが、AWSのS3を使うことにした。気乗りでなかった理由は、リージョンの違うRDSが表示されず、知らない間に課金されていると勘違いしてアカウントごと停止していたから。忘れていたい黒歴史である。何年も前のことだったのだが、AWSを停止したままでは使えないので、サポートにメールをしてAWSのアカウントを再開した。&lt;/p&gt;
+
+&lt;p&gt;それから2FAの設定やIAMの作成、Billing Alertの設定などセキュリティ対策を行い、ようやくS3でウェブサイトを表示できたのだった。最終的にはRoute53とCloudFront、SES、AWS ACMを使い、独自ドメインとHTTPS対応も行った。なお、HTTPS対応は2週間くらい放置していたため、httpsページはエラー表示のまま放置されており、大変申し訳なかった。&lt;/p&gt;
+
+&lt;p&gt;何はともあれ、Heroku+S3で管理しなくてもいい状態になり、ストレスフリーな環境へ無事に移行したのだった。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;今後移行するとしたらDocker swarm&amp;amp;AWS Lambdaだと思う。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;ただし1枚PHPをcronで毎時動かしたい程度であれば、レンタルサーバでいい。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;移行したけど、DigitalOceanはSnapshot（すぐ復元できるバックアップ）を使用しているので月10円くらいかかってる。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Let’s Encrypt 設定した</title>
+      <link>http://log.deprode.net/logs/2016-04-14_21-49-45/</link>
+      <pubDate>Thu, 14 Apr 2016 21:49:45 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-14_21-49-45/</guid>
+      <description>
+
+&lt;h2 id=&#34;let-s-encrypt-設定した&#34;&gt;Let’s Encrypt 設定した&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://letsencrypt.org/2016/04/12/leaving-beta-new-sponsors.html&#34;&gt;Leaving Beta, New Sponsors - Let&amp;rsquo;s Encrypt - Free SSL/TLS Certificates&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s EncryptからBetaがとれたので&lt;a href=&#34;https://deprode.net&#34;&gt;deprode.net&lt;/a&gt;をhttpsに対応した。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# インストール
+git clone https://github.com/letsencrypt/letsencrypt
+cd letsencrypt
+
+# ヘルプの参照（パッケージが不足している場合はインストールされる）
+./letsencrypt-auto --help all
+
+# 証明書の生成
+./letsencrypt-auto certonly --webroot -w /var/www/html/deprode.net/ -d deprode.net
+
+# Deffie-Hellman鍵の生成（生成していない場合）
+sudo openssl dhparam -out /etc/ssl/private/dhparam.pem 2048
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;証明書が生成できたので、nginxの設定をして再起動し、httpsで表示できた。その後テストを行ったが、この時点ではCだった。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.ssllabs.com/ssltest/&#34;&gt;SSL Server Test (Powered by Qualys SSL Labs)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;そのため、MozillaによるWebサーバのSSL設定ジェネレータを参考にして設定し直した。（DH鍵はこの時点で生成した。）&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://mozilla.github.io/server-side-tls/ssl-config-generator/&#34;&gt;Generate Mozilla Security Recommended Web Server Configuration Files&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;その後再びテストを行い、A+を確認した。また、crontabで証明書の自動更新を設定した。（&lt;code&gt;./letsencrypt-auto renew --force-renew &amp;amp;&amp;amp; sudo service nginx restart&lt;/code&gt;で証明書が更新できるので、crontab用にパスなどを変更し、cronを設定した。）&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;追記：2016-05-12&lt;/p&gt;
+
+&lt;p&gt;ユーザのcronだとsudoで失敗するので、&lt;code&gt;/etc/cron.daily/&lt;/code&gt;に以下のスクリプトを登録した。（手抜きなので、公式の&lt;a href=&#34;https://letsencrypt.org/getting-started/&#34;&gt;Getting Started &lt;/a&gt;にあるスクリプトを参考にした方がよい。）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+
+cd /home/deprode/letsencrypt
+
+./letsencrypt-auto renew --webroot -w /var/www/nginx/deprode.net/
+
+service nginx reload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;スクリプトをchmodで実行可能にすることを忘れずに。&lt;/p&gt;
+
+&lt;p&gt;追記：2016-5-18&lt;/p&gt;
+
+&lt;p&gt;実行時に&amp;ndash;force-renewすると強制的にアップデートするはずだが、アップデート回数の上限に達したとエラーが出たのでスクリプトから外した。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;以下のサイトを参考にした。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://letsencrypt.org/getting-started/&#34;&gt;Getting Started - Let&amp;rsquo;s Encrypt - Free SSL/TLS Certificates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://knowledge.sakura.ad.jp/tech/3936/&#34;&gt;すべてのWebサイトの暗号化を目指すLet’s Encryptを試す - さくらのナレッジ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ww24/items/9fa19594b4e3a8eb9b6f&#34;&gt;Let&amp;rsquo;s Encrypt で手軽に HTTPS サーバを設定する - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.apar.jp/linux/3619/&#34;&gt;Let’s Encrypt サーバー証明書の取得と自動更新設定メモ | あぱーブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.teradas.net/archives/13222/&#34;&gt;特定ユーザー・プログラムにのみcronでのsudoをパスワード無しで許可する設定 | TeraDas－テラダス&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

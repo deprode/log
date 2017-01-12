@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 04 16 PHP The Right Way - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-04-16/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-04-16/">
+            
+                PHP The Right Way
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-04-16T23:41:23&#43;09:00">2015-04-16</time></p>
+    </header>
+    <section class="single_content">
+        <ul>
+<li>Daemonって守護神って意味だったのか。悪魔(demon)かと思ってた。
+
+<ul>
+<li><a href="http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3_%28%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%29">http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3_%28%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%29</a></li>
+</ul></li>
+<li>PHP The Right Way, 昨日の続き。
+
+<ul>
+<li>PSR-4になってるのは知ってたけど、autoloadのこと（WAFとかで使ってるけど）よくわかってない。
+
+<ul>
+<li>調べた結果、オレオレautoloadが大量に見つかり、めんどくさくなってcomposer使うことにした。
+
+<ul>
+<li>Composerが2011/04/03〜。spl_autoload_registerをつかったものが2012あたりに大量に書かれてるけど、何かあったのかな。</li>
+</ul></li>
+<li>たぶん、こんな感じで読み込める。
+
+<ul>
+<li>最初IBMのページでnamespaceをいろいろ試してたから、こうなってる。</li>
+<li>小規模かつ個人開発ならautoload使わずにrequireしてもいいと思う。
+
+<ul>
+<li>ケースバイケース</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<pre><code>// composer.json
+{
+    &quot;autoload&quot;: {
+        &quot;psr-4&quot;: {
+            &quot;Obrian\\&quot;: &quot;src/obrian/&quot;,
+            &quot;Barbarian\\&quot;: &quot;src/barbarian/&quot;
+        }
+    }
+}
+
+// ディレクトリ以下の配置
+.
+├── composer.json
+├── composer.lock
+├── composer.phar
+├── index.php
+├── src
+│   ├── barbarian
+│   │   └── Conan.php
+│   └── obrian
+│       └── Conan.php
+└── vendor
+    ├── autoload.php
+	（省略）
+
+// index.php
+&lt;?php
+
+require_once &quot;vendor/autoload.php&quot;;
+
+use \Barbarian\Conan;
+use \Obrian\Conan as ObrianConan;
+
+$conan = new Conan();
+echo $conan-&gt;bodyBuild . PHP_EOL;
+
+$obConan = new ObrianConan;
+echo $obConan-&gt;bodyBuild . PHP_EOL;
+
+// src/obrian/Conan.php
+&lt;?php
+
+namespace obrian;
+
+class Conan
+{
+    public $bodyBuild = &quot;very skinny&quot;;
+}
+
+// src/barbarian/Conan.php
+&lt;?php
+
+namespace barbarian;
+
+class Conan
+{
+    public $bodyBuild = &quot;extermely muscular&quot;;
+}
+
+</code></pre>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-04-16T23:41:23&#43;09:00">2015-04-16 23:41:23</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/composer">Composer</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

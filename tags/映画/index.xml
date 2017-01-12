@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>映画 on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/%E6%98%A0%E7%94%BB/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 04 17</title>
+      <link>http://log.deprode.net/logs/2015-04-17/</link>
+      <pubDate>Fri, 17 Apr 2015 23:26:07 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-17/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;PHP The Right Way、昨日の続き。
+
+&lt;ul&gt;
+&lt;li&gt;CLIでphp.iniを指定したり、CGIモードで実行時間を計測したりできるの初めて知った。&lt;/li&gt;
+&lt;li&gt;Xdebug使うためだけにPHPStorm欲しい
+
+&lt;ul&gt;
+&lt;li&gt;Codebug&lt;a href=&#34;http://codebugapp.com/&#34;&gt;http://codebugapp.com/&lt;/a&gt;という手もあるみたいだけど、サポート状況に不安がある。&lt;/li&gt;
+&lt;li&gt;Vimでもできるみたい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Composerは昨日やった。
+
+&lt;ul&gt;
+&lt;li&gt;homebrewでインストールできそう。homebrew search composer&lt;/li&gt;
+&lt;li&gt;バージョンの指定
+
+&lt;ul&gt;
+&lt;li&gt;公式: &lt;a href=&#34;https://getcomposer.org/doc/01-basic-usage.md#package-versions&#34;&gt;https://getcomposer.org/doc/01-basic-usage.md#package-versions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;初心者向け: &lt;a href=&#34;http://tech.quartetcom.co.jp/2015/01/19/composer-practices/&#34;&gt;http://tech.quartetcom.co.jp/2015/01/19/composer-practices/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;エルビス演算子 &lt;code&gt;?:&lt;/code&gt; って三単項演算子とセットで説明されてるだけに罠。
+
+&lt;ul&gt;
+&lt;li&gt;エルビス演算子っていうの初めて知った。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;switchは緩やかな比較なので、これも成り立つ。怖い。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+$n = null;
+
+switch ($n) {
+    case 0:
+      echo &amp;quot;let&#39;s php!&amp;quot;;
+      break;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;続き
+
+&lt;ul&gt;
+&lt;li&gt;Design Patterns.
+
+&lt;ul&gt;
+&lt;li&gt;ちょくちょく別ページを挟んでくるのいいですね。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PHPのデザインパターン実装集なんてあるのか。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/domnikl/DesignPatternsPHP&#34;&gt;https://github.com/domnikl/DesignPatternsPHP&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;マルチバイト（UTF-8）はまあ、そうですよね、という感じ。
+
+&lt;ul&gt;
+&lt;li&gt;日本語圏は&lt;code&gt;mb_*&lt;/code&gt;関数しか使ってない印象がある。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

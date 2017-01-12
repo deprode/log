@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Vps on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/vps/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 05 13</title>
+      <link>http://log.deprode.net/logs/2015-05-13/</link>
+      <pubDate>Wed, 13 May 2015 16:12:18 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-13/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;VPS移転完了
+
+&lt;ul&gt;
+&lt;li&gt;やっと終わった。といっても今日やったのはSequel（Mac用MySQLGUIクライアント）の設定とVPSの解約申し込みだけど。&lt;/li&gt;
+&lt;li&gt;さくらのVPSはshutdownコマンド使ってもコントロールパネルが停止にならないっぽい。&lt;/li&gt;
+&lt;li&gt;DigitalOcean（シンガポールリージョン）はntpdで時刻合わせてもアメリカ時間だったのだが、タイムゾーンの設定をしたら直った。
+
+&lt;ul&gt;
+&lt;li&gt;/etc/localtimeにタイムゾーンの設定を/usr/share/zoneinfo/Japanからコピーして直した。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;移転完了したので、iPadで日記書けるようにする。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

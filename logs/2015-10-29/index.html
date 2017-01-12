@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 29 CodeceptionでCircle CIを試している - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-29/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-29/">
+            
+                CodeceptionでCircle CIを試している
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-29T00:00:00&#43;09:00">2015-10-29</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="codeceptionでcircle-ciを試している">CodeceptionでCircle CIを試している</h2>
+
+<ul>
+<li><a href="http://codeception.com/">Codeception - BDD-style PHP testing.</a></li>
+</ul>
+
+<p>Codeceptionでテストを書いてみた。けど、Circle CIで連携する方法がよくわからなかったので<a href="https://github.com/deprode/sandbox">sandbox</a>（Githubの練習用リポジトリ）で試していた。</p>
+
+<hr />
+
+<p>codeceptionの起動には、codecept.pharが必要になる。このファイルは、<code>wget http://codeception.com/codecept.phar</code>で取得するか、composerでcodeceptionをインストールする方法で得られる。（後者はvendor/bin/codeceptに保存される。）</p>
+
+<p>Circle CIでは、特に何もしなくても<code>composer install</code>が実行されるので、Composerを使ったやり方でよいと思う。</p>
+
+<p>Circle CIでは、phpunit.xmlを見てテストするのだが、codeceptionを使った場合はtestコマンドをcodeception用に書き換える必要がある。</p>
+
+<pre><code>// circle.ymlの下段
+test:
+  override:
+    - ./vendor/bin/codecept run
+</code></pre>
+
+<hr />
+
+<p>Circle CIはコンテナに<a href="https://circleci.com/docs/ssh-build">SSHでログインできる</a>。30分たつとシャットダウンされる。もし、ビルドのエラーメッセージではなく、tests/_outputフォルダに何らかの手がかりがあるようなら、そこを探すと解決することがある。</p>
+
+<p>Acception Testだと、落ちたときに自動的にHTMLが書き出されるので便利。</p>
+
+<hr />
+
+<p>あまり関係ないが、Circle CIはubuntuで動いているので、ファイルの大文字小文字を区別する。もし、Win/Macで動作確認しているなら、ファイル名を自動で判別している箇所の修正が必要になる。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-29T00:00:00&#43;09:00">2015-10-29 00:00:00</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/codeception">Codeception</a></li>
+            
+                <li class="page_tags"><a href="/tags/circle-ci">Circle CI</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Css on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/css/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>メニューを通り過ぎると、上部に固定するメニュー</title>
+      <link>http://log.deprode.net/logs/2016-09-22_17-57-58/</link>
+      <pubDate>Thu, 22 Sep 2016 17:57:58 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-09-22_17-57-58/</guid>
+      <description>
+
+&lt;p&gt;参考資料とほとんど同じなので詳細は省く。違う場所は、jQueryを使わずに実装するところ。動作確認はChrome53とFirefox48でしかしてない。スマホは非対応。&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;265&#34; data-theme-id=&#34;0&#34; data-slug-hash=&#34;gwLoNX&#34; data-default-tab=&#34;js,result&#34; data-user=&#34;deprode&#34; data-embed-version=&#34;2&#34; class=&#34;codepen&#34;&gt;See the Pen &lt;a href=&#34;http://codepen.io/deprode/pen/gwLoNX/&#34;&gt;gwLoNX&lt;/a&gt; by deprode (&lt;a href=&#34;http://codepen.io/deprode&#34;&gt;@deprode&lt;/a&gt;) on &lt;a href=&#34;http://codepen.io&#34;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;//assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;scrolltop-scrollleft&#34;&gt;scrollTop、scrollLeft&lt;/h2&gt;
+
+&lt;p&gt;scrollTopとscrollLeftはスクロール量を取得するプロパティ。このコードではそれぞれ&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-JavaScript&#34;&gt;document.documentElement.scrollTop || document.body.scrollTop
+document.documentElement.scrollLeft || document.body.scrollLeft
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;で取得してる。&lt;/p&gt;
+
+&lt;p&gt;もうちょい厳密にやる場合は、&lt;a href=&#34;http://stackoverflow.com/a/20478983&#34;&gt;&lt;code&gt;window.pageYOffset || documentElement.scrollTop || body.scrollTop || 0;&lt;/code&gt;&lt;/a&gt;でいいし、jQueryと同じにしたい場合は&lt;a href=&#34;https://github.com/jquery/jquery/blob/305f193aa57014dc7d8fa0739a3fefd47166cd44/src/offset.js#L185-L208&#34;&gt;このように実装すればいい。&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;offset&#34;&gt;offset&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Element.getBoundingClientRect&lt;/code&gt;は左上を0,0とした表示領域の座標が取得できるメソッドで、左上からの座標とスクロール量を合わせた値がoffsetになる。つまり、getBoundingClientRectとscrollTop(scrollLeft)を合わせた値がoffset。&lt;/p&gt;
+
+&lt;p&gt;getBoundingClientRectをサポートしてないブラウザはほぼ現存していないので、その辺のコードを省いた。（元のコードはgetBoundingClientRectが存在しないとjQueryでoffsetを取得しているが、jQueryを使わないコードだとoffsetを取得するためにoffsetを取得することになるので無理だし、最新のjQueryでは&lt;a href=&#34;https://github.com/jquery/jquery/blob/305f193aa57014dc7d8fa0739a3fefd47166cd44/src/offset.js#L77-L119&#34;&gt;getBoundingClientRectでoffsetを取得してる&lt;/a&gt;から、getBoundingClientRectが取得できないという想定が非標準的っぽい。）&lt;/p&gt;
+
+&lt;h2 id=&#34;addclass-removeclass&#34;&gt;addClass、removeClass&lt;/h2&gt;
+
+&lt;p&gt;Element.classListを使用しているが、IE10以上でサポートしている。なので、IE9はサポートしてない。IE9をサポートする場合は、素直にjQueryを使ったり、&lt;a href=&#34;https://github.com/eligrey/classList.js/&#34;&gt;eligrey/classList.js&lt;/a&gt;のようなpolyfillを使った方がいい。&lt;/p&gt;
+
+&lt;h2 id=&#34;その他&#34;&gt;その他&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;header&amp;gt;&lt;/code&gt;が高さ固定でメニューを内包しているので問題になってないが、そうでない場合はスクロールするとメニューを&lt;code&gt;position: fixed&lt;/code&gt;にするとずれる。そのため、同じメニューを置いてfixedと切り替えて表示するなどが必要だった。&lt;/p&gt;
+
+&lt;h2 id=&#34;参考資料&#34;&gt;参考資料&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/zaru/items/82d61ac90394885fb486&#34;&gt;CSSとJSで、スクロールして一定の場所を過ぎると、上部固定するメニューを作る - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/ANTON072/items/ea5b95ae5b7f0f6186f7&#34;&gt;jQueryより速いoffset値の取得方法 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect&#34;&gt;Element.getBoundingClientRect() - Web APIs | MDN&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://caniuse.com/#feat=classlist&#34;&gt;Can I use&amp;hellip; Support tables for HTML5, CSS3, etc（classlistのサポート）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Noto sansをやめ、通常のフォント指定に変更した</title>
+      <link>http://log.deprode.net/logs/2016-04-15_11-44-45/</link>
+      <pubDate>Fri, 15 Apr 2016 11:44:45 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-04-15_11-44-45/</guid>
+      <description>
+
+&lt;h2 id=&#34;noto-sansをやめ-通常のフォント指定に変更した&#34;&gt;Noto sansをやめ、通常のフォント指定に変更した&lt;/h2&gt;
+
+&lt;p&gt;このlogに指定してあるフォントを変更した。&lt;a href=&#34;https://www.google.com/get/noto/#sans-lgc&#34;&gt;Google Noto Fonts&lt;/a&gt;のNoto sansを使っていたのだが、Webフォントをやめ、以下のものに変更した。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;font-family: &#39;Hiragino Kaku Gothic Pro&#39;, &#39;ヒラギノ角ゴ Pro W3&#39;, &#39;メイリオ&#39;, Meiryo, sans-serif;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;スマートフォンでは読み込みが遅くなるためすでにWebフォントをやめていたのだが、sans-serifのみの指定だった。こちらも同様のフォント指定にした。&lt;/p&gt;
+
+&lt;p&gt;変更した理由は、見づらいから。FOUT&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;が発生するためFOUT対策としてフォントのローディング完了まで文字を非表示にしているのだが、ユーザはフォントの読み込み完了まで何も表示されていないWebサイトを見ることになる。その時間が最近長く感じたのでやめた。また、ほぼテキストだけのサイトなので、わざわざ重いWebフォントを使うメリットは薄い。&lt;/p&gt;
+
+&lt;p&gt;sans-serifだけでもいいと思ったのだが、Win7のIE11でMSPゴシックが表示されるらしいのでメイリオを指定している。しかしそうなると、Macでもメイリオが表示される人もいると思い、ヒラギノを指定した。&lt;/p&gt;
+
+&lt;p&gt;印象がすっきりしたので、私の心もすっきりした。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;全然関係ないが、CSS（normalize.css, skeleton.css）をcdnjsを使ったものに統一した。トップページとそれ以外で違う指定がしてあり、つまりその、バグだったので修正した。おそらく1年近く放置してあったので、恥ずかしく思う。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;Flash of Unstyled Textの略で、フォントの読み込み完了まで別のフォントが使われる現象。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 02 08</title>
+      <link>http://log.deprode.net/logs/2016-02-08/</link>
+      <pubDate>Mon, 08 Feb 2016 17:50:18 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-02-08/</guid>
+      <description>
+
+&lt;h2 id=&#34;animate-cssとwow-js&#34;&gt;Animate.cssとWow.js&lt;/h2&gt;
+
+&lt;p&gt;脱jQueryしようといろいろ調べているのだが、アニメーション系を&lt;a href=&#34;http://julian.com/research/velocity/&#34;&gt;Velocity.js&lt;/a&gt;以外でやる方法を調べていた。で、表示するときに動作させるだけであれば、Animate.cssとWow.jsでよさそう。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://daneden.github.io/animate.css/&#34;&gt;Animate.css&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://mynameismatthieu.com/WOW/&#34;&gt;Reveal Animations When Scrolling — WOW.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;サンプル。下にスクロールするとさらに3つ表示される。&lt;/p&gt;
+
+&lt;p&gt;&lt;p data-height=&#34;268&#34; data-theme-id=&#34;0&#34; data-slug-hash=&#34;KVrPLa&#34; data-default-tab=&#34;result&#34; data-user=&#34;deprode&#34; class=&#39;codepen&#39;&gt;See the Pen &lt;a href=&#39;http://codepen.io/deprode/pen/KVrPLa/&#39;&gt;KVrPLa&lt;/a&gt; by deprode (&lt;a href=&#39;http://codepen.io/deprode&#39;&gt;@deprode&lt;/a&gt;) on &lt;a href=&#39;http://codepen.io&#39;&gt;CodePen&lt;/a&gt;.&lt;/p&gt;
+&lt;script async src=&#34;//assets.codepen.io/assets/embed/ei.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;スクロール位置によってアニメーションは発動するけど、スクロールを戻したときに再度開始することはできない。あと、Animate.cssのサイトではjQueryをクラスのtoggleとbinding(one)で使ってる。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;jQuery、別にWebサイトとかで使う分には全然ありだけど、モバイルでちょっと重いし、できれば使いたくない。ただjQuery抜きだと、「アニメーションのあとにコールバックで何かする処理が加わると、Promise使う」「クロスブラウザでajaxが面倒だからgithub/fetch使う」……とか、いろいろ加わると「じゃあjQueryでいいじゃん」となってしまう。しかし、それでページ内で密結合な処理を書いていくと不吉なにおいが立ちこめるので避けたい。&lt;/p&gt;
+
+&lt;p&gt;とか書いていたら、「&lt;a href=&#34;http://news.mynavi.jp/news/2016/02/02/137/&#34;&gt;Chromeがさらに増加、1月ブラウザシェア | マイナビニュース&lt;/a&gt;」という記事を見つけた。IE11の次にIE8で8%近くのシェアがあった。私はまだ、jQuery2.xすら使えないのかもしれない。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2016 01 07</title>
+      <link>http://log.deprode.net/logs/2016-01-07/</link>
+      <pubDate>Thu, 07 Jan 2016 22:16:44 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-01-07/</guid>
+      <description>
+
+&lt;h2 id=&#34;flexboxを触った&#34;&gt;Flexboxを触った&lt;/h2&gt;
+
+&lt;p&gt;以前から気になっていたFlexboxを触ったので経緯を残す。ちゃんと学びたい場合は、&lt;a href=&#34;https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes&#34;&gt;CSS flexible box の利用 - CSS | MDN&lt;/a&gt;を参考にするといい。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Flexboxは、floatやそのほかのCSSでは難しいレイアウトを様々なサイズで実現するためのプロパティ。以前から知っていたが、使ったことはなかった。昨年、&lt;a href=&#34;http://yoshiko-pg.github.io/slides/20151215-scripty/&#34;&gt;まだ中央寄せで消耗してるの？ - @yoshiko_pg&lt;/a&gt;を読んで、学ぶことを決意した。で、IEのサポートが11になる（Vista SP2は9）ので、このタイミングで学ぼうと思った。&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;ベンダープレフィックスは、IE10とiOS8以前、Andoroid4.3以前に必要らしい。まあ、別にもうサポートしなくてもいいだろう、と思って念のため調べたら、&lt;a href=&#34;http://developer.android.com/intl/ja/about/dashboards/index.html&#34;&gt;Googleの発表しているAndroidバージョン別シェア&lt;/a&gt;で4.3以前が30%近くいるので、&lt;code&gt;-webkit-&lt;/code&gt;をつけた方がいいかもしれない。ちなみに&lt;a href=&#34;https://developer.apple.com/support/app-store/&#34;&gt;Appleの発表したデータだと&lt;/a&gt;、iOS8は21%。まあ、たぶんみんなAutoprefixer使ってるからあんまり気にしてないと思うけど。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;まず、&lt;a href=&#34;http://www.webcreatorbox.com/tech/flexbox/&#34;&gt;これからのCSSレイアウトはFlexboxで決まり！ | Webクリエイターボックス&lt;/a&gt;をやった。わかりやすくていいチュートリアルだった。&lt;/p&gt;
+
+&lt;p&gt;その後、&lt;a href=&#34;http://coliss.com/articles/build-websites/operation/css/css3-flexbox-properties-by-scotch.html&#34;&gt;CSS3 Flexbox の各プロパティの使い方をヴィジュアルで詳しく解説 | コリス&lt;/a&gt;を見た。プロパティの数が多すぎるので、&lt;a href=&#34;https://scotch.io/demos/visual-guide-to-css3-flexbox-flexbox-playground&#34;&gt;Flexbox Playground&lt;/a&gt;をいじりつつ調べた。&lt;/p&gt;
+
+&lt;p&gt;とりあえず、ほかにもいろいろ調べたが、とりあえずきりがいいので終えた。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;&lt;a href=&#34;https://www.microsoft.com/ja-jp/windows/lifecycle/iesupport/&#34;&gt;Internet Explorerサポートポリシー変更の重要なお知らせ - Microsoft&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>トップページを雑に作り直した</title>
+      <link>http://log.deprode.net/logs/remake_deprode/</link>
+      <pubDate>Thu, 05 Mar 2015 09:39:38 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/remake_deprode/</guid>
+      <description>
+
+&lt;p&gt;トップページを作り直しました。 &lt;a href=&#34;http://deprode.jp&#34;&gt;http://deprode.jp&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;log&#34;&gt;log&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Twitterの発言&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;昔作ったトップページは個人的に気に入ってるけど、Hugoのデザインと合わないので作り直した。その際、CSSフレームワーク（というかボイラープレートとして）Skeletonを使った。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://getskeleton.com/&#34;&gt;Skeleton&lt;/a&gt;は200行のCSSだが、使うときれいになる。レスポンシブも対応してる。&lt;/p&gt;
+
+&lt;p&gt;fontawesome含め、外部のCSSとJSはCDNを使うようにした。&lt;/p&gt;
+
+&lt;p&gt;削除したものは、html5shivとmetaタグのいくつか。html5shivは、IE8以下でもhtml5タグを認識できるようにするshim。アクセス解析を見て、IE8以下が1%切ってるので、削除した。（&lt;a href=&#34;http://counter.hatena.ne.jp/sample/report?cid=11&amp;amp;date=2015-02-01&amp;amp;mode=summary&amp;amp;target=browser&amp;amp;type=monthly&#34;&gt;はてなカウンター&lt;/a&gt;とか見ると5%近くいる。）&lt;/p&gt;
+
+&lt;p&gt;メタタグでなぜか&lt;code&gt;user-scalable=no&lt;/code&gt;などが指定してあったので削除した。&lt;/p&gt;
+
+&lt;p&gt;その他、いろいろリンクを追加したり、作ったものを追加した。おでんを押すと表示するようにした。jQueryをわざわざ使うほどでもないと思ったので、Valilla.jsで書いた。（よく考えたらJSがないと見られないので不親切だったけど、知らない方がいいこともあるのでいいことにした。）&lt;/p&gt;
+
+&lt;p&gt;Githubにpushして終わり。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hugoで試行錯誤する</title>
+      <link>http://log.deprode.net/logs/first/</link>
+      <pubDate>Sat, 28 Feb 2015 18:29:55 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/first/</guid>
+      <description>&lt;p&gt;とりあえず、HugoでPublishできるまで作ってみるかと思っている。
+Tumblr2Hugoとかは自分で作らないとダメだと思うので、あきらめるか気が向いたらあれしよう。&lt;/p&gt;
+
+&lt;p&gt;Hugoでテーマ作ってると、他の人のやつも参考になるんだけど、最初にやるなら公式ドキュメントが役に立つ。よくわからないところはチュートリアルになってるので、見た方がいい。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gohugo.io/tutorials/automated-deployments/&#34;&gt;Automated deployments with Wercker&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://gohugo.io/tutorials/creating-a-new-theme/&#34;&gt;Creating a New Theme&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://gohugo.io/tutorials/github-pages-blog/&#34;&gt;Hosting on GitHub Pages&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ドット.がついてなくて、ないよ！って言われまくったけど最初わからなかった（集中してなかった＆目が悪い）ので、厳しさがある。エラーが出ないのにheader.htmlにあるTitleと.Site.Titleが出力されないというのも、partialのファイル名の他にドットを書く必要があったからだった。&lt;/p&gt;
+
+&lt;p&gt;関係ないけど、Markdownの改行ってスペース2つでできるんだけど、なぜか間違って&amp;lt;br&amp;gt;タグを書かないとダメって覚えてて、ダメだと思った。あと、普通にjavascriptをそのまま出す（Markdownだから当たり前だけど）ので、心配と言えば心配。&lt;/p&gt;
+
+&lt;p&gt;コードのハイライト。クライアントサイドで行う際は、highlight.jsなどでやってくれ、らしい。&lt;br /&gt;
+&lt;a href=&#34;http://gohugo.io/extras/highlighting/&#34;&gt;Syntax Highlighting&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    var a = &amp;quot;hello hugo&amp;quot;;
+    alert(a);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;他の人のブログ見ると、archivesとかlogsとかにしてて、どうやって作るのかと思っていろいろ調べた結果、content/postの名前を置き換えるとできるっぽいことに気づいたけど、これが正しいのかはわからん。&lt;/p&gt;
+
+&lt;p&gt;Tagsとかは、一応自動生成してくれるっぽい。他のthemeを見ると、taxonomiesをつかって、tags.htmlに誘導してたりするけど、categoryもsectionも、とかじゃなきゃとりあえずlist.htmlでいいでしょ。&lt;/p&gt;
+
+&lt;p&gt;で、いろいろあってwerkerを使ってdeployするところまで来て、やった。（Githubのリポジトリ作り直したらWerckerでエラー出てなくても作り直した方がいいことに気がついた。）Applicationのチェックはデフォルトでいいみたい。repoとrepo public,userにチェックした。&lt;/p&gt;
+
+&lt;p&gt;CNAMEでdeprode.jpをトップにしてるので、サブドメインだと表示がうまくいかない。手作業で、各ページへのリンクを張り直したり、RSSのリンクを作り直したりした。その後、git rebase -i &amp;ndash;rootとか使って、失敗をなかったことにした。&lt;/p&gt;
+
+&lt;p&gt;終わり。&lt;/p&gt;
+
+&lt;p&gt;これらの記事を見て使おうと思った：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://deeeet.com/writing/2014/12/25/hugo/&#34;&gt;OctopressからHugoへ移行した | SOTA&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://t32k.me/mol/log/hugo/&#34;&gt;Jekyllが許されるのは小学生までだよね - MOL&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rakuishi.com/archives/wordpress-to-hugo/&#34;&gt;WordPress から Hugo に乗り換えました - rakuishi.com&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

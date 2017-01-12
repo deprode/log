@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Symfony on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/symfony/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>Failed to start the session because headers have already been sent by &#34;&#34; at line 0</title>
+      <link>http://log.deprode.net/logs/2016-09-02_20-24-04/</link>
+      <pubDate>Fri, 02 Sep 2016 20:24:04 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-09-02_20-24-04/</guid>
+      <description>
+
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
+
+&lt;p&gt;PHP 5.6.22
+Symfony 2.8
+FOSRestBundle 2.0&lt;/p&gt;
+
+&lt;h2 id=&#34;エラー&#34;&gt;エラー&lt;/h2&gt;
+
+&lt;p&gt;クライアント側からPOSTでSymfonyのAPIにデータを送り、その後データを更新して更新したデータをJSONで返すプログラムを作っていたところ、次のようなエラーが出た。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Uncaught PHP Exception RuntimeException: Failed to start the session because headers have already been sent by &amp;quot;&amp;quot; at line 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;しばらくSymfonyのエラーログを見たり、FOSRestBundleのエラーを追っていたが、全く情報がつかめなかった。しばらくして &lt;a href=&#34;https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo&#34;&gt;Advanced REST client&lt;/a&gt; でデータを送ったところ、以下の出力が得られた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
+&amp;lt;b&amp;gt;Deprecated&amp;lt;/b&amp;gt;:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set &#39;always_populate_raw_post_data&#39; to &#39;-1&#39; in php.ini and use the php://input stream instead. in &amp;lt;b&amp;gt;Unknown&amp;lt;/b&amp;gt; on line &amp;lt;b&amp;gt;0&amp;lt;/b&amp;gt;&amp;lt;br /&amp;gt;
+&amp;lt;br /&amp;gt;
+&amp;lt;b&amp;gt;Warning&amp;lt;/b&amp;gt;:  Cannot modify header information - headers already sent in &amp;lt;b&amp;gt;Unknown&amp;lt;/b&amp;gt; on line &amp;lt;b&amp;gt;0&amp;lt;/b&amp;gt;&amp;lt;br /&amp;gt;
+{&amp;quot;code&amp;quot;:500,&amp;quot;message&amp;quot;:&amp;quot;Failed to start the session because headers have already been sent by \&amp;quot;\&amp;quot; at line 0.&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;クライアント側ではこのようなエラーが取得できていた。（フロント側はPromiseを使っていたので&lt;code&gt;response.json()&lt;/code&gt;でパースエラーになってもPHPでエラー出てるから同じでしょ？と思っていたのが間違いだったようだ。）&lt;/p&gt;
+
+&lt;p&gt;エラーの内容は、「&lt;code&gt;always_populate_raw_post_data&lt;/code&gt;は非推奨だから-1にしろ」とそれに付随するものだったようだ。これはPHPのバグらしく、&lt;a href=&#34;https://bugs.php.net/bug.php?id=67991&#34;&gt;PHP :: Doc Bug #67991 :: always_populate_raw_post_data deprecation warning buggy&lt;/a&gt;で報告されている。&lt;/p&gt;
+
+&lt;p&gt;そして、このエラーがSymfonyのheaderが出力される前に出ていたため、Symfony側のエラーで「sessionの開始前にレンダリングするな」となっていたのではないかと思われる。&lt;/p&gt;
+
+&lt;p&gt;このあと、php.iniの&lt;code&gt;always_populate_raw_post_data&lt;/code&gt;に-1を設定したらエラーが解決した。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

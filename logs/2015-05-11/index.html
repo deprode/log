@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 05 11 VPSの移転作業ほぼ終了した - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css" id="webfont">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-05-11/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="title"><a href="http://log.deprode.net/logs/2015-05-11/">2015 05 11</a> - <a href="http://log.deprode.net/">log</a></h1>
+        <p><time datetime="2015-05-11T23:31:57&#43;09:00">2015-05-11</time></p>
+    </header>
+    <section>
+        <ul>
+<li>やっぱりこっちのフォーマットの方が書きやすいな…。テーマがないときはこっちにしようかな。</li>
+<li>家庭の事情がいろいろとあった。</li>
+<li>VPSの移転作業ほぼ終了した。
+
+<ul>
+<li>一番面倒だったのは、昔いろいろやったディレクトリがMac内に散乱してて、それをフォルダにまとめることだった。</li>
+<li>とりあえず、WIP、Bitbucket、Github、Samples、Tutorial、Gomiとあと2つくらいで分類した。</li>
+<li>Ansibleでデプロイするとは何だったのか、と思ったけど、実際FTPでアップロードしてcrontab設定するだけで終わるからなぁ。</li>
+<li>結局、VPSのPHPはSFTPでアップロードしてcrontab設定しただけ。
+
+<ul>
+<li>と思ったけど、Tumblr関連のツールが軒並み古くなってたので修正した。</li>
+<li>主にPEAR関連のツールだったのをComposer使って公式ライブラリで書き直した。（といっても投稿の部分だけなので、それほど手間ではない。）</li>
+</ul></li>
+<li>Hubot-Slackはいろいろあって、アダプタを変更すると諸々影響が出るのでそのうちやることにした。
+
+<ul>
+<li>とりあえずyoでhubotインストールだけした。</li>
+<li>ついでにhubotをnpm installしたり、設定を済ませた。が、通信できてるってログに出てるのに反応しない。原因不明だが、ここまでにして寝る。</li>
+</ul></li>
+</ul></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-05-11T23:31:57&#43;09:00">2015-05-11 23:31:57</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/vps">VPS</a></li>
+            
+                <li class="page_tags"><a href="/tags/ansible">Ansible</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; deprode</p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script>
+  (function(){
+    document.getElementById('webfont').rel = 'stylesheet';
+  })();
+</script>
+</body>
+</html>

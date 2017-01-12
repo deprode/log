@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>PHPをアップデートするだけのplaybookを書いた  - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-04-13_18-14-52/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-04-13_18-14-52/">
+            
+                PHPをアップデートするだけのplaybookを書いた
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-04-13T18:14:52&#43;09:00">2016-04-13</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="phpをアップデートするだけのplaybookを書いた">PHPをアップデートするだけのplaybookを書いた</h2>
+
+<p><a href="https://github.com/deprode/php-update-playbook">deprode/php-update-playbook: PHPをアップデートするAnsible playbook</a></p>
+
+<p>以前にAnsibleを使ってVPSをセットアップするplaybookを書いていたのだが、個別のタスクになっていなかったので、「PHPのアップデートだけやる」というタスクはこなせなかった。そのため、PHPのアップデートが遅れてしまうことがたびたびあった。そのため、@official_phpがアップデート告知をするたびに申し訳ない気持ちになっていた。</p>
+
+<h3 id="使い方">使い方</h3>
+
+<p>前提としてAnsibleが入っており、まずssh_configファイルを編集する必要がある。</p>
+
+<pre><code>Host defaults
+  HostName 127.0.0.1 # 自分のHostNameにする
+  User foobar # ユーザ名を変更
+  Port 22 # ポートの変更
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /Users/foobar/.ssh/id_rsa # SSH鍵の場所を変更
+  IdentitiesOnly yes
+  LogLevel FATAL
+</code></pre>
+
+<p><a href="https://github.com/deprode/php-update-playbook/blob/master/group_vars/repo.yml">group_vars</a>のURLとprefixを適当なものに変更し、コマンドを実行する。</p>
+
+<pre><code>ansible-playbook site.yml
+</code></pre>
+
+<p>これでいつセキュリティフィックスがあっても大丈夫だ。たぶん。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-04-13T18:14:52&#43;09:00">2016-04-13 18:14:52</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/ansible">ansible</a></li>
+            
+                <li class="page_tags"><a href="/tags/php">php</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

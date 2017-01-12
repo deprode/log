@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Hugo on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/hugo/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2016 01 17</title>
+      <link>http://log.deprode.net/logs/2016-01-17/</link>
+      <pubDate>Sun, 17 Jan 2016 17:50:09 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-01-17/</guid>
+      <description>
+
+&lt;h2 id=&#34;hugoのデプロイをwerckerからcircle-ciに変更した&#34;&gt;HugoのデプロイをWerckerからCircle CIに変更した&lt;/h2&gt;
+
+&lt;p&gt;「&lt;a href=&#34;http://hori-ryota.com/blog/create-blog-with-hugo-and-circleci/&#34;&gt;HugoとCircleCIでGitHub PagesにBlogを公開してみた - Hori Blog&lt;/a&gt;」や、「&lt;a href=&#34;http://nobu666.com/2015/12/31/1022.html&#34;&gt;WerckerやめてCircleCIに移行 · Real Beat&lt;/a&gt;」を参考にした。とても助かった。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;上記のサイトと違うのは、git pushの先がgh-pagesになるので、git pushでgh-pagesを指定したのと、gh-pagesにCircle CIからdeployしたときにスキップするようにしたこと。あと、なぜかCNAMEを書き出さなかったので直接ファイルへ書き出したこと。&lt;/p&gt;
+
+&lt;p&gt;作成したcircle.ymlは&lt;a href=&#34;https://github.com/deprode/log/blob/513fc2c29cc9df90efc778f9745786ad821f83dc/circle.yml&#34;&gt;githubにある&lt;/a&gt;。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;もともと、werckerでもほとんど問題がなかったのだが、今回deprode.net/logからlog.deprode.netへドメインを変更した。そして、その頃からpublicフォルダに出力しない問題が出ていた。&lt;/p&gt;
+
+&lt;p&gt;土日を使っていろいろ試したが、結局解決しなかったため、思い切ってCircle CIでdeployすることにしたのだった。少し前にwerckerで問題があったときにも乗り換えようと思ったのだが、そのときは解決策が何時間かして見つかったので思いとどまったのだった。&lt;/p&gt;
+
+&lt;p&gt;今回は解決策が検討つかなかったので、Circle CIに移った。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;余談だが、&lt;a href=&#34;http://deprode.net/&#34;&gt;deprode.net&lt;/a&gt;をVPS上に移した。理由は、github pagesのすべてのURLがdeprode.net以下になるから。logも、deprode.net/logだった。&lt;/p&gt;
+
+&lt;p&gt;deprode.net以下にいろいろ小さいファイルを入れたくても入れられないのがすごい不便だったが、移したのでおととい作ったやつをサブドメインで運用できるようになった。現在稼働中。暇を見てAuthをつけたい。&lt;/p&gt;
+
+&lt;p&gt;あと、deprode.netをVPSに移したので旧URLをリダイレクトする必要があったので、nginxでリダイレクトした。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+    listen       80;
+    server_name  deprode.net;
+
+    location / {
+        root  /var/www/nginx/deprode.net;
+        index  index.html;
+    }
+
+    location /log {
+        rewrite ^/log/(.*)$ http://log.deprode.net/$1? permanent;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;もう少しいろいろ書いてあるけど、rewriteで書き換えてる。returnを使って301リダイレクトした方がいいのだが、Regexを使った処理が書けないっぽいのでrewrite使ってる。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 11 05</title>
+      <link>http://log.deprode.net/logs/2015-11-05/</link>
+      <pubDate>Thu, 05 Nov 2015 11:58:17 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-11-05/</guid>
+      <description>
+
+&lt;h2 id=&#34;hugo-0-14でsummaryが70字で区切られない&#34;&gt;Hugo 0.14でSummaryが70字で区切られない&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://yet.unresolved.xyz/blog/2015/10/09/hugo-support-cjk-language/&#34;&gt;HugoのSummaryが日本語に対応した | Unresolved&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;見た。というわけで、私も&lt;code&gt;config.yaml&lt;/code&gt;に&lt;code&gt;HasCJKLanguage: true&lt;/code&gt;を追記してみたけど、できなかった。ひょっとして&lt;code&gt;isCJKLanguage&lt;/code&gt;なのかとか、小文字なのかとか、Hugoのバージョンが古いんじゃないかとか、いろいろ調べたけどダメだった。&lt;/p&gt;
+
+&lt;p&gt;Hugoのバージョンは実際に古かったので、homebrewでバージョンを0.14にした。だけどやっぱりダメで、Githubのソースコードには書いてあるのに何でだろうと思って寝る前まで粘ったけどダメだった。&lt;/p&gt;
+
+&lt;p&gt;翌日になって、オプションが効かないなら、ローカルのソースコードに書いてないのではという仮説を立てた。その通りだった。releaseされた0.14には&lt;code&gt;HasCJKLanguage&lt;/code&gt;というオプションは書かれていなかった。&lt;/p&gt;
+
+&lt;p&gt;アホ丸出しだし情けないなーと思いながら、じゃあなぜ元のブログは現実に70字で区切られているのかと調べた。推測だが、masterブランチをローカルでビルドして、そのままローカルからデプロイしていたからだろう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/dim0627/dim0627.github.io/tree/master&#34;&gt;ブログのリポジトリ（masterブランチ）&lt;/a&gt;には、publicに書き出した内容をmasterブランチにpushしている。ということは、ローカルでbuildしていることになり、その70字で区切られているローカルのhugoは、spf13/hugoのmasterブランチからビルドしていなければならない。&lt;/p&gt;
+
+&lt;p&gt;なので、自分もそのようにすれば今すぐ70字区切りでできるのだが、面倒なのでやめた。0.15を待つ。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;ちなみに、masterブランチにSummaryとWordCountはUTF-8対応するコミットがマージされている。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/commit/0e1fd78fb22e8a870ff3a922f36a9a4d0475c090&#34;&gt;WordCount Summary support UTF-8 string · spf13/hugo@0e1fd78&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;なので、別に何もしなくても0.15にしたら問題解決するのではないかとみている。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 05 14</title>
+      <link>http://log.deprode.net/logs/2015-05-14/</link>
+      <pubDate>Thu, 14 May 2015 21:04:08 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-14/</guid>
+      <description>
+
+&lt;h3 id=&#34;centos6-5にhugoをインストール&#34;&gt;CentOS6.5にHugoをインストール&lt;/h3&gt;
+
+&lt;p&gt;DigitalOecanのCentOS6.5にHugoをインストールした。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;gitをインストール&lt;/li&gt;
+&lt;li&gt;Goを入れてパスを通す&lt;/li&gt;
+&lt;li&gt;Hugoを入れる&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;まず、Hugoのインストールにgitを入れる。yumだと1.7.xが入るが、1.7.xだとHugoのインストールが失敗する。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/spf13/hugo/issues/297&#34;&gt;Unable to download gopkg.in/yaml.v1 with git 1.7.1 · Issue #297 · spf13/hugo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ソースから2.x（1.9以上）を入れる。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://qiita.com/sirone/items/2e233ab9697a030f1335&#34;&gt;CentOS 6.5, yum でインストールした Git を 1.7.1 から 2.x にバージョンアップする (※Git2.4.0まで対応) - Qiita&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo yum remove git
+sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-ExtUtils-MakeMaker
+wget https://www.kernel.org/pub/software/scm/git/git-2.4.1.tar.gz
+tar -zxf git-2.4.1.tar.gz
+cd git-2.4.1
+sudo make prefix=/usr/local all
+sudo make prefix=/usr/local install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;このあと、パスが通ってないので、パスを通した。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export PATH=$PATH:/usr/local/bin/git
+source ~/.bashrc
+git --version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Goをインストール。
+&lt;a href=&#34;http://golang-jp.org/doc/install&#34;&gt;インストール - The Go Programming Language&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd /usr/local/src
+sudo wget https://storage.googleapis.com/golang/go1.4.2.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.4.2.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Goのインストールテスト。hello.goを作成し、&lt;code&gt;go run hello.go&lt;/code&gt;を実行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// hello.go
+package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+    fmt.Printf(&amp;quot;hello, world\n&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hugoのインストール。今見たらReleaseパッケージがあるので、それを&lt;code&gt;/usr/local/bin&lt;/code&gt;に置けばいいっぽい。
+&lt;a href=&#34;http://gohugo.io/overview/installing/&#34;&gt;Installing Hugo&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget https://github.com/spf13/hugo/releases/download/v0.13/hugo_0.13_linux_amd64.tar.gz
+tar -xzf hugo_0.13_linux_amd64.tar.gz
+sudo mv hugo_0.13_linux_amd64/hugo_0.13_linux_amd64 /usr/local/bin/hugo
+hugo version
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上。このあと、git cloneで&lt;a href=&#34;https://github.com/deprode/log&#34;&gt;日記&lt;/a&gt;を書く環境を整えた。&lt;/p&gt;
+
+&lt;h3 id=&#34;その他&#34;&gt;その他&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GOPATHもexportしないといけない気がした。（~/goに設定したけど、もっと適切なやり方がある気がする。）&lt;/li&gt;
+&lt;li&gt;手順を残しておくだけの日記。&lt;/li&gt;
+&lt;li&gt;Macだとgoインストールしたら&lt;code&gt;brew install hugo&lt;/code&gt;でいけた気がする。&lt;/li&gt;
+&lt;li&gt;以前も（わざと）誰にも参考にならないようにHugoの日記書いたけど、書き直したい。&lt;/li&gt;
+&lt;li&gt;vimってshellから相対パスで起動できないの？&lt;/li&gt;
+&lt;li&gt;以前のjpドメインそのままにしたらページランクひどいことになったので、DigitalOceanでDNS設定してnginxに301リダイレクトする処理書いた。
+
+&lt;ul&gt;
+&lt;li&gt;参考: &lt;a href=&#34;http://nginx.org/en/docs/http/converting_rewrite_rules.html&#34;&gt;Converting rewrite rules&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;日本語で「nginx 301リダイレクト」とかで検索するとだとrewrite使ってるけど、nginxが0.9.1以前でなければreturn使った方がいい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;server {
+    listen       80;
+    server_name  example.org;
+    return       301 http://www.example.org$request_uri;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ゼノブレイドやりたかった。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hugoで試行錯誤する</title>
+      <link>http://log.deprode.net/logs/first/</link>
+      <pubDate>Sat, 28 Feb 2015 18:29:55 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/first/</guid>
+      <description>&lt;p&gt;とりあえず、HugoでPublishできるまで作ってみるかと思っている。
+Tumblr2Hugoとかは自分で作らないとダメだと思うので、あきらめるか気が向いたらあれしよう。&lt;/p&gt;
+
+&lt;p&gt;Hugoでテーマ作ってると、他の人のやつも参考になるんだけど、最初にやるなら公式ドキュメントが役に立つ。よくわからないところはチュートリアルになってるので、見た方がいい。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://gohugo.io/tutorials/automated-deployments/&#34;&gt;Automated deployments with Wercker&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://gohugo.io/tutorials/creating-a-new-theme/&#34;&gt;Creating a New Theme&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&#34;http://gohugo.io/tutorials/github-pages-blog/&#34;&gt;Hosting on GitHub Pages&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ドット.がついてなくて、ないよ！って言われまくったけど最初わからなかった（集中してなかった＆目が悪い）ので、厳しさがある。エラーが出ないのにheader.htmlにあるTitleと.Site.Titleが出力されないというのも、partialのファイル名の他にドットを書く必要があったからだった。&lt;/p&gt;
+
+&lt;p&gt;関係ないけど、Markdownの改行ってスペース2つでできるんだけど、なぜか間違って&amp;lt;br&amp;gt;タグを書かないとダメって覚えてて、ダメだと思った。あと、普通にjavascriptをそのまま出す（Markdownだから当たり前だけど）ので、心配と言えば心配。&lt;/p&gt;
+
+&lt;p&gt;コードのハイライト。クライアントサイドで行う際は、highlight.jsなどでやってくれ、らしい。&lt;br /&gt;
+&lt;a href=&#34;http://gohugo.io/extras/highlighting/&#34;&gt;Syntax Highlighting&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    var a = &amp;quot;hello hugo&amp;quot;;
+    alert(a);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;他の人のブログ見ると、archivesとかlogsとかにしてて、どうやって作るのかと思っていろいろ調べた結果、content/postの名前を置き換えるとできるっぽいことに気づいたけど、これが正しいのかはわからん。&lt;/p&gt;
+
+&lt;p&gt;Tagsとかは、一応自動生成してくれるっぽい。他のthemeを見ると、taxonomiesをつかって、tags.htmlに誘導してたりするけど、categoryもsectionも、とかじゃなきゃとりあえずlist.htmlでいいでしょ。&lt;/p&gt;
+
+&lt;p&gt;で、いろいろあってwerkerを使ってdeployするところまで来て、やった。（Githubのリポジトリ作り直したらWerckerでエラー出てなくても作り直した方がいいことに気がついた。）Applicationのチェックはデフォルトでいいみたい。repoとrepo public,userにチェックした。&lt;/p&gt;
+
+&lt;p&gt;CNAMEでdeprode.jpをトップにしてるので、サブドメインだと表示がうまくいかない。手作業で、各ページへのリンクを張り直したり、RSSのリンクを作り直したりした。その後、git rebase -i &amp;ndash;rootとか使って、失敗をなかったことにした。&lt;/p&gt;
+
+&lt;p&gt;終わり。&lt;/p&gt;
+
+&lt;p&gt;これらの記事を見て使おうと思った：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://deeeet.com/writing/2014/12/25/hugo/&#34;&gt;OctopressからHugoへ移行した | SOTA&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://t32k.me/mol/log/hugo/&#34;&gt;Jekyllが許されるのは小学生までだよね - MOL&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://rakuishi.com/archives/wordpress-to-hugo/&#34;&gt;WordPress から Hugo に乗り換えました - rakuishi.com&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

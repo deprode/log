@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Failed to start the session because headers have already been sent by &#34;&#34; at line 0  - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-09-02_20-24-04/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-09-02_20-24-04/">
+            
+                Failed to start the session because headers have already been sent by &#34;&#34; at line 0
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-09-02T20:24:04&#43;09:00">2016-09-02</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="環境">環境</h2>
+
+<p>PHP 5.6.22
+Symfony 2.8
+FOSRestBundle 2.0</p>
+
+<h2 id="エラー">エラー</h2>
+
+<p>クライアント側からPOSTでSymfonyのAPIにデータを送り、その後データを更新して更新したデータをJSONで返すプログラムを作っていたところ、次のようなエラーが出た。</p>
+
+<pre><code>Uncaught PHP Exception RuntimeException: Failed to start the session because headers have already been sent by &quot;&quot; at line 0
+</code></pre>
+
+<p>しばらくSymfonyのエラーログを見たり、FOSRestBundleのエラーを追っていたが、全く情報がつかめなかった。しばらくして <a href="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo">Advanced REST client</a> でデータを送ったところ、以下の出力が得られた。</p>
+
+<pre><code>&lt;br /&gt;
+&lt;b&gt;Deprecated&lt;/b&gt;:  Automatically populating $HTTP_RAW_POST_DATA is deprecated and will be removed in a future version. To avoid this warning set 'always_populate_raw_post_data' to '-1' in php.ini and use the php://input stream instead. in &lt;b&gt;Unknown&lt;/b&gt; on line &lt;b&gt;0&lt;/b&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;b&gt;Warning&lt;/b&gt;:  Cannot modify header information - headers already sent in &lt;b&gt;Unknown&lt;/b&gt; on line &lt;b&gt;0&lt;/b&gt;&lt;br /&gt;
+{&quot;code&quot;:500,&quot;message&quot;:&quot;Failed to start the session because headers have already been sent by \&quot;\&quot; at line 0.&quot;}
+</code></pre>
+
+<p>クライアント側ではこのようなエラーが取得できていた。（フロント側はPromiseを使っていたので<code>response.json()</code>でパースエラーになってもPHPでエラー出てるから同じでしょ？と思っていたのが間違いだったようだ。）</p>
+
+<p>エラーの内容は、「<code>always_populate_raw_post_data</code>は非推奨だから-1にしろ」とそれに付随するものだったようだ。これはPHPのバグらしく、<a href="https://bugs.php.net/bug.php?id=67991">PHP :: Doc Bug #67991 :: always_populate_raw_post_data deprecation warning buggy</a>で報告されている。</p>
+
+<p>そして、このエラーがSymfonyのheaderが出力される前に出ていたため、Symfony側のエラーで「sessionの開始前にレンダリングするな」となっていたのではないかと思われる。</p>
+
+<p>このあと、php.iniの<code>always_populate_raw_post_data</code>に-1を設定したらエラーが解決した。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-09-02T20:24:04&#43;09:00">2016-09-02 20:24:04</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/symfony">Symfony</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

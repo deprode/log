@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 12 15 Unitテスト書いてる - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-12-15/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-12-15/">
+            
+                Unitテスト書いてる
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-12-15T21:48:29&#43;09:00">2015-12-15</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="unitテスト書いてる">Unitテスト書いてる</h2>
+
+<p>CodeceptionでUnitテストを書いてる。</p>
+
+<ul>
+<li>公式：<a href="http://codeception.com/docs/05-UnitTests">05-UnitTests - Codeception - Documentation</a></li>
+</ul>
+
+<p>最初はBDDスタイルで書こうとspecifyとverifyを入れて、</p>
+
+<pre><code>private $foo;
+//...
+$this-&gt;specify(&quot;hogehoge test&quot;, function () {
+	$this-&gt;foo = 'foo';
+	verify($this-&gt;getFoo())-&gt;equals('foo');
+});
+</code></pre>
+
+<p><a href="https://github.com/deprode/refacted-p-bbs/blob/63dac6f9824c17e180e63b303d74f0aec0504f69/tests/unit/PostTest.php">上記のように書いていた</a>のだが、なぜか今日になってテストがフリーズするようになってしまった。原因がわからないままspecifyとverifyを除いたら通るようになった。エラーログにはメモリ枯渇だと書かれていたのでいろいろ調べたら、どちらかに使われているライブラリがdeepcopy失敗していたようだった。</p>
+
+<p>とにかくBDDスタイルだとテストも通らないし困るので<a href="https://github.com/deprode/refacted-p-bbs/commit/b438cf36dd61d5914f643a3b3bcd355896423c0a#diff-071b0ea2340d6d1ad97359536939385b">TDDスタイルで書き直した</a>。テストも通るようになった。</p>
+
+<p>スタブはCodeceptionのものを使っていて、今のところ問題はない。が、面倒なことをやるようならMockeryとかAspectMockとか使うと思う。</p>
+
+<hr />
+
+<p>それにしても、Unitテストを書いてわかったのは、異常系のこと考えてないことと、Testableなコードになってなかったことだ。少なくとも、staticなメソッドの中でインスタンス生成（というかnew）しちゃだめだと思った。テスト書くときにDIするように変えたけど、まだあちらこちらにある。</p>
+
+<p>引き続きユニットテストを書いていきたい。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-12-15T21:48:29&#43;09:00">2015-12-15 21:48:29</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/codeception">Codeception</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

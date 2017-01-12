@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>メニューを通り過ぎると、上部に固定するメニュー  - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-09-22_17-57-58/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-09-22_17-57-58/">
+            
+                メニューを通り過ぎると、上部に固定するメニュー
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-09-22T17:57:58&#43;09:00">2016-09-22</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<p>参考資料とほとんど同じなので詳細は省く。違う場所は、jQueryを使わずに実装するところ。動作確認はChrome53とFirefox48でしかしてない。スマホは非対応。</p>
+
+<p><p data-height="265" data-theme-id="0" data-slug-hash="gwLoNX" data-default-tab="js,result" data-user="deprode" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/deprode/pen/gwLoNX/">gwLoNX</a> by deprode (<a href="http://codepen.io/deprode">@deprode</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script></p>
+
+<h2 id="scrolltop-scrollleft">scrollTop、scrollLeft</h2>
+
+<p>scrollTopとscrollLeftはスクロール量を取得するプロパティ。このコードではそれぞれ</p>
+
+<pre><code class="language-JavaScript">document.documentElement.scrollTop || document.body.scrollTop
+document.documentElement.scrollLeft || document.body.scrollLeft
+</code></pre>
+
+<p>で取得してる。</p>
+
+<p>もうちょい厳密にやる場合は、<a href="http://stackoverflow.com/a/20478983"><code>window.pageYOffset || documentElement.scrollTop || body.scrollTop || 0;</code></a>でいいし、jQueryと同じにしたい場合は<a href="https://github.com/jquery/jquery/blob/305f193aa57014dc7d8fa0739a3fefd47166cd44/src/offset.js#L185-L208">このように実装すればいい。</a></p>
+
+<h2 id="offset">offset</h2>
+
+<p><code>Element.getBoundingClientRect</code>は左上を0,0とした表示領域の座標が取得できるメソッドで、左上からの座標とスクロール量を合わせた値がoffsetになる。つまり、getBoundingClientRectとscrollTop(scrollLeft)を合わせた値がoffset。</p>
+
+<p>getBoundingClientRectをサポートしてないブラウザはほぼ現存していないので、その辺のコードを省いた。（元のコードはgetBoundingClientRectが存在しないとjQueryでoffsetを取得しているが、jQueryを使わないコードだとoffsetを取得するためにoffsetを取得することになるので無理だし、最新のjQueryでは<a href="https://github.com/jquery/jquery/blob/305f193aa57014dc7d8fa0739a3fefd47166cd44/src/offset.js#L77-L119">getBoundingClientRectでoffsetを取得してる</a>から、getBoundingClientRectが取得できないという想定が非標準的っぽい。）</p>
+
+<h2 id="addclass-removeclass">addClass、removeClass</h2>
+
+<p>Element.classListを使用しているが、IE10以上でサポートしている。なので、IE9はサポートしてない。IE9をサポートする場合は、素直にjQueryを使ったり、<a href="https://github.com/eligrey/classList.js/">eligrey/classList.js</a>のようなpolyfillを使った方がいい。</p>
+
+<h2 id="その他">その他</h2>
+
+<p><code>&lt;header&gt;</code>が高さ固定でメニューを内包しているので問題になってないが、そうでない場合はスクロールするとメニューを<code>position: fixed</code>にするとずれる。そのため、同じメニューを置いてfixedと切り替えて表示するなどが必要だった。</p>
+
+<h2 id="参考資料">参考資料</h2>
+
+<ul>
+<li><a href="http://qiita.com/zaru/items/82d61ac90394885fb486">CSSとJSで、スクロールして一定の場所を過ぎると、上部固定するメニューを作る - Qiita</a></li>
+<li><a href="http://qiita.com/ANTON072/items/ea5b95ae5b7f0f6186f7">jQueryより速いoffset値の取得方法 - Qiita</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect">Element.getBoundingClientRect() - Web APIs | MDN</a></li>
+<li><a href="http://caniuse.com/#feat=classlist">Can I use&hellip; Support tables for HTML5, CSS3, etc（classlistのサポート）</a></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-09-22T17:57:58&#43;09:00">2016-09-22 17:57:58</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/css">CSS</a></li>
+            
+                <li class="page_tags"><a href="/tags/javascript">JavaScript</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Circle Ci on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/circle-ci/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 10 29</title>
+      <link>http://log.deprode.net/logs/2015-10-29/</link>
+      <pubDate>Thu, 29 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-29/</guid>
+      <description>
+
+&lt;h2 id=&#34;codeceptionでcircle-ciを試している&#34;&gt;CodeceptionでCircle CIを試している&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://codeception.com/&#34;&gt;Codeception - BDD-style PHP testing.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Codeceptionでテストを書いてみた。けど、Circle CIで連携する方法がよくわからなかったので&lt;a href=&#34;https://github.com/deprode/sandbox&#34;&gt;sandbox&lt;/a&gt;（Githubの練習用リポジトリ）で試していた。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;codeceptionの起動には、codecept.pharが必要になる。このファイルは、&lt;code&gt;wget http://codeception.com/codecept.phar&lt;/code&gt;で取得するか、composerでcodeceptionをインストールする方法で得られる。（後者はvendor/bin/codeceptに保存される。）&lt;/p&gt;
+
+&lt;p&gt;Circle CIでは、特に何もしなくても&lt;code&gt;composer install&lt;/code&gt;が実行されるので、Composerを使ったやり方でよいと思う。&lt;/p&gt;
+
+&lt;p&gt;Circle CIでは、phpunit.xmlを見てテストするのだが、codeceptionを使った場合はtestコマンドをcodeception用に書き換える必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// circle.ymlの下段
+test:
+  override:
+    - ./vendor/bin/codecept run
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Circle CIはコンテナに&lt;a href=&#34;https://circleci.com/docs/ssh-build&#34;&gt;SSHでログインできる&lt;/a&gt;。30分たつとシャットダウンされる。もし、ビルドのエラーメッセージではなく、tests/_outputフォルダに何らかの手がかりがあるようなら、そこを探すと解決することがある。&lt;/p&gt;
+
+&lt;p&gt;Acception Testだと、落ちたときに自動的にHTMLが書き出されるので便利。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;あまり関係ないが、Circle CIはubuntuで動いているので、ファイルの大文字小文字を区別する。もし、Win/Macで動作確認しているなら、ファイル名を自動で判別している箇所の修正が必要になる。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 06</title>
+      <link>http://log.deprode.net/logs/2015-10-06/</link>
+      <pubDate>Tue, 06 Oct 2015 17:58:35 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-06/</guid>
+      <description>
+
+&lt;h2 id=&#34;circle-ciを使う&#34;&gt;Circle CIを使う&lt;/h2&gt;
+
+&lt;p&gt;画像付きで何か書こうとしたけど、英語が読めなくても感覚的にわかると思うので、画像は添付しない。&lt;/p&gt;
+
+&lt;h3 id=&#34;はじめかた&#34;&gt;はじめかた&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://circleci.com/&#34;&gt;Circle CIのトップページ&lt;/a&gt;に行きます。&lt;/li&gt;
+&lt;li&gt;Sign Upを押します&lt;/li&gt;
+&lt;li&gt;Github連携を許可します&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;あとは、ユーザ選択してプロジェクト選べば自動でビルドが実行されます。2回目以降はGithubにpushされたのを検知して、実行されます。&lt;/p&gt;
+
+&lt;h3 id=&#34;phpunitを実行する&#34;&gt;PHPUnitを実行する&lt;/h3&gt;
+
+&lt;p&gt;公式サイトを参考に書いていきます。&lt;/p&gt;
+
+&lt;p&gt;設定ファイルである&lt;code&gt;circle.yml&lt;/code&gt;に、タイムゾーン、使用するバージョン、あとテストコマンドを書けばいいみたい。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://circleci.com/docs/configuration&#34;&gt;Configuring CircleCI - CircleCI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://qiita.com/mzp/items/bba3f378e555e1ed586d&#34;&gt;CircleCIの便利な機能 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# circle.yml
+machine:
+  timezone:
+    Asia/Tokyo
+  php:
+    version:
+      5.6.5
+
+test:
+  override:
+    - ./vendor/phpunit/phpunit/phpunit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;seleniumを実行する&#34;&gt;Seleniumを実行する&lt;/h3&gt;
+
+&lt;p&gt;PHPのビルトインサーバを使う前提のcircle.ymlです。ビルトインサーバとselenium-serverを使うときはbackgroundオプションを有効にしないとCIが止まります。&lt;/p&gt;
+
+&lt;p&gt;任意のコマンドはpreやpostに書けばいいので、ダウンロードや起動はそこに書いてます。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# circle.yml
+machine:
+  timezone:
+    Asia/Tokyo
+  php:
+    version:
+      5.6.5
+
+dependencies:
+  post:
+    - php -S localhost:8000:
+          background: true
+    - wget http://selenium-release.storage.googleapis.com/2.47/selenium-server-standalone-2.47.1.jar
+    - java -jar selenium-server-standalone-2.47.1.jar:
+          background: true
+    - sleep 10
+
+test:
+  override:
+    - ./vendor/phpunit/phpunit/phpunit
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;実行結果&#34;&gt;実行結果&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://circleci.com/gh/deprode/sandbox/11&#34;&gt;deprode/sandbox #11 - CircleCI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;今日の失敗&#34;&gt;今日の失敗&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;circle.ymlを何度も編集して、amendでコミットした後push -fする&lt;/li&gt;
+&lt;li&gt;オンライン上でREADME編集する&lt;/li&gt;
+&lt;li&gt;circle.ymlを編集して、amendでコミットした後push -fする&lt;/li&gt;
+&lt;li&gt;READMEの中身が消失する&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

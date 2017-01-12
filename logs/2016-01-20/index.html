@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2016 01 20 Webサイト作るときに最初に使うやつ作ってた - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-01-20/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-01-20/">
+            
+                Webサイト作るときに最初に使うやつ作ってた
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-01-20T23:21:28&#43;09:00">2016-01-20</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="webサイト作るときに最初に使うやつ作ってた">Webサイト作るときに最初に使うやつ作ってた</h2>
+
+<p>近々、Webサイトを作る予定なのだが、gulp含めいろいろな使い方をすっかり忘れているので、試しにWebサイトを作る前にスターターキットというか、ボイラープレートを準備することになった。</p>
+
+<p>とりあえず、(Node.js+npm)+gulp+EJS+Stylus+Browserify+browser-syncにした。</p>
+
+<h3 id="jade-vs-ejs">Jade vs EJS</h3>
+
+<p>emmetがいつまでたってもアップデートでJadeに展開しないのと、Jadeの文法がミニマルすぎて覚えづらいので、HTMLを書けるEJSにしました。ECTはgulpfile書いてから気づいた。</p>
+
+<h3 id="stylus-vs-sass-scss">Stylus vs Sass(SCSS)</h3>
+
+<p>npmだけで完結したい。というか、ruby+Sassが入ってなくてもいいので、Stylusにした。今からならPostCSSを選んでもいいと思った。だけど、StylusからPostCSSへの変換も当然のように出る気がしたので、焦って手を出さなくてもいいと思い、Stylusにした。</p>
+
+<h3 id="jquery-vs-other">jQuery vs other</h3>
+
+<p>jQueryにある諸々の機能を全部備えたライブラリが、Zepto.jsくらいしかないので、jQueryの替わりはない。その替わり、必要な機能だけほかから使うことはできる。……のだが、fetchやPromise、document.querySelector、Velocity.js、とかで足りるとしても、ホームページ作るのに使って保守する人が使えるのか考えるとjQueryでとりあえず作る。どうしてもDOMをいじるならVueやmithril、Reactなど使えばいい。</p>
+
+<p>とかいろいろ悩んだ結果、jQueryのCDNへindex.ejsからリンクした。</p>
+
+<h3 id="jqueryをbrowserify-licensify-uglifyするとsizzleのライセンスが消える">jQueryをbrowserify+licensify+uglifyするとsizzleのライセンスが消える</h3>
+
+<p>上記のようなことがあったので<a href="http://jquery.com/download/">Download jQuery | jQuery</a>からcompressedを見たところ、ライセンス消えてるので問題ないと思う。</p>
+
+<h3 id="画像圧縮">画像圧縮</h3>
+
+<p>gulp-imageminを使った。前にimageminを使ったときに謎のバグで画像を出力できなかったのだが、問題なく使えた。</p>
+
+<h3 id="size">size</h3>
+
+<p>という感じで、やっていった結果、node_modules以下が90MBになった。</p>
+
+<pre><code>$ du -k -s node_modules
+89976	node_modules
+</code></pre>
+
+<p>そして、ES2015対応やったら100M超えるのでは、と思って今やったら超えた。(browserifyを使わないverも記述してあるため、babelifyだけではだめ。)</p>
+
+<h3 id="参考用リンク">参考用リンク</h3>
+
+<ul>
+<li><a href="http://gulpjs.com/">gulp.js - the streaming build system</a></li>
+<li><a href="https://app.codegrid.net/entry/gulp-1">gulpとは何か | CodeGrid</a></li>
+<li><a href="http://qiita.com/joe-re/items/e04010ed03826fb94a16">gulp4.0 migration guide - Qiita</a></li>
+<li><a href="http://jade-lang.com/">Jade - Template Engine</a></li>
+<li><a href="http://ejs.co/">EJS &ndash; Embedded JavaScript templates</a></li>
+<li><a href="http://stylus-lang.com/">Expressive, dynamic, robust CSS — expressive, robust, feature-rich CSS preprocessor</a></li>
+<li><a href="http://parashuto.com/rriver/tools/what-is-postcss-summary-in-bullet-list">PostCSSってなに？導入前に知っておきたいことを箇条書きでまとめてみた – Rriver</a></li>
+<li><a href="http://umi-uyura.hatenablog.com/entry/2015/07/29/193409">React + BrowserifyプロジェクトでJS/CSS/HTMLを圧縮(Minify)する - Umi Uyuraのブログ</a></li>
+<li><a href="https://www.npmjs.com/package/gulp-imagemin">gulp-imagemin</a></li>
+</ul>
+
+<h4 id="参考にしたgulpfile">参考にしたgulpfile</h4>
+
+<ul>
+<li><a href="https://github.com/sanographix/rin">sanographix/rin: A Lean HTML &amp; SASS Boilerplate</a></li>
+<li><a href="https://github.com/h5bp/html5-boilerplate">h5bp/html5-boilerplate: A professional front-end template for building fast, robust, and adaptable web apps or sites.</a></li>
+<li><a href="https://github.com/google/web-starter-kit">google/web-starter-kit: Web Starter Kit - a workflow for multi-device websites</a></li>
+<li><a href="http://qiita.com/kouh/items/823737d48faefd9fe3a0">JavaScript - gulp.jsでWeb開発環境をつくる - Qiita</a></li>
+<li><a href="http://qiita.com/tokimari/items/8cb648e06c4db072e7aa">vendor prefix, minify, 開発/本番用ビルドの切り替え&hellip; CSSのあれこれをGulpにさせてみた - Qiita</a></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-01-20T23:21:28&#43;09:00">2016-01-20 23:21:28</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

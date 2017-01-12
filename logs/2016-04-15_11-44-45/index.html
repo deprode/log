@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>Noto sansをやめ、通常のフォント指定に変更した  - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-04-15_11-44-45/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-04-15_11-44-45/">
+            
+                Noto sansをやめ、通常のフォント指定に変更した
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-04-15T11:44:45&#43;09:00">2016-04-15</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="noto-sansをやめ-通常のフォント指定に変更した">Noto sansをやめ、通常のフォント指定に変更した</h2>
+
+<p>このlogに指定してあるフォントを変更した。<a href="https://www.google.com/get/noto/#sans-lgc">Google Noto Fonts</a>のNoto sansを使っていたのだが、Webフォントをやめ、以下のものに変更した。</p>
+
+<pre><code>font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, sans-serif;
+</code></pre>
+
+<p>スマートフォンでは読み込みが遅くなるためすでにWebフォントをやめていたのだが、sans-serifのみの指定だった。こちらも同様のフォント指定にした。</p>
+
+<p>変更した理由は、見づらいから。FOUT<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>が発生するためFOUT対策としてフォントのローディング完了まで文字を非表示にしているのだが、ユーザはフォントの読み込み完了まで何も表示されていないWebサイトを見ることになる。その時間が最近長く感じたのでやめた。また、ほぼテキストだけのサイトなので、わざわざ重いWebフォントを使うメリットは薄い。</p>
+
+<p>sans-serifだけでもいいと思ったのだが、Win7のIE11でMSPゴシックが表示されるらしいのでメイリオを指定している。しかしそうなると、Macでもメイリオが表示される人もいると思い、ヒラギノを指定した。</p>
+
+<p>印象がすっきりしたので、私の心もすっきりした。</p>
+
+<hr />
+
+<p>全然関係ないが、CSS（normalize.css, skeleton.css）をcdnjsを使ったものに統一した。トップページとそれ以外で違う指定がしてあり、つまりその、バグだったので修正した。おそらく1年近く放置してあったので、恥ずかしく思う。</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">Flash of Unstyled Textの略で、フォントの読み込み完了まで別のフォントが使われる現象。
+ <a class="footnote-return" href="#fnref:1">↩</a></li>
+</ol>
+</div>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-04-15T11:44:45&#43;09:00">2016-04-15 11:44:45</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/css">css</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

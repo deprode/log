@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Dotinstall on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/dotinstall/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 04 08</title>
+      <link>http://log.deprode.net/logs/2015-04-08/</link>
+      <pubDate>Wed, 08 Apr 2015 22:05:50 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-08/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;ドットインストールのAnsibleやった 参考:&lt;a href=&#34;http://dotinstall.com/lessons/basic_ansible/&#34;&gt;ドットインストール&lt;/a&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Vagrant 立ち上げ
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://vagrantcloud.com/&#34;&gt;VagrantCloud&lt;/a&gt;を使う&lt;/li&gt;
+&lt;li&gt;vagrant initでVagrantFile作る&lt;/li&gt;
+&lt;li&gt;VagrantFileを編集（box,hostname,networkを設定）&lt;/li&gt;
+&lt;li&gt;vagrant up&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;hostを設定
+
+&lt;ol&gt;
+&lt;li&gt;vagrant ssh host&lt;/li&gt;
+&lt;li&gt;epelをインストール（epel-release-6-8.noarch.rpm）&lt;/li&gt;
+&lt;li&gt;ansibleをyumでインストール&lt;/li&gt;
+&lt;li&gt;.ssh/configを設定しPermissionを600にする（webとdbに使う）&lt;/li&gt;
+&lt;li&gt;ssh-keygenで公開鍵を作成&lt;/li&gt;
+&lt;li&gt;ssh-copy-idでwebとdbにidをコピー
+
+&lt;ol&gt;
+&lt;li&gt;参考:&lt;a href=&#34;http://www.unixuser.org/~euske/doc/openssh/jman/&#34;&gt;OpenSSH 日本語マニュアルページ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;参考:&lt;a href=&#34;http://qiita.com/tag1216/items/5d06bad7468f731f590e&#34;&gt;インフラエンジニアじゃなくても押さえておきたいSSHの基礎知識 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Ansibleの設定
+
+&lt;ol&gt;
+&lt;li&gt;Inventory ファイル（hosts）を作成
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.ansible.com/intro_inventory.html&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;Inventoryが正しいか、pingを打って確認&lt;/li&gt;
+&lt;li&gt;デフォルトのInventoryファイルを設定
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.ansible.com/intro_configuration.html#inventory&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;playbookの作成
+
+&lt;ol&gt;
+&lt;li&gt;書き上げる
+
+&lt;ol&gt;
+&lt;li&gt;hosts,sudo,tasksなど、&lt;a href=&#34;http://docs.ansible.com/playbooks_intro.html#basics&#34;&gt;公式ドキュメント&lt;/a&gt;見ながら&lt;/li&gt;
+&lt;li&gt;変数を使う&lt;a href=&#34;http://docs.ansible.com/playbooks_variables.html&#34;&gt;var&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ユーザ入力を変数にする&lt;a href=&#34;https://docs.ansible.com/playbooks_prompts.html&#34;&gt;vars_prompt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.ansible.com/yum_module.html&#34;&gt;yum Module&lt;/a&gt;とかaptでインストール&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.ansible.com/service_module.html&#34;&gt;service Module&lt;/a&gt;で状態を設定&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.ansible.com/file_module.html&#34;&gt;file Module&lt;/a&gt;でファイルownerやmodeを変更(chmodやchown,touchなど)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.ansible.com/copy_module.html&#34;&gt;copy Module&lt;/a&gt;でファイルをコピーする()&lt;/li&gt;
+&lt;li&gt;with_itemsで複数のitemを指定する（その他のLoop処理: &lt;a href=&#34;http://docs.ansible.com/playbooks_loops.html&#34;&gt;Loops&lt;/a&gt;）
+
+&lt;ul&gt;
+&lt;li&gt;with_random_choiceってどんな需要があって作られたんだろ……&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;notifyとhandlerで、changedの時だけ最後に実行する　&lt;a href=&#34;http://docs.ansible.com/playbooks_intro.html#handlers-running-operations-on-change&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Database関連は専用のModuleがあるので、そちらを使う。&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--syntax-check&lt;/code&gt;オプションで文法チェック&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--check&lt;/code&gt;で実行した場合のテスト
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://docs.ansible.com/playbooks_checkmode.html&#34;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ansible-playbook playbook.yml&lt;/code&gt;とかで実行&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;li&gt;感想
+
+&lt;ul&gt;
+&lt;li&gt;あとは、whenとか、エラーハンドリングとか、Roleで切り分けるのとか、ファイルからvarsをincludeとか、実際に使ったときのはまりポイントとかがわからん。
+
+&lt;ul&gt;
+&lt;li&gt;ググったら出てきそうだし、前半はマニュアルにも書いてあるからそれで。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;WindowsでAnsibleサポートしてないからhost用にcentosのvm作ってそこから操作してたのか。納得した。
+
+&lt;ul&gt;
+&lt;li&gt;Windowsをサポートって、Windowsサーバをセットアップできるよってことか。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

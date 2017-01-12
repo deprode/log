@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Codeception on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/codeception/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 12 15</title>
+      <link>http://log.deprode.net/logs/2015-12-15/</link>
+      <pubDate>Tue, 15 Dec 2015 21:48:29 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-12-15/</guid>
+      <description>
+
+&lt;h2 id=&#34;unitテスト書いてる&#34;&gt;Unitテスト書いてる&lt;/h2&gt;
+
+&lt;p&gt;CodeceptionでUnitテストを書いてる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;公式：&lt;a href=&#34;http://codeception.com/docs/05-UnitTests&#34;&gt;05-UnitTests - Codeception - Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最初はBDDスタイルで書こうとspecifyとverifyを入れて、&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private $foo;
+//...
+$this-&amp;gt;specify(&amp;quot;hogehoge test&amp;quot;, function () {
+	$this-&amp;gt;foo = &#39;foo&#39;;
+	verify($this-&amp;gt;getFoo())-&amp;gt;equals(&#39;foo&#39;);
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/deprode/refacted-p-bbs/blob/63dac6f9824c17e180e63b303d74f0aec0504f69/tests/unit/PostTest.php&#34;&gt;上記のように書いていた&lt;/a&gt;のだが、なぜか今日になってテストがフリーズするようになってしまった。原因がわからないままspecifyとverifyを除いたら通るようになった。エラーログにはメモリ枯渇だと書かれていたのでいろいろ調べたら、どちらかに使われているライブラリがdeepcopy失敗していたようだった。&lt;/p&gt;
+
+&lt;p&gt;とにかくBDDスタイルだとテストも通らないし困るので&lt;a href=&#34;https://github.com/deprode/refacted-p-bbs/commit/b438cf36dd61d5914f643a3b3bcd355896423c0a#diff-071b0ea2340d6d1ad97359536939385b&#34;&gt;TDDスタイルで書き直した&lt;/a&gt;。テストも通るようになった。&lt;/p&gt;
+
+&lt;p&gt;スタブはCodeceptionのものを使っていて、今のところ問題はない。が、面倒なことをやるようならMockeryとかAspectMockとか使うと思う。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;それにしても、Unitテストを書いてわかったのは、異常系のこと考えてないことと、Testableなコードになってなかったことだ。少なくとも、staticなメソッドの中でインスタンス生成（というかnew）しちゃだめだと思った。テスト書くときにDIするように変えたけど、まだあちらこちらにある。&lt;/p&gt;
+
+&lt;p&gt;引き続きユニットテストを書いていきたい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 11 04</title>
+      <link>http://log.deprode.net/logs/2015-11-04/</link>
+      <pubDate>Wed, 04 Nov 2015 23:58:58 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-11-04/</guid>
+      <description>
+
+&lt;h2 id=&#34;refacted-p-bbsのテストをcodeceptionで書き進めた&#34;&gt;refacted-p-bbsのテストをCodeceptionで書き進めた&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/deprode/refacted-p-bbs&#34;&gt;deprode/refacted-p-bbs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Codeceptionを覚えたが受け入れテストを（ほぼ）書かないままだった。とりあえず気づいているところだけでも書き進めようと思い、書いていた。&lt;/p&gt;
+
+&lt;p&gt;以下を参考にして書いた。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://codeception.com/docs/07-AdvancedUsage&#34;&gt;07-AdvancedUsage - Codeception - Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;今回は、tests/acceptance/_bootstrap.phpにクラスを読み込む処理を書き、管理者削除やユーザ削除などのテストを追加した。setUp/tearDownに相当する_before, _afterメソッドがCestクラスにある。これは便利なのだが、テストごとに必ず実行されてしまうので困ることもある。&lt;/p&gt;
+
+&lt;p&gt;そういうときは、「Before/After Annotations」を使う。（上記リンク中段に書いてある。）protectedメソッドを追加した後、コメントで@before/@afterを指定すればテストごとに実行するメソッドを指定できる。これが結構便利だった。&lt;/p&gt;
+
+&lt;p&gt;たとえば、「管理者権限で書き込みを削除する」というテストを実行するには、「すでに書き込みがある」「ログインしている」という状況が必要になる。これだけなら、_befor, _afterを使えばいい。しかし、後々「書き込みがない状況で書き込もうとする」という場合は書き込む部分を_beforeに書けない。そういうときに、個別に状況を設定できるAnnotationsが役に立つ。&lt;/p&gt;
+
+&lt;p&gt;なお、Codeceptionだけじゃなくて、&lt;a href=&#34;https://phpunit.de/manual/current/ja/appendixes.annotations.html&#34;&gt;PHPUnitにもアノテーションはある&lt;/a&gt;。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;あと、bbs.logにテストデータが書かれていたので修正して空ファイルにした。その後、&lt;code&gt;git update-index --assume-unchanged bbs.log&lt;/code&gt;で変更があっても関知しないように設定した。前に設定した気がしてたけど、気のせいだったようだ。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 29</title>
+      <link>http://log.deprode.net/logs/2015-10-29/</link>
+      <pubDate>Thu, 29 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-29/</guid>
+      <description>
+
+&lt;h2 id=&#34;codeceptionでcircle-ciを試している&#34;&gt;CodeceptionでCircle CIを試している&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://codeception.com/&#34;&gt;Codeception - BDD-style PHP testing.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Codeceptionでテストを書いてみた。けど、Circle CIで連携する方法がよくわからなかったので&lt;a href=&#34;https://github.com/deprode/sandbox&#34;&gt;sandbox&lt;/a&gt;（Githubの練習用リポジトリ）で試していた。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;codeceptionの起動には、codecept.pharが必要になる。このファイルは、&lt;code&gt;wget http://codeception.com/codecept.phar&lt;/code&gt;で取得するか、composerでcodeceptionをインストールする方法で得られる。（後者はvendor/bin/codeceptに保存される。）&lt;/p&gt;
+
+&lt;p&gt;Circle CIでは、特に何もしなくても&lt;code&gt;composer install&lt;/code&gt;が実行されるので、Composerを使ったやり方でよいと思う。&lt;/p&gt;
+
+&lt;p&gt;Circle CIでは、phpunit.xmlを見てテストするのだが、codeceptionを使った場合はtestコマンドをcodeception用に書き換える必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// circle.ymlの下段
+test:
+  override:
+    - ./vendor/bin/codecept run
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Circle CIはコンテナに&lt;a href=&#34;https://circleci.com/docs/ssh-build&#34;&gt;SSHでログインできる&lt;/a&gt;。30分たつとシャットダウンされる。もし、ビルドのエラーメッセージではなく、tests/_outputフォルダに何らかの手がかりがあるようなら、そこを探すと解決することがある。&lt;/p&gt;
+
+&lt;p&gt;Acception Testだと、落ちたときに自動的にHTMLが書き出されるので便利。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;あまり関係ないが、Circle CIはubuntuで動いているので、ファイルの大文字小文字を区別する。もし、Win/Macで動作確認しているなら、ファイル名を自動で判別している箇所の修正が必要になる。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 28</title>
+      <link>http://log.deprode.net/logs/2015-10-28/</link>
+      <pubDate>Wed, 28 Oct 2015 23:52:15 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-28/</guid>
+      <description>
+
+&lt;h2 id=&#34;いろいろ学習している&#34;&gt;いろいろ学習している&lt;/h2&gt;
+
+&lt;h3 id=&#34;codeception&#34;&gt;Codeception&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://codeception.com/&#34;&gt;Codeception&lt;/a&gt;はPHPのテストフレームワーク。&lt;a href=&#34;https://phpunit.de/&#34;&gt;PHPUnit&lt;/a&gt;はユニットテストを行うためのテストフレームワークだが、Codeceptionはユニットテスト、機能テスト、受け入れテストを行える総合テストフレームワーク。&lt;/p&gt;
+
+&lt;p&gt;ユニットテストは実行にPHPUnitを使用しているため、PHPUnitのテストをCodeceptionのテストに作り替えることが容易にできる。また、受け入れテストはPHPBrowserを使っているが、設定を変更すればSeleniumを使うこともできる。&lt;/p&gt;
+
+&lt;p&gt;testフォルダ以下の構成がかなり複雑になるのが難点だが、テストコードを書きやすくするためなので仕方ない。&lt;/p&gt;
+
+&lt;h3 id=&#34;mithril-js&#34;&gt;Mithril.js&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://lhorie.github.io/mithril/&#34;&gt;Mithril&lt;/a&gt;はJavaScriptのフレームワーク。小さく、速く、無駄がないのが特徴。公開APIが16個しかないため、覚えやすく思い出しやすい。&lt;/p&gt;
+
+&lt;p&gt;とりあえず、&lt;a href=&#34;http://www.oreilly.co.jp/books/9784873117447/&#34;&gt;O&amp;rsquo;Reilly Japan - Mithril&lt;/a&gt;を購入して、第二章までやった。&lt;/p&gt;
+
+&lt;p&gt;かつてJavaScriptのフレームワークに手を出して、数ヶ月の後にコードが読めなくなっていたことを思い出すと、チュートリアルのコードの単純さがありがたいし、Mithrilのコードが思い出せなくても見ればわかるので楽だ。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

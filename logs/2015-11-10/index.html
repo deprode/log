@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 11 10 今日の失敗ログ（node &amp; npm） - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-11-10/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-11-10/">
+            
+                今日の失敗ログ（node &amp; npm）
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-11-10T18:38:23&#43;09:00">2015-11-10</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="今日の失敗ログ-node-npm">今日の失敗ログ（node &amp; npm）</h2>
+
+<p>Nodeをv4.4.2にしようと思った。</p>
+
+<ul>
+<li><code>brew info node</code>で確認すると5.0.0が入る。</li>
+<li><code>brew versions node</code>で調べるがversionsコマンド削除されてたので<code>brew tap homebrew/versions</code>で入れる</li>
+<li><code>brew search node</code>で調べて、<code>brew install node4-lts</code>で入れる</li>
+<li>競合してるっぽくて入らないので<code>brew unlink node</code>で外す</li>
+<li>再度、<code>brew install node4-lts</code>を行い、無事にNode.jsがv4.4.2になる。</li>
+<li>npmのpathがNode4内部（<code>/usr/local/Cellar/node4-lts/4.2.2/lib/node_modules</code>）に切り替わったのでグローバルインストールしたモジュールが使用不可になる。</li>
+<li><code>curl https://www.npmjs.com/install.sh | sh</code>で再度入れ直すも、versionはv2.1.9のまま。</li>
+</ul>
+
+<p><code>npm --version</code>を実行すると<code>2.1.9</code>が返ってくるが、Node v4.2.2の内部にはnpm@3.3.12が入っている。そして、<code>npm ls -g</code>だとNode v4内部の情報が表示されるし、<code>npm install -g yo</code>すると4.2.2に入る。</p>
+
+<p>わけがわからなくなったので再インストールしようとアンインストールを試みた。homebrewはやめて、nodebrewで入れることにした。</p>
+
+<ul>
+<li><code>sudo npm uninstall -g npm</code>でも、なぜか2系が残るので、<code>rm -rf /usr/local/bin/npm</code>を実行。</li>
+<li><code>brew uninstall node</code>で<code>node 0.10.26</code>がuninstallされ、<code>node -v</code>で4.2.2が表示されたので、<code>brew uninstall node4-lts</code>。</li>
+</ul>
+
+<p>その後は、<a href="https://github.com/hokaccha/nodebrew">hokaccha/nodebrew</a>のREADMEに従ってnodebrewを入れてパスを通し、<code>nodebrew install v4.2.2</code>→<code>nodebrew use v4.2.2</code>でnodeを使えるようにした。</p>
+
+<p>また、npmはnodeについてきたので、<code>sudo npm install -g npm</code>でnpmをv3にアップデートできた。よかった。nodebrewすごい便利。</p>
+
+<p>ただ、前にnpmでグローバルインストールしたライブラリは、再インストールし直しっぽい。（ログはあるし、あまり使ってなかったのがほとんどなので別に困ってない。）使ってないものを整理する機会だと思って、次に使うことになったらインストールしよう。</p>
+
+<hr />
+
+<p>npmがnodebrewの管理するNode.js内部にインストールされてるっぽいけど、nodeのバージョン切り替えるとどうなるんだろう。予想は切り替えでnode_modules再インストールし直しだけど。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-11-10T18:38:23&#43;09:00">2015-11-10 18:38:23</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/nodebrew">nodebrew</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

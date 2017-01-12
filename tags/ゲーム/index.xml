@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>ゲーム on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/%E3%82%B2%E3%83%BC%E3%83%A0/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2016 02 27</title>
+      <link>http://log.deprode.net/logs/2016-02-27/</link>
+      <pubDate>Sat, 27 Feb 2016 23:02:10 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-02-27/</guid>
+      <description>
+
+&lt;h2 id=&#34;最近の進捗&#34;&gt;最近の進捗&lt;/h2&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Splatoon&lt;/li&gt;
+&lt;li&gt;FE if&lt;/li&gt;
+&lt;li&gt;学習&lt;/li&gt;
+&lt;li&gt;ネット&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;splatoon&#34;&gt;Splatoon&lt;/h3&gt;
+
+&lt;p&gt;飽きてきた。飽きてきたのだが、ブキを変えることでだらだらやれている。後述するFE ifに時間を割いているために、1日1時間程度のプレイになっている。&lt;/p&gt;
+
+&lt;p&gt;今やっているブキは、「14式竹筒銃・乙」と「ボールドマーカー・ネオ」と今まで使っていたブキからランダム。竹乙はメインを強化するサブスペシャルのせいで、メインが使えるほど強くなる。あと、ポイズンボールがあるおかげで、雷神ステップ完封できる。使いこなせれば強い。&lt;/p&gt;
+
+&lt;h3 id=&#34;fe-if&#34;&gt;FE if&lt;/h3&gt;
+
+&lt;p&gt;何かと話題のファイアーエムブレムifもやっている。現在19章。一日一章ペースで進めたが、今日ゲームオーバーにならざるを得ない状況になったのでやり直すことになった。&lt;/p&gt;
+
+&lt;p&gt;シナリオは別に期待していなかったのでどうでもいいのだが、ゲームバランスも音楽もいいし、途中で挟まれるデモがすごいのでよかった。Live2Dだと思うけど、こういうの作る人、時代が時代なら神様だと思った。&lt;/p&gt;
+
+&lt;p&gt;仲間加入条件以外ほぼ攻略サイトを見てないので、攻略できるか不安である。&lt;/p&gt;
+
+&lt;h3 id=&#34;学習&#34;&gt;学習&lt;/h3&gt;
+
+&lt;p&gt;「&lt;a href=&#34;http://www.bnn.co.jp/books/7884/&#34;&gt;今日から始める情報設計&lt;/a&gt;」と「&lt;a href=&#34;http://www.shoeisha.co.jp/book/detail/9784798141572&#34;&gt;HTML5/CSS3モダンコーディング&lt;/a&gt;」を読み進めている。&lt;/p&gt;
+
+&lt;p&gt;今日は一気にHTML5とCSS3のコーディング本を読み進めた。Twitterにも書いたけど、HTML5とCSS3を浅く広く知ってる人が実際のコーディングでベターな書き方を知るための本だった。個人的に買ってよかったけど、初心者が1冊目に買う本ではないと思った。&lt;/p&gt;
+
+&lt;h3 id=&#34;ネット&#34;&gt;ネット&lt;/h3&gt;
+
+&lt;p&gt;クラウドソーシングはひどいのでやめよう、という話、実際に見るためにいくつか会員登録してみたけどひどかった（ので登録だけして何もしてない）。でも、「出会いの場を提供しているだけなので一切責任は負いません」という立場でいる限り、この問題を簡単に解決する方法ないのでは、と思う。&lt;/p&gt;
+
+&lt;p&gt;顧客のITリテラシーが低いので金額がわからないのは仕方ないとして、金額がわからないから安く出して、そしてそのまま受けてしまうような場の圧力がヤバい。Web関連は使うスキルと時間を記入して、それで最低限の報酬を確保すればいいかなと思ったけど、後出しで仕様追加されたら仕組み的に対応できなくてまじめな人が損をするのでだめだろう。ほかにもいくつか考えたけど、まじめな人が損をするような抜け道が必ずできるので、設計が難しい。まあ、クラウドワークスには頭のいい人がそろっているだろうし、新CTOには頑張ってほしい。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

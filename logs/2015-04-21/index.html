@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 04 21 ansible-tutorial, 正直なトレイラー - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css" id="webfont">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-04-21/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="title"><a href="http://log.deprode.net/logs/2015-04-21/">2015 04 21</a> - <a href="http://log.deprode.net/">log</a></h1>
+        <p><time datetime="2015-04-21T23:49:56&#43;09:00">2015-04-21</time></p>
+    </header>
+    <section>
+        <ul>
+<li>知らない界隈のTL見つけるのに便利→<a href="https://twitter.com/search?f=realtime&amp;q=%22RT%E3%81%97%E3%81%9F%E4%BA%BA%E3%81%AB%E3%82%84%E3%82%8B%22&amp;src=typd">https://twitter.com/search?f=realtime&amp;q=%22RT%E3%81%97%E3%81%9F%E4%BA%BA%E3%81%AB%E3%82%84%E3%82%8B%22&amp;src=typd</a></li>
+<li>前やった仕事にバグがあって、修正した。たいした被害出てなくてよかったけど、もっとちゃんとできたはず。
+
+<ul>
+<li>行間　読む　無料</li>
+</ul></li>
+<li>Ansible
+
+<ul>
+<li>前にやったと思われるansible-tutorialフォルダを発見した！これで時間短縮だ。</li>
+<li>と思って一時間くらい格闘したらそもそもansibleでpingすら通らない代物で、なんでこれ捨ててないの？って思った。
+
+<ul>
+<li>間抜けは見つかった。次は5分で気づく。</li>
+</ul></li>
+<li>結局VagrantFile作り直して、provisionに書き直した。
+
+<ul>
+<li>ここまで来るとvagrant-digitalocean使って、vagrantで完結するようにした方がいい気がしてきた。</li>
+</ul></li>
+<li>作り直してもダメだった、と思ったらprivate_keyがansible.cfgに間違えて書いてあったのでハマった。
+
+<ul>
+<li>vagrant ssh-configで指定してるprivate_keyを書けばよかった。
+
+<ul>
+<li><code>private_key_file = .vagrant/machines/default/virtualbox/private_key</code></li>
+</ul></li>
+<li>これに気づくまでにかなり時間かかったし、エラーメッセージを-vvvvオプションつけて調べてもkey_file自体はあったので~/.ssh/configを調べたりしていた。意味なかったけど。
+
+<ul>
+<li>現実は厳しい。</li>
+</ul></li>
+<li>その後、いろいろあきらめて<code>vagrant ssh-config &gt;&gt; ~/.ssh/config</code>した。</li>
+<li>解決した後に見た→<a href="http://mawatari.jp/archives/solution-of-vagrant-ssh-connection-error">http://mawatari.jp/archives/solution-of-vagrant-ssh-connection-error</a></li>
+</ul></li>
+<li>「Ansible触ってみた」みたいな記事を調べていくと、Ansibleでハマった記事が大量に見つかるので、ケーススタディとしてどこかにまとめておくのはどうか。
+
+<ul>
+<li>てか、大量にハマった記事が見つかるのってソフトウェアとしてどうなの。</li>
+</ul></li>
+</ul></li>
+<li>正直なトレイラー（というか<a href="https://www.youtube.com/user/screenjunkies?hl=ja&amp;gl=JP">SCREEN JUNKIES</a>のHONEST TRAILER）が面白くていろいろ見てしまった。
+
+<ul>
+<li>凄いよく調べた上でネタにしてるので納得してしまう。</li>
+<li>見たのはニコニコ動画だけど、動画（翻訳）によっては元の動画より面白い。
+
+<ul>
+<li><a href="http://www.nicovideo.jp/tag/%E6%AD%A3%E7%9B%B4%E3%81%AA%E3%83%88%E3%83%AC%E3%82%A4%E3%83%A9%E3%83%BC">http://www.nicovideo.jp/tag/%E6%AD%A3%E7%9B%B4%E3%81%AA%E3%83%88%E3%83%AC%E3%82%A4%E3%83%A9%E3%83%BC</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-04-21T23:49:56&#43;09:00">2015-04-21 23:49:56</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/ansible">Ansible</a></li>
+            
+                <li class="page_tags"><a href="/tags/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E5%8B%95%E7%94%BB">ニコニコ動画</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; deprode</p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+<script>
+  (function(){
+    document.getElementById('webfont').rel = 'stylesheet';
+  })();
+</script>
+</body>
+</html>

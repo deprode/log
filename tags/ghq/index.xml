@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Ghq on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/ghq/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Tue, 07 Apr 2015 22:11:02 JST</updated>
+    
+    <item>
+      <title>2015 04 07</title>
+      <link>http://log.deprode.net/logs/2015-04-07/</link>
+      <pubDate>Tue, 07 Apr 2015 22:11:02 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-07/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;めちゃくちゃ寝坊した。寝てるとレム睡眠が長いせいか、起きると目が開かない。
+
+&lt;ul&gt;
+&lt;li&gt;正確には、目と精神が疲れているので、目を開けると筋肉痛みたいになっていて、生活に支障がある。解決方法がわからない。
+
+&lt;ul&gt;
+&lt;li&gt;2時間くらい、じっとしていると治る。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;セーラー服のしずえの台って3回でとれるじゃん。（うまくいけば）&lt;/li&gt;
+&lt;li&gt;Fav駆動
+
+&lt;ul&gt;
+&lt;li&gt;SNSだと無難ではないものにFavがつきやすいので、FavやRTされやすいものに投稿が偏っていく傾向がある気がする。
+
+&lt;ul&gt;
+&lt;li&gt;FavやRTに満足できない人間はツイッターやめて別の何かに行き着く。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;絵描きが絵を描きやすい環境だし、大喜利が流行りやすい環境でもある。
+
+&lt;ul&gt;
+&lt;li&gt;なので、ウケないことを延々と書くと嫌われやすい気はする。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;同じように、「jQueryのソースコードを読む」より「【完全保存版】2015年 jQueryプラグイン ベスト100」みたいなブックマークの肥やしになる記事の方がブックマーク数は稼げるしPVも多いはず。&lt;/li&gt;
+&lt;li&gt;周りの評価が気になり過ぎる人はSNS社会では生きていけない。
+
+&lt;ul&gt;
+&lt;li&gt;内向的な人が書きやすい媒体としてのpplog。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;リファクタリング・ウェットウェア 読み終えた 続き
+
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;周期可変報酬反応&amp;rdquo;ってググっても出てこないんだけど、オペラント条件づけの一種なんだろうか。
+
+&lt;ul&gt;
+&lt;li&gt;要するに「レバーを引くとランダムに報酬が出る装置」が一番ハマるのはよくわかる。ツイッターもそう。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;読み終えてから「言いたいことはわかったけど、結局なにすりゃいいの？」という人のために、明日の朝から始められるリストが書いてあるのすばらしい。&lt;/li&gt;
+&lt;li&gt;“面白いと感じられる事柄について個人用のWikiに書くという作業を始めましょう。”
+
+&lt;ul&gt;
+&lt;li&gt;このlogのことですね。偶然だけど。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;適切な達人のロールモデルを見つけることが難しい。
+
+&lt;ul&gt;
+&lt;li&gt;理由は、周りにいないためSNSを参考にするが、大概いい部分しか発信しないので見抜ける人でないと難しいから。
+
+&lt;ul&gt;
+&lt;li&gt;人格はコピーできないので姿勢や習慣をコピーしましょう。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;瞑想はかなり捗るんだけど、集中しすぎて集中できないことがある。
+
+&lt;ul&gt;
+&lt;li&gt;スーパーサイヤ人3みたいなもので、一日の内のリソースを集中的に使うと反動があるので、普段からずっと使うみたいなのは控えた方がいい気がしている。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;学習するときに行き詰まったり、躓いている人にお勧めの本だった。
+
+&lt;ul&gt;
+&lt;li&gt;紹介されてるツールは古いけど、だいたい代替のものは出てるのでいいかと思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;4/1にReact入門とか言って、&lt;a href=&#34;http://reactphp.org/&#34;&gt;ReactPHP&lt;/a&gt;のコード書いたりすればよかった。&lt;/li&gt;
+&lt;li&gt;観測できない範囲のプログラマ
+
+&lt;ul&gt;
+&lt;li&gt;前に&lt;a href=&#34;http://www.slideshare.net/sonickun/ss-44926963&#34;&gt;ダークネット&lt;/a&gt;の話を見たときに、ダークプログラマもいるんだろうな、と思った。
+
+&lt;ul&gt;
+&lt;li&gt;闇プログラマじゃないよ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;つまり、プログラマやエンジニアとして相当の腕があるけどOSS活動も単著も講演も勉強会参加もせずに一人で黙々とやってる人がいるであろうという憶測。
+
+&lt;ul&gt;
+&lt;li&gt;アウトサイダーとも言える。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;クラウド上に記録を残さない人間の場合はネット越しに観測不可能になる。&lt;/li&gt;
+&lt;li&gt;ツテやコネはFollower経由で知ることしかできないので、ネットに痕跡が残っておらず、囲われている場合には到達不可能な気がする。&lt;/li&gt;
+&lt;li&gt;ほぼ日のエンジニアだって、数人で1日140万PVを毎日さばいてるけどインタビュー記事1本しかないし、ネットがすべてではないんだよな。
+
+&lt;ul&gt;
+&lt;li&gt;Githubに参加してないならプログラマじゃないという風潮。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;全然宣伝しない山の中にある食事処が類似のケースに当たるかな。
+
+&lt;ul&gt;
+&lt;li&gt;最近だとテレビ取材があって到達可能になってるけど。
+
+&lt;ul&gt;
+&lt;li&gt;関係ないけど、かまなら祭りみたいなのもアレがあれなので、大変だと思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Feedlyの未読を0にした。
+
+&lt;ul&gt;
+&lt;li&gt;未読は毎日0になってるんだけど、ブックマークせずにFavoriteになってるやつがあって、少し前からちゃんと見返したときにわかるように引用や概要を書いてる。
+
+&lt;ul&gt;
+&lt;li&gt;ただ、面倒だったり後でやろうと思っていたのでたまってしまった。&lt;/li&gt;
+&lt;li&gt;そうしている間に、いろいろあってさらに面倒になってしまい、後回しになった。&lt;/li&gt;
+&lt;li&gt;とりあえず、直近で使うだけのものは別のMacのフォルダにショートカット作って格納するだけにした。必要があればブックマークするかも。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ghq（だけ）導入した
+
+&lt;ul&gt;
+&lt;li&gt;まだ、ローカルリポジトリを大量に管理してどうこうみたいな次元に達してない。ので、pecoは後で。（インストールしたけど。）
+
+&lt;ul&gt;
+&lt;li&gt;zshに切り替えるのノーリスクでできるのかわからんので、cool-pecoも後回し。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;今日コード一行も書いてないです。終わった。
+
+&lt;ul&gt;
+&lt;li&gt;こういう日に「勉強した」「圧倒的成長」みたいなTLだと気持ちになる。&lt;/li&gt;
+&lt;li&gt;明日こそAnsible学習していくよ。たぶん。（昨日もいってたけど。）&lt;/li&gt;
+&lt;li&gt;JavaScript、PHP、Ansible、Goあたりを学びたい。
+
+&lt;ul&gt;
+&lt;li&gt;A Tour of Goちょっと見たけど、「これでいいのかよ」って顔してる。&lt;/li&gt;
+&lt;li&gt;一応、25までは進めた。途中の問題用にコードもちょっと書いた。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

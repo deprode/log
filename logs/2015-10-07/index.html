@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 10 07 Slim3で掲示板風,Splatoon - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-10-07/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-10-07/">
+            
+                Slim3で掲示板風,Splatoon
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-10-07T00:00:00&#43;09:00">2015-10-07</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="slim3で掲示板風">Slim3で掲示板風</h2>
+
+<p>とりあえず、書き込みと表示はできた。というか、原理や使い方がわかればここまで4時間くらいでできそう。</p>
+
+<p><a href="https://github.com/fuelphp/validation/">FuelPHPのvalidation</a>、1.xのやつと微妙に違っていて、前は組み合わせてできたけど今回はできないものがあるので苦労した。</p>
+
+<p>削除パスは英数字とアンダースコアに対応するので、次のようにした。1.xのやつならvalid_stringという便利関数で条件を満たすか検証できたのだが、ないっぽいのでRegexを使った。Typeというのもあるが、is_stringとかでチェックする上に複数指定してもORではなくANDでチェックする用なので用途が違った</p>
+
+<pre><code>$this-&gt;validate-&gt;addField('del_pass', '削除パス')
+                        -&gt;Regex('/\w/');
+</code></pre>
+
+<p>session関係、削除、ログローテーションとか、まだ全然できてないし先は長いと思う。</p>
+
+<p>関係ないけど、前の掲示板のスクリプト、書き込み相当の処理をfopen〜fputs〜fcloseだったはずなので、file_put_contentsでよかった。</p>
+
+<h2 id="splatoon">Splatoon</h2>
+
+<p>ガチマッチ（ガチヤグラ）で、A+20からA+6まで下がって、A+78まで上がった。マッチング機能してないときは下がるし、機能しているときは上がるっぽい。</p>
+
+<p>ガチヤグラでヤグラ絶対乗らないイカがいるらしいのは聞いてたけど、全然やってなかったので見たことなかった。今日始めてみたけど、残り5カウントとかで自分しかいなくても乗らないのでカルチャーショックだった。私はヤグラ絶対乗るマンなので、余計に。</p>
+
+<p>まあ、ガチヤグラで何でもかんでも戦犯扱いするのはよくないね。キルレシオが悪くて批判する人もいるけど、ヤグラに乗らずにキルしてるだけの方がキルは増えるし、ヤグラに乗れば3人くらいから狙われてデスが増えるし、キルレシオだけで批判するのは結果的にヤグラに乗らないイカを増やすだけでよくないと思った。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-10-07T00:00:00&#43;09:00">2015-10-07 00:00:00</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/php">PHP</a></li>
+            
+                <li class="page_tags"><a href="/tags/splatoon">Splatoon</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

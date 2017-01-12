@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Slim on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/slim/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 12 17</title>
+      <link>http://log.deprode.net/logs/2015-12-17/</link>
+      <pubDate>Fri, 18 Dec 2015 22:41:19 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-12-17/</guid>
+      <description>
+
+&lt;h2 id=&#34;slimbbsにngワードつけた&#34;&gt;SlimbbsにNGワードつけた&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://deprode.net/log/logs/2015-11-03/&#34;&gt;2015 11 03&lt;/a&gt;に、&lt;a href=&#34;https://github.com/deprode/slimbbs&#34;&gt;deprode/slimbbs&lt;/a&gt;にNGワード機能をつけたが編集できないまま放置していたので完成させた。&lt;/p&gt;
+
+&lt;p&gt;というか、一日でできたのでよかった。新たな画面作成、ルーティング、Configファイルの読み書き、バリデーション（独自ルールの追加）、管理画面が複数になったためデザインの変更などあったが、休みながらやっても終わったのでよかった。&lt;/p&gt;
+
+&lt;p&gt;NGワードを増やすときにinputフィールドを増やしているけど、その辺の処理はVanillaJSで行った。というか、めちゃめちゃ適当に作ってしまったので、短いながらも割とひどいコードになった。（でも10行くらいの処理で重いライブラリ使いたくないし。）&lt;/p&gt;
+
+&lt;p&gt;もうそろそろ受け入れテスト書いたりしたい。単体テストはどうやって書いたらいいんだろう。というか、単体テスト書くときにコードをテスタブルにしてからテストするので、あまりよくない。最初からテストを書くと即負債&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;になるし、タイミングがよくわからない。&lt;/p&gt;
+
+&lt;p&gt;そうこうしているうちに完成しそうになってるし、やはりほぼ変更がない箇所に対しては書いた方がいいという結論になりつつある。&lt;/p&gt;
+
+&lt;p&gt;というか、書けば書くほど自分の習得範囲が狭いことがわかってつらい。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;負債というか、テストがほぼ書き直しになるような変更を入れづらくなるので変更に対して保守的になる。怠惰なので、よい変更に対しても保守的になるためあまり最初からテストを書くのは好きじゃない。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;↩&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 03</title>
+      <link>http://log.deprode.net/logs/2015-10-03/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-03/</guid>
+      <description>
+
+&lt;h2 id=&#34;slimでformの値を受け取る&#34;&gt;Slimでformの値を受け取る&lt;/h2&gt;
+
+&lt;p&gt;Slimでは、getParsedBodyでformの値を一括で取得できる。また、任意の値をgetParamで取得できる。まあ、Validationライブラリによっては値を一括で渡してやる、というものもあるので、適切な方を使えばいいと思う。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Request.php#L920-L959&#34;&gt;Slim getParsedBody&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Request.php#L1023-L1047&#34;&gt;Slim getParam&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$input = $request-&amp;gt;getParsedBody();
+$impression = $input[&#39;impression&#39;];
+// または
+$impression = $request-&amp;gt;getParam(&#39;impression&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;splatoon&#34;&gt;Splatoon&lt;/h2&gt;
+
+&lt;p&gt;カーボンローラーデコが新しくブキとして使えるようになった。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;明日10月3日午前11時、新しいブキ「カーボンローラーデコ」が追加される。&amp;#10;メインウェポンの性能はオリジナルと変わらずだが、サブとスペシャルの組み合わせ「チェイスボム」「ボムラッシュ」が特徴的なブキだ。&amp;#10;スペシャル発動時は圧巻だぞ。 &lt;a href=&#34;http://t.co/ROgfnq9dfo&#34;&gt;pic.twitter.com/ROgfnq9dfo&lt;/a&gt;&lt;/p&gt;&amp;mdash; Splatoon（スプラトゥーン） (@SplatoonJP) &lt;a href=&#34;https://twitter.com/SplatoonJP/status/649870992693587968&#34;&gt;2015, 10月 2&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;メインはカーボンローラーと同じなのだが、サブがチェイスボムになったことで、直線を高速に移動することができる。そのため、直線で待ち伏せする相手に攻撃が届くようになった。&lt;/p&gt;
+
+&lt;p&gt;また、チェイスボムラッシュが追加されたことで、障害物のない直線での制圧力（前線押し上げ）はローラーで一番になったと思う。主に、アロワナモールやヒラメが丘団地で役立つ。&lt;/p&gt;
+
+&lt;p&gt;というか、単純にインクの80%を使うチェイスボムをボムラッシュで使えるのは楽しいので、使っていて面白い。&lt;/p&gt;
+
+&lt;p&gt;反面、クイックボムがなくなったことで、高い壁を塗って登ることや高い場所にいる敵を攻撃する手段がなくなった。そのため、高い位置を相手に占領された場合は、味方の支援がないと手も足も出ない。&lt;/p&gt;
+
+&lt;p&gt;何にしても、よりピーキーなブキになったので使い手は限られるかもしれない。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 02</title>
+      <link>http://log.deprode.net/logs/2015-10-02/</link>
+      <pubDate>Fri, 02 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-02/</guid>
+      <description>
+
+&lt;h2 id=&#34;slim-php-3でリダイレクト&#34;&gt;Slim(php)3でリダイレクト&lt;/h2&gt;
+
+&lt;p&gt;Slim3では、一部のメソッドが変更されている。
+2.xでは、redirectだったが、3.xでは、withRedirectに変更されている。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim/blob/2.x/Slim/Http/Response.php#L338-L351&#34;&gt;Slim/Response.php at 2.x · slimphp/Slim&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Response.php#L255-L270&#34;&gt;Slim/Response.php at 3.x · slimphp/Slim&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Slim-skeleronでは、$responseの内部で使用する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// HogeAction.php
+public function dispatch($request, $response, $args)
+{
+   return $response-&amp;gt;withRedirect(&#39;/hoge/&#39;);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;slimでheader出力&#34;&gt;Slimでheader出力&lt;/h2&gt;
+
+&lt;p&gt;withHaederを使用する。あんま調べてないけど、2.xだと&lt;code&gt;$response-&amp;gt;headers&lt;/code&gt;に直接指定することができたのが、3.xだとheadersがprotectedになっているのでwithHeaderを使った方がいい。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Message.php#L193-L214&#34;&gt;Slim/Message.php at 3.x · slimphp/Slim&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$response = $response-&amp;gt;withHeader(&#39;X-Frame-Options&#39;, &#39;SAMEORIGIN&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;slimは自動でエスケープするか&#34;&gt;Slimは自動でエスケープするか&lt;/h2&gt;
+
+&lt;p&gt;PHPでは、そのまま変数を表示するとXSS脆弱性が発生することがある。そのため、主要なフレームワークはViewで表示するときに自動でエスケープする機能がある。&lt;/p&gt;
+
+&lt;p&gt;Slimはどうだったか調べたら、Slim本体はテンプレートエンジンを持っておらず、公式ライブラリとしてTwigを使っている。Twigは自動でエスケープされるので、Twigを使った自動でエスケープされた。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 01</title>
+      <link>http://log.deprode.net/logs/2015-10-01/</link>
+      <pubDate>Thu, 01 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-01/</guid>
+      <description>
+
+&lt;h2 id=&#34;slim-php-3でcsrf対策&#34;&gt;Slim(php)3でCSRF対策&lt;/h2&gt;
+
+&lt;p&gt;Slim3を相変わらず触っている。&lt;/p&gt;
+
+&lt;p&gt;SlimでCsrfを行うには、公式に用意されているCsrfライブラリを使う。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim-Csrf&#34;&gt;slimphp/Slim-Csrf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;基本的な使い方は、公式ドキュメントとSlimの生みの親であるRob Allenのブログに書いてあるので、こちらを参考に使えばいいだろう。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slimframework.com/docs/features/csrf.html&#34;&gt;CSRF Protection - Slim Framework&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://akrabat.com/slim-csrf-with-slim-3/&#34;&gt;Slim-Csrf with Slim 3 | Rob Allen&amp;rsquo;s DevNotes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;個人的には&lt;a href=&#34;https://github.com/akrabat/slim3-skeleton&#34;&gt;slim3-skeleton&lt;/a&gt;で使いたかったので、その方法を調べていた。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;composer require slim/csrf&lt;/code&gt;でインストールした後は、middleware.phpで、宣言して&lt;code&gt;$app-&amp;gt;add($guard)&lt;/code&gt;のようにする。失敗したときの処理はsetFailureCallable内に書く。ここでは、別のクラスで判定したりするために変数を設定するだけにとどめる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// middleware.php
+$guard = new Slim\Csrf\Guard();
+$guard-&amp;gt;setFailureCallable(function ($request, $response, $next) {
+    $request = $request-&amp;gt;withAttribute(&amp;quot;csrf_status&amp;quot;, false);
+    return $next($request, $response);
+});
+$app-&amp;gt;add($guard);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Action（Controller）で、判定を行って失敗時の処理を行う。（本当ならViewを呼び出してrenderするべきだった。）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// SaveAction.php
+    if ($request-&amp;gt;getAttribute(&#39;csrf_status&#39;) === false) {
+        $failed = &amp;lt;&amp;lt;&amp;lt;EOT
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;&amp;lt;title&amp;gt;不正な投稿が行われました&amp;lt;/title&amp;gt;&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+    &amp;lt;h1&amp;gt;投稿をやり直してください&amp;lt;/h1&amp;gt;
+    &amp;lt;p&amp;gt;このエラーは意図しない投稿が行われた場合や、前に戻るを使った場合に出るエラーです。最初の画面から投稿をやり直してください。&amp;lt;/p&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+EOT;
+        return $response-&amp;gt;write($failed);
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;送信元のActionは次のように書いた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// HomeAction.php
+$name = $request-&amp;gt;getAttribute(&#39;csrf_name&#39;);
+$value = $request-&amp;gt;getAttribute(&#39;csrf_value&#39;);
+
+$this-&amp;gt;view-&amp;gt;render($response, &#39;home.twig&#39;, [&#39;name&#39; =&amp;gt; $name, &#39;value&#39; =&amp;gt; $value]);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;テンプレートは次のように書いた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// home.twig
+&amp;lt;form action=&amp;quot;{{ path_for(&#39;save&#39;) }}&amp;quot; method=&amp;quot;post&amp;quot; accept-charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+       &amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;csrf_name&amp;quot; value=&amp;quot;{{ name }}&amp;quot;&amp;gt;
+       &amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;csrf_value&amp;quot; value=&amp;quot;{{ value }}&amp;quot;&amp;gt;
+       &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;impression&amp;quot; value=&amp;quot;&amp;quot; placeholder=&amp;quot;感想&amp;quot;&amp;gt;
+       &amp;lt;input type=&amp;quot;submit&amp;quot; name=&amp;quot;&amp;quot; value=&amp;quot;送信&amp;quot;&amp;gt;
+&amp;lt;/form&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;本来なら&lt;code&gt;csrf_name&lt;/code&gt;や&lt;code&gt;csrf_value&lt;/code&gt;もとれるみたいなんだけど、面倒だし公式ドキュメントでもやってないので、まあいいかということにした。&lt;/p&gt;
+
+&lt;p&gt;以上。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

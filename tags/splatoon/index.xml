@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Splatoon on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/splatoon/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 10 07</title>
+      <link>http://log.deprode.net/logs/2015-10-07/</link>
+      <pubDate>Wed, 07 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-07/</guid>
+      <description>
+
+&lt;h2 id=&#34;slim3で掲示板風&#34;&gt;Slim3で掲示板風&lt;/h2&gt;
+
+&lt;p&gt;とりあえず、書き込みと表示はできた。というか、原理や使い方がわかればここまで4時間くらいでできそう。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/fuelphp/validation/&#34;&gt;FuelPHPのvalidation&lt;/a&gt;、1.xのやつと微妙に違っていて、前は組み合わせてできたけど今回はできないものがあるので苦労した。&lt;/p&gt;
+
+&lt;p&gt;削除パスは英数字とアンダースコアに対応するので、次のようにした。1.xのやつならvalid_stringという便利関数で条件を満たすか検証できたのだが、ないっぽいのでRegexを使った。Typeというのもあるが、is_stringとかでチェックする上に複数指定してもORではなくANDでチェックする用なので用途が違った&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$this-&amp;gt;validate-&amp;gt;addField(&#39;del_pass&#39;, &#39;削除パス&#39;)
+                        -&amp;gt;Regex(&#39;/\w/&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;session関係、削除、ログローテーションとか、まだ全然できてないし先は長いと思う。&lt;/p&gt;
+
+&lt;p&gt;関係ないけど、前の掲示板のスクリプト、書き込み相当の処理をfopen〜fputs〜fcloseだったはずなので、file_put_contentsでよかった。&lt;/p&gt;
+
+&lt;h2 id=&#34;splatoon&#34;&gt;Splatoon&lt;/h2&gt;
+
+&lt;p&gt;ガチマッチ（ガチヤグラ）で、A+20からA+6まで下がって、A+78まで上がった。マッチング機能してないときは下がるし、機能しているときは上がるっぽい。&lt;/p&gt;
+
+&lt;p&gt;ガチヤグラでヤグラ絶対乗らないイカがいるらしいのは聞いてたけど、全然やってなかったので見たことなかった。今日始めてみたけど、残り5カウントとかで自分しかいなくても乗らないのでカルチャーショックだった。私はヤグラ絶対乗るマンなので、余計に。&lt;/p&gt;
+
+&lt;p&gt;まあ、ガチヤグラで何でもかんでも戦犯扱いするのはよくないね。キルレシオが悪くて批判する人もいるけど、ヤグラに乗らずにキルしてるだけの方がキルは増えるし、ヤグラに乗れば3人くらいから狙われてデスが増えるし、キルレシオだけで批判するのは結果的にヤグラに乗らないイカを増やすだけでよくないと思った。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 10 03</title>
+      <link>http://log.deprode.net/logs/2015-10-03/</link>
+      <pubDate>Sat, 03 Oct 2015 00:00:00 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-10-03/</guid>
+      <description>
+
+&lt;h2 id=&#34;slimでformの値を受け取る&#34;&gt;Slimでformの値を受け取る&lt;/h2&gt;
+
+&lt;p&gt;Slimでは、getParsedBodyでformの値を一括で取得できる。また、任意の値をgetParamで取得できる。まあ、Validationライブラリによっては値を一括で渡してやる、というものもあるので、適切な方を使えばいいと思う。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Request.php#L920-L959&#34;&gt;Slim getParsedBody&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/slimphp/Slim/blob/3.x/Slim/Http/Request.php#L1023-L1047&#34;&gt;Slim getParam&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$input = $request-&amp;gt;getParsedBody();
+$impression = $input[&#39;impression&#39;];
+// または
+$impression = $request-&amp;gt;getParam(&#39;impression&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;splatoon&#34;&gt;Splatoon&lt;/h2&gt;
+
+&lt;p&gt;カーボンローラーデコが新しくブキとして使えるようになった。&lt;/p&gt;
+
+&lt;p&gt;&lt;blockquote class=&#34;twitter-tweet&#34; lang=&#34;ja&#34;&gt;&lt;p lang=&#34;ja&#34; dir=&#34;ltr&#34;&gt;明日10月3日午前11時、新しいブキ「カーボンローラーデコ」が追加される。&amp;#10;メインウェポンの性能はオリジナルと変わらずだが、サブとスペシャルの組み合わせ「チェイスボム」「ボムラッシュ」が特徴的なブキだ。&amp;#10;スペシャル発動時は圧巻だぞ。 &lt;a href=&#34;http://t.co/ROgfnq9dfo&#34;&gt;pic.twitter.com/ROgfnq9dfo&lt;/a&gt;&lt;/p&gt;&amp;mdash; Splatoon（スプラトゥーン） (@SplatoonJP) &lt;a href=&#34;https://twitter.com/SplatoonJP/status/649870992693587968&#34;&gt;2015, 10月 2&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;//platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;メインはカーボンローラーと同じなのだが、サブがチェイスボムになったことで、直線を高速に移動することができる。そのため、直線で待ち伏せする相手に攻撃が届くようになった。&lt;/p&gt;
+
+&lt;p&gt;また、チェイスボムラッシュが追加されたことで、障害物のない直線での制圧力（前線押し上げ）はローラーで一番になったと思う。主に、アロワナモールやヒラメが丘団地で役立つ。&lt;/p&gt;
+
+&lt;p&gt;というか、単純にインクの80%を使うチェイスボムをボムラッシュで使えるのは楽しいので、使っていて面白い。&lt;/p&gt;
+
+&lt;p&gt;反面、クイックボムがなくなったことで、高い壁を塗って登ることや高い場所にいる敵を攻撃する手段がなくなった。そのため、高い位置を相手に占領された場合は、味方の支援がないと手も足も出ない。&lt;/p&gt;
+
+&lt;p&gt;何にしても、よりピーキーなブキになったので使い手は限られるかもしれない。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

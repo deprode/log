@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Composer on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/composer/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2015 04 16</title>
+      <link>http://log.deprode.net/logs/2015-04-16/</link>
+      <pubDate>Thu, 16 Apr 2015 23:41:23 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-16/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Daemonって守護神って意味だったのか。悪魔(demon)かと思ってた。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3_%28%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%29&#34;&gt;http://ja.wikipedia.org/wiki/%E3%83%87%E3%83%BC%E3%83%A2%E3%83%B3_%28%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%29&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PHP The Right Way, 昨日の続き。
+
+&lt;ul&gt;
+&lt;li&gt;PSR-4になってるのは知ってたけど、autoloadのこと（WAFとかで使ってるけど）よくわかってない。
+
+&lt;ul&gt;
+&lt;li&gt;調べた結果、オレオレautoloadが大量に見つかり、めんどくさくなってcomposer使うことにした。
+
+&lt;ul&gt;
+&lt;li&gt;Composerが2011/04/03〜。spl_autoload_registerをつかったものが2012あたりに大量に書かれてるけど、何かあったのかな。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;たぶん、こんな感じで読み込める。
+
+&lt;ul&gt;
+&lt;li&gt;最初IBMのページでnamespaceをいろいろ試してたから、こうなってる。&lt;/li&gt;
+&lt;li&gt;小規模かつ個人開発ならautoload使わずにrequireしてもいいと思う。
+
+&lt;ul&gt;
+&lt;li&gt;ケースバイケース&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;// composer.json
+{
+    &amp;quot;autoload&amp;quot;: {
+        &amp;quot;psr-4&amp;quot;: {
+            &amp;quot;Obrian\\&amp;quot;: &amp;quot;src/obrian/&amp;quot;,
+            &amp;quot;Barbarian\\&amp;quot;: &amp;quot;src/barbarian/&amp;quot;
+        }
+    }
+}
+
+// ディレクトリ以下の配置
+.
+├── composer.json
+├── composer.lock
+├── composer.phar
+├── index.php
+├── src
+│   ├── barbarian
+│   │   └── Conan.php
+│   └── obrian
+│       └── Conan.php
+└── vendor
+    ├── autoload.php
+	（省略）
+
+// index.php
+&amp;lt;?php
+
+require_once &amp;quot;vendor/autoload.php&amp;quot;;
+
+use \Barbarian\Conan;
+use \Obrian\Conan as ObrianConan;
+
+$conan = new Conan();
+echo $conan-&amp;gt;bodyBuild . PHP_EOL;
+
+$obConan = new ObrianConan;
+echo $obConan-&amp;gt;bodyBuild . PHP_EOL;
+
+// src/obrian/Conan.php
+&amp;lt;?php
+
+namespace obrian;
+
+class Conan
+{
+    public $bodyBuild = &amp;quot;very skinny&amp;quot;;
+}
+
+// src/barbarian/Conan.php
+&amp;lt;?php
+
+namespace barbarian;
+
+class Conan
+{
+    public $bodyBuild = &amp;quot;extermely muscular&amp;quot;;
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

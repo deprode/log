@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Nginx on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/nginx/index.xml</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Mon, 01 Jan 0001 00:00:00 UTC</updated>
+    
+    <item>
+      <title>2016 02 03</title>
+      <link>http://log.deprode.net/logs/2016-02-03/</link>
+      <pubDate>Wed, 03 Feb 2016 23:17:28 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2016-02-03/</guid>
+      <description>
+
+&lt;h2 id=&#34;アップしたやつにnginxのbasic認証を行うようにした&#34;&gt;アップしたやつにnginxのBasic認証を行うようにした&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://log.deprode.net/logs/2016-01-12/&#34;&gt;2016 01 12 Twitterから非公開TumblrにLikesをバックアップした経緯など - log&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;上記のもの（Twitterから非公開TumblrにReblogするサービス）をVPSにアップロードしたのだが、Basic認証を行っていなかったため誰にでも見える状態だった。とりあえず、Basic認証をかけることにした。&lt;/p&gt;
+
+&lt;p&gt;ちゃんとした人は、Digest認証にしましょう。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.nginx.com/resources/wiki/modules/auth_digest/?highlight=digest&#34;&gt;HTTP Digest Authentication | NGINX&lt;/a&gt;
+&lt;a href=&#34;http://qiita.com/murachi1208/items/5e8d3101472fc2e295c0&#34;&gt;Nginx で Digest認証が出来なかったのでソースからコンパイルしてみたぜ - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;次の情報を参考にした。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;http://qiita.com/hayak/items/97c99dfbc82daed0ad45&#34;&gt;nginxでBasic認証をする - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;# httpd-toolsのインストール
+$ sudo yum install -y httpd-tools
+$ cd /etc/nginx
+# .htpasswdファイルの生成（ユーザー名を引数にとって、パスワード入力）
+$ sudo htpasswd -c .htpasswd foo
+New password:
+Re-type new password:
+# 設定の変更（auth_basicには適切なメッセージを）
+$ sudo vim /etc/nginx/conf.d/virtual.conf
+    location / {
+        auth_basic &amp;quot;Input username and password&amp;quot;;
+        auth_basic_user_file /etc/nginx/.htpasswd;
+    }
+# 設定の再読込
+$ sudo service nginx reload
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あと、&lt;a href=&#34;https://github.com/github/fetch&#34;&gt;github/fetch&lt;/a&gt;を使っているので、データ取得部分を修正した&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fetch(url, {
+    headers: {
+        &#39;Authorization&#39;: &#39;Basic &#39;+btoa(&#39;username&#39;+&#39;:&#39;+&#39;password&#39;)
+    },
+    method: &#39;post&#39;,
+    body: data
+}).then(function(response){
+    // ...
+}).catch(function(ex){
+    // ...
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;動作確認して、終わり。こういうときに、Selenium的なテストがあると大変はかどるのだが……。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

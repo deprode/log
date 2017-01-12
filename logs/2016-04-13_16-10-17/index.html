@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>logを日付単位からtopic単位に変更した  - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2016-04-13_16-10-17/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2016-04-13_16-10-17/">
+            
+                logを日付単位からtopic単位に変更した
+            
+            </a>
+        </h1>
+        <p><time datetime="2016-04-13T16:10:17&#43;09:00">2016-04-13</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="logを日付単位からtopic単位に変更した">logを日付単位からtopic単位に変更した</h2>
+
+<p>以前書いたように、このlogを毎日更新するスタイルから、トピックごとに更新するスタイルに変更する。</p>
+
+<p><a href="http://log.deprode.net/logs/2016-04-01/">2016 04 01 logを書き始めて1年が経過した - log</a></p>
+
+<p>DescriptionをやめTitleに変更したことで、いろいろな箇所を変更する必要があった。</p>
+
+<p>トップページとlogsのリスト表示では、タイトルを日付にし、Descriptionをタイトルとして表示していた。これを、互換性を保ちつつ「タイトル - 日付」で表示するように修正した。</p>
+
+<p>また、個別ページも同様に、Descriptionがない場合はタイトルを表示するように修正した。同時に、タイトル表示をタイトル風の表示からぱんくずリスト風の表示に変更した。この変更は、同じ内容のDescriptionを上部に表示しているため、重複を避ける目的で行った。</p>
+
+<p>通知の経路も変更した。VPS上のPHPでRSSを読み込んで、DescriptionをTitleに設定し、それをIFTTT経由でBufferに送っていた。タイトルを直接指定できるので、VPS上のPHPは必要なくなる。なので、IFTTTのレシピを変更した。</p>
+
+<p>ファイル名も日付からトピック名に変更することにしたのだが、英語が書けないので適当な英語になるし、重複を避けるだけなら日時で問題ないので、日時のファイル名にした。</p>
+
+<p>あと、800文字程度書いてPublishする習慣もなくす。文章の練習になるからと最低文字数を決めていたのだが、意味がないことがわかったのでやめる。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2016-04-13T16:10:17&#43;09:00">2016-04-13 16:10:17</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>

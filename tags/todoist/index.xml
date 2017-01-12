@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Todoist on log </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
+    <link>http://log.deprode.net/tags/todoist/</link>
+    
+    
+    <copyright>deprode</copyright>
+    <updated>Sun, 31 May 2015 23:47:24 JST</updated>
+    
+    <item>
+      <title>2015 05 31</title>
+      <link>http://log.deprode.net/logs/2015-05-31/</link>
+      <pubDate>Sun, 31 May 2015 23:47:24 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-31/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Splatoon
+
+&lt;ul&gt;
+&lt;li&gt;対戦3日目。現在ランク15。&lt;/li&gt;
+&lt;li&gt;すでにランク19の人もかなり見受けられる。ランク20はほとんどマッチングしないけど、その辺だけ特殊な感じになってる気がする。&lt;/li&gt;
+&lt;li&gt;ローラーでとにかく勝てないので何か策を講じないといけなくなった。
+
+&lt;ul&gt;
+&lt;li&gt;どのくらい勝てないかというと、10試合で勝ち1くらい。
+
+&lt;ul&gt;
+&lt;li&gt;最下位になることはなかったが、キル0デス5という試合もあった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ローラー動画を見直すと、上からの奇襲、ボムで牽制→逃げたところをひく、スペシャルで遠距離を牽制という感じだった。以外だが、基本的に高いところの方が有利なのはローラーでも変わらないらしい。
+
+&lt;ul&gt;
+&lt;li&gt;ただ、ローラーは直接攻撃しないと逃げられて倒されるので、裏をかいて攻撃するのが一番いいと思う。&lt;/li&gt;
+&lt;li&gt;見た目の割に忍者（アサシン）みたいな運用が求められる。たとえば、イカニンジャで壁に隠れてからの強襲など。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;そういうわけで、ダイナモローラー（攻撃までに1秒かかるローラー）でいろいろやった結果、なかなかうまくいったのでよかった。基本的に塗るより振った方が面積が広くぬれるが、最初は塗り残しを塗ってスペシャルを発動させて支援。スプリンクラーを陽動に使いつつ、上からインクばしゃぁで倒していた。&lt;/li&gt;
+&lt;li&gt;ガチホワイトを着て、イカニンジャで壁に隠れるのは何回かうまくいった。Bバスパークだと成功率高い。
+
+&lt;ul&gt;
+&lt;li&gt;キルスコアや塗ったポイントの結果が表示されるので、こういう遊びのプレイがなかなかできていない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;アロワナモールで1分前にピンポンパンポンとお知らせが入るのに気づいた。細かい。&lt;/li&gt;
+&lt;li&gt;割とまんべんなく武器を運用しているので、知的好奇心を満たすことができた。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Todo運用
+
+&lt;ul&gt;
+&lt;li&gt;紙→check*pad→RTM→Wunderlist→紙→Torello→Todoist→Todo.mdという経歴。&lt;/li&gt;
+&lt;li&gt;使ってみた中では、紙が最強だと思う。オフラインで確認できるのは紙か印刷したリストのみだから。&lt;/li&gt;
+&lt;li&gt;どのデバイスでも見ることができる、というのは重要。だが、それ以上に起動しなくても見ることができるというのはより重要。常にデバイスを装備しなくてもいいようにしないと、オフラインのタスクを管理できない。&lt;/li&gt;
+&lt;li&gt;一方で、RememberTheMilkのように、リマインダーは紙以外じゃないとダメだった。GoogleカレンダーやDueを使っている。&lt;/li&gt;
+&lt;li&gt;定期タスクも含めて、紙に書いた方が達成率・達成感ともに高い。&lt;/li&gt;
+&lt;li&gt;というわけで、また紙に戻る予定。Todo.mdは後でやるを書いておくのにちょうどいいけど、日常のタスクは紙がいい。机の上に置いておくだけでプレッシャーになって捗る。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 05 23</title>
+      <link>http://log.deprode.net/logs/2015-05-23/</link>
+      <pubDate>Sat, 23 May 2015 23:03:50 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-23/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;Todo.txt
+
+&lt;ul&gt;
+&lt;li&gt;Trello、Todoist、check*padなど、オンラインのタスク管理ツールを個人的に使っていたけど、結局Todo.mdと紙に戻ってしまうので旧人類かもしれない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Style
+
+&lt;ul&gt;
+&lt;li&gt;Hugoとwerckerで更新されているので、あまりブラウザから確認することはないんだけど、改めて見づらいブログだな、と思った。&lt;/li&gt;
+&lt;li&gt;ヘッダ要素とp要素のバランスが悪いし、本文の文字が小さい。あと、リストがinsideになってるので見づらい。本文が横に広いので、一行が長すぎる。他にも個別ページからトップにいけない、リストが深くなると文字が小さくなるなどいくつか。&lt;/li&gt;
+&lt;li&gt;当初は誰にも見られない、参考にされない、役に立たないことを目的としていたのでこれでもいいか、という気になっていたのでこうなってる。&lt;/li&gt;
+&lt;li&gt;だけど、日別に思考などを切って書いてあるので、これをまとめるだけでブログの記事になってしまうわけで。なので、まとめるために閲覧性が必要になった。
+
+&lt;ul&gt;
+&lt;li&gt;閲覧性て……。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;そうでなくてもいろいろ見づらいので、何とかする必要がある。&lt;/li&gt;
+&lt;li&gt;できればMCSSというか、BEMやSMACSSを使いたいな、という気はする。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://operatino.github.io/MCSS/ja/&#34;&gt;MCSS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;試射会
+
+&lt;ul&gt;
+&lt;li&gt;朝8時からジモトギョージ氏につきあうことになってしまったので、割と絶望的。
+
+&lt;ul&gt;
+&lt;li&gt;「ジモトギョージ氏」というのは、システムの擬人化であり、直近の上の人を恨まないための工夫。&lt;/li&gt;
+&lt;li&gt;これは、中世ヨーロッパで罪人の代わりにキャベツをギロチンにかけていたことにヒントを得たアイデアです。割と気に入ってる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 05 06</title>
+      <link>http://log.deprode.net/logs/2015-05-06/</link>
+      <pubDate>Wed, 06 May 2015 23:34:24 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-05-06/</guid>
+      <description>
+
+&lt;h2 id=&#34;ゼノブレイド:a9094f66d2259d3c5969f194289d95f6&#34;&gt;ゼノブレイド&lt;/h2&gt;
+
+&lt;p&gt;クリアした。現在、Lv94、プレイタイム109:22。その他進捗は以下の通り。&lt;/p&gt;
+
+&lt;p&gt;☑️シナリオを最後までやる
+☑️（分岐を除く）すべてのクエストを達成
+☑️コロニー6 完全復興
+☑️コレペディアを100%埋める
+☑️到達不可能な地点を除き、地図を埋める
+◻️すべてのアーツを最大レベルにする
+◻️すべてのスキルを取得
+◻️すべてのユニークモンスターを倒す
+◻️3DSのコレクションをすべて集める&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;事前の噂通りの「神ゲー」だった。神様が██████ゲームだった。&lt;/li&gt;
+&lt;li&gt;社長が訊くにもあった、「この世界から離れたくなくていつまでも遊んでしまう」というのはわかる気がした。今も、クリアしたゲームをもう一周遊ぶ誘惑と戦っている。まだやり残したことがありすぎる。&lt;/li&gt;
+&lt;li&gt;2周目やるとなると、クエストもリセットされるので（すべてやると）時間が倍かかる。なので、やるとしても1周目、と思ったけどSP集めが（精神的に）めちゃめちゃ大変なので、上のチェックボックス埋めるなら2周目に行った方が楽だと思う。
+
+&lt;ul&gt;
+&lt;li&gt;敵を100〜300匹倒すと1スキルゲットみたいな状況。レベルが上がると、もう少しきつくなる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;よい印象を持ったところ
+
+&lt;ul&gt;
+&lt;li&gt;シナリオは、ネタバレになるので書けないが、全体的によかったと思う。何より、シナリオが現す世界観がいいのでこのゲームを続けたいと思う気持ちがある。&lt;/li&gt;
+&lt;li&gt;音楽は最高。クラブニンテンドーの特典であるサントラには12曲しか収録されてないのでがっかりしたが、全曲入りは別で売るタイプだった。買うかもしれない。&lt;/li&gt;
+&lt;li&gt;とにかくすべてが大量に用意されているところが凄い。同じ装備でもキャラクターごとにデザインが変わるだけでも凄いのに、それが大量にある。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;悪い印象を持ったところ
+
+&lt;ul&gt;
+&lt;li&gt;最後まで遊んでも、ゲームシステムでわからないところがあるので、それはちょっとどうなの、という気はする。（全部説明してるとヘルプもさらに凄いことになるのはわかる）&lt;/li&gt;
+&lt;li&gt;アイテムが入りきらなくてがんがん捨てるのはちょっとアレだった。倉庫的なものが欲しかった。
+
+&lt;ul&gt;
+&lt;li&gt;素材捨てる→クエストで必要になる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;なんだかんだでお使いクエストが多く、時限クエストがあるためメインシナリオに戻りたくても戻れない。序盤だと移動を早くする手段がなく、つらい。
+
+&lt;ul&gt;
+&lt;li&gt;クエストで住民の場所と名前が一切でないのがつらかった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;因果律を変えられるモナドの力があるのに拾うアイテムの確率は変えられないのなんで。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ただ、悪いところもゲーム止めるほど嫌かというと、雪山でコレクション拾うのに二時間かけた以外は別に嫌いじゃない。&lt;/li&gt;
+&lt;li&gt;あと、ゼノブレイド始めたらTwitterの更新・どうぶつの森・その他いろいろ途絶えたので、わりと複数プロジェクト同時進行みたいなの無理だとわかった。学習はしたけど。
+
+&lt;ul&gt;
+&lt;li&gt;以前もドハマりするゲーム買ったときに生活がだめになったので、気をつけたい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;なんだかんだ書いたけど、もうちょっとだけやる（と思う）。&lt;/li&gt;
+&lt;li&gt;GWはゼノブレイド10時間くらいでクリアする予定だったけど、結局30時間近くかかってるし、単純に3倍にする見積もりが有効なことが証明されてしまった。
+
+&lt;ul&gt;
+&lt;li&gt;しかもまだ終わりじゃないとかプロジェクトなら地獄だよ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;参考にした攻略サイト:a9094f66d2259d3c5969f194289d95f6&#34;&gt;参考にした攻略サイト&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www35.atwiki.jp/xenoblade/pages/1.html&#34;&gt;Xenoblade ゼノブレイド 攻略 @ Wiki - トップページ&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;わりと全般的に情報が集まっている。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://shiawasenokatati.blog.shinobi.jp/%E3%82%BC%E3%83%8E%E3%83%96%E3%83%AC%E3%82%A4%E3%83%89/%E3%82%BC%E3%83%8E%E3%83%96%E3%83%AC%E3%82%A4%E3%83%89%20%E3%83%9E%E3%83%83%E3%83%97%20%E4%B8%80%E8%A6%A7&#34;&gt;多情仏心 ゼノブレイド マップ 一覧&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;マップはここが一番わかりやすかった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://xenobladedata.web.fc2.com/&#34;&gt;ゼノブレイド攻略データ&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ジェムやコレクションは詳細なデータを扱っていたここを参考にした。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.suruyo.net/xenoblade/&#34;&gt;「ゼノブレイド」攻略するよ！ - ゲーム攻略・裏技サイト&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;わりと間違いもあるが、テキストのみの一覧性はここが一番よかった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://niwakaotaku8.seesaa.net/category/24083486-1.html&#34;&gt;ゼノシリーズ＞ゼノブレイド クエスト攻略 : にわかオタクのヒトリゴト&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;クエストの場所に関して、ここがなかったら投げていたと思う。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;その他:a9094f66d2259d3c5969f194289d95f6&#34;&gt;その他&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Todoist、使ってないと存在を忘れるくらいの軽さ。&lt;/li&gt;
+&lt;li&gt;とれ〜るセンターでしずえのバッジコンプリートするマン
+
+&lt;ul&gt;
+&lt;li&gt;ひなまつりのやつ持ってなかったけど、2回で全部とれたのでよかった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;個人的には20時間くらいでスタッフロール到達で、その後一日30分くらい遊べるゲームが好き、なんだけどこれWiiFitだよな……。
+
+&lt;ul&gt;
+&lt;li&gt;どうぶつの森もそうか。&lt;/li&gt;
+&lt;li&gt;じゃあ、ゼノブレイドも一日30分だけやればいいのでは。いや、無理だ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;某社で実働技術部隊が火消しにがんばってるのに某部隊が積極的に火や金を注いでいるのを見ていたたまれなくなるなどした。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 04 29</title>
+      <link>http://log.deprode.net/logs/2015-04-29/</link>
+      <pubDate>Wed, 29 Apr 2015 22:08:51 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-29/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;ネパール地震募金 &lt;a href=&#34;http://corp.rakuten.co.jp/csr/contribution/&#34;&gt;http://corp.rakuten.co.jp/csr/contribution/&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;余ってる楽天ポイント全部寄付した。
+
+&lt;ul&gt;
+&lt;li&gt;全部って言っても1kくらいだけど。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ドルツ迷った末に買った
+
+&lt;ul&gt;
+&lt;li&gt;倹約家というかアレなので、8000円程度の出費でも3時間くらい考える。自分のテリトリーにない商品だとなおさら。
+
+&lt;ul&gt;
+&lt;li&gt;というか、ドルツ自体は半年前から欲しいと思ってて、歯を磨く時間が10分以上かかるのを節約したいと思って買うことにした。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;我ながら決断力のなさがひどいと思う。ドルツ→歯間ブラシ→デンタルフロス→電動歯ブラシ→電動ひげそり→綿棒→耳かき、みたいな遷移で、しかもドルツしか買ってない。
+
+&lt;ul&gt;
+&lt;li&gt;倹約家なのかすら怪しくなった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;祝日に前の仕事のメール書いてる。
+
+&lt;ul&gt;
+&lt;li&gt;納期と予算を書いてないメールで、しかも一行の要望だったりするので、もう少し勉強してから送って欲しいけど、いろいろあるので書いてる。&lt;/li&gt;
+&lt;li&gt;つらいけど、書いて送信した。今日祝日だし、明日でもよかったと思う。&lt;/li&gt;
+&lt;li&gt;一ヶ月当たりの自分の人月というか単金というか、そういう感じのお金ってみんなどうやって計算してるんだろう。月刊積算資料だとプログラマ60万くらいだったかな。
+
+&lt;ul&gt;
+&lt;li&gt;「if文が怪しい」レベルで時間単価3000円らしい。21*8=168hなので、50万が下限っぽい。ニアショア下限とも近い。&lt;/li&gt;
+&lt;li&gt;別のサイトで「フリーランスで稼ぐ金額に上限も下限もない」って文言見つけた……。
+
+&lt;ul&gt;
+&lt;li&gt;フリーのプログラマ単独だと下限は0円だったはず。訴訟されなければ。上限は知らんけど手取りで1000万くらいなんじゃないの？知らんけど。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;働いてない人間も、働けるなら人並みに働きたいんじゃ。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Todoistいろいろ試してるけど、やっぱり今日やることは細かい繰り返すこと以外は小分けにして紙に書いた方がやる気が出る。
+
+&lt;ul&gt;
+&lt;li&gt;ので、タスクを忘れないように書いておくWebサービスという使い方でやってる。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ドメイン変えたけど、Github Pagesで301リダイレクトってどうやるの……
+
+&lt;ul&gt;
+&lt;li&gt;わからないけど、とりあえずcanonicalタグつけて対処した。casperjsの作者もやってるし大丈夫でしょ、たぶん。
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://stackoverflow.com/questions/9276817/301-redirect-for-site-hosted-at-github&#34;&gt;http://stackoverflow.com/questions/9276817/301-redirect-for-site-hosted-at-github&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;javascriptでlocation書き換えによる移動も書かないとダメだった。
+
+&lt;ul&gt;
+&lt;li&gt;自分のことになると割とどうでもよくなる症候群。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;最近コード書いてないので、もうコード書けない気がしてきた。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>2015 04 27</title>
+      <link>http://log.deprode.net/logs/2015-04-27/</link>
+      <pubDate>Mon, 27 Apr 2015 20:56:13 JST</pubDate>
+      
+      <guid>http://log.deprode.net/logs/2015-04-27/</guid>
+      <description>&lt;ul&gt;
+&lt;li&gt;アルファベットって重要な語句が一目でわからないからデザインが進歩してタイポグラフィが重要に見えるのでは。逆に日本語だと漢字がそのまま重要語句になるので、必要がなくなってミニマルデザインが生える。
+
+&lt;ul&gt;
+&lt;li&gt;ごめん、適当いった。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;暑すぎる。
+
+&lt;ul&gt;
+&lt;li&gt;もしかして：夏&lt;/li&gt;
+&lt;li&gt;外が明るいので全然夕暮れブーストかからない。&lt;/li&gt;
+&lt;li&gt;今年もまた35度の中でMac miniと戯れなければならんのかと思うと、絶望しかない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;下ネタを言わないのはピュアな人と変態だけ仮説。（変態が下ネタ言わないのは下ネタにするとどん引きする趣味だから。）
+
+&lt;ul&gt;
+&lt;li&gt;でも、どん引きされてもいいなら下ネタ話すので、やはり下ネタを言わないのはピュアな人だけなのかもしれない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;プログラマともだちがいないので、どういう仕事に需要があるとか、どういう人に仕事を頼みたいとか、どういう人と仕事したいとか、どういう……
+
+&lt;ul&gt;
+&lt;li&gt;考えても仕方ない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Prompt買って、VPS経由でiPadでlog書けるようにしようと思ったけど、Go言語からインストールするの面倒だな、と思ってAnsibleのplaybookに書いて次のVPSからちゃんとやるようにしたい。
+
+&lt;ul&gt;
+&lt;li&gt;というか、Hugoのインストール途中で止まるので、あとで。&lt;/li&gt;
+&lt;li&gt;圧倒的にクロイガメン力が足りない。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;ToDoを管理するためにTodoist使ってみてるけど、GTDっぽくしたほうが使い勝手がいいようなので、変更した。&lt;/li&gt;
+&lt;li&gt;今日はダメな日だった。圧倒的に。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

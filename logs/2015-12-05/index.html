@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>2015 12 05 MacbookPro セットアップしてた - log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="log">
+    <meta name="google-site-verification" content="BV2QExGmHC2wzSi4GVQTkh9Iv-be_bnbrDTX_4GIOYQ" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="canonical" href="http://log.deprode.net/logs/2015-12-05/">
+    
+</head>
+<body>
+    <div class="container">
+<article class="ten offset-by-one columns">
+    <header>
+        <h1 class="single_header">
+            <a href="http://log.deprode.net/">log</a> &gt;
+            <a href="http://log.deprode.net/logs/2015-12-05/">
+            
+                MacbookPro セットアップしてた
+            
+            </a>
+        </h1>
+        <p><time datetime="2015-12-05T23:21:23&#43;09:00">2015-12-05</time></p>
+    </header>
+    <section class="single_content">
+        
+
+<h2 id="macbookpro-セットアップしてた">MacbookPro セットアップしてた</h2>
+
+<p>こういうときは、最初にインストールするアプリケーションやbrewfileやセットアップスクリプトを晒したりすればウケるのだが、ウケるの嫌いなので手動でやった。</p>
+
+<p>このイベントは5年に1回くらいしか発生しないのでスクリプトを組むといらないファイルも5年ごとに精査する必要がある。あと、こういう進んでいる実感はあるが実際は非効率的なやりかたは嫌いじゃない。</p>
+
+<hr />
+
+<p>とにもかくにも、セットアップを終わらせてWebが見れるところまでやった。アドオンは手動でやった。というか、いらないまま停止した拡張機能が多すぎるので、必要ないものは移行しないようにする必要があった。</p>
+
+<p>それから、Mac App Storeで必要なものとXcodeをインストールした。XcodeというかCommandLineToolsが必要なのだった。ちなみに、CommandLineToolsは<code>xcode-select --install</code>でインストールした。</p>
+
+<p>次に、<a href="http://brew.sh/index_ja.html">Homebrew — OS X 用パッケージマネージャー</a>のインストール。前のMacから、<code>brew list</code>で出てきたものの中から使っているものと便利だけど使っていないものをインストールした。Javaもhomebrewで入れたけど、使えるか確認してない。</p>
+
+<p><a href="https://github.com/phpbrew/phpbrew/wiki/Requirement">phpbrewで必要とされるもの</a>をインストールし、php5.6系をインストールした。7.0はまだ来てなかった。</p>
+
+<p>nodeも入れようと思い、過去の日記を見て<a href="https://github.com/hokaccha/nodebrew">nodebrew</a>を入れた。便利。ついでに<code>sudo npm install -g npm</code>でnpmも3系にした。</p>
+
+<p>App Store経由でないアプリケーションも入れた。Tower、SublimeText、cdto、VSCode、Sequel Pro、Vagrant、iTerm2など。</p>
+
+<p>Mailboxを入れてメールの設定をした後、メール.appの設定をしようとしたら、アカウントの設定ができない。最終的には設定のインターネットアカウントからGmailを削除し、Googleアカウントとして登録したらうまくいった。</p>
+
+<p>Document以下にファイルを集約しているので、それらを移行した。が、USB経由でもだいぶ時間がかかったので、どこかにホスティングしてgit cloneした方が速かったと思う。Dropboxだと、vendorやnode_module以下を同期しないの難しいし再びやるときにcomposer installやnpm installするの面倒だと思った。</p>
+
+<p>書いてる途中でComposerインストールしてないの忘れていたのでインストールした。諸々ダウンロード途中でアクセス上限に達したので、コンソールに書かれているURLにアクセスしてTokenを作った。</p>
+
+<p>1日で終わらせる予定だったのだが、ペパマリMIXやってたりして、まだSublimeTextの設定とGithubからcloneするのと仮想マシン移すのができてないが、すぐできるのでここまでにしておく。</p>
+
+    </section>
+    <aside id="meta">
+        <p><time datetime="2015-12-05T23:21:23&#43;09:00">2015-12-05 23:21:23</time></p>
+        
+        <h6>Tags:</h6>
+        <ul>
+            
+                <li class="page_tags"><a href="/tags/noiz">noiz</a></li>
+            
+        </ul>
+        
+    </aside>
+</article>
+
+    <footer class="ten offset-by-one columns">
+        <div>
+            <p>&copy; <a href="http://deprode.net">deprode</a></p>
+        </div>
+    </footer>
+</div>
+<link rel="stylesheet" href="https://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="https://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
